@@ -1,13 +1,13 @@
 // const getArticle = async (id?: number) => {};
 import axios from 'axios';
 
-export const getArticle = async () => {
+export const getArticle = async (page: number) => {
   // const url = `/users/${id}/stamps`;
   try {
     const response = await axios.get('https://api.realworld.io/api/articles', {
       params: {
         limit: 10,
-        offset: 0,
+        offset: page * 10,
       },
     });
     console.log(response.data);

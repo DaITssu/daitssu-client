@@ -4,22 +4,29 @@ import { useEffect, useState } from 'react';
 import { getArticle } from '@/pages/api/getArticle';
 import { Article, ArticlesResponse } from '@/types/articleDTO';
 import ArticlePreview from './ArticlePreview';
+import Pagination from './pagenations';
 
 const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const [articles, setArticles] = useState<ArticlesResponse>({
     articles: [],
     articlesCount: 0,
   });
+
+  const pageSize = 10;
+  const maxPageLength = Math.ceil(articles.articlesCount / pageSize);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(false);
-      const data = await getArticle();
+      const data = await getArticle(0);
       setArticles(data);
       setLoading(true);
     };
     fetchData();
   }, []);
+
   return (
     <div className="home-page">
       <div className="banner">
@@ -89,6 +96,15 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={maxPageLength}
+          onPageChange={async (res) => {
+            const data = await getArticle(res);
+            setArticles(data);
+            setCurrentPage(res);
+          }}
+        />
       </div>
     </div>
   );
