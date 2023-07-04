@@ -4,24 +4,23 @@ const Header: React.FC = () => {
   return (
     <nav className="navbar navbar-light">
       <div className="container">
-        <Link href="/">
-          <p className="navbar-brand">conduit</p>
+        <Link href="/" className="navbar-brand">
+          conduit
         </Link>
         <ul className="nav navbar-nav pull-xs-right">
           <li className="nav-item">
-            {/* Add "active" class when you're on that page" */}
-            <Link href="/">
-              <p className="nav-link active">Home</p>
+            <Link href="/" className="nav-link active">
+              Home
             </Link>
           </li>
           <li className="nav-item">
-            <Link href="/login">
-              <p className="nav-link">Sign in</p>
+            <Link href="/login" className="nav-link">
+              Sign in
             </Link>
           </li>
           <li className="nav-item">
-            <Link href="/register">
-              <p className="nav-link">Sign up</p>
+            <Link href="/register" className="nav-link">
+              Sign up
             </Link>
           </li>
         </ul>
