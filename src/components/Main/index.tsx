@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { getArticle } from '@/pages/api/getArticle';
+import { getArticles } from '@/pages/api/getArticles';
 import { Article, ArticlesResponse } from '@/types/articleDTO';
 import ArticlePreview from './ArticlePreview';
 import Pagination from './pagenations';
@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(false);
-      const data = await getArticle(0);
+      const data = await getArticles(0);
       setArticles(data);
       setLoading(true);
     };
@@ -100,7 +100,7 @@ const HomePage: React.FC = () => {
           currentPage={currentPage}
           totalPages={maxPageLength}
           onPageChange={async (res) => {
-            const data = await getArticle(res);
+            const data = await getArticles(res);
             setArticles(data);
             setCurrentPage(res);
           }}
