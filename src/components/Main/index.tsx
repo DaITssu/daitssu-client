@@ -5,6 +5,8 @@ import { getArticles } from '@/api/getArticles';
 import { Article, ArticlesResponse } from '@/types/articleDTO';
 import ArticlePreview from './ArticlePreview';
 import Pagination from './pagenations';
+import { useAtom } from 'jotai';
+import { userAtom } from '@/states/userAtom';
 
 const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -13,6 +15,8 @@ const HomePage: React.FC = () => {
     articles: [],
     articlesCount: 0,
   });
+
+  const [user, setUser] = useAtom(userAtom);
 
   const pageSize = 10;
   const maxPageLength = Math.ceil(articles.articlesCount / pageSize);
@@ -29,12 +33,14 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="home-page">
-      <div className="banner">
-        <div className="container">
-          <h1 className="logo-font ng-binding">conduit</h1>
-          <p>A place to share your knowledge.</p>
+      {user ? null : (
+        <div className="banner">
+          <div className="container">
+            <h1 className="logo-font ng-binding">conduit</h1>
+            <p>A place to share your knowledge.</p>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="container page">
         <div className="row">
