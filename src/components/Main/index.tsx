@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { getArticles } from '@/pages/api/getArticles';
+import { getArticles } from '@/api/getArticles';
 import { Article, ArticlesResponse } from '@/types/articleDTO';
 import ArticlePreview from './ArticlePreview';
 import Pagination from './pagenations';

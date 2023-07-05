@@ -4,7 +4,7 @@ import { ArticleDetailResponse, ArticleDetail } from '@/types/articleDatailDTO';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { getArticleDetail } from '../api/getArticleDetail';
+import { getArticleDetail } from '../../api/getArticleDetail';
 
 const ArticlePage: React.FC = () => {
   const router = useRouter();
