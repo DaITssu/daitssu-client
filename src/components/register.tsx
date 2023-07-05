@@ -16,12 +16,13 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    signup(username, email, password).then((res) => {
-      setUser(res);
-      console.log(user);
-    });
-    router.push('/');
-    // console.log(data);
+    signup(username, email, password)
+      .then((res) => {
+        setUser(res.user);
+      })
+      .then(() => {
+        router.replace('/');
+      });
   };
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -43,12 +44,12 @@ const Register: React.FC = () => {
           <div className="col-md-6 offset-md-3 col-xs-12">
             <h1 className="text-xs-center">Sign up</h1>
             <p className="text-xs-center">
-              <Link href="">Have an account?</Link>
+              <Link href="/login">Have an account?</Link>
             </p>
 
-            <ul className="error-messages">
+            {/* <ul className="error-messages">
               <li>That email is already taken</li>
-            </ul>
+            </ul> */}
 
             <form onSubmit={handleSubmit}>
               <fieldset className="form-group">
