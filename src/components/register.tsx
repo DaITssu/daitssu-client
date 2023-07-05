@@ -1,10 +1,13 @@
-import axios from 'axios';
 import Link from 'next/link';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/router';
+import { signup } from '@/api/signup';
+import { useAtom } from 'jotai';
+import { userAtom } from '@/states/userAtom';
 
 const Register: React.FC = () => {
   const router = useRouter();
+  const [user, setUser] = useAtom(userAtom);
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -13,22 +16,12 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post('https://api.realworld.io/api/users', {
-        user: {
-          username,
-          email,
-          password,
-        },
-      });
-
-      console.log('Registration successful:', response.data);
-      router.push('/');
-      // Perform success actions (e.g., redirect, show success message)
-    } catch (error) {
-      console.error('Registration failed:', error);
-      // Perform error actions (e.g., show error message)
-    }
+    signup(username, email, password).then((res) => {
+      setUser(res);
+      console.log(user);
+    });
+    router.push('/');
+    // console.log(data);
   };
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
