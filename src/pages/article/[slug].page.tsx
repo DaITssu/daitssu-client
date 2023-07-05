@@ -20,7 +20,6 @@ const ArticlePage: React.FC = () => {
       setArticleDetail(data);
     };
     fetchData();
-    console.log(articleDetail);
   }, []);
 
   return (
