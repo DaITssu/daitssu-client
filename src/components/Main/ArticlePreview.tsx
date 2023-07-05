@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Article } from '@/types/articleDTO';
+import { Article } from '@/types/article';
 
 interface ArticlePreviewProps {
   article: Article;

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { getArticles } from '@/api/getArticles';
-import { Article, ArticlesResponse } from '@/types/articleDTO';
+import { Article, ArticlesResponse } from '@/types/article';
 import ArticlePreview from './ArticlePreview';
 import Pagination from './pagenations';
 import { useAtom } from 'jotai';
