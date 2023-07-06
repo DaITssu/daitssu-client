@@ -16,13 +16,11 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    signup(username, email, password)
-      .then((res) => {
-        setUser(res.user);
-      })
-      .then(() => {
-        router.replace('/');
-      });
+    const response = await signup(username, email, password);
+
+    setUser(response.user);
+
+    router.replace('/');
   };
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {

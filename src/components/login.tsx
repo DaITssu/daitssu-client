@@ -15,13 +15,9 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login(email, password)
-      .then((res) => {
-        setUser(res.user);
-      })
-      .then(() => {
-        router.replace('/');
-      });
+    const response = await login(email, password);
+    setUser(response.user);
+    router.replace('/');
   };
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
