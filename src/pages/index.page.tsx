@@ -50,7 +50,7 @@ export default function Home() {
                   author: {
                     username: 'jake',
                     bio: 'I work at statefarm',
-                    image: 'https://i.stack.imgur.com/xHWG8.jpg',
+                    image: 'https://api.realworld.io/images/demo-avatar.png',
                     following: false,
                   },
                 }}
