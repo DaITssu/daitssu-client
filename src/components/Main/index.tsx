@@ -8,6 +8,29 @@ import Pagination from './pagenations';
 import { useAtom } from 'jotai';
 import { userAtom } from '@/states/userAtom';
 
+const TAGS: { label: string; url: string }[] = [
+  {
+    label: 'programming',
+    url: '',
+  },
+  {
+    label: 'javascript',
+    url: '',
+  },
+  {
+    label: 'emberjs',
+    url: '',
+  },
+  {
+    label: 'angularjs',
+    url: '',
+  },
+  {
+    label: 'react',
+    url: '',
+  },
+];
+
 const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
@@ -68,36 +91,15 @@ const HomePage: React.FC = () => {
               <p>Popular Tags</p>
 
               <div className="tag-list">
-                <Link
-                  href=""
-                  className="tag-default tag-pill ng-binding ng-scope"
-                >
-                  programming
-                </Link>
-                <Link
-                  href=""
-                  className="tag-default tag-pill ng-binding ng-scope"
-                >
-                  javascript
-                </Link>
-                <Link
-                  href=""
-                  className="tag-default tag-pill ng-binding ng-scope"
-                >
-                  emberjs
-                </Link>
-                <Link
-                  href=""
-                  className="tag-default tag-pill ng-binding ng-scope"
-                >
-                  angularjs
-                </Link>
-                <Link
-                  href=""
-                  className="tag-default tag-pill ng-binding ng-scope"
-                >
-                  react
-                </Link>
+                {TAGS.map((tagItem) => (
+                  <Link
+                    key={tagItem.label}
+                    href={tagItem.url}
+                    className="tag-default tag-pill ng-binding ng-scope"
+                  >
+                    {tagItem.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

@@ -8,7 +8,6 @@ export const getArticles = async (page: number) => {
         offset: page * 10,
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);
