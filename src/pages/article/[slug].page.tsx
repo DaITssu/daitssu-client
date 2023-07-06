@@ -1,6 +1,6 @@
 import Footer from '@/components/common/Footer';
 import Header from '@/components/common/Header';
-import { ArticleDetailResponse, ArticleDetail } from '@/types/articleDatailDTO';
+import { ArticleDetailResponse, ArticleDetail } from '@/types/articleDatail';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -15,7 +15,7 @@ const ArticlePage: React.FC = () => {
       if (slug == undefined) {
         return;
       }
-      const data = await getArticleDetail(slug as String);
+      const data = await getArticleDetail(slug as string);
 
       setArticleDetail(data);
     };
