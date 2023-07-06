@@ -12,7 +12,7 @@ export const loginUser = async ({
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ user: { email, password } }),
   });
 
   if (response.status !== 200) {
