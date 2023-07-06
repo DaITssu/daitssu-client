@@ -6,10 +6,10 @@ import LoginHeader from './LoginHeader';
 import LogoutHeader from './LogoutHeader';
 
 export const currentRouteAtom = atom('/');
-const isLoggedInAtom = atom(false); // add this line
+const isLoggedInAtom = atom(false);
 
 const Header = () => {
-  const [isLoggedIn] = useAtom(isLoggedInAtom); // useAtom instead of useRecoilValue
+  const [isLoggedIn] = useAtom(isLoggedInAtom);
   const [currentRoute, setCurrentRoute] = useAtom(currentRouteAtom);
   const router = useRouter();
 
