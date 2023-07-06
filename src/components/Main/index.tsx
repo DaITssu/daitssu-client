@@ -10,7 +10,7 @@ import { userAtom } from '@/states/userAtom';
 
 const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [articles, setArticles] = useState<ArticlesResponse>({
     articles: [],
     articlesCount: 0,
