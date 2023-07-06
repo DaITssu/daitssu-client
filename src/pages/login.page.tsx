@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Header from '@/components/common/Header/Header';
 import Link from 'next/link';
 import { loginUser } from './api/login';
+import Footer from '@/components/common/Footer';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -67,6 +68,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -1,3 +1,4 @@
+import Footer from '@/components/common/Footer';
 import Header from '@/components/common/Header/Header';
 import Link from 'next/link';
 
@@ -48,6 +49,7 @@ export default function Register() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
