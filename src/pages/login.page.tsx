@@ -1,7 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/router';
 import Header from '@/components/common/Header/Header';
-import { useQueryClient, useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
 import { loginUser } from './api/login';
 
@@ -9,21 +8,21 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
-  const queryClient = useQueryClient();
 
-  const mutation = useMutation(loginUser, {
-    onSuccess: (data) => {
-      queryClient.setQueryData(['user'], data);
+  const handleLogin = async (e: FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const userResponse = await loginUser({ email, password });
+
+      localStorage.setItem('user', JSON.stringify(userResponse.user));
+      console.log(userResponse);
       router.push('/');
-    },
-    onError: (error) => {
-      console.error('Login failed', error);
-    },
-  });
-
-  const handleLogin = (event: FormEvent) => {
-    event.preventDefault();
-    mutation.mutate({ email, password });
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error('Login failed:', error.message);
+      }
+    }
   };
 
   return (
