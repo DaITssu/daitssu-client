@@ -10,12 +10,15 @@ const ArticleComponent = ({ article }: TestProps) => (
   <div className="article-preview">
     <div className="article-meta">
       <Link href="profile.html">
-        <img
+        <Image
           src={
             article.author.image ??
             'https://api.realworld.io/images/demo-avatar.png'
           }
           alt="Author's profile image"
+          width={32}
+          height={32}
+          className="author-img"
         />
       </Link>
       <div className="info">

@@ -5,6 +5,9 @@ const nextConfig = {
     emotion: true,
   },
   pageExtensions: ['page.tsx', 'page.ts'],
+  images: {
+    domains: ['api.realworld.io'],
+  },
 };
 
 module.exports = nextConfig;
