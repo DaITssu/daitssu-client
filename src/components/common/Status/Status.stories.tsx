@@ -24,7 +24,7 @@ export const isComplete: Story = {
   },
 };
 
-export const isTimeout: Story = {
+export const Timeout: Story = {
   args: {
     label: '시간 초과',
     status: 2,
