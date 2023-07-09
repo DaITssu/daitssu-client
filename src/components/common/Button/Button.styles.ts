@@ -15,5 +15,5 @@ export const Button = styled.div<ButtonProps>`
   border-radius: 12px;
   text-align: center;
   color: ${COLORS.grayscale.white};
-  background-color: ${COLORS.SSU.blue};
+  background-color: ${COLORS.SSU.primary};
 `;

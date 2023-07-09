@@ -1,8 +1,10 @@
 export const COLORS = {
   SSU: {
-    blue: '#5ebeeb',
-    skyblue: '#e7f5fc',
-    red: '#f36262',
+    primary: '#5ebeeb',
+    secondary: '#e7f5fc',
+    error: '#f36262',
+    accept: '#7AC364',
+    yellow: '#FFD057',
   },
   grayscale: {
     white: '#FFFFFF',
