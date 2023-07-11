@@ -1,6 +1,6 @@
 ## Issue
 
-Resolves #
+- Resolves #
 
 ## Description
 
