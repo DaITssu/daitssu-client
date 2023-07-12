@@ -22,7 +22,7 @@ export interface ApiRequestInputBasic {
 export interface ApiInfo<Result, Request extends ApiRequest> {
   needToLogin: boolean;
   /** 기본 서버 주소 외 다른 서버로 요청해야 하는 경우 */
-  serverUrl?: string;
+  baseUrl?: string;
   errorMessages?: {
     [errorCode: number]: {
       title?: string;

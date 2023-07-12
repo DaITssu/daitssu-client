@@ -5,7 +5,7 @@ const BASE_QUERY_KEY = ['test'] as const;
 
 export const api_getPost = getApi('GET', '/posts', {
   needToLogin: false,
-  serverUrl: 'https://jsonplaceholder.typicode.com',
+  baseUrl: 'https://jsonplaceholder.typicode.com',
   requestInfo: z.object({
     pathParams: z.tuple([z.number().describe('post id')]),
   }),

@@ -23,6 +23,7 @@ interface ClientError {
   title?: string;
   message?: string;
   fetchUrl: string;
+  clientError?: any;
   serverError?: any;
   onPopupPress?: () => void;
 }
@@ -55,80 +56,96 @@ const fetchApi = async <Result, Request extends ApiRequest>(
   requestInfo: ApiRequestInput<Request>,
   accessToken?: string,
 ): Promise<Result> => {
-  const serverUrl = apiInfo.serverUrl ?? '여기에 서버 url'; // TODO
-  // zod로 요청 정보 validate
-  const parsedRequestInfo = (apiInfo.requestInfo?.parse(requestInfo) ??
-    {}) as ApiRequestInputBasic;
+  const baseUrl = apiInfo.baseUrl ?? '여기에 서버 url'; // TODO
+  const url = `${baseUrl}${apiInfo.endpoint}`;
 
-  const authorizationHeader = accessToken
-    ? { Authorization: `Bearer ${accessToken}` }
-    : undefined;
+  try {
+    // zod로 요청 정보 validate
+    const parsedRequestInfo = (apiInfo.requestInfo?.parse(requestInfo) ??
+      {}) as ApiRequestInputBasic;
 
-  const pathString =
-    parsedRequestInfo.pathParams?.reduce<string>(
-      (prev, cur) => `${prev}/${cur}`,
+    const authorizationHeader = accessToken
+      ? { Authorization: `Bearer ${accessToken}` }
+      : undefined;
+
+    const pathString =
+      parsedRequestInfo.pathParams?.reduce<string>(
+        (prev, cur) => `${prev}/${cur}`,
+        '',
+      ) ?? '';
+
+    const params = parsedRequestInfo.params ?? {};
+    const queryString = Object.keys(params).reduce(
+      (prev, cur) =>
+        `${prev}${
+          params[cur] !== null && params[cur] !== undefined
+            ? `&${cur}=${params[cur]}`
+            : ''
+        }`,
       '',
-    ) ?? '';
+    );
+    const fetchUrl = `${url}${pathString}${
+      queryString ? `?${queryString.slice(1)}` : ''
+    }`;
 
-  const params = parsedRequestInfo.params ?? {};
-  const queryString = Object.keys(params).reduce(
-    (prev, cur) =>
-      `${prev}${
-        params[cur] !== null && params[cur] !== undefined
-          ? `&${cur}=${params[cur]}`
-          : ''
-      }`,
-    '',
-  );
-  const fetchUrl = `${serverUrl}${apiInfo.endpoint}${pathString}${
-    queryString ? `?${queryString.slice(1)}` : ''
-  }`;
+    // 로그인이 필수인데 token이 없는 경우 요청을 보내지 않고 바로 에러
+    if (!accessToken && apiInfo.needToLogin) {
+      throw new ApiError({
+        status: 401,
+        fetchUrl,
+        ...CommonError[401],
+      });
+    }
 
-  // 로그인이 필수인데 token이 없는 경우 요청을 보내지 않고 바로 에러
-  if (!accessToken && apiInfo.needToLogin) {
+    const response = await fetch(fetchUrl, {
+      method: apiInfo.method,
+      body:
+        parsedRequestInfo.body !== undefined
+          ? JSON.stringify(parsedRequestInfo.body)
+          : undefined,
+      headers: {
+        'Content-type': 'application/json',
+        ...authorizationHeader,
+        ...parsedRequestInfo.headers,
+      },
+    });
+
+    let result;
+    try {
+      result = await response.json();
+    } catch (error) {
+      result = null;
+    }
+
+    if (response.ok) {
+      return result;
+    }
+
     throw new ApiError({
-      status: 401,
+      status: response.status,
       fetchUrl,
-      ...CommonError[401],
+      title:
+        apiInfo.errorMessages?.[response.status]?.title ??
+        CommonError[response.status]?.title,
+      message:
+        apiInfo.errorMessages?.[response.status]?.message ??
+        CommonError[response.status]?.message,
+      serverError: result,
+      onPopupPress: CommonError[response.status]?.onPopupPress,
+    });
+  } catch (error) {
+    if (error instanceof ApiError) {
+      throw error;
+    }
+
+    console.error(url, error);
+
+    // `fetchApi`의 모든 에러가 `ApiError`임을 보장
+    throw new ApiError({
+      fetchUrl: url,
+      clientError: error,
     });
   }
-
-  const response = await fetch(fetchUrl, {
-    method: apiInfo.method,
-    body:
-      parsedRequestInfo.body !== undefined
-        ? JSON.stringify(parsedRequestInfo.body)
-        : undefined,
-    headers: {
-      'Content-type': 'application/json',
-      ...authorizationHeader,
-      ...parsedRequestInfo.headers,
-    },
-  });
-
-  let result;
-  try {
-    result = await response.json();
-  } catch (error) {
-    result = null;
-  }
-
-  if (response.ok) {
-    return result;
-  }
-
-  throw new ApiError({
-    status: response.status,
-    fetchUrl,
-    title:
-      apiInfo.errorMessages?.[response.status]?.title ??
-      CommonError[response.status]?.title,
-    message:
-      apiInfo.errorMessages?.[response.status]?.message ??
-      CommonError[response.status]?.message,
-    serverError: result,
-    onPopupPress: CommonError[response.status]?.onPopupPress,
-  });
 };
 
 /**
