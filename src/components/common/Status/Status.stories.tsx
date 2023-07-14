@@ -10,14 +10,14 @@ const meta: Meta<typeof Status> = {
 export default meta;
 type Story = StoryObj<typeof Status>;
 
-export const isIncomplete: Story = {
+export const Incomplete: Story = {
   args: {
     label: '미완료',
     status: 0,
   },
 };
 
-export const isComplete: Story = {
+export const Complete: Story = {
   args: {
     label: '완료',
     status: 1,
