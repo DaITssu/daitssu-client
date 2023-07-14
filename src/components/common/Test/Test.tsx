@@ -1,3 +1,4 @@
+import Button from '../Button';
 import * as styles from './Test.style';
 
 interface TestProps {
