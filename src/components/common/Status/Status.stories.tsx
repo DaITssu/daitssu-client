@@ -10,21 +10,21 @@ const meta: Meta<typeof Status> = {
 export default meta;
 type Story = StoryObj<typeof Status>;
 
-export const Primary: Story = {
+export const isIncomplete: Story = {
   args: {
     label: '미완료',
     status: 0,
   },
 };
 
-export const Secondary: Story = {
+export const isComplete: Story = {
   args: {
     label: '완료',
     status: 1,
   },
 };
 
-export const Tertiary: Story = {
+export const isTimeout: Story = {
   args: {
     label: '시간 초과',
     status: 2,

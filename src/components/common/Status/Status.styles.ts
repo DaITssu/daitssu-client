@@ -1,6 +1,6 @@
-import { COLORS } from '../../../styles/colors';
+import { COLORS } from '../../../styles/constants/colors';
 import styled from '@emotion/styled';
-import { TEXT_STYLES } from '../../../styles/textStyles';
+import { TEXT_STYLES } from '../../../styles/constants/textStyles';
 
 // 가독성을 위해 스타일 파일은 별도로 둡니다.
 
@@ -27,5 +27,5 @@ export const Status = styled.div<StatusProps>`
         return COLORS.grayscale.Gray1;
     }
   }};
-  ${TEXT_STYLES.Title03};
+  ${TEXT_STYLES.CapM12};
 `;

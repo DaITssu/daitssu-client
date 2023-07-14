@@ -1,6 +1,6 @@
-import { COLORS } from '../../../styles/colors';
+import { COLORS } from '../../../styles/constants/colors';
 import styled from '@emotion/styled';
-import { TEXT_STYLES } from '../../../styles/textStyles';
+import { TEXT_STYLES } from '../../../styles/constants/textStyles';
 
 // 가독성을 위해 스타일 파일은 별도로 둡니다.
 
@@ -22,5 +22,5 @@ export const Category = styled.div<CategoryProps>`
     props.BgColor ? COLORS.SSU.primary : COLORS.grayscale.white};
   border: 1px solid
     ${(props) => (props.BgColor ? COLORS.SSU.primary : COLORS.SSU.primary)};
-  ${TEXT_STYLES.Title05};
+  ${TEXT_STYLES.CapM14};
 `;
