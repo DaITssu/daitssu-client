@@ -22,6 +22,5 @@ export const Category = styled.div<CategoryProps>`
     props.BgColor ? COLORS.SSU.primary : COLORS.grayscale.white};
   border: 1px solid
     ${(props) => (props.BgColor ? COLORS.SSU.primary : COLORS.SSU.primary)};
-
   ${TEXT_STYLES.CapM14};
 `;

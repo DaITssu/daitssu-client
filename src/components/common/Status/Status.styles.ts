@@ -27,6 +27,5 @@ export const Status = styled.div<StatusProps>`
         return COLORS.grayscale.Gray1;
     }
   }};
-
   ${TEXT_STYLES.CapM12};
 `;
