@@ -6,6 +6,6 @@ export interface TaskDTO {
   type: string;
 }
 
-export interface TaskDetailsProps {
+export interface TaskProps {
   task: TaskDTO;
 }
