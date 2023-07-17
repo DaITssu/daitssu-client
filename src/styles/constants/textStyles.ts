@@ -1,4 +1,9 @@
 export const TEXT_STYLES = {
+  Logo: {
+    fontSize: 28,
+    fontWeight: 700,
+    fontFamily: 'Pretendard',
+  },
   //Nav M 10
   NavM10: {
     fontSize: 10,

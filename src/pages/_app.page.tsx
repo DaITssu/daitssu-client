@@ -6,15 +6,18 @@ import {
   Hydrate,
 } from '@tanstack/react-query';
 import { useState } from 'react';
+import { RecoilRoot } from 'recoil';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
-      </Hydrate>
+      <RecoilRoot>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </RecoilRoot>
     </QueryClientProvider>
   );
 }

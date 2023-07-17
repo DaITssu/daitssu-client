@@ -7,7 +7,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "types":["@emotion/react/types/css-prop"],
+    "types": ["@emotion/react/types/css-prop"],
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -19,7 +19,6 @@
       "@/*": ["./src/*"],
       "@icons/*": ["./public/assets/*"]
     }
-    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

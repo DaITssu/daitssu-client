@@ -5,6 +5,7 @@ import useTestCount from './useTestCount';
 import useApiQuery from '@/hooks/useApiQuery';
 import { api_getPost } from '@/apis/test';
 import { QueryClient, dehydrate } from '@tanstack/react-query';
+import Header from '@/components/common/Header/Header';
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ export default function TestPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <styles.Container>
+        <Header />
         <Test label={`${count}`} />
         <button onClick={increment}>increment</button>
         <button onClick={decrement}>decrement</button>
