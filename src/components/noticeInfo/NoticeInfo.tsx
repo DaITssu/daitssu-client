@@ -259,7 +259,6 @@ const WatchBox = styled.div`
   display: flex;
   text-align: center;
   font-size: 14px;
-  align-items: center;
   span {
     text-align: center;
     display: flex;
