@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import * as styles from './TaskDetails.style';
+import * as styles from './SubjectContents.style';
 import video from '../../../assets/calendar/video.svg';
 import comment from '../../../assets/calendar/comment.svg';
 import assignment from '../../../assets/calendar/assignment.svg';
@@ -13,7 +13,7 @@ const getTaskStatus = (dueDate: Date, task: TaskDTO) => {
   return Date.now() > dueDate.getTime() ? 2 : 0;
 };
 
-const TaskDetails = ({ task }: TaskProps) => {
+const SubjectContents = ({ task }: TaskProps) => {
   const date = new Date(task.dueDate);
 
   const time = date.toLocaleTimeString('en-US', {
@@ -59,4 +59,4 @@ const TaskDetails = ({ task }: TaskProps) => {
   );
 };
 
-export default TaskDetails;
+export default SubjectContents;

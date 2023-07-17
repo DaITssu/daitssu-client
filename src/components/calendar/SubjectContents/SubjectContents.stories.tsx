@@ -1,17 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TaskDTO } from '@/types/Task';
 
-import TaskDetails from './TaskDetails';
+import SubjectContents from './SubjectContents';
 
-const meta: Meta<typeof TaskDetails> = {
+const meta: Meta<typeof SubjectContents> = {
   title: 'Calendar',
-  component: TaskDetails,
+  component: SubjectContents,
 };
 
 export default meta;
-type Story = StoryObj<typeof TaskDetails>;
+type Story = StoryObj<typeof SubjectContents>;
 
-export const TaskDetailsExample: Story = {
+export const SubjectContentsExample: Story = {
   args: {
     task: {
       id: 1,
