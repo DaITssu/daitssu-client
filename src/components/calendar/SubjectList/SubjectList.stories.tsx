@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DateList from './DateList';
+import SubjectList from './SubjectList';
 
-const meta: Meta<typeof DateList> = {
+const meta: Meta<typeof SubjectList> = {
   title: 'Calendar',
-  component: DateList,
+  component: SubjectList,
 };
 
 export default meta;
-type Story = StoryObj<typeof DateList>;
+type Story = StoryObj<typeof SubjectList>;
 
-export const DateListExmaple: Story = {
+export const SubjectListExample: Story = {
   args: {
     subjectList: [
       {

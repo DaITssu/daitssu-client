@@ -1,11 +1,11 @@
 import Subject from '../Subject';
 import { SubjectDTO } from '@/types/Subject';
 
-interface DateListProps {
+interface SubjectListProps {
   subjectList: SubjectDTO[];
 }
 
-const DateList = ({ subjectList }: DateListProps) => (
+const SubjectList = ({ subjectList }: SubjectListProps) => (
   <>
     {subjectList.map((subject, index) => (
       <Subject key={index} subject={subject} />
@@ -13,4 +13,4 @@ const DateList = ({ subjectList }: DateListProps) => (
   </>
 );
 
-export default DateList;
+export default SubjectList;
