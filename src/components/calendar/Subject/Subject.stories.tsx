@@ -10,7 +10,7 @@ const meta: Meta<typeof Subject> = {
 export default meta;
 type Story = StoryObj<typeof Subject>;
 
-export const SubjectExmaple: Story = {
+export const SubjectExample: Story = {
   args: {
     subject: {
       id: 1,
