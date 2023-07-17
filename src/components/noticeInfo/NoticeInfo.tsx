@@ -406,6 +406,7 @@ const TimeBox = styled.div`
   font-size: 14px;
   align-items: center;
   margin-right: auto;
+  color: rgba(110, 110, 110, 1);
 `;
 
 const OtherBox = styled.div`
