@@ -223,7 +223,7 @@ const TypeBox = styled.div`
   text-decoration: underline;
   text-underline-position: under;
   font-size: 14px;
-  cololr: rgba(49, 49, 49, 1);
+  color: rgba(49, 49, 49, 1);
 `;
 
 const MiddleBox = styled.div`
