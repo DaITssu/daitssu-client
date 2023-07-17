@@ -1,0 +1,7 @@
+.container {
+  width: "600px";
+  display: flex; 
+  justify-content: center; 
+  margin-bottom: 10px;
+  /* Flexbox 사용 */
+}
