@@ -11,7 +11,7 @@ export interface SubjectProps {
   subject: SubjectDTO;
 }
 
-export const SubjectExample: SubjectDTO = {
+export const SubjectDTOExample: SubjectDTO = {
   id: 1,
   title: '웹프로그래밍실습',
   color: '#FF0000',
