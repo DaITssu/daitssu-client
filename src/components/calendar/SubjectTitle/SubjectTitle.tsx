@@ -1,11 +1,8 @@
-import Image from 'next/image';
-import * as styles from './SubjectDetails.style';
-import video from '../../../assets/calendar/video.svg';
+import * as styles from './SubjectTitle.style';
 import { TEXT_STYLES } from '../../../styles/constants/textStyles';
-import { COLORS } from '../../../styles/constants/colors';
 import { SubjectProps } from '@/types/Subject';
 
-const SubjectDetails = ({ subject }: SubjectProps) => {
+const SubjectTitle = ({ subject }: SubjectProps) => {
   return (
     <styles.Container>
       <styles.LeftDiv>
@@ -16,4 +13,4 @@ const SubjectDetails = ({ subject }: SubjectProps) => {
   );
 };
 
-export default SubjectDetails;
+export default SubjectTitle;
