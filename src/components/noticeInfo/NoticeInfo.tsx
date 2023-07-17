@@ -24,9 +24,7 @@ const NoticeInfo = () => {
       </MenuBox>
       <InfoBox>
         <TypeBox>학사</TypeBox>
-        <TitleBox>
-          2023-1학기 다전공(복수 부 융합전공) 신청 기간 안내 (05.15 ~)
-        </TitleBox>
+        <TitleBox>2023-1학기 신청 기간 안내 (05.15 ~)</TitleBox>
         <MiddleBox>
           <DateBox>
             <Image
@@ -276,10 +274,9 @@ const ShareBox = styled.div`
 `;
 
 const SharePopupBox = styled.div`
-  position: absolute;
-  /** TODO absolute 타이틀 길이에 따른 조절 필요 */
-  top: 28.6%;
-  left: 70.4%;
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
   background-color: white;
   font-size: 14px;
   border: 1px solid;
