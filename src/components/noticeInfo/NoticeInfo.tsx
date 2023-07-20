@@ -1,7 +1,7 @@
-import * as styles from './NoticeInfo.style';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import Image from 'next/image';
+import Comment from '../common/Comment';
 
 const NoticeInfo = () => {
   const [share, setShare] = useState<boolean>(false);
@@ -132,47 +132,8 @@ const NoticeInfo = () => {
           </FileAttachBox>
         </FileBox>
       </InfoBox>
-      <BottomBox>
-        <CommentTitleBox>댓글</CommentTitleBox>
-        <CommentWhiteBox>
-          <CLeftBox>
-            <Image
-              src="/noticeInfo/profile.svg"
-              alt="profile image"
-              width={40}
-              height={40}
-              priority
-            />
-          </CLeftBox>
-          <CRightBox>
-            <CTopBox>
-              <NicknameBox>닉네임</NicknameBox>
-              <TimeBox>5분 전</TimeBox>
-              <OtherBox>
-                <MessageBox>
-                  <Image
-                    src="/noticeInfo/message.svg"
-                    alt="message image"
-                    width={18}
-                    height={18}
-                    priority
-                  />
-                </MessageBox>
-                <ReportBox>
-                  <Image
-                    src="/noticeInfo/report.svg"
-                    alt="report image"
-                    width={18}
-                    height={18}
-                    priority
-                  />
-                </ReportBox>
-              </OtherBox>
-            </CTopBox>
-            <CommentContentBox>같이 힘냅시다!</CommentContentBox>
-          </CRightBox>
-        </CommentWhiteBox>
-      </BottomBox>
+      {/** TODO: 댓글 박스 추가 */}
+      <Comment />
       <MyCommentBox>
         <CommentFlexBox>
           <MyLeftBox>
