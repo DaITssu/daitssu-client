@@ -3,10 +3,9 @@ import * as styles from './BottomPopUp.style';
 
 interface BottomPopUpProps {
   label?: string;
-  onClick?: () => void;
 }
 
-const BottomPopUp = ({ label, onClick }: BottomPopUpProps) => {
+const BottomPopUp = ({ label }: BottomPopUpProps) => {
   const [showPopup, setShowPopup] = useState(true);
 
   useEffect(() => {
