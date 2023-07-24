@@ -64,21 +64,51 @@ const CommunityInfo = () => {
             </ProfileBottomBox>
           </ProfileCenterBox>
         </ProfileBox>
-        <TitleBox></TitleBox>
-        <ContentBox></ContentBox>
+        <TitleBox>이거 어떻게 하는 거예요</TitleBox>
+        <ContentBox>
+          엄청나게 잘해서 A+를 받겠어~ 엄청나게 잘해서 A+를 받겠어~ 종강아
+          어서와
+        </ContentBox>
         <UnderBarBox>
-          <LikesBox>
-            <IconBox></IconBox>
-            <CountBox></CountBox>
-          </LikesBox>
-          <CommentBox>
-            <IconBox></IconBox>
-            <CountBox></CountBox>
-          </CommentBox>
-          <BookmarkBox>
-            <IconBox></IconBox>
-            <CountBox></CountBox>
-          </BookmarkBox>
+          <IconCountBox>
+            <IconBox>
+              {/** TODO: icon 수정 */}
+              <Image
+                src="/noticeInfo/message.svg"
+                alt="heart icon"
+                width={24}
+                height={24}
+                priority
+              />
+            </IconBox>
+            <CountBox>5</CountBox>
+          </IconCountBox>
+          <IconCountBox>
+            <IconBox>
+              {/** TODO: icon 수정 */}
+              <Image
+                src="/noticeInfo/message.svg"
+                alt="comment icon"
+                width={24}
+                height={24}
+                priority
+              />
+            </IconBox>
+            <CountBox>5</CountBox>
+          </IconCountBox>
+          <IconCountBox>
+            <IconBox>
+              {/** TODO: icon 수정 */}
+              <Image
+                src="/noticeInfo/message.svg"
+                alt="bookmark icon"
+                width={24}
+                height={24}
+                priority
+              />
+            </IconBox>
+            <CountBox>0</CountBox>
+          </IconCountBox>
         </UnderBarBox>
       </Padding>
       <BottomBox>
@@ -193,21 +223,41 @@ const ViewCountBox = styled.div`
   color: #6e6e6e;
 `;
 
-const TitleBox = styled.div``;
+const TitleBox = styled.div`
+  margin: 10px 0;
+  font-weight: 500;
+  font-size: 20px;
+`;
 
-const ContentBox = styled.div``;
+const ContentBox = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 15px;
+  line-height: 24px;
+`;
 
-const UnderBarBox = styled.div``;
+const UnderBarBox = styled.div`
+  display: flex;
+`;
 
-const LikesBox = styled.div``;
+const IconCountBox = styled.div`
+  display: flex;
+  margin-right: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+`;
 
-const CommentBox = styled.div``;
+const IconBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-const BookmarkBox = styled.div``;
-
-const IconBox = styled.div``;
-
-const CountBox = styled.div``;
+const CountBox = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  color: #6e6e6e;
+  margin-left: 5px;
+`;
 
 const BottomBox = styled.div``;
 
