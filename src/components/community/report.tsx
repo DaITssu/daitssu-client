@@ -1,10 +1,11 @@
 import * as styles from './report.styles';
 import { useState, useEffect } from 'react';
-import { TEXT_STYLES } from '@/styles/constants/textStyles';
+import { TEXT_STYLES } from '../../styles/constants/textStyles';
 import { NextPage } from 'next';
-import { COLORS } from '@/styles/constants/colors';
+import { COLORS } from '../../styles/constants/colors';
 import Button from '../common/Button';
 import BottomPopUp from '../common/BottomPopUp';
+import React from 'react';
 
 interface ReportItemProps {
   text: string;
@@ -20,9 +21,9 @@ const ReportItem: NextPage<ReportItemProps> = ({
   return (
     <styles.ReportItemStyle onClick={onClick}>
       {isSelected ? (
-        <img src="/a.svg" alt="Your SVG" />
+        <img src="/assets/icon/Radio/CheckedRadio.svg" alt="Your SVG" />
       ) : (
-        <img src="/b.svg" alt="Your SVG" />
+        <img src="/assets/icon/Radio/DefaultRadio.svg" alt="Your SVG" />
       )}
       <span style={TEXT_STYLES.BodyM16}>{text}</span>
     </styles.ReportItemStyle>
