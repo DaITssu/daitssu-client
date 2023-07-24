@@ -133,7 +133,9 @@ const NoticeInfo = () => {
           </FileAttachBox>
         </FileBox>
       </InfoBox>
-      {/** TODO: 댓글 박스 추가 */}
+      <BottomBox>
+        <CommentTitleBox>댓글</CommentTitleBox>
+      </BottomBox>
       <Comment />
       <CommentInput />
     </Container>
@@ -305,6 +307,17 @@ const FileDownBox = styled.div`
   margin-left: auto;
   display: flex;
   align-items: center;
+`;
+
+const BottomBox = styled.div``;
+
+const CommentTitleBox = styled.div`
+  background-color: rgba(249, 249, 249, 1);
+  font-size: 16px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
 `;
 
 export default NoticeInfo;

@@ -3,60 +3,46 @@ import Image from 'next/image';
 
 const Comment = () => {
   return (
-    <BottomBox>
-      <CommentTitleBox>댓글</CommentTitleBox>
-      <CommentWhiteBox>
-        <CLeftBox>
-          <Image
-            src="/noticeInfo/profile.svg"
-            alt="profile image"
-            width={40}
-            height={40}
-            priority
-          />
-        </CLeftBox>
-        <CRightBox>
-          <CTopBox>
-            <NicknameBox>닉네임</NicknameBox>
-            <TimeBox>5분 전</TimeBox>
-            <OtherBox>
-              <MessageBox>
-                <Image
-                  src="/noticeInfo/message.svg"
-                  alt="message image"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              </MessageBox>
-              <ReportBox>
-                <Image
-                  src="/noticeInfo/report.svg"
-                  alt="report image"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              </ReportBox>
-            </OtherBox>
-          </CTopBox>
-          <CommentContentBox>같이 힘냅시다!</CommentContentBox>
-        </CRightBox>
-      </CommentWhiteBox>
-    </BottomBox>
+    <CommentWhiteBox>
+      <CLeftBox>
+        <Image
+          src="/noticeInfo/profile.svg"
+          alt="profile image"
+          width={40}
+          height={40}
+          priority
+        />
+      </CLeftBox>
+      <CRightBox>
+        <CTopBox>
+          <NicknameBox>닉네임</NicknameBox>
+          <TimeBox>5분 전</TimeBox>
+          <OtherBox>
+            <MessageBox>
+              <Image
+                src="/noticeInfo/message.svg"
+                alt="message image"
+                width={18}
+                height={18}
+                priority
+              />
+            </MessageBox>
+            <ReportBox>
+              <Image
+                src="/noticeInfo/report.svg"
+                alt="report image"
+                width={18}
+                height={18}
+                priority
+              />
+            </ReportBox>
+          </OtherBox>
+        </CTopBox>
+        <CommentContentBox>같이 힘냅시다!</CommentContentBox>
+      </CRightBox>
+    </CommentWhiteBox>
   );
 };
-
-const BottomBox = styled.div``;
-
-const CommentTitleBox = styled.div`
-  background-color: rgba(249, 249, 249, 1);
-  font-size: 16px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-`;
 
 const CommentWhiteBox = styled.div`
   padding: 15px 10px;
