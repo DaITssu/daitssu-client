@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import Image from 'next/image';
 import Comment from '../common/Comment';
+import CommentInput from '../common/Comment/CommentInput/CommentInput';
 
 const NoticeInfo = () => {
   const [share, setShare] = useState<boolean>(false);
@@ -134,19 +135,7 @@ const NoticeInfo = () => {
       </InfoBox>
       {/** TODO: 댓글 박스 추가 */}
       <Comment />
-      <MyCommentBox>
-        <CommentFlexBox>
-          <MyLeftBox>
-            <MyCommentLabel>
-              <input placeholder="  댓글을 남겨보세요."></input>
-            </MyCommentLabel>
-          </MyLeftBox>
-          <MyRightBox>
-            {/** TODO: common Btn으로 디자인 변경하기 */}
-            <MyCommentBtn>등록</MyCommentBtn>
-          </MyRightBox>
-        </CommentFlexBox>
-      </MyCommentBox>
+      <CommentInput />
     </Container>
   );
 };
@@ -317,115 +306,5 @@ const FileDownBox = styled.div`
   display: flex;
   align-items: center;
 `;
-
-const BottomBox = styled.div``;
-
-const CommentTitleBox = styled.div`
-  background-color: rgba(249, 249, 249, 1);
-  font-size: 16px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-`;
-
-const CommentWhiteBox = styled.div`
-  padding: 15px 10px;
-  display: flex;
-`;
-
-const CLeftBox = styled.div`
-  div {
-    width: 45px;
-    height: 45px;
-    background-color: gray;
-  }
-`;
-
-const CRightBox = styled.div`
-  width: 373px;
-  margin-left: 17px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const CTopBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-`;
-const NicknameBox = styled.div`
-  display: flex;
-  font-size: 16px;
-  font-weight: 500;
-  align-items: center;
-`;
-
-const TimeBox = styled.div`
-  display: flex;
-  margin-left: 10px;
-  font-size: 14px;
-  align-items: center;
-  margin-right: auto;
-  color: rgba(110, 110, 110, 1);
-`;
-
-const OtherBox = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-`;
-
-const MessageBox = styled.div`
-  display: flex;
-  margin-left: auto;
-  margin-right: 7px;
-`;
-
-const ReportBox = styled.div`
-  display: flex;
-`;
-
-const CommentContentBox = styled.div`
-  font-weight: 400;
-`;
-
-const MyCommentBox = styled.div`
-  margin: auto;
-  width: 358px;
-  height: 45px;
-`;
-
-const CommentFlexBox = styled.div`
-  position: fixed;
-  top: 90%;
-  display: flex;
-  width: 358px;
-`;
-
-const MyLeftBox = styled.div`
-  margin-right: auto;
-`;
-
-const MyRightBox = styled.div`
-  margin-left: auto;
-`;
-
-const MyCommentLabel = styled.label`
-  input {
-    background-color: rgba(238, 238, 238, 1);
-    width: 293px;
-    height: 45px;
-    border-radius: 10px;
-    border: none;
-  }
-  input::placeholder {
-    color: rgba(110, 110, 110, 1);
-    font-weight: 500;
-    font-size: 16px;
-  }
-`;
-
-const MyCommentBtn = styled.button``;
 
 export default NoticeInfo;
