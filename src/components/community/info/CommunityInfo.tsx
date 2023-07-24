@@ -5,9 +5,9 @@ import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
 
 const CommunityInfo = () => {
-  const [share, setShare] = useState<boolean>(false);
-  const handleShareClick = () => {
-    setShare(!share);
+  const [menu, setMenu] = useState<boolean>(false);
+  const handleMenuClick = () => {
+    setMenu(!menu);
   };
 
   return (
@@ -23,12 +23,46 @@ const CommunityInfo = () => {
           />
         </LeftBox>
         <CenterBox>커뮤니티</CenterBox>
-        <RightBox>{/** TODO: ... 아이콘 넣기 */}</RightBox>
+        <RightBox>
+          <MenuIconBox onClick={handleMenuClick}>
+            {/** TODO: ... 아이콘 넣기 */}|
+          </MenuIconBox>
+          {menu ? (
+            <PopupContainerBox>
+              <ReportBox>
+                <PopIconBox>
+                  <Image
+                    src="/noticeInfo/report.svg"
+                    alt="report image"
+                    width={18}
+                    height={18}
+                    priority
+                  />
+                </PopIconBox>
+                <PopTextBox>신고하기</PopTextBox>
+              </ReportBox>
+              <BlockBox>
+                <PopIconBox>
+                  <Image
+                    src="/noticeInfo/report.svg"
+                    alt="report image"
+                    width={18}
+                    height={18}
+                    priority
+                  />
+                </PopIconBox>
+                <PopTextBox>차단하기</PopTextBox>
+              </BlockBox>
+            </PopupContainerBox>
+          ) : (
+            ''
+          )}
+        </RightBox>
       </MenuBox>
       <InfoBox>
         {/** TODO: 태그 형식으로 변경 필요 */}
         <div>질문</div>
-      </InfoBox>{' '}
+      </InfoBox>
       <Padding>
         <ProfileBox>
           <ProfileLeftBox>
@@ -148,9 +182,51 @@ const CenterBox = styled.div`
   font-weight: 500;
 `;
 
-const RightBox = styled.div`
+const RightBox = styled.div``;
+
+const MenuIconBox = styled.div`
   position: absolute;
-  top: 3.2%;
+  right: 5%;
+  top: 2.5%;
+`;
+
+const PopupContainerBox = styled.div`
+  margin-top: 32px;
+  position: absolute;
+  // TODO: menu icon 크기에 맞게 조정 필요
+  right: 5%;
+  z-index: 1;
+  background-color: white;
+  font-size: 14px;
+  border: 1px solid;
+  border-color: rgba(238, 238, 238, 1);
+`;
+
+const ReportBox = styled.li`
+  padding: 7px 13px;
+  list-style: none;
+  display: flex;
+  border-bottom: 1px solid;
+  border-color: rgba(238, 238, 238, 1);
+`;
+
+const BlockBox = styled.li`
+  padding: 7px 13px;
+  list-style: none;
+  display: flex;
+`;
+
+const PopIconBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const PopTextBox = styled.div`
+  font-size: 14px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
 `;
 
 const InfoBox = styled.div`
