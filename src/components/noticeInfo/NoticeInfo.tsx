@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import * as styles from './NoticeInfo.style';
 import { useState } from 'react';
 import Image from 'next/image';
 import Comment from '../common/Comment';
@@ -10,9 +10,9 @@ const NoticeInfo = () => {
     setShare(!share);
   };
   return (
-    <Container>
-      <MenuBox>
-        <LeftBox>
+    <styles.Container>
+      <styles.MenuBox>
+        <styles.LeftBox>
           <Image
             src="/noticeInfo/backarrow.svg"
             alt="goback"
@@ -20,14 +20,14 @@ const NoticeInfo = () => {
             height={15.64}
             priority
           />
-        </LeftBox>
-        <CenterBox>공지사항</CenterBox>
-      </MenuBox>
-      <InfoBox>
-        <TypeBox>학사</TypeBox>
-        <TitleBox>2023-1학기 신청 기간 안내 (05.15 ~)</TitleBox>
-        <MiddleBox>
-          <DateBox>
+        </styles.LeftBox>
+        <styles.CenterBox>공지사항</styles.CenterBox>
+      </styles.MenuBox>
+      <styles.InfoBox>
+        <styles.TypeBox>학사</styles.TypeBox>
+        <styles.TitleBox>2023-1학기 신청 기간 안내 (05.15 ~)</styles.TitleBox>
+        <styles.MiddleBox>
+          <styles.DateBox>
             <Image
               src="/noticeInfo/calendar.svg"
               alt="date image"
@@ -36,8 +36,8 @@ const NoticeInfo = () => {
               priority
             />
             <span>2023/05/11</span>
-          </DateBox>
-          <WatchBox>
+          </styles.DateBox>
+          <styles.WatchBox>
             <Image
               src="/noticeInfo/watch.svg"
               alt="watch count"
@@ -46,9 +46,9 @@ const NoticeInfo = () => {
               priority
             />
             <span>1706회</span>
-          </WatchBox>
-          <ShareBox onClick={handleShareClick}>
-            <ShareIconBox>
+          </styles.WatchBox>
+          <styles.ShareBox onClick={handleShareClick}>
+            <styles.ShareIconBox>
               {!share ? (
                 <Image
                   src="/noticeInfo/share.svg"
@@ -66,12 +66,12 @@ const NoticeInfo = () => {
                   priority
                 />
               )}
-            </ShareIconBox>
+            </styles.ShareIconBox>
             {/** TODO: 박스 외부 영역 누르면 팝업 닫히도록 */}
             {share ? (
-              <SharePopupBox>
-                <UrlBox>
-                  <DropdownIconBox>
+              <styles.SharePopupBox>
+                <styles.UrlBox>
+                  <styles.DropdownIconBox>
                     <Image
                       src="/noticeInfo/url.svg"
                       alt="goback"
@@ -79,11 +79,11 @@ const NoticeInfo = () => {
                       height={18}
                       priority
                     />
-                  </DropdownIconBox>
-                  <DropdownTextBox>url 복사</DropdownTextBox>
-                </UrlBox>
-                <KakaoBox>
-                  <DropdownIconBox>
+                  </styles.DropdownIconBox>
+                  <styles.DropdownTextBox>url 복사</styles.DropdownTextBox>
+                </styles.UrlBox>
+                <styles.KakaoBox>
+                  <styles.DropdownIconBox>
                     <Image
                       src="/noticeInfo/kakao.svg"
                       alt="kakaotalk"
@@ -91,24 +91,24 @@ const NoticeInfo = () => {
                       height={18}
                       priority
                     />
-                  </DropdownIconBox>
-                  <DropdownTextBox>카카오톡</DropdownTextBox>
-                </KakaoBox>
-              </SharePopupBox>
+                  </styles.DropdownIconBox>
+                  <styles.DropdownTextBox>카카오톡</styles.DropdownTextBox>
+                </styles.KakaoBox>
+              </styles.SharePopupBox>
             ) : (
               ''
             )}
-          </ShareBox>
-        </MiddleBox>
+          </styles.ShareBox>
+        </styles.MiddleBox>
         <hr />
-        <ContentBox>
+        <styles.ContentBox>
           2023-1학기 다전공 신청기간 안내드립니다. 2023-1학기 다전공 신청기간
           안내드립니다. 2023-1학기 다전공 신청기간 안내드립니다.
-        </ContentBox>
+        </styles.ContentBox>
         <hr />
-        <FileBox>
-          <FileTopBox>
-            <FileIconBox>
+        <styles.FileBox>
+          <styles.FileTopBox>
+            <styles.FileIconBox>
               <Image
                 src="/noticeInfo/attach.svg"
                 alt="attchment"
@@ -116,12 +116,14 @@ const NoticeInfo = () => {
                 height={20}
                 priority
               />
-            </FileIconBox>
-            <FileTitleBox>첨부파일</FileTitleBox>
-          </FileTopBox>
-          <FileAttachBox>
-            <FileNameBox>2023-1학기-전공별-다전공-선발-방법.xlsx</FileNameBox>
-            <FileDownBox>
+            </styles.FileIconBox>
+            <styles.FileTitleBox>첨부파일</styles.FileTitleBox>
+          </styles.FileTopBox>
+          <styles.FileAttachBox>
+            <styles.FileNameBox>
+              2023-1학기-전공별-다전공-선발-방법.xlsx
+            </styles.FileNameBox>
+            <styles.FileDownBox>
               <Image
                 src="/noticeInfo/download.svg"
                 alt="download button"
@@ -129,195 +131,17 @@ const NoticeInfo = () => {
                 height={18}
                 priority
               />
-            </FileDownBox>
-          </FileAttachBox>
-        </FileBox>
-      </InfoBox>
-      <BottomBox>
-        <CommentTitleBox>댓글</CommentTitleBox>
-      </BottomBox>
+            </styles.FileDownBox>
+          </styles.FileAttachBox>
+        </styles.FileBox>
+      </styles.InfoBox>
+      <styles.BottomBox>
+        <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
+      </styles.BottomBox>
       <Comment />
       <CommentInput />
-    </Container>
+    </styles.Container>
   );
 };
-
-const Container = styled.div`
-  width: 390px;
-  hr {
-    border: solid 1px rgba(217, 217, 217, 1);
-  }
-`;
-
-const MenuBox = styled.div`
-  display: flex;
-  height: 46px;
-`;
-
-const LeftBox = styled.div`
-  margin-left: 10px;
-  position: absolute;
-  top: 4%;
-`;
-
-const CenterBox = styled.div`
-  font-size: 20px;
-  margin: auto;
-  font-weight: 500;
-`;
-
-const InfoBox = styled.div`
-  padding: 10px;
-`;
-
-const TypeBox = styled.div`
-  margin: 0px 0 10px;
-  text-decoration: underline;
-  text-underline-position: under;
-  font-size: 14px;
-  color: rgba(49, 49, 49, 1);
-`;
-
-const MiddleBox = styled.div`
-  display: flex;
-  margin-bottom: 10px;
-  height: 21px;
-  span {
-    margin-left: 5px;
-  }
-`;
-
-const TitleBox = styled.div`
-  font-size: 20px;
-  margin-bottom: 10px;
-  line-height: 30px;
-`;
-
-const DateBox = styled.div`
-  display: flex;
-  text-align: center;
-  font-size: 14px;
-  span {
-    margin-left: 5px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    color: rgba(110, 110, 110, 1);
-  }
-`;
-
-const WatchBox = styled.div`
-  margin-left: 15px;
-  display: flex;
-  text-align: center;
-  font-size: 14px;
-  span {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    color: rgba(110, 110, 110, 1);
-  }
-`;
-
-const ShareBox = styled.div`
-  width: 109.45px;
-  margin-left: auto;
-`;
-
-const SharePopupBox = styled.div`
-  margin-top: 28px;
-  position: relative;
-  z-index: 1;
-  background-color: white;
-  font-size: 14px;
-  border: 1px solid;
-  border-color: rgba(238, 238, 238, 1);
-`;
-
-const ShareIconBox = styled.div`
-  float: right;
-`;
-
-const DropdownIconBox = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const DropdownTextBox = styled.div`
-  margin-left: 8px;
-  display: flex;
-  align-items: center;
-`;
-
-const UrlBox = styled.li`
-  padding: 7px 13px;
-  list-style: none;
-  display: flex;
-  border-bottom: 1px solid;
-  border-color: rgba(238, 238, 238, 1);
-`;
-
-const KakaoBox = styled.li`
-  padding: 7px 13px;
-  list-style: none;
-  display: flex;
-`;
-
-const ContentBox = styled.div`
-  margin-top: 20px;
-  margin-bottom: 40px;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-`;
-
-const FileBox = styled.div``;
-
-const FileTopBox = styled.div`
-  display: flex;
-  padding-bottom: 5px;
-`;
-
-const FileIconBox = styled.div``;
-
-const FileTitleBox = styled.div`
-  font-size: 16px;
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-`;
-
-const FileAttachBox = styled.div`
-  display: flex;
-  background-color: rgba(238, 238, 238, 1);
-  padding: 0 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  height: 45px;
-`;
-
-const FileNameBox = styled.div`
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-`;
-
-const FileDownBox = styled.div`
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-`;
-
-const BottomBox = styled.div``;
-
-const CommentTitleBox = styled.div`
-  background-color: rgba(249, 249, 249, 1);
-  font-size: 16px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-`;
 
 export default NoticeInfo;
