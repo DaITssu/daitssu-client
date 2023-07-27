@@ -1,45 +1,7 @@
-import styles from "../styles/Top.module.css";
-import React from 'react';
+
 import styled from '@emotion/styled';
-export interface NoticeItemProps {
-  bundle: string;
-  title: string;
-  views:number;
-  date:string;
-}
 
-interface Props{
-  item:NoticeItemProps;
-}
-
-const NoticeItem:React.FC<Props> = ({item}:Props)=>{
-  const notice_onClick = () =>{
-
-  }
-  return(
-    
-    <Noticeitem onClick ={notice_onClick}>
-      
-      <NoticeStatus>
-        <NoticeText>
-          {item.bundle}
-        </NoticeText>
-      </NoticeStatus>
-      
-      <NoticeTitleFont>
-        {item.title}
-      </NoticeTitleFont>
-      <ViewIcon src="/images/view_icon.png"/>
-      <NoticeViews>
-        {item.views.toLocaleString('ko-KR')}회
-      </NoticeViews>
-      <NoticeDate>
-        {item.date}
-      </NoticeDate>
-    </Noticeitem>
-  );
-};
-const NoticeDate = styled.text
+export const NoticeDate = styled.text
 `
 position: absolute;
 left: 81.28%;
@@ -59,7 +21,8 @@ letter-spacing: -0.011em;
 /* gray 1 */
 color: #6E6E6E;
 `;
-const NoticeViews = styled.text
+
+export const NoticeViews = styled.text
 `position: absolute;
 left: 8.5%;
 right: 70%;
@@ -79,13 +42,15 @@ letter-spacing: -0.011em;
 color: #6E6E6E;
 `;
 
-const ViewIcon = styled.img
+export const ViewIcon = styled.img
 `
 position:absolute;
 top:73px;
 left:11px;
 `;
-const Noticeitem = styled.button
+
+
+export const Noticeitem = styled.button
 `
   list-style:none;
   position:relative;
@@ -102,7 +67,7 @@ const Noticeitem = styled.button
   }
 `;
 
-const NoticeText = styled.div
+export const NoticeText = styled.div
 `
 width: 24px;
   height: 18px;
@@ -133,7 +98,7 @@ width: 24px;
   text-overflow: ellipsis;
 `;
 
-const NoticeStatus = styled.div
+export const NoticeStatus = styled.div
 `
 /* Auto layout */
 display: flex;
@@ -152,7 +117,9 @@ top: calc(50% - 24px/2 - 28.5px);
 background: #D9D9D9;
 border-radius: 12px;
 `;
-const NoticeTitleFont = styled.div
+
+
+export const NoticeTitleFont = styled.div
 `
 position: absolute;
 left: 3.35%;
@@ -175,5 +142,3 @@ white-space:nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
 `;
-
-export default NoticeItem;

@@ -1,5 +1,6 @@
 
 import styled from '@emotion/styled';
+import * as styles from '../../styles/constants/NoticeList.style';
 import NoticeItem, { NoticeItemProps } from "./NoticeItem"; 
 import React, {FC, ChangeEvent, useState, useEffect} from 'react';
 const NoticeList:FC = ()=>{
@@ -25,28 +26,17 @@ const [mounted, setMounted] = useState<boolean>(false); //기본 브라우저의
   
   return(
     mounted&&
-    <NoticeListBox>
+    <styles.NoticeListBox>
       
       {items.map((item:NoticeItemProps,key:number)=> {
         return <NoticeItem 
         key = {key}
         item = {item}/>;
       })}
-    </NoticeListBox>
+    </styles.NoticeListBox>
   );
 };
 
-const NoticeListBox = styled.div
-`
-width:390px;
-height:486px;
-overflow : auto;
--ms-overflow-style: none;
-scrollbar-width: none;
-::webkit-scrollbar{
-  display:none;
-}
-`;
 
 
 export default NoticeList;
