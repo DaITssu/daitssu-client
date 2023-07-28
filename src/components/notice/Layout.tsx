@@ -1,6 +1,6 @@
 import TopBar from './TopBar';
 import TopTab from './TopTab';
-import Anouncement from '../anouncement';
+import Anouncement from './anouncement';
 
 const Layout = () => {
   return (
