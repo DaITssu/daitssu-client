@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import * as styles from './SubjectContents.style';
-import video from '../../../assets/calendar/video.svg';
-import comment from '../../../assets/calendar/comment.svg';
-import assignment from '../../../assets/calendar/assignment.svg';
+import video from '../../../../public/assets/icon/LectureAssignment/Video.svg';
+import comment from '../../../../public/assets/icon/LectureAssignment/Comment.svg';
+import assignment from '../../../../public/assets/icon/LectureAssignment/Assignment.svg';
+// import video from '../../../assets/calendar/video.svg';
+// import comment from '../../../assets/calendar/comment.svg';
+// import assignment from '../../../assets/calendar/assignment.svg';
 import { TaskDTO, TaskProps } from '@/types/Task';
 import Status from '../../common/Status/index';
 import { TEXT_STYLES } from '../../../styles/constants/textStyles';
