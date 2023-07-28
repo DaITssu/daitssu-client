@@ -52,7 +52,7 @@ export const TEXT_STYLES = {
   HeadM20: {
     fontSize: 20,
     fontWeight: 400,
-    letterSpacing: -0.154,
+    letterSpacing: -0.22,
     fontFamily: 'Pretendard',
   },
   //Head M 18
