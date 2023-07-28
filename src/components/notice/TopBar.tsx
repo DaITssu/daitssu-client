@@ -1,5 +1,5 @@
 
-import styles from "../styles/Top.module.css";
+import styles from "../../styles/Top.module.css";
 
 const TopBar = ()=>{
   

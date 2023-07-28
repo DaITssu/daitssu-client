@@ -1,4 +1,6 @@
-import styles from "../styles/Top.module.css";
+
+import styled from '@emotion/styled';
+import * as styles from '../../styles/constants/NoticeList.style';
 import NoticeItem, { NoticeItemProps } from "./NoticeItem"; 
 import React, {FC, ChangeEvent, useState, useEffect} from 'react';
 const NoticeList:FC = ()=>{
@@ -24,14 +26,17 @@ const [mounted, setMounted] = useState<boolean>(false); //기본 브라우저의
   
   return(
     mounted&&
-    <div className={styles.notice_list_box}>
+    <styles.NoticeListBox>
       
       {items.map((item:NoticeItemProps,key:number)=> {
         return <NoticeItem 
         key = {key}
         item = {item}/>;
       })}
-    </div>
+    </styles.NoticeListBox>
   );
 };
+
+
+
 export default NoticeList;
