@@ -1,16 +1,14 @@
-import TopBar from "./TopBar";
-import TopTab from "./TopTab";
-import {useEffect} from "react";
+import TopBar from './TopBar';
+import TopTab from './TopTab';
+import Anouncement from '../anouncement';
 
-
-const Layout = ()=>{
-  return(
+const Layout = () => {
+  return (
     <div>
-      
-      <TopBar/>
-      <TopTab/>
+      <TopBar />
+      <Anouncement />
+      <TopTab />
     </div>
-    
   );
 };
 export default Layout;

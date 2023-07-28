@@ -4,10 +4,14 @@ import ButtonGroup from './SelectButton';
 
 const Anouncement = () => {
   return (
-    <div>
-      <SearchBar></SearchBar>
-      <ButtonGroup />
-    </div>
+    <styles.AbsoluteBox>
+      <styles.SearchBox>
+        <SearchBar></SearchBar>
+      </styles.SearchBox>
+      <styles.TagBox>
+        <ButtonGroup />
+      </styles.TagBox>
+    </styles.AbsoluteBox>
   );
 };
 
