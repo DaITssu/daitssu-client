@@ -21,9 +21,9 @@ const ReportItem: NextPage<ReportItemProps> = ({
   return (
     <styles.ReportItemStyle onClick={onClick}>
       {isSelected ? (
-        <img src="/assets/icon/Radio/CheckedRadio.svg" alt="Your SVG" />
+        <img src="/assets/icon/Radio/CheckedRadio.svg" alt="CheckedRadio" />
       ) : (
-        <img src="/assets/icon/Radio/DefaultRadio.svg" alt="Your SVG" />
+        <img src="/assets/icon/Radio/DefaultRadio.svg" alt="DefaultRadio" />
       )}
       <span style={TEXT_STYLES.BodyM16}>{text}</span>
     </styles.ReportItemStyle>
