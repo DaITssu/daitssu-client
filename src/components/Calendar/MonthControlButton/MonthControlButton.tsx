@@ -1,10 +1,8 @@
 import React from 'react';
 import './MonthControlButton.css'; // CSS 파일을 import
 import Image from 'next/image';
-// import LeftArrow from '@icons/icon/Arrow/LeftBigArrow.svg';
-// import RightArrow from '@icons/icon/Arrow/RightBigArrow.svg';
-import LeftArrow from '../../../../public/assets/icon/Arrow/LeftBigArrow.svg';
-import RightArrow from '../../../../public/assets/icon/Arrow/RightBigArrow.svg';
+import LeftArrow from '@icons/icon/Arrow/LeftBigArrow.svg';
+import RightArrow from '@icons/icon/Arrow/RightBigArrow.svg';
 
 const MonthControlButton = ({
   isLeft,
