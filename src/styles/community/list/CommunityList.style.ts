@@ -13,3 +13,15 @@ scrollbar-width: none;
   display: none;
 }
 `;
+
+export const PlusButton = styled.img
+`
+/* Group 139 */
+
+position: absolute;
+width: 80px;
+height: 80px;
+left: 310px;
+top: 679px;
+
+`;

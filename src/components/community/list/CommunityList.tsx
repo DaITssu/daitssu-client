@@ -38,7 +38,7 @@ const [mounted, setMounted] = useState<boolean>(false); //기본 브라우저의
           item = {item}/>;
         })}
       </styles.CommunityListBox>
-     
+      <styles.PlusButton src="/assets/icon/Button/plus_button.svg"/>
     </>
     
   );
