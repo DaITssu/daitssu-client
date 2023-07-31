@@ -1,8 +1,8 @@
 import * as styles from './NoticeInfo.style';
 import { useState } from 'react';
 import Image from 'next/image';
-import Comment from '../common/Comment';
-import CommentInput from '../common/Comment/CommentInput/CommentInput';
+import Comment from '@/components/common/Comment';
+import CommentInput from '@/components/common/Comment/CommentInput';
 
 const NoticeInfo = () => {
   const [share, setShare] = useState<boolean>(false);

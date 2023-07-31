@@ -8,3 +8,15 @@ export const SearchBarStyles = styled.input`
   border-radius: 25px;
   font-size: 16px;
 `;
+
+export const AbsoluteBox = styled.div`
+  position: absolute;
+  top: 158px;
+  z-index: 1;
+`;
+
+export const SearchBox = styled.div`
+  margin-bottom: 10px;
+`;
+
+export const TagBox = styled.div``;
