@@ -1,0 +1,90 @@
+.day_block {
+  border-radius: 8px; /* 각이 둥근 사각형 */
+  margin-right: 8px;
+
+  width: 33px;
+  height: 39px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.day_n {
+  margin-bottom: 1px;
+  border-radius: 10px;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-family: 'Pretendard';
+}
+.day_mon {
+  margin-bottom: 1px;
+  border-radius: 10px;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-family: 'Pretendard';
+
+  color: #f36262;
+}
+.day_sat {
+  margin-bottom: 1px;
+  border-radius: 10px;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-family: 'Pretendard';
+
+  color: #2b6590;
+}
+.selected {
+  margin-bottom: 1px;
+  border-radius: 8px;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-family: 'Pretendard';
+
+  color: white;
+  background-color: #5ebeeb;
+}
+.today {
+  margin-bottom: 1px;
+  border-radius: 8px;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-family: 'Pretendard';
+
+  color: #5ebeeb;
+  border: 1px solid #5ebeeb;
+  display: flex;
+}
+
+.tasks_today {
+  display: flex;
+  /* Flexbox 사용 */
+}
+.task {
+  border-radius: 8px; /* 각이 둥근 사각형 */
+  width: 5px;
+  height: 5px;
+  margin-left: 1.5px;
+  margin-right: 1.5px;
+}
