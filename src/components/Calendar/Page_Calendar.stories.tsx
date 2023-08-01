@@ -1,11 +1,18 @@
-// Calendar.stories.tsx
-
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import PageCalendar from './Page_Calendar';
-export default {
+
+const meta: Meta<typeof PageCalendar> = {
   title: 'PageCalendar',
   component: PageCalendar,
 };
 
-export const PrimaryPageCalendar = () => <PageCalendar/>;
-PrimaryPageCalendar.storyName = 'page Calendar';
+export default meta;
+type Story = StoryObj<typeof PageCalendar>;
+
+export const Primary: Story = {
+  args: {
+    label: '완료',
+    width: 358,
+    height: 56,
+  },
+};

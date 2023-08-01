@@ -89,7 +89,7 @@ const Calendar = (props:CalendarProps) => {
     <div>
         <div className='container' style={{ display: "flex", justifyContent: "space-between" }}>
             <MonthControlButton day='<' onClick={()=>{changeMonth(-1)}}/>
-            <div id="CalendarTitle" > {year}년 {month}월 {lastDN}</div>
+            <div id="CalendarTitle" > {year}년 {month}월 </div>
             <MonthControlButton day='>' onClick={()=>{changeMonth(1)}}/>
         </div >
 
