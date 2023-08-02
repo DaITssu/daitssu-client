@@ -1,82 +1,7 @@
-// import './DayBlock.css';
-// import React from 'react';
+// DayBlock.tsx
 
-// interface DayBlockProps {
-//   day: number;
-//   taskColors: Array<string>;
-//   selectedDay: boolean;
-//   today: boolean;
-//   specialDay: number;
-// }
-
-// const DayBlock = (props: DayBlockProps) => {
-//   if (props.day > 0) {
-//     if (!(props.selectedDay || props.today)) {
-//       if (props.specialDay < 0) {
-//         return (
-//           <div className="day_block">
-//             <div className="day_n">{props.day}</div>
-//             <div className="tasks_today">
-//               {props.taskColors.map((color, index) => (
-//                 <div
-//                   className="task"
-//                   style={{ backgroundColor: color }}
-//                   key={`task-${index}`}
-//                 />
-//               ))}
-//             </div>
-//           </div>
-//         );
-//       } else {
-//         return (
-//           <div className="day_block">
-//             <div className={props.specialDay == 0 ? 'day_mon' : 'day_sat'}>
-//               {props.day}
-//             </div>
-//             <div className="tasks_today">
-//               {props.taskColors.map((color, index) => (
-//                 <div
-//                   className="task"
-//                   style={{ backgroundColor: color }}
-//                   key={`task-${index}`}
-//                 />
-//               ))}
-//             </div>
-//           </div>
-//         );
-//       }
-//     } else {
-//       return (
-//         <div className="day_block">
-//           <div className={props.selectedDay ? 'selected' : 'today'}>
-//             {props.day}
-//           </div>
-//           <div className="tasks_today">
-//             {props.taskColors.map((color, index) => (
-//               <div
-//                 className="task"
-//                 style={{ backgroundColor: color }}
-//                 key={`task-${index}`}
-//               />
-//             ))}
-//           </div>
-//         </div>
-//       );
-//     }
-//   } else {
-//     return (
-//       <div className="day_block">
-//         <div className="day_n"></div>
-//       </div>
-//     );
-//   }
-// };
-
-// export default DayBlock;
-
-import './DayBlock.css';
 import React from 'react';
-
+import { DayBlockN,TasksToday,DayBlockBox,Task } from './DayBlock.styles';
 interface DayBlockProps {
   day: number;
   taskColors: Array<string>;
@@ -87,34 +12,38 @@ interface DayBlockProps {
 
 const DayBlock = (props: DayBlockProps) => {
   let dayClass = 'day_n';
+  
+
+  let today=false;
+  let specialDay=-1;
+  let select=false;
 
   if (props.day > 0) {
     if (props.selectedDay) {
-      dayClass = 'selected';
+      select=true;
     } else if (props.today) {
-      dayClass = 'today';
+      today = true;
     } else if (props.specialDay === 0) {
-      dayClass = 'day_mon';
+      specialDay = 0;
     } else if (props.specialDay !== -1) {
-      dayClass = 'day_sat';
+      specialDay = 6;
     }
   }
 
   return (
-    <div className="day_block">
-      <div className={dayClass}>{props.day > 0 ? props.day : ''}</div>
+    <DayBlockBox>
+      <DayBlockN Today={today} SpecialDay={specialDay} Selected={select}>
+        {props.day > 0 ? props.day : ''}
+      </DayBlockN>
+
       {props.day > 0 && (
-        <div className="tasks_today">
+        <TasksToday>
           {props.taskColors.map((color, index) => (
-            <div
-              className="task"
-              style={{ backgroundColor: color }}
-              key={`task-${index}`}
-            />
+            <Task Key={index} Color={color}/>
           ))}
-        </div>
+        </TasksToday>
       )}
-    </div>
+    </DayBlockBox>
   );
 };
 

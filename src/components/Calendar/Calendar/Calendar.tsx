@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import DayBlock from '../DayBlock/DayBlock';
 import WeekBlock from '../WeekBlock/WeekBlock';
 import MonthControlButton from '../MonthControlButton/MonthControlButton';
-import './Calendar.css';
 
+import { CalendarTitle,Container,CalendarContainer,TitleContainer } from './Calendar.styles';
 interface CalendarProps {
   year: number;
   month: number;
@@ -63,7 +63,7 @@ const Calendar = (props: CalendarProps) => {
   for (var i = 0; i < firD; i++) {
     weeks[nowW].push(-1);
   }
-  while (nowD < lastDN) {
+  while (nowD <= lastDN) {
     while (weeks[nowW].length < 7) {
       weeks[nowW].push(nowD);
       nowD++;
@@ -84,32 +84,31 @@ const Calendar = (props: CalendarProps) => {
   }
 
   return (
-    <div>
-      <div
-        className="container"
-        style={{ display: 'flex', justifyContent: 'space-between' }}
-      >
+    <CalendarContainer>
+      <TitleContainer>
         <MonthControlButton
           isLeft={true}
           onClick={() => {
             changeMonth(-1);
           }}
         />
-        <div id="CalendarTitle">
-          {year}년 {month}월
-        </div>
+        <CalendarTitle>
+          {year}년 {month}월 {lastDN}
+        </CalendarTitle>
         <MonthControlButton
           isLeft={false}
           onClick={() => {
             changeMonth(1);
           }}
         />
-      </div>
-
-      <WeekBlock />
+      </TitleContainer>
+      <Container>
+        <WeekBlock />
+      </Container>
+      
 
       {weeks.map((eachWeek, weekIndex) => (
-        <div className="container" key={`week-${weekIndex}`}>
+        <Container Key={`week-${weekIndex}`}>
           {eachWeek.map((day, dayIndex) => (
             // 각 날짜들 배치
             <div
@@ -126,9 +125,9 @@ const Calendar = (props: CalendarProps) => {
               />
             </div>
           ))}
-        </div>
+        </Container>
       ))}
-    </div>
+    </CalendarContainer>
   );
 };
 

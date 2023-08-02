@@ -1,48 +1,38 @@
-import './WeekBlock.css';
+
 import React from 'react';
+import { Container } from '../Calendar/Calendar.styles';
+import { DayBlockN,TasksToday,DayBlockBox,Task } from '../DayBlock/DayBlock.styles';
 
 const WeekBlock = () => {
   const whatDay: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
   return (
     <>
-      <div className="container">
+      <Container>
         <div className="item" style={{ height: '29px' }}>
-          <div className="day_block">
-            <div
-              className="day_mon"
-              style={{ fontSize: '14px', height: '29px' }}
-            >
+          <DayBlockBox>
+            <DayBlockN SpecialDay={0}
+              style={{ fontSize: '14px', height: '29px' }}>
               {'SUN'}
-            </div>
-          </div>
+            </DayBlockN>
+          </DayBlockBox>
         </div>
         {whatDay.map((wd, index) => (
-          <div
-            className="item"
-            style={{ height: '29px' }}
-            key={`weekday-${index}`}
-          >
-            <div className="day_block">
-              <div
-                className="day_n"
-                style={{ fontSize: '14px', height: '29px' }}
-              >
+          <div style={{ height: '29px' }}  key={`weekday-${index}`}>
+            <DayBlockBox>
+              <DayBlockN FontSize='14px' Height='29px' key={`weekday-${index}`}>
                 {wd}
-              </div>
-            </div>
+              </DayBlockN>
+            </DayBlockBox>
           </div>
         ))}
         <div className="item" style={{ height: '29px' }}>
-          <div className="day_block">
-            <div
-              className="day_sat"
-              style={{ fontSize: '14px', height: '29px' }}
-            >
-              {'SAT'}
-            </div>
-          </div>
+          <DayBlockBox>
+            <DayBlockN SpecialDay={6} FontSize='14px' Height='29px' key={`weekday-${6}}`}>
+                {"SAT"}
+              </DayBlockN>
+          </DayBlockBox>
         </div>
-      </div>
+      </Container>
     </>
   );
 };
