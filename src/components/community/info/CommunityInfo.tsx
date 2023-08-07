@@ -3,11 +3,22 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
+import Category from '@/components/common/Category';
 
 const CommunityInfo = () => {
+  const [isLike, setIsLike] = useState<boolean>(false);
+  const [isScrap, setIsScrap] = useState<boolean>(false);
   const [menu, setMenu] = useState<boolean>(false);
   const handleMenuClick = () => {
     setMenu(!menu);
+  };
+
+  const handleLikeClick = () => {
+    setIsLike(!isLike);
+  };
+
+  const handleScrapClick = () => {
+    setIsScrap(!isScrap);
   };
 
   return (
@@ -27,7 +38,7 @@ const CommunityInfo = () => {
           <styles.MenuIconBox onClick={handleMenuClick}>
             <Image
               src="/assets/icon/Icon24/Menu.svg"
-              alt="heart icon"
+              alt="menu icon"
               width={24}
               height={24}
               priority
@@ -39,7 +50,7 @@ const CommunityInfo = () => {
                 <styles.PopIconBox>
                   <Image
                     src="/assets/icon/Icon18/Sue.svg"
-                    alt="heart icon"
+                    alt="sue icon"
                     width={18}
                     height={18}
                     priority
@@ -51,7 +62,7 @@ const CommunityInfo = () => {
                 <styles.PopIconBox>
                   <Image
                     src="/assets/icon/Icon18/Ben.svg"
-                    alt="heart icon"
+                    alt="ben icon"
                     width={18}
                     height={18}
                     priority
@@ -66,8 +77,7 @@ const CommunityInfo = () => {
         </styles.RightBox>
       </styles.MenuBox>
       <styles.InfoBox>
-        {/** TODO: 태그 형식으로 변경 필요 */}
-        <div>질문</div>
+        <Category label="질문" BgColor={false} />
       </styles.InfoBox>
       <styles.Padding>
         <styles.ProfileBox>
@@ -111,15 +121,25 @@ const CommunityInfo = () => {
         </styles.ContentBox>
         <styles.UnderBarBox>
           <styles.IconCountBox>
-            <styles.IconBox>
+            <styles.IconBox onClick={handleLikeClick}>
+              {isLike ? (
+                <Image
+                  src="/assets/icon/Liked/FilledLiked.svg"
+                  alt="heart icon"
+                  width={24}
+                  height={24}
+                  priority
+                />
+              ) : (
+                <Image
+                  src="/assets/icon/Liked/DefaultLiked.svg"
+                  alt="heart icon"
+                  width={24}
+                  height={24}
+                  priority
+                />
+              )}
               {/** TODO: 눌렀을때 모양 변경 */}
-              <Image
-                src="/assets/icon/Liked/DefaultLiked.svg"
-                alt="heart icon"
-                width={24}
-                height={24}
-                priority
-              />
             </styles.IconBox>
             <styles.CountBox>5</styles.CountBox>
           </styles.IconCountBox>
@@ -127,7 +147,7 @@ const CommunityInfo = () => {
             <styles.IconBox>
               <Image
                 src="/assets/icon/Icon24/Comment.svg"
-                alt="heart icon"
+                alt="comment icon"
                 width={24}
                 height={24}
                 priority
@@ -136,15 +156,24 @@ const CommunityInfo = () => {
             <styles.CountBox>5</styles.CountBox>
           </styles.IconCountBox>
           <styles.IconCountBox>
-            <styles.IconBox>
-              {/** TODO: 눌렀을때 모양 변경 */}
-              <Image
-                src="/assets/icon/Scrap/DefaultScrap.svg"
-                alt="heart icon"
-                width={24}
-                height={24}
-                priority
-              />
+            <styles.IconBox onClick={handleScrapClick}>
+              {isScrap ? (
+                <Image
+                  src="/assets/icon/Scrap/FilledScrap.svg"
+                  alt="scarp icon"
+                  width={24}
+                  height={24}
+                  priority
+                />
+              ) : (
+                <Image
+                  src="/assets/icon/Scrap/DefaultScrap.svg"
+                  alt="scrap icon"
+                  width={24}
+                  height={24}
+                  priority
+                />
+              )}
             </styles.IconBox>
             <styles.CountBox>0</styles.CountBox>
           </styles.IconCountBox>

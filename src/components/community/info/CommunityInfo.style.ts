@@ -37,10 +37,10 @@ export const MenuIconBox = styled.div`
 `;
 
 export const PopupContainerBox = styled.div`
-  margin-top: 32px;
+  margin-top: 38px;
   position: absolute;
   // TODO: menu icon 크기에 맞게 조정 필요
-  right: 5%;
+  right: 7%;
   z-index: 1;
   background-color: white;
   font-size: 14px;
