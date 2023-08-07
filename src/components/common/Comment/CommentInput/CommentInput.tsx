@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Button from '../../Button';
 
 function CommentInput() {
   return (
@@ -11,7 +12,7 @@ function CommentInput() {
         </MyLeftBox>
         <MyRightBox>
           {/** TODO: common Btn으로 디자인 변경하기 */}
-          <MyCommentBtn>등록</MyCommentBtn>
+          <Button label="등록" width={55} height={45} />
         </MyRightBox>
       </CommentFlexBox>
     </MyCommentBox>
