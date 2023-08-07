@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import DayBlock from '../DayBlock/DayBlock';
 import WeekBlock from '../WeekBlock/WeekBlock';
 import MonthControlButton from '../MonthControlButton/MonthControlButton';
+import * as styles from './Calendar.styles';
 
-import { CalendarTitle,Container,CalendarContainer,TitleContainer } from './Calendar.styles';
 interface CalendarProps {
   year: number;
   month: number;
@@ -25,14 +25,12 @@ const Calendar = (props: CalendarProps) => {
 
   const datTasks = props.dayTasks;
   const [selectedDay, selectDayCounter] = useState(props.selectDay);
-  //
 
   const selectNewDay = (newSelectedDay: number) => {
     selectDayCounter(newSelectedDay);
   };
 
   const changeMonth = (value: number) => {
-    // 이벤트 핸들러에서 사용할 코드를 작성합니다.
     const newMonth = month + value;
     if (newMonth > 12) {
       setYear((year) => year + 1);
@@ -84,50 +82,57 @@ const Calendar = (props: CalendarProps) => {
   }
 
   return (
-    <CalendarContainer>
-      <TitleContainer>
-        <MonthControlButton
-          isLeft={true}
-          onClick={() => {
-            changeMonth(-1);
-          }}
-        />
-        <CalendarTitle>
-          {year}년 {month}월 {lastDN}
-        </CalendarTitle>
-        <MonthControlButton
-          isLeft={false}
-          onClick={() => {
-            changeMonth(1);
-          }}
-        />
-      </TitleContainer>
-      <Container>
-        <WeekBlock />
-      </Container>
-      
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <styles.CalendarContainer>
+        <styles.TitleContainer>
+          <MonthControlButton
+            isLeft={true}
+            onClick={() => {
+              changeMonth(-1);
+            }}
+          />
+          <styles.CalendarTitle>
+            {year}년 {month}월
+          </styles.CalendarTitle>
+          <MonthControlButton
+            isLeft={false}
+            onClick={() => {
+              changeMonth(1);
+            }}
+          />
+        </styles.TitleContainer>
+        <styles.Container>
+          <WeekBlock />
+        </styles.Container>
 
-      {weeks.map((eachWeek, weekIndex) => (
-        <Container Key={`week-${weekIndex}`}>
-          {eachWeek.map((day, dayIndex) => (
-            // 각 날짜들 배치
-            <div
-              className="item"
-              onClick={selectNewDay.bind(null, day)}
-              key={`day-${dayIndex}`}
-            >
-              <DayBlock
-                day={day}
-                taskColors={datTasks.hasOwnProperty(day) ? datTasks[day] : []}
-                selectedDay={day === selectedDay}
-                today={day == today}
-                specialDay={dayIndex != 0 && dayIndex != 6 ? -1 : dayIndex}
-              />
-            </div>
-          ))}
-        </Container>
-      ))}
-    </CalendarContainer>
+        {weeks.map((eachWeek, weekIndex) => (
+          <styles.Container key={`week-${weekIndex}`}>
+            {eachWeek.map((day, dayIndex) => (
+              // 각 날짜들 배치
+              <div
+                className="item"
+                onClick={selectNewDay.bind(null, day)}
+                key={`day-${dayIndex}`}
+              >
+                <DayBlock
+                  day={day}
+                  taskColors={datTasks.hasOwnProperty(day) ? datTasks[day] : []}
+                  selectedDay={day === selectedDay}
+                  today={day == today}
+                  specialDay={dayIndex != 0 && dayIndex != 6 ? -1 : dayIndex}
+                />
+              </div>
+            ))}
+          </styles.Container>
+        ))}
+      </styles.CalendarContainer>
+    </div>
   );
 };
 
