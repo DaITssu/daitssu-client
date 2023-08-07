@@ -25,15 +25,21 @@ const CommunityInfo = () => {
         <styles.CenterBox>커뮤니티</styles.CenterBox>
         <styles.RightBox>
           <styles.MenuIconBox onClick={handleMenuClick}>
-            {/** TODO: ... 아이콘 넣기 */}|
+            <Image
+              src="/assets/icon/Icon24/Menu.svg"
+              alt="heart icon"
+              width={24}
+              height={24}
+              priority
+            />
           </styles.MenuIconBox>
           {menu ? (
             <styles.PopupContainerBox>
               <styles.ReportBox>
                 <styles.PopIconBox>
                   <Image
-                    src="/noticeInfo/report.svg"
-                    alt="report image"
+                    src="/assets/icon/Icon18/Sue.svg"
+                    alt="heart icon"
                     width={18}
                     height={18}
                     priority
@@ -44,8 +50,8 @@ const CommunityInfo = () => {
               <styles.BlockBox>
                 <styles.PopIconBox>
                   <Image
-                    src="/noticeInfo/report.svg"
-                    alt="report image"
+                    src="/assets/icon/Icon18/Ben.svg"
+                    alt="heart icon"
                     width={18}
                     height={18}
                     priority
@@ -85,7 +91,7 @@ const CommunityInfo = () => {
                 <styles.ViewBox>
                   <styles.ViewIconBox>
                     <Image
-                      src="/noticeInfo/watch.svg"
+                      src="/assets/icon/Icon18/SmallHits.svg"
                       alt="watch count"
                       width={17}
                       height={17}
@@ -106,9 +112,9 @@ const CommunityInfo = () => {
         <styles.UnderBarBox>
           <styles.IconCountBox>
             <styles.IconBox>
-              {/** TODO: icon 수정 */}
+              {/** TODO: 눌렀을때 모양 변경 */}
               <Image
-                src="/noticeInfo/message.svg"
+                src="/assets/icon/Liked/DefaultLiked.svg"
                 alt="heart icon"
                 width={24}
                 height={24}
@@ -119,10 +125,9 @@ const CommunityInfo = () => {
           </styles.IconCountBox>
           <styles.IconCountBox>
             <styles.IconBox>
-              {/** TODO: icon 수정 */}
               <Image
-                src="/noticeInfo/message.svg"
-                alt="comment icon"
+                src="/assets/icon/Icon24/Comment.svg"
+                alt="heart icon"
                 width={24}
                 height={24}
                 priority
@@ -132,10 +137,10 @@ const CommunityInfo = () => {
           </styles.IconCountBox>
           <styles.IconCountBox>
             <styles.IconBox>
-              {/** TODO: icon 수정 */}
+              {/** TODO: 눌렀을때 모양 변경 */}
               <Image
-                src="/noticeInfo/message.svg"
-                alt="bookmark icon"
+                src="/assets/icon/Scrap/DefaultScrap.svg"
+                alt="heart icon"
                 width={24}
                 height={24}
                 priority
