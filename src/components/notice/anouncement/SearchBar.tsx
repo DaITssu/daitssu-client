@@ -1,27 +1,5 @@
 import React, { KeyboardEvent } from 'react';
-import styled from '@emotion/styled';
-import Image from 'next/image';
-
-const SearchBarStyles = styled.div`
-  display: flex;
-  align-items: center;
-  width: 358px;
-  height: 45px;
-  border-radius: 25px;
-  padding: 0 10px;
-  border: 1px solid #6e6e6e;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  border: none;
-  outline: none;
-  font-size: 16px;
-`;
-
-const GlassImage = styled(Image)`
-  margin-right: 10px;
-`;
+import * as styles from './SearchBar.style';
 
 const SearchBar = () => {
   const handleOnKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -32,14 +10,14 @@ const SearchBar = () => {
   };
 
   return (
-    <SearchBarStyles>
-      <Input
+    <styles.SearchBarStyles>
+      <styles.Input
         type="text"
         placeholder="검색어를 입력하세요"
         onKeyDown={handleOnKeyPress}
       />
-      <GlassImage src="/glass.png" width={20} height={20} alt={''} />
-    </SearchBarStyles>
+      <styles.GlassImage src="/glass.png" width={20} height={20} alt={''} />
+    </styles.SearchBarStyles>
   );
 };
 
