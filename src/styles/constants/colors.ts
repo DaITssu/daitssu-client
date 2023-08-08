@@ -5,6 +5,7 @@ export const COLORS = {
     error: '#f36262',
     accept: '#7AC364',
     yellow: '#FFD057',
+    blue:"#2b6590"
   },
   grayscale: {
     white: '#FFFFFF',
