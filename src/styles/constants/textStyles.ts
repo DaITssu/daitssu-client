@@ -50,7 +50,14 @@ export const TEXT_STYLES = {
   },
   //Head M 20
   HeadM20: {
-    fontSize: 14,
+    fontSize: 20,
+    fontWeight: 400,
+    letterSpacing: -0.22,
+    fontFamily: 'Pretendard',
+  },
+  //Head M 18
+  HeadM18: {
+    fontSize: 18,
     fontWeight: 400,
     letterSpacing: -0.154,
     fontFamily: 'Pretendard',

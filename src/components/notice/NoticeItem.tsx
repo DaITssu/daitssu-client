@@ -3,6 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
+
 export interface NoticeItemProps {
   bundle: string;
   title: string;
@@ -20,11 +21,11 @@ const NoticeItem: React.FC<Props> = ({ item }: Props) => {
     <Link href={'/notice/info'}>
       <styles.Noticeitem onClick={notice_onClick}>
         <styles.NoticeStatus>
-          <styles.NoticeText>{item.bundle}</styles.NoticeText>
+          {item.bundle}
         </styles.NoticeStatus>
 
         <styles.NoticeTitleFont>{item.title}</styles.NoticeTitleFont>
-        <styles.ViewIcon src="/images/view_icon.png" />
+        <styles.ViewIcon src="/assets/icon/Icon18/SmallHits.svg" />
         <styles.NoticeViews>
           {item.views.toLocaleString('ko-KR')}회
         </styles.NoticeViews>

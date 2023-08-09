@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 export const NoticeDate = styled.text
 `
 position: absolute;
-left: 81.28%;
+text-align : right;
+left: 60.28%;
 right: 3.35%;
 top: 71.29%;
 bottom: 7.92%;
@@ -67,57 +68,39 @@ export const Noticeitem = styled.button
   }
 `;
 
-export const NoticeText = styled.div
-`
-width: 24px;
-  height: 18px;
-  text-align:left;
-  /* Caption M 12
 
-  커뮤니티 카테고리
-  */
+export const NoticeStatus = styled.div`
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3px 10px;
+  gap: 10px;
+
+  position: absolute;
+  width: auto; /* 자동으로 너비 조절 */
+  height: 18px;
+  left: 12px;
+  top: calc(50% - 24px/2 - 28.5px);
+
+  background: #D9D9D9;
+  border-radius: 12px;
+
+  text-align: center;
+
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
   line-height: 150%;
-  /* identical to box height, or 18px */
-  text-align: center;
   letter-spacing: -0.025em;
 
-  /* black */
   color: #313131;
 
-
-  /* Inside auto layout */
   flex: none;
   order: 0;
   flex-grow: 0;
-  white-space:nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
-
-export const NoticeStatus = styled.div
-`
-/* Auto layout */
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 3px 10px;
-gap: 10px;
-
-position: absolute;
-width: 25px;
-height: 18px;
-left: 12px;
-top: calc(50% - 24px/2 - 28.5px);
-
-/* gray 3 */
-background: #D9D9D9;
-border-radius: 12px;
-`;
-
 
 export const NoticeTitleFont = styled.div
 `
