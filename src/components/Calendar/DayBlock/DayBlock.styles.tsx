@@ -79,16 +79,16 @@ export const TasksToday = styled.div<TasksTodayProps>`
 `;
 
 interface TaskProps {
-  Height?: string;
-  Width?: string;
-  Key?: number;
-  Color?: string;
+  width?: string;
+  height?: string;
+  color?: string;
 }
+
 export const Task = styled.div<TaskProps>`
   border-radius: 8px; /* 각이 둥근 사각형 */
   width: 5px;
   height: 5px;
   margin-left: 2px;
   margin-right: 2px;
-  background-color: ${(props) => props.Color};
+  background-color: ${(props) => props.color};
 `;
