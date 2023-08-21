@@ -31,9 +31,9 @@ const Modal = ({ title, onClose, children }: ModalProps) => {
       <styles.modalStyle>
         <styles.modalHeaderStyles>
           <styles.titleStyles>{title}</styles.titleStyles>
-          <div onClick={onClose}>
+          <styles.closeButtonStyles onClick={onClose}>
             <Image src={CloseSVG} alt="close" width={18} height={18} />
-          </div>
+          </styles.closeButtonStyles>
         </styles.modalHeaderStyles>
         {children}
       </styles.modalStyle>

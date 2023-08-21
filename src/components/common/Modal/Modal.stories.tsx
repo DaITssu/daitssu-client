@@ -26,7 +26,4 @@ export const ModalExample: Story = () => {
   );
 };
 
-ModalExample.args = {
-  // isOpen: false,
-  // children: <div>Modal</div>,
-};
+ModalExample.args = {};

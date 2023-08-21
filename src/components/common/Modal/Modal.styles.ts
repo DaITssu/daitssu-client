@@ -24,10 +24,14 @@ export const titleStyles = styled.p`
   ${TEXT_STYLES.HeadM20};
 `;
 
+export const closeButtonStyles = styled.div`
+  cursor: pointer;
+`;
+
 export const modalStyle = styled.div`
   background-color: white;
   padding: 1rem;
-  min-width: 240px;
+  min-width: 280px;
   border-radius: 1rem;
   position: fixed;
   top: 50%;
