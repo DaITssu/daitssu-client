@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import CommunityWriting from './commW';
+import CommunityWriting from './comm_wrighting';
 
 const meta: Meta<typeof CommunityWriting> = {
   title: 'CommunityWriting',

@@ -19,3 +19,4 @@ export const Button = styled.div<ButtonProps>`
   background-color: ${(props) =>
     props.color ? `${props.color}` : `${COLORS.SSU.primary}`};
 `;
+

@@ -1,9 +1,13 @@
 import { format } from 'path';
 import React, { ChangeEvent, useState } from 'react';
 import { FiCamera } from 'react-icons/fi'; // react-icons에서 FiCamera 아이콘 불러오기
+import SubmitHeader from '@/components/community_writing/MainForm/MainForm';
+import TitleForm from '@/components/community_writing/InputForm/TitleForm/TitleForm';
+import HorizontalLine from '@/components/community_writing/HorizontalLine/HorizontalLine';
+import TextForm from '@/components/community_writing/InputForm/TextForm/TextForm';
+import ImageInputBox from '@/components/community_writing/ImageInputBox/ImageInputBox';
 
-
-const maintext='내용을 입력해주세요\n\n\n\n커뮤니티에서는 주제와 무관히 자유롭게 이야기를 나눌 수 있습니다.\n - 커뮤니티 게시글 및 댓글은 로그인을 해야만 작성할 수 있습니다.\n - 커뮤니티에서 모든 게시글 및 댓글의 작성자는 작성자의 닉네임으로 표시됩니다.\n - 홍보성 게시글이나 제제가 필요한 게시물 및 댓글은 관리자에 의해 예고없이 삭제될 수 있습니다.'
+const maintext='내용을 입력해주세요\n\n\n\n\n\n\n커뮤니티에서는 주제와 무관히 자유롭게 이야기를 나눌 수 있습니다.\n - 커뮤니티 게시글 및 댓글은 로그인을 해야만 작성할 수 있습니다.\n - 커뮤니티에서 모든 게시글 및 댓글의 작성자는 작성자의 닉네임으로 표시됩니다.\n - 홍보성 게시글이나 제제가 필요한 게시물 및 댓글은 관리자에 의해 예고없이 삭제될 수 있습니다.'
 
 interface FormData {
   title: string;
@@ -65,6 +69,7 @@ export default function CommunityWriting() {
         });
     }
   };
+  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // 폼 데이터와 선택된 파일을 처리하는 로직을 여기에 추가하세요
@@ -82,75 +87,28 @@ export default function CommunityWriting() {
   };
 
   return (
-    <>
+    <><div style={{width:"390px"}}>
+      
       <form className="write" onSubmit={handleSubmit}>
-        <div className='submitBox'>
-          <button>X </button>
-          <a>글쓰기</a>
-          <button type="submit">완료</button>
-        </div>
-        <div className='selectList'>
-          <label htmlFor="selectList">주제</label>
-          <select id="selectList" name="selectedValue" value={formData.selectedValue}
-            onChange={handleSelectedChange}>
-            <option value="잡담">잡담</option>
-            <option value="인기글">인기글</option>
-            <option value="정보">정보</option>
-            <option value="질문">질문</option>
-          </select>
-        </div>
+        <SubmitHeader/>
 
-        <input
-          className="title"
-          name="title"
-          autoComplete="off"
-          placeholder="글 제목"
-          value={formData.title}
-          onChange={handleChange}
-        />
-        <br/>
-        <textarea
-          className="smallplaceholder"
-          name="content"
-          placeholder={maintext}
-          value={formData.content}
-          onChange={handleChange}
-          rows="20"
-          cols="50"
-        />
-        <br/>
-        <label htmlFor="imageInput">이미지 선택:</label>
-        <br/>
-        <div>
-          {/* ... */}
-          {formData.previewImage.length === 0 ? null : (
-            <>
-              {formData.previewImage.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`이미지 미리보기 ${index}`}
-                  width="100"
-                  height="100"
-                />
-              ))}
-            </>
-          )}
-        <label htmlFor="imageInput" className='IconBox'>
-          <FiCamera size={40} /> {/* 카메라 아이콘 사용 */}  
-        </label>
-          <input
-            type="file"
-            id="imageInput"
-            name="previewImage"
-            accept="image/*"
-            multiple
-            onChange={handleImageChange}
-            hidden
-          />
-        </div>
+        <TitleForm handleChange={handleChange} hint={"제목"} selectedValue={formData.title}/>
+        
+        <HorizontalLine/>
+        <TextForm name="content"
+          hint={maintext}
+          selectedValue={formData.content}
+          handleChange={handleChange}
+          rows={20}
+          cols={50}></TextForm>
+          
+        <HorizontalLine/>
+        
+        <ImageInputBox previewImage={formData.previewImage} 
+          handleImageChange={handleImageChange}/>
+
 
       </form>
-    </>
+    </div></>
   );
 }
