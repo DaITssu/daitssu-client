@@ -10,6 +10,7 @@ interface CalendarProps {
   selectDay: number;
 
   dayTasks: { [key: number]: Array<string> };
+  onDayClick: (day: number) => void;
 }
 
 const Calendar = (props: CalendarProps) => {
@@ -24,10 +25,10 @@ const Calendar = (props: CalendarProps) => {
   const [lastDN, setLastDN] = useState<number>(lastDayOfMonth.getDate());
 
   const datTasks = props.dayTasks;
-  const [selectedDay, selectDayCounter] = useState(props.selectDay);
+  const [selectedDay, setSelectedDay] = useState(props.selectDay);
 
   const selectNewDay = (newSelectedDay: number) => {
-    selectDayCounter(newSelectedDay);
+    setSelectedDay(newSelectedDay);
   };
 
   const changeMonth = (value: number) => {
@@ -50,11 +51,13 @@ const Calendar = (props: CalendarProps) => {
 
   const currentDate: Date = new Date();
   var today: number;
+
   if (currentDate.getMonth() + 1 == month) {
     today = currentDate.getDate();
   } else {
     today = 0;
   }
+
   const weeks: number[][] = [[], [], [], [], [], []];
   var nowD = 1;
   var nowW = 0;
@@ -117,7 +120,10 @@ const Calendar = (props: CalendarProps) => {
               // 각 날짜들 배치
               <div
                 className="item"
-                onClick={selectNewDay.bind(null, day)}
+                onClick={() => {
+                  selectNewDay.bind(null, day);
+                  props.onDayClick(day);
+                }}
                 key={`day-${dayIndex}`}
               >
                 <DayBlock

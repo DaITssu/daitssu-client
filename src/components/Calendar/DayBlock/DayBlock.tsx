@@ -36,7 +36,7 @@ const DayBlock = (props: DayBlockProps) => {
       {props.day > 0 && (
         <TasksToday>
           {props.taskColors.map((color, index) => (
-            <Task Key={index} Color={color} />
+            <Task key={index} color={color} />
           ))}
         </TasksToday>
       )}
