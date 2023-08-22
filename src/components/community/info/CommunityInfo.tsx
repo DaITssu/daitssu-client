@@ -4,6 +4,14 @@ import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
 import Category from '@/components/common/Category';
+import Sue from '@icons/icon/Icon18/Sue.svg';
+import Ben from '@icons/icon/Icon18/Ben.svg';
+import SamllHits from '@icons/icon/Icon18/SmallHits.svg';
+import FilledLiked from '@icons/icon/Liked/FilledLiked.svg';
+import DefaultLiked from '@icons/icon/Liked/DefaultLiked.svg';
+import Commentsvg from '@icons/icon/Icon24/Comment.svg';
+import FilledScarp from '@icons/icon/Scrap/FilledScrap.svg';
+import DefaultScrap from '@icons/icon/Scrap/DefaultScrap.svg';
 
 const CommunityInfo = () => {
   const [isLike, setIsLike] = useState<boolean>(false);
@@ -49,7 +57,7 @@ const CommunityInfo = () => {
               <styles.ReportBox>
                 <styles.PopIconBox>
                   <Image
-                    src="/assets/icon/Icon18/Sue.svg"
+                    src={Sue}
                     alt="sue icon"
                     width={18}
                     height={18}
@@ -61,7 +69,7 @@ const CommunityInfo = () => {
               <styles.BlockBox>
                 <styles.PopIconBox>
                   <Image
-                    src="/assets/icon/Icon18/Ben.svg"
+                    src={Ben}
                     alt="ben icon"
                     width={18}
                     height={18}
@@ -101,7 +109,7 @@ const CommunityInfo = () => {
                 <styles.ViewBox>
                   <styles.ViewIconBox>
                     <Image
-                      src="/assets/icon/Icon18/SmallHits.svg"
+                      src={SamllHits}
                       alt="watch count"
                       width={17}
                       height={17}
@@ -124,7 +132,7 @@ const CommunityInfo = () => {
             <styles.IconBox onClick={handleLikeClick}>
               {isLike ? (
                 <Image
-                  src="/assets/icon/Liked/FilledLiked.svg"
+                  src={FilledLiked}
                   alt="heart icon"
                   width={24}
                   height={24}
@@ -132,7 +140,7 @@ const CommunityInfo = () => {
                 />
               ) : (
                 <Image
-                  src="/assets/icon/Liked/DefaultLiked.svg"
+                  src={DefaultLiked}
                   alt="heart icon"
                   width={24}
                   height={24}
@@ -146,7 +154,7 @@ const CommunityInfo = () => {
           <styles.IconCountBox>
             <styles.IconBox>
               <Image
-                src="/assets/icon/Icon24/Comment.svg"
+                src={Commentsvg}
                 alt="comment icon"
                 width={24}
                 height={24}
@@ -159,7 +167,7 @@ const CommunityInfo = () => {
             <styles.IconBox onClick={handleScrapClick}>
               {isScrap ? (
                 <Image
-                  src="/assets/icon/Scrap/FilledScrap.svg"
+                  src={FilledScarp}
                   alt="scarp icon"
                   width={24}
                   height={24}
@@ -167,7 +175,7 @@ const CommunityInfo = () => {
                 />
               ) : (
                 <Image
-                  src="/assets/icon/Scrap/DefaultScrap.svg"
+                  src={DefaultScrap}
                   alt="scrap icon"
                   width={24}
                   height={24}
