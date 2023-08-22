@@ -4,6 +4,8 @@ export default function Home() {
   return (
     <>
       <ScrapList />
+      <ScrapList />
+      <ScrapList />
     </>
   );
 }
