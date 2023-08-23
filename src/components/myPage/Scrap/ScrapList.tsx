@@ -1,6 +1,8 @@
 import Category from '@/components/common/Category';
 import * as styles from '@/components/myPage/Scrap/ScrapList.style';
 import Image from 'next/image';
+import DefaultCheckBox from '@icons/icon/CheckBox/DefaultCheckBox.svg';
+import Comment from '@icons/icon/Icon24/Comment.svg';
 
 const ScrapList = () => {
   return (
@@ -8,7 +10,7 @@ const ScrapList = () => {
       <styles.LeftBox>
         <styles.CheckBox>
           <Image
-            src="/assets/icon/CheckBox/DefaultCheckBox.svg"
+            src={DefaultCheckBox}
             alt="check"
             width={15}
             height={15}
@@ -31,7 +33,7 @@ const ScrapList = () => {
           <styles.MessageBox>
             <styles.MessageIconBox>
               <Image
-                src="/assets/icon/Icon24/Comment.svg"
+                src={Comment}
                 alt="comment"
                 width={15}
                 height={15}
