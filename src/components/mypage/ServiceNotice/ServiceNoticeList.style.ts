@@ -12,5 +12,5 @@ scrollbar-width: none;
 ::-webkit-scrollbar{
   display:none;
 }
-
+background : #ffffff;
 `;
