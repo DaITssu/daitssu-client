@@ -10,6 +10,7 @@ interface CalendarProps {
   selectDay: number;
 
   dayTasks: { [key: number]: Array<string> };
+  onMonthChange: (year: number, month: number) => void;
   onDayClick: (day: number) => void;
 }
 
@@ -54,6 +55,8 @@ const Calendar = (props: CalendarProps) => {
     const lastDayOfMonth11 = new Date(year, newMonth, 1);
     const lastDayOfMonth22 = new Date(lastDayOfMonth11.getTime() - 1);
     setLastDN(lastDayOfMonth22.getDate());
+
+    props.onMonthChange(year, newMonth);
   };
 
   const currentDate: Date = new Date();

@@ -19,6 +19,7 @@ interface CalendarProps {
 
   dayTasks: { [key: number]: Array<string> };
   onDayClick: (day: number) => void;
+  onMonthChange: (year: number, month: number) => void;
 
   modals?: {
     [key: string]: {
@@ -46,6 +47,7 @@ const CalendarScreen = (props: CalendarProps) => {
           selectDay={props.selectDay}
           dayTasks={props.dayTasks}
           onDayClick={props.onDayClick}
+          onMonthChange={props.onMonthChange}
         />
       </styles.CalendarScreenContainer>
 

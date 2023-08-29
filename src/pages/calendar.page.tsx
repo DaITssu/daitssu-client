@@ -21,6 +21,10 @@ export default function Calendar() {
         onDayClick={(day: number) => {
           setSelectDay(day);
         }}
+        onMonthChange={(year: number, month: number) => {
+          setYear(year);
+          setMonth(month);
+        }}
       />
     </div>
   );
