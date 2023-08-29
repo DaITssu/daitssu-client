@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DayBlock from '../DayBlock/DayBlock';
 import WeekBlock from '../WeekBlock/WeekBlock';
 import MonthControlButton from '../MonthControlButton/MonthControlButton';
@@ -27,8 +27,15 @@ const Calendar = (props: CalendarProps) => {
   const datTasks = props.dayTasks;
   const [selectedDay, setSelectedDay] = useState(props.selectDay);
 
+  useEffect(() => {
+    setYear(props.year);
+    setMonth(props.month);
+    setSelectedDay(props.selectDay);
+  }, [props.year, props.month, props.selectDay]);
+
   const selectNewDay = (newSelectedDay: number) => {
     setSelectedDay(newSelectedDay);
+    props.onDayClick(newSelectedDay);
   };
 
   const changeMonth = (value: number) => {
@@ -121,8 +128,7 @@ const Calendar = (props: CalendarProps) => {
               <div
                 className="item"
                 onClick={() => {
-                  selectNewDay.bind(null, day);
-                  props.onDayClick(day);
+                  selectNewDay(day);
                 }}
                 key={`day-${dayIndex}`}
               >
