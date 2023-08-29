@@ -5,7 +5,7 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 export const overlayStyle = styled.div`
   position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
-  top: -${window.scrollY}px;
+  top: -${typeof window !== 'undefined' ? window.scrollY : 0}px;
   overflow-y: scroll;
   width: 100%;
   right: 0;
