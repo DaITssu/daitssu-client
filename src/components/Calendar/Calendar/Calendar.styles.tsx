@@ -16,12 +16,15 @@ export const Container = styled.div<containerProps>`
 `;
 
 export const CalendarContainer = styled.div<containerProps>`
-  width: ${(props) => (props.width ? props.width : '400px')};
+  width: ${(props) => (props.width ? props.width : '350px')};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const TitleContainer = styled.div<containerProps>`
