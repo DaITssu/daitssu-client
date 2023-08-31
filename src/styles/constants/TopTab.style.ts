@@ -1,28 +1,26 @@
 import styled from '@emotion/styled';
 
-export const ListContainer = styled.div``;
+interface TabFontBoxProps {
+  isSelected: boolean;
+}
 
-export const TabFont = styled.div`
-  margin: auto;
-  /* Body M 16 */
+export const TabFontBox = styled.div<TabFontBoxProps>`
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
-  font-size: 13px;
-  line-height: 24px;
-  /* identical to box height, or 24px */
+  font-size: 15px;
+  line-height: 210%;
   letter-spacing: -0.011em;
-
-  /* black */
+  text-align: center;
   color: #313131;
-`;
+  position: relative;
+  width: 71px;
+  height: 34px;
+  display: inline-block;
 
-export const TabFontBox = styled.div`
-  position: absolute;
-  width: 55px;
-  height: 24px;
-  top: 8px;
-  left: 8px;
+  /* Apply different styles based on isSelected prop */
+  border-bottom: 2px solid
+    ${(props) => (props.isSelected ? '#5EBEEB' : '#D9D9D9')};
 `;
 
 export const Rectangle242 = styled.div`
@@ -32,16 +30,7 @@ export const Rectangle242 = styled.div`
   height: 36px;
   left: 0px;
   top: 107px;
-  /* white */
-  background: #ffffff;
   /* gray 3 */
   border-bottom: 2px solid #d9d9d9;
-`;
-
-export const Group278 = styled.div`
-  position: absolute;
-  width: 390px;
-  height: 36px;
-  left: 0px;
-  top: 107px;
+  padding-left: 16px;
 `;
