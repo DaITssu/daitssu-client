@@ -3,7 +3,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
-
 export interface NoticeItemProps {
   bundle: string;
   title: string;
@@ -20,9 +19,7 @@ const NoticeItem: React.FC<Props> = ({ item }: Props) => {
   return (
     <Link href={'/notice/info'}>
       <styles.Noticeitem onClick={notice_onClick}>
-        <styles.NoticeStatus>
-          {item.bundle}
-        </styles.NoticeStatus>
+        <styles.NoticeStatus>{item.bundle}</styles.NoticeStatus>
 
         <styles.NoticeTitleFont>{item.title}</styles.NoticeTitleFont>
         <styles.ViewIcon src="/assets/icon/Icon18/SmallHits.svg" />

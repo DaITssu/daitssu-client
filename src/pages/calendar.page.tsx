@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import CalendarScreen from '@/components/calendar/CalendarScreen';
-import useModal from '@/components/common/Modal/useModal';
+import CalendarScreen from '@/components/Calendar/CalendarScreen';
 
 export default function Calendar() {
   const [year, setYear] = useState<number>(2023);

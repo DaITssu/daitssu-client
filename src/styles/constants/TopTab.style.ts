@@ -4,7 +4,6 @@ interface TabFontBoxProps {
   isSelected: boolean;
 }
 
-
 export const TabFontBox = styled.div<TabFontBoxProps>`
   font-family: 'Pretendard';
   font-style: normal;
@@ -20,7 +19,8 @@ export const TabFontBox = styled.div<TabFontBoxProps>`
   display: inline-block;
 
   /* Apply different styles based on isSelected prop */
-  border-bottom: 2px solid ${props => props.isSelected ? "#5EBEEB" : "#D9D9D9"};
+  border-bottom: 2px solid
+    ${(props) => (props.isSelected ? '#5EBEEB' : '#D9D9D9')};
 `;
 
 export const Rectangle242 = styled.div`
