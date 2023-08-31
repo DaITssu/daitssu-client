@@ -8,7 +8,8 @@ height:486px;
 overflow : auto;
 -ms-overflow-style: none;
 scrollbar-width: none;
-::webkit-scrollbar{
+::-webkit-scrollbar{
   display:none;
 }
+
 `;
