@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import RightArrow from '@icons/icon/Arrow/RightBigArrow1.svg';
 import Image from 'next/image';
-import * as styles from './setting.style';
+import * as styles from './Setting.style';
 import Link from 'next/link';
 
 const Setting = () => {
