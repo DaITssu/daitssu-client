@@ -1,6 +1,5 @@
 import { NextPage } from 'next';
 import React from 'react';
-import "./SelectListBox.css"
 
 interface SelectListBoxProps {
   options: string[]; // options를 문자열 배열로 변경

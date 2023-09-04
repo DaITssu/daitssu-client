@@ -1,6 +1,6 @@
 import React from 'react';
 import { COLORS } from '../../../../styles/constants/colors';
-import { FiCamera } from 'react-icons/fi'; // react-icons에서 FiCamera 아이콘 불러오기
+import { FiCamera } from 'react-icons/fi'; 
 import * as styles from "./IconBox.styles"
 interface FormData {
   iconSize?:number;
@@ -19,7 +19,7 @@ const IconBox = ({iconSize,width,height,backCol,margin,IconCol }:FormData) => {
         width={width} height={height} backgroundColor={backCol} margin={margin}>
           <FiCamera 
             style={{color:`${IconCol?IconCol: COLORS.grayscale.Black}`}}
-            size={iconSize? iconSize: 40} /> {/* 카메라 아이콘 사용 */} 
+            size={iconSize? iconSize: 40} /> 
         </styles.IconBox>
       </label>
     </>

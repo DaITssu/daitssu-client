@@ -1,6 +1,5 @@
 import { COLORS } from '../../../../styles/constants/colors';
 import styled from '@emotion/styled';
-import React from 'react'; // React import 추가
 
 interface ImageBoxProps {
   width?: number;
@@ -16,6 +15,3 @@ export const ImageBox = styled.img<ImageBoxProps>`
   margin-right:${(props) => (props.margin ? `${props.margin}px` : '10px')};
   border-radius: 10px;
 `;
-
-
-// onChange 이벤트 핸들러 추가

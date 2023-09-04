@@ -6,7 +6,7 @@ interface TextFormProps{
   hint:string;
   selectedValue?:string;
 
-  handleChange?:(event: React.ChangeEvent<HTMLTextAreaElement>) => void; // onChange 타입 변경
+  handleChange?:(event: React.ChangeEvent<HTMLTextAreaElement>) => void; 
   rows?:number;
   cols?:number;
 }

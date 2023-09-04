@@ -1,6 +1,5 @@
 import React from 'react';
 import { COLORS } from '@/styles/constants/colors';
-// HorizontalLine.js
 import styled from 'styled-components';
 interface HorizontalLineProps {
   width?: number;

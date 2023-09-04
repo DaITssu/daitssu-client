@@ -1,6 +1,6 @@
 import { COLORS } from '../../../../styles/constants/colors';
 import styled from '@emotion/styled';
-import React from 'react'; // React import 추가
+import React from 'react';
 
 interface TextFormProps {
   width?: number;
@@ -11,8 +11,8 @@ interface TextFormProps {
   color?: string;
   margin?: number;
   padding?: number;
-  selectedValue?: string; // selectedValue 추가
-  handleChange?:(event: React.ChangeEvent<HTMLTextAreaElement>) => void; // onChange 타입 변경
+  selectedValue?: string; 
+  handleChange?:(event: React.ChangeEvent<HTMLTextAreaElement>) => void; 
 }
 
 export const TextForm = styled.textarea<TextFormProps>`
@@ -35,4 +35,3 @@ export const TextForm = styled.textarea<TextFormProps>`
   }
 `;
 
-// onChange 이벤트 핸들러 추가

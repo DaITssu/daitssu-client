@@ -7,7 +7,6 @@ import HorizontalLine from '@/components/community_writing/HorizontalLine/Horizo
 import TextForm from '@/components/community_writing/InputForm/TextForm/TextForm';
 import ImageInputBox from '@/components/community_writing/ImageInputBox/ImageInputBox';
 
-const maintext='내용을 입력해주세요\n\n\n\n\n\n\n커뮤니티에서는 주제와 무관히 자유롭게 이야기를 나눌 수 있습니다.\n - 커뮤니티 게시글 및 댓글은 로그인을 해야만 작성할 수 있습니다.\n - 커뮤니티에서 모든 게시글 및 댓글의 작성자는 작성자의 닉네임으로 표시됩니다.\n - 홍보성 게시글이나 제제가 필요한 게시물 및 댓글은 관리자에 의해 예고없이 삭제될 수 있습니다.'
 
 interface FormData {
   title: string;
@@ -17,6 +16,8 @@ interface FormData {
 }
 
 export default function CommunityWriting() {
+  const maintext='내용을 입력해주세요\n\n\n\n\n\n\n커뮤니티에서는 주제와 무관히 자유롭게 이야기를 나눌 수 있습니다.\n - 커뮤니티 게시글 및 댓글은 로그인을 해야만 작성할 수 있습니다.\n - 커뮤니티에서 모든 게시글 및 댓글의 작성자는 작성자의 닉네임으로 표시됩니다.\n - 홍보성 게시글이나 제제가 필요한 게시물 및 댓글은 관리자에 의해 예고없이 삭제될 수 있습니다.'
+
   const [formData, setFormData] = useState<FormData>({
     title: '',
     content: '',
@@ -46,6 +47,13 @@ export default function CommunityWriting() {
       reader.readAsDataURL(file);
     });
   };
+  const handleImageDelete = (indexToDelete: number) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      previewImage: prevState.previewImage.filter((_, index) => index !== indexToDelete),
+    }));
+  };
+
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
 
@@ -105,7 +113,7 @@ export default function CommunityWriting() {
         <HorizontalLine/>
         
         <ImageInputBox previewImage={formData.previewImage} 
-          handleImageChange={handleImageChange}/>
+          handleImageChange={handleImageChange} handleDeleteImage={handleImageDelete}/>
 
 
       </form>

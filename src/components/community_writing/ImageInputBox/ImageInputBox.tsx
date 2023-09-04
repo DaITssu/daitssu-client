@@ -1,27 +1,49 @@
 import React from 'react';
-import { FiCamera } from 'react-icons/fi'; // react-icons에서 FiCamera 아이콘 불러오기
 import ImageBox from './ImageBox/ImageBox';
 import IconBox from './IconBox/IconBox';
 import TitleBox from './TitleBox/TitleBox';
-
+import { COLORS } from '@/styles/constants/colors';
 interface FormData {
-  previewImage: string[]; // 이미지 미리보기를 위한 string 배열
-  handleImageChange:(event: React.ChangeEvent<HTMLInputElement>) => void; // onChange 타입 변경
+  previewImage: string[]; 
+  Width?:number;
+  handleImageChange:(event: React.ChangeEvent<HTMLInputElement>) => void; 
+  handleDeleteImage:(indexToDelete: number) => void;
 }
 
-const ImageInputBox = ({previewImage,handleImageChange }:FormData) => {
+const ImageInputBox = ({previewImage,handleImageChange,Width,handleDeleteImage }:FormData) => {
+  var width="500px";
+  if (Width){
+    width=Width+"px";
+  }
+  const onClickX=(index:number)=>{
+    handleDeleteImage(index);    
+  };
   return (
     <>
     <TitleBox/>
-    <div style={{display:"flex"}}>
+    <div style={{display:"flex", overflowX: "visible", width:width}}>
       {previewImage.length === 0 ? null : (
         <>
           {previewImage.map((image, index) => (
-            <ImageBox index={index} image={image}/>
+            <div style={{position: "relative",width:"100px",marginRight:"10px"}}>
+              <div style={{position: "relative" }}>
+                <div style={{position: "absolute", left:"0px", top: "1px"}}>
+                  <ImageBox index={index} image={image}/>
+                </div>
+                <button style={{position: "absolute", right:"10px", top: "10px",
+              borderRadius:"9px",backgroundColor:COLORS.grayscale.white,
+              width: "18px", height:"18px",
+              display: "flex", 
+              justifyContent: "center", border: "none",
+              alignItems: "center" }} onClick={()=>onClickX(index)}>
+                  X
+                </button>
+              </div>
+            </div>
           ))}
         </>
       )}
-    <IconBox/>
+      <IconBox/>
       <input
         type="file"
         id="imageInput"

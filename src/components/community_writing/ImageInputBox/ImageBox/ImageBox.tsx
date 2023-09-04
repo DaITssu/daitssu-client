@@ -1,5 +1,4 @@
 import React from 'react';
-import { FiCamera } from 'react-icons/fi'; // react-icons에서 FiCamera 아이콘 불러오기
 import * as styles from './ImageBox.styles';
 
 interface FormData {
