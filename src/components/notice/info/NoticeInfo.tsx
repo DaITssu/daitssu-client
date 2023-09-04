@@ -135,8 +135,8 @@ const NoticeInfo = () => {
               <Image
                 src={Download}
                 alt="download button"
-                width={18}
-                height={18}
+                width={20}
+                height={20}
                 priority
               />
             </styles.FileDownBox>

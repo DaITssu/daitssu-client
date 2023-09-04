@@ -129,7 +129,9 @@ export const ContentBox = styled.div`
   font-weight: 400;
 `;
 
-export const FileBox = styled.div``;
+export const FileBox = styled.div`
+  margin-top: 15px;
+`;
 
 export const FileTopBox = styled.div`
   display: flex;
@@ -170,7 +172,7 @@ export const FileDownBox = styled.div`
 export const BottomBox = styled.div``;
 
 export const CommentTitleBox = styled.div`
-  background-color: rgba(249, 249, 249, 1);
+  background-color: #f9f9f9;
   font-size: 16px;
   height: 48px;
   display: flex;
