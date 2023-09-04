@@ -1,10 +1,12 @@
 import Button from '@/components/common/Button';
 import * as styles from './Agree.style';
 import AgreeText from './AgreeText';
+import NavigationBar from '@/components/common/Navbar/NavigationBar';
 
 const Agree = () => {
   return (
     <>
+      <div style={{ height: '46px' }}> 헤더자리</div>
       <styles.FlexBox>
         <styles.TopBox>
           <AgreeText
@@ -32,6 +34,7 @@ const Agree = () => {
         <styles.FinishButtonBox>
           <Button label="완료" width={358} />
         </styles.FinishButtonBox>
+        <NavigationBar focusType="MY_PAGE" />
       </styles.FlexBox>
     </>
   );
