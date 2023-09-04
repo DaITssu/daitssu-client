@@ -9,7 +9,7 @@ import AttchedFile from '@icons/icon/Icon24/AttachedFile.svg';
 import Download from '@icons/icon/Icon24/Download.svg';
 import Calendar from '@icons/icon/Nav/calendar_off.svg';
 import Url from '@icons/icon/Icon18/Url.svg';
-import Kakao from '@icons/icon/Icon18/kakao.svg';
+import Kakao from '@icons/icon/Icon18/Kakao.svg';
 
 const NoticeInfo = () => {
   const [share, setShare] = useState<boolean>(false);
