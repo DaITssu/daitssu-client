@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import Image from 'next/image';
 import { NextPage } from 'next';
-import * as styles from './withdrawal.style';
-import { Button } from '@/components/common/Button/Button.styles';
+import * as styles from './Withdrawal.style';
 
 const Withdrawal = () => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
@@ -60,13 +59,13 @@ const Withdrawal = () => {
 
 export default Withdrawal;
 
-interface ReportItemProps {
+export interface ReportItemProps {
   text: string;
   isSelected: boolean;
   onClick: any;
 }
 
-const WithdrawalItem: NextPage<ReportItemProps> = ({
+export const WithdrawalItem: NextPage<ReportItemProps> = ({
   text,
   isSelected,
   onClick,
