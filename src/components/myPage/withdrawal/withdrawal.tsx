@@ -3,6 +3,8 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import Image from 'next/image';
 import { NextPage } from 'next';
 import * as styles from './Withdrawal.style';
+import CheckedRadio from '../../../../public/assets/icon/Radio/CheckedRadio.svg';
+import DefaultRadio from '../../../../public/assets/icon/Radio/DefaultRadio.svg';
 
 const Withdrawal = () => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
@@ -73,9 +75,9 @@ export const WithdrawalItem: NextPage<ReportItemProps> = ({
   return (
     <styles.WithdrawalItemStyle onClick={onClick}>
       {isSelected ? (
-        <img src="/assets/icon/Radio/CheckedRadio.svg" alt="CheckedRadio" />
+        <Image width={20} height={20} src={CheckedRadio} alt="CheckedRadio" />
       ) : (
-        <img src="/assets/icon/Radio/DefaultRadio.svg" alt="DefaultRadio" />
+        <Image width={20} height={20} src={DefaultRadio} alt="DefaultRadio" />
       )}
       <span style={TEXT_STYLES.BodyM16}>{text}</span>
     </styles.WithdrawalItemStyle>

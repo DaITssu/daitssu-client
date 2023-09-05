@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react';
 import BlockAccount from './BlockAccount';
 
 export default {
-  title: 'Components/BlockAccount',
+  title: 'BlockAccount',
   component: BlockAccount,
 } as Meta;
 

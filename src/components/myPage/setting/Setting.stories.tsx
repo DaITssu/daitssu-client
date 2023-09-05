@@ -1,21 +1,16 @@
-// Setting.stories.tsx
+// BlockAccount.stories.tsx
 import React from 'react';
-import type { Meta, Story } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
 import Setting from './Setting';
 
-// 메타 정보 설정
-const meta: Meta = {
+export default {
   title: 'Setting',
   component: Setting,
-};
+} as Meta;
 
-export default meta;
-
-// Story 정의
 const Template: Story = (args) => <Setting {...args} />;
 
-// 스토리 생성
-export const Default: Story = Template.bind({});
+export const Default = Template.bind({});
 // Default.args = {
-//   // props를 여기에 정의합니다. 예를 들면, someProp: 'someValue',
+//   // 여기에 필요한 props를 추가할 수 있습니다.
 // };
