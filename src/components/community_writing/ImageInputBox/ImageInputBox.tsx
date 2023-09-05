@@ -34,7 +34,7 @@ const ImageInputBox = ({previewImage,handleImageChange,Width,handleDeleteImage }
               borderRadius:"9px",backgroundColor:COLORS.grayscale.white,
               width: "18px", height:"18px",
               display: "flex", 
-              justifyContent: "center", border: "none",
+              justifyContent: "center", border: "None",
               alignItems: "center" }} onClick={()=>onClickX(index)}>
                   X
                 </button>
