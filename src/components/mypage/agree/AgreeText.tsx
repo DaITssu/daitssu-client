@@ -1,47 +1,33 @@
 import * as styles from './Agree.style';
 import Image from 'next/image';
-import DefaultRadio from '@icons/icon/Radio/DefaultRadio.svg';
-import CheckedRadio from '@icons/icon/Radio/CheckedRadio.svg';
 import RightArrow from '@icons/icon/Arrow/RightBigArrow.svg';
-import { useState } from 'react';
 interface ATProps {
   type: string;
   text: string;
   arrow: boolean;
+  AllAgree?: boolean;
+  check: boolean;
+  agreeArray: Array<boolean>;
+  setAgreeArray: Function;
 }
 
-const AgreeText = ({ type, text, arrow }: ATProps) => {
-  const [isCheck, setIsCheck] = useState(false);
-
-  const handleOnClickCheck = () => {
-    setIsCheck(!isCheck);
-  };
-
+const AgreeText = ({
+  type,
+  text,
+  arrow,
+  AllAgree,
+  check,
+  agreeArray,
+  setAgreeArray,
+}: ATProps) => {
   return (
-    <styles.ContainBox>
-      <styles.CheckBox onClick={handleOnClickCheck}>
-        {isCheck ? (
-          <Image
-            src={CheckedRadio}
-            alt="check"
-            width={18}
-            height={18}
-            priority
-          />
-        ) : (
-          <Image
-            src={DefaultRadio}
-            alt="uncheck"
-            width={18}
-            height={18}
-            priority
-          />
-        )}
-      </styles.CheckBox>
-      <styles.TypeBox type={type}>
-        {type === 'compulsory' ? '(필수)' : type === 'select' ? '(선택)' : ''}
-      </styles.TypeBox>
-      <styles.TextBox>{text}</styles.TextBox>
+    <>
+      <styles.ContainBox>
+        <styles.TypeBox type={type}>
+          {type === 'compulsory' ? '(필수)' : type === 'select' ? '(선택)' : ''}
+        </styles.TypeBox>
+        <styles.TextBox>{text}</styles.TextBox>
+      </styles.ContainBox>
       {arrow ? (
         <styles.ArrowBox>
           <Image
@@ -55,7 +41,7 @@ const AgreeText = ({ type, text, arrow }: ATProps) => {
       ) : (
         ''
       )}
-    </styles.ContainBox>
+    </>
   );
 };
 

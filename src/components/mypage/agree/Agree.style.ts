@@ -6,6 +6,11 @@ export const FlexBox = styled.div`
 
 export const TopBox = styled.div``;
 
+export const ContainCheckBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const MiddleBox = styled.div`
   background-color: #f9f9f9;
   height: 20px;
@@ -19,9 +24,9 @@ export const ContainBox = styled.div`
 `;
 
 export const CheckBox = styled.div`
-  margin-right: 10px;
   display: flex;
   align-items: center;
+  margin-left: 15px;
 `;
 
 export const TypeBox = styled.div<{ type: string }>`
@@ -45,6 +50,7 @@ export const ArrowBox = styled.div`
   display: flex;
   margin-left: auto;
   align-items: center;
+  margin-right: 15px;
 `;
 
 export const InfoBox = styled.div`

@@ -2,28 +2,175 @@ import Button from '@/components/common/Button';
 import * as styles from './Agree.style';
 import AgreeText from './AgreeText';
 import NavigationBar from '@/components/common/Navbar/NavigationBar';
+import { useState } from 'react';
+import Image from 'next/image';
+import DefaultRadio from '@icons/icon/Radio/DefaultRadio.svg';
+import CheckedRadio from '@icons/icon/Radio/CheckedRadio.svg';
 
 const Agree = () => {
+  const [agreeArray, setAgreeArray] = useState([false, false, false, false]);
+
+  const handleOnClickCheck = (idx: number) => {
+    if (idx === 0) {
+      setAgreeArray([
+        !agreeArray[0],
+        !agreeArray[0],
+        !agreeArray[0],
+        !agreeArray[0],
+      ]);
+    } else {
+      const updatedArray = [...agreeArray];
+      updatedArray[idx] = !updatedArray[idx];
+      setAgreeArray(updatedArray);
+    }
+  };
+
   return (
     <>
       <div style={{ height: '46px' }}> 헤더자리</div>
       <styles.FlexBox>
         <styles.TopBox>
-          <AgreeText
-            type="none"
-            text="약관 전체 동의 (선택사항 모두 포함)"
-            arrow={false}
-          />
+          <styles.ContainCheckBox>
+            <styles.CheckBox
+              onClick={() => {
+                handleOnClickCheck(0);
+              }}
+            >
+              {agreeArray[0] ? (
+                <Image
+                  src={CheckedRadio}
+                  alt="check"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              ) : (
+                <Image
+                  src={DefaultRadio}
+                  alt="uncheck"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              )}
+            </styles.CheckBox>
+
+            <AgreeText
+              type="none"
+              text="약관 전체 동의 (선택사항 모두 포함)"
+              arrow={false}
+              AllAgree={false}
+              check={agreeArray[0]}
+              agreeArray={agreeArray}
+              setAgreeArray={setAgreeArray}
+            />
+          </styles.ContainCheckBox>
         </styles.TopBox>
         <styles.MiddleBox />
         <styles.BottomBox>
-          <AgreeText type="compulsory" text="다잇슈 이용약관" arrow={true} />
-          <AgreeText
-            type="compulsory"
-            text="개인정보 수집 및 이용약관"
-            arrow={true}
-          />
-          <AgreeText type="select" text="제3자 정보 제공 동의" arrow={true} />
+          <styles.ContainCheckBox>
+            <styles.CheckBox
+              onClick={() => {
+                handleOnClickCheck(1);
+              }}
+            >
+              {agreeArray[1] ? (
+                <Image
+                  src={CheckedRadio}
+                  alt="check"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              ) : (
+                <Image
+                  src={DefaultRadio}
+                  alt="uncheck"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              )}
+            </styles.CheckBox>
+
+            <AgreeText
+              type="compulsory"
+              text="다잇슈 이용약관"
+              arrow={true}
+              check={agreeArray[1]}
+              agreeArray={agreeArray}
+              setAgreeArray={setAgreeArray}
+            />
+          </styles.ContainCheckBox>
+          <styles.ContainCheckBox>
+            <styles.CheckBox
+              onClick={() => {
+                handleOnClickCheck(2);
+              }}
+            >
+              {agreeArray[2] ? (
+                <Image
+                  src={CheckedRadio}
+                  alt="check"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              ) : (
+                <Image
+                  src={DefaultRadio}
+                  alt="uncheck"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              )}
+            </styles.CheckBox>
+
+            <AgreeText
+              type="compulsory"
+              text="개인정보 수집 및 이용약관"
+              arrow={true}
+              check={agreeArray[2]}
+              agreeArray={agreeArray}
+              setAgreeArray={setAgreeArray}
+            />
+          </styles.ContainCheckBox>
+
+          <styles.ContainCheckBox>
+            <styles.CheckBox
+              onClick={() => {
+                handleOnClickCheck(3);
+              }}
+            >
+              {agreeArray[3] ? (
+                <Image
+                  src={CheckedRadio}
+                  alt="check"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              ) : (
+                <Image
+                  src={DefaultRadio}
+                  alt="uncheck"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              )}
+            </styles.CheckBox>
+
+            <AgreeText
+              type="select"
+              text="제3자 정보 제공 동의"
+              arrow={true}
+              check={agreeArray[3]}
+              agreeArray={agreeArray}
+              setAgreeArray={setAgreeArray}
+            />
+          </styles.ContainCheckBox>
         </styles.BottomBox>
         <styles.InfoBox>
           <p>회원님께서는 동의를 거부할 수 있습니다.</p>
