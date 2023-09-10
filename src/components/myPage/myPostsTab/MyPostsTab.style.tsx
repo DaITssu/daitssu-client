@@ -32,3 +32,8 @@ export const Rectangle242 = styled.div`
   padding-top : 4px;
 
 `;
+
+export const TabContents = styled.div`
+  top: 200px;
+  position: absolute;
+`;

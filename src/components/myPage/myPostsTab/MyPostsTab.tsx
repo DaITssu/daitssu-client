@@ -33,9 +33,9 @@ const MyPostsTab = () => {
           </styles.TabFontBox>
         ))}
       </styles.Rectangle242>
-      <p style={{ top: '200px', position: 'absolute' }}>
+      <styles.TabContents>
         {data[index].contents}
-      </p>
+      </styles.TabContents>
     </div>
   );
 };
