@@ -4,7 +4,19 @@ import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
 
-const ServiceNoticeInfo = () => {
+export interface ServiceNoticeInfoProps {
+  title: string;
+  date: string;
+  watchCount: number;
+  content: string;
+}
+
+const ServiceNoticeInfo : React.FC<ServiceNoticeInfoProps> = ({
+  title,
+  date,
+  watchCount,
+  content,
+}) => {
   const [share, setShare] = useState<boolean>(false);
   const handleShareClick = () => {
     setShare(!share);
@@ -25,7 +37,7 @@ const ServiceNoticeInfo = () => {
       </styles.MenuBox>
       <styles.InfoBox>
    
-        <styles.TitleBox>6/23 (금) 시스템 점검 및 업데이트 안내</styles.TitleBox>
+        <styles.TitleBox>{title}</styles.TitleBox>
         <styles.MiddleBox>
           <styles.DateBox>
             <Image
@@ -35,7 +47,7 @@ const ServiceNoticeInfo = () => {
               height={18}
               priority
             />
-            <span>2023/05/11</span>
+            <span>{date}</span>
           </styles.DateBox>
           <styles.WatchBox>
             <Image
@@ -45,15 +57,13 @@ const ServiceNoticeInfo = () => {
               height={18}
               priority
             />
-            <span>1706회</span>
+            <span>{watchCount}회</span>
           </styles.WatchBox>
           
         </styles.MiddleBox>
         <hr />
         <styles.ContentBox>
-          안녕하세요 다잇슈입니다.<br/>
-          더욱 쾌적하고 안정적인 서비스 지원을 위해 아래와 같이 <br/>
-          점검이 진행됩니다.
+          {content}
         </styles.ContentBox>
         
       </styles.InfoBox>
