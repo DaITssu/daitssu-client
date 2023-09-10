@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { COLORS } from '../../../styles/constants/colors';
+import { COLORS } from '@/styles/constants/colors';
 
 interface SettingDivTextProps {
   color?: string;

@@ -1,7 +1,7 @@
 // BlockAccount.stories.tsx
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import Setting from './Setting';
+import Setting from './setting';
 
 export default {
   title: 'Setting',

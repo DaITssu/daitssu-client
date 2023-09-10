@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { TEXT_STYLES } from '@/styles/constants/textStyles';
-import ProfileImg from '../../../../public/noticeInfo/profile.svg';
+import ProfileImg from '/public/noticeInfo/profile.svg';
 import Image from 'next/image';
-import * as styles from './BolckAccount.style';
+import * as styles from './bolckAccount.style';
 
 const BlockAccount = () => {
   const exBlockAccountData = [
