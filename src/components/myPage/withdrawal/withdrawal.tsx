@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import Image from 'next/image';
 import { NextPage } from 'next';
-import * as styles from './Withdrawal.style';
-import CheckedRadio from '../../../../public/assets/icon/Radio/CheckedRadio.svg';
-import DefaultRadio from '../../../../public/assets/icon/Radio/DefaultRadio.svg';
+import * as styles from './withdrawal.style';
+import CheckedRadio from '/public/assets/icon/Radio/CheckedRadio.svg';
+import DefaultRadio from '/public/assets/icon/Radio/DefaultRadio.svg';
 
 const Withdrawal = () => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
