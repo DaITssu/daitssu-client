@@ -1,16 +1,12 @@
 import styled from '@emotion/styled';
-
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 interface TabFontBoxProps {
   isSelected: boolean;
 }
 
 export const TabFontBox = styled.div<TabFontBoxProps>`
-  font-family: 'Pretendard';
   font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
   line-height: 210%;
-  letter-spacing: -0.011em;
   text-align: center;
   position: relative;
   width: 195px;
@@ -30,7 +26,7 @@ export const Rectangle242 = styled.div`
   left: 0px;
   top: 107px;
   padding-top : 4px;
-
+  ${TEXT_STYLES.BodyR16};
 `;
 
 export const TabContents = styled.div`
