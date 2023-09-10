@@ -1,7 +1,7 @@
 // BlockAccount.stories.tsx
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import BlockAccount from './BlockAccount';
+import BlockAccount from './blockAccount';
 
 export default {
   title: 'BlockAccount',

@@ -1,7 +1,7 @@
 // Withdrawal.stories.tsx
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import Withdrawal, { ReportItemProps, WithdrawalItem } from './Withdrawal';
+import Withdrawal, { ReportItemProps, WithdrawalItem } from './withdrawal';
 
 const meta: Meta = {
   title: 'Withdrawal',

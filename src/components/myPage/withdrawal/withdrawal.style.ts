@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { COLORS } from '../../../styles/constants/colors';
+import { COLORS } from '@/styles/constants/colors';
 
 export const withdrawalStyle = styled.div`
   height: 100vh;
