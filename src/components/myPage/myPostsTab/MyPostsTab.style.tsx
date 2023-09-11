@@ -9,7 +9,7 @@ export const TabFontBox = styled.div<TabFontBoxProps>`
   line-height: 210%;
   text-align: center;
   position: relative;
-  width: 195px;
+  width: 50%;
   height: 36px;
   display: inline-block;
   color: ${(props) => (props.isSelected ? '#5EBEEB' : '#313131')};
@@ -19,9 +19,8 @@ export const TabFontBox = styled.div<TabFontBoxProps>`
 
 export const Rectangle242 = styled.div`
   box-sizing: border-box;
-
   position: absolute;
-  width: 390px;
+  width: 100%;
   height: 40px;
   left: 0px;
   top: 107px;
