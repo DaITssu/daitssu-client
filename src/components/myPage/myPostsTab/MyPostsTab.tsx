@@ -4,12 +4,10 @@ import * as styles from './MyPostsTab.style';
 const MyPostsTab = () => {
   const data = [
     {
-      id: 0,
       title: '글',
       contents: '글 목록!', // 컴포넌트 맞게 넣기 
     },
     {
-      id: 1,
       title: '댓글',
       contents: '댓글 목록!', // 컴포넌트 맞게 넣기 
     },
@@ -25,7 +23,7 @@ const MyPostsTab = () => {
       <styles.Rectangle242>
         {data.map((element, idx) => (
           <styles.TabFontBox
-            key={element.id}
+            key={idx}
             isSelected={idx === index}
             onClick={() => selectMenuHandler(idx)}
           >
