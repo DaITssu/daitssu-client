@@ -26,5 +26,22 @@ export const LogoLeftImg = styled.div`
 `;
 export const LogoRightImg = styled.div`
   position: absolute;
-  left: 0;
+  right: 0;
+  margin-right: 16px;
+`;
+
+interface DeleteTextProps {
+  isPossibleDelete: boolean;
+}
+
+export const DeleteText = styled.div<DeleteTextProps>`
+  color: ${(props) =>
+    props.isPossibleDelete
+      ? `${COLORS.SSU.primary}`
+      : `${COLORS.grayscale.Gray3}`};
+`;
+
+export const ConfirmText = styled.div`
+  ${TEXT_STYLES.HeadM18}
+  color: var(--Primary-color, #5ebeeb);
 `;
