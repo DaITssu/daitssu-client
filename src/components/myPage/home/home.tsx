@@ -15,6 +15,11 @@ interface EditProfileProps {
 }
 
 const home = (props: EditProfileProps) => {
+  function editOnClick() {
+    //TODO : edit profile
+    console.log('edit');
+  }
+
   return (
     <div>
       <styles.Content>
@@ -26,47 +31,73 @@ const home = (props: EditProfileProps) => {
             alt="profile"
           />
           <div>
-            <p>{props.name}</p>
-            <p>{props.studentId}</p>
-            <p>{props.department}</p>
+            <styles.ContentTitle>{props.name}</styles.ContentTitle>
+            <styles.ContentSubTitle>{props.studentId}</styles.ContentSubTitle>
+            <styles.ContentSubTitle>{props.department}</styles.ContentSubTitle>
           </div>
         </styles.ContentDetil>
-        <p>프로필 수정</p>
+        <styles.EditButton onClick={editOnClick}>프로필 수정</styles.EditButton>
       </styles.Content>
-      <h1>나의 과목</h1>
-      <styles.ContentList>
-        <Link href="/mypage/subscribe">
+      {/* 
+      //TODO : 나의 과목 부분 6-2 부분 지정되고 추가 예정
+       */}
+      <styles.ContentList style={{ textDecoration: 'none' }}>
+        <Link href="/mypage/subscribe" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
-              <Image src={SubscribeList} width={24} height={24} alt="list" />
-              <p>구독 목록</p>
+              <Image
+                src={SubscribeList}
+                width={24}
+                height={24}
+                alt="list"
+                style={{ paddingRight: '10px' }}
+              />
+              <styles.ContentText>구독 목록</styles.ContentText>
             </styles.ContentDetil>
             <Image src={rightArrow} width={20} height={20} alt="go" />
           </styles.Content>
         </Link>
-        <Link href="/mypage/mycontents">
+        <Link href="/mypage/mycontents" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
-              <Image src={Post} width={24} height={24} alt="scrap" />
-              <p>내 글 목록</p>
+              <Image
+                src={Post}
+                width={24}
+                height={24}
+                alt="scrap"
+                style={{ paddingRight: '10px' }}
+              />
+              <styles.ContentText>내 글 목록</styles.ContentText>
             </styles.ContentDetil>
             <Image src={rightArrow} width={20} height={20} alt="go" />
           </styles.Content>
         </Link>
-        <Link href="/mypage/scrap">
+        <Link href="/mypage/scrap" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
-              <Image src={Scrap} width={24} height={24} alt="scrap" />
-              <p>스크랩</p>
+              <Image
+                src={Scrap}
+                width={24}
+                height={24}
+                alt="scrap"
+                style={{ paddingRight: '10px' }}
+              />
+              <styles.ContentText>스크랩</styles.ContentText>
             </styles.ContentDetil>
             <Image src={rightArrow} width={20} height={20} alt="go" />
           </styles.Content>
         </Link>
-        <Link href="/mypage/setting">
+        <Link href="/mypage/setting" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
-              <Image src={Setting} width={24} height={24} alt="setting" />
-              <p>설정</p>
+              <Image
+                src={Setting}
+                width={24}
+                height={24}
+                alt="setting"
+                style={{ paddingRight: '10px' }}
+              />
+              <styles.ContentText>설정</styles.ContentText>
             </styles.ContentDetil>
             <Image src={rightArrow} width={20} height={20} alt="go" />
           </styles.Content>
