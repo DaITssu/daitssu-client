@@ -20,7 +20,7 @@ const MyPostsTab = () => {
 
   return (
     <div>
-      <styles.Rectangle242>
+      <styles.TabBox>
         {data.map((element, idx) => (
           <styles.TabFontBox
             key={idx}
@@ -30,7 +30,7 @@ const MyPostsTab = () => {
             {element.title}
           </styles.TabFontBox>
         ))}
-      </styles.Rectangle242>
+      </styles.TabBox>
       <styles.TabContents>
         {data[index].contents}
       </styles.TabContents>

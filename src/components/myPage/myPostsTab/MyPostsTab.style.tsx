@@ -17,7 +17,7 @@ export const TabFontBox = styled.div<TabFontBoxProps>`
   ${(props) => (props.isSelected ? '#5EBEEB' : '#D9D9D9')};
 `;
 
-export const Rectangle242 = styled.div`
+export const TabBox = styled.div`
   box-sizing: border-box;
   position: absolute;
   width: 100%;
