@@ -6,6 +6,9 @@ import { COLORS } from '../../styles/constants/colors';
 import Button from '../common/Button';
 import BottomPopUp from '../common/BottomPopUp';
 import React from 'react';
+import CheckedRadio from '@icons/icon/Radio/CheckedRadio.svg';
+import DefaultRadio from '@icons/icon/Radio/DefaultRadio.svg';
+import Image from 'next/image';
 
 interface ReportItemProps {
   text: string;
@@ -21,9 +24,9 @@ const ReportItem: NextPage<ReportItemProps> = ({
   return (
     <styles.ReportItemStyle onClick={onClick}>
       {isSelected ? (
-        <img src="/assets/icon/Radio/CheckedRadio.svg" alt="CheckedRadio" />
+        <Image src={CheckedRadio} alt="checkRadio" />
       ) : (
-        <img src="/assets/icon/Radio/DefaultRadio.svg" alt="DefaultRadio" />
+        <Image src={DefaultRadio} alt="checkRadio" />
       )}
       <span style={TEXT_STYLES.BodyM16}>{text}</span>
     </styles.ReportItemStyle>
@@ -85,3 +88,5 @@ export const Report = () => {
     </div>
   );
 };
+
+export default Report;
