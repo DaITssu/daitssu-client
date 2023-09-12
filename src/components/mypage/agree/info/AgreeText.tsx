@@ -1,7 +1,6 @@
-import * as styles from './Agree.style';
+import * as styles from './AgreeInfo.style';
 import Image from 'next/image';
 import RightArrow from '@icons/icon/Arrow/RightBigArrow.svg';
-import Link from 'next/link';
 interface ATProps {
   type: string;
   text: string;
@@ -30,17 +29,15 @@ const AgreeText = ({
         <styles.TextBox>{text}</styles.TextBox>
       </styles.ContainBox>
       {arrow ? (
-        <Link href={`/my/agree/info/${text}`}>
-          <styles.ArrowBox>
-            <Image
-              src={RightArrow}
-              alt="right arrow"
-              width={18}
-              height={18}
-              priority
-            />
-          </styles.ArrowBox>
-        </Link>
+        <styles.ArrowBox>
+          <Image
+            src={RightArrow}
+            alt="right arrow"
+            width={18}
+            height={18}
+            priority
+          />
+        </styles.ArrowBox>
       ) : (
         ''
       )}

@@ -96,7 +96,6 @@ const Agree = () => {
                 />
               )}
             </styles.CheckBox>
-
             <AgreeText
               type="compulsory"
               text="다잇슈 이용약관"
