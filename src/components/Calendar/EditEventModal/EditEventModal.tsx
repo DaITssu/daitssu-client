@@ -4,7 +4,7 @@ import ToggleButton from '@/components/common/Button/ToggleButton';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/locale';
-import calendar from '../../../../public/noticeInfo/calendar.svg';
+import calendar from '@icons/icon/Calendars/calendar.svg';
 import Image from 'next/image';
 
 interface EditEventModalProps {
