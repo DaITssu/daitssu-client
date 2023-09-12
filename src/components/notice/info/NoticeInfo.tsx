@@ -3,6 +3,13 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
+import Share from '@icons/icon/Icon24/Share.svg';
+import SmallHits from '@icons/icon/Icon18/SmallHits.svg';
+import AttchedFile from '@icons/icon/Icon24/AttachedFile.svg';
+import Download from '@icons/icon/Icon24/Download.svg';
+import Calendar from '@icons/icon/Nav/calendar_off.svg';
+import Url from '@icons/icon/Icon18/Url.svg';
+import Kakao from '@icons/icon/Icon18/Kakao.svg';
 
 const NoticeInfo = () => {
   const [share, setShare] = useState<boolean>(false);
@@ -11,6 +18,7 @@ const NoticeInfo = () => {
   };
   return (
     <styles.Container>
+      {/** TODO: 공통 헤더로 수정 */}
       <styles.MenuBox>
         <styles.LeftBox>
           <Image
@@ -29,7 +37,7 @@ const NoticeInfo = () => {
         <styles.MiddleBox>
           <styles.DateBox>
             <Image
-              src="/noticeInfo/calendar.svg"
+              src={Calendar}
               alt="date image"
               width={18}
               height={18}
@@ -39,7 +47,7 @@ const NoticeInfo = () => {
           </styles.DateBox>
           <styles.WatchBox>
             <Image
-              src="/noticeInfo/watch.svg"
+              src={SmallHits}
               alt="watch count"
               width={18}
               height={18}
@@ -51,18 +59,18 @@ const NoticeInfo = () => {
             <styles.ShareIconBox>
               {!share ? (
                 <Image
-                  src="/noticeInfo/share.svg"
-                  alt="goback"
-                  width={24}
-                  height={24}
+                  src={Share}
+                  alt="share"
+                  width={20}
+                  height={20}
                   priority
                 />
               ) : (
                 <Image
-                  src="/noticeInfo/shareClick.svg"
-                  alt="goback"
-                  width={24}
-                  height={24}
+                  src={Share}
+                  alt="share"
+                  width={20}
+                  height={20}
                   priority
                 />
               )}
@@ -73,8 +81,8 @@ const NoticeInfo = () => {
                 <styles.UrlBox>
                   <styles.DropdownIconBox>
                     <Image
-                      src="/noticeInfo/url.svg"
-                      alt="goback"
+                      src={Url}
+                      alt="url"
                       width={18}
                       height={18}
                       priority
@@ -85,7 +93,7 @@ const NoticeInfo = () => {
                 <styles.KakaoBox>
                   <styles.DropdownIconBox>
                     <Image
-                      src="/noticeInfo/kakao.svg"
+                      src={Kakao}
                       alt="kakaotalk"
                       width={18}
                       height={18}
@@ -110,7 +118,7 @@ const NoticeInfo = () => {
           <styles.FileTopBox>
             <styles.FileIconBox>
               <Image
-                src="/noticeInfo/attach.svg"
+                src={AttchedFile}
                 alt="attchment"
                 width={20}
                 height={20}
@@ -125,10 +133,10 @@ const NoticeInfo = () => {
             </styles.FileNameBox>
             <styles.FileDownBox>
               <Image
-                src="/noticeInfo/download.svg"
+                src={Download}
                 alt="download button"
-                width={18}
-                height={18}
+                width={20}
+                height={20}
                 priority
               />
             </styles.FileDownBox>

@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import { COLORS } from '@/styles/constants/colors';
 
 export const Container = styled.div`
   width: 390px;
   hr {
-    border: solid 1px rgba(217, 217, 217, 1);
+    border: solid 1px ${COLORS.grayscale.Gray3};
   }
 `;
 
@@ -33,7 +34,7 @@ export const TypeBox = styled.div`
   text-decoration: underline;
   text-underline-position: under;
   font-size: 14px;
-  color: rgba(49, 49, 49, 1);
+  color: ${COLORS.grayscale.Gray1};
 `;
 
 export const MiddleBox = styled.div`
@@ -60,7 +61,7 @@ export const DateBox = styled.div`
     text-align: center;
     display: flex;
     align-items: center;
-    color: rgba(110, 110, 110, 1);
+    color: ${COLORS.grayscale.Gray1};
   }
 `;
 
@@ -73,7 +74,7 @@ export const WatchBox = styled.div`
     text-align: center;
     display: flex;
     align-items: center;
-    color: rgba(110, 110, 110, 1);
+    color: ${COLORS.grayscale.Gray1};
   }
 `;
 
@@ -89,7 +90,7 @@ export const SharePopupBox = styled.div`
   background-color: white;
   font-size: 14px;
   border: 1px solid;
-  border-color: rgba(238, 238, 238, 1);
+  border-color: ${COLORS.grayscale.Gray4};
 `;
 
 export const ShareIconBox = styled.div`
@@ -112,7 +113,7 @@ export const UrlBox = styled.li`
   list-style: none;
   display: flex;
   border-bottom: 1px solid;
-  border-color: rgba(238, 238, 238, 1);
+  border-color: ${COLORS.grayscale.Gray4};
 `;
 
 export const KakaoBox = styled.li`
@@ -129,7 +130,9 @@ export const ContentBox = styled.div`
   font-weight: 400;
 `;
 
-export const FileBox = styled.div``;
+export const FileBox = styled.div`
+  margin-top: 15px;
+`;
 
 export const FileTopBox = styled.div`
   display: flex;
@@ -148,7 +151,7 @@ export const FileTitleBox = styled.div`
 
 export const FileAttachBox = styled.div`
   display: flex;
-  background-color: rgba(238, 238, 238, 1);
+  background-color: ${COLORS.grayscale.Gray4};
   padding: 0 15px;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -170,7 +173,7 @@ export const FileDownBox = styled.div`
 export const BottomBox = styled.div``;
 
 export const CommentTitleBox = styled.div`
-  background-color: rgba(249, 249, 249, 1);
+  background-color: ${COLORS.grayscale.Gray5};
   font-size: 16px;
   height: 48px;
   display: flex;
