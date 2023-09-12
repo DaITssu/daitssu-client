@@ -51,8 +51,6 @@ export const ProfileImageContainer = styled.div`
   border-radius: 100%;
   margin-top: 30px;
   background-color: ${COLORS.grayscale.Gray1};
-  opacity: 0.2;
-  padding: 20px;
 `;
 
 export const EditProfileButtonContainer = styled.div`
@@ -66,7 +64,6 @@ export const EditProfileButtonContainer = styled.div`
 export const EditProfileTextfield = styled.input`
   height: 40px;
   border: none;
-  /* center */
   text-align: center;
   background-color: ${COLORS.grayscale.Gray5};
   ${TEXT_STYLES.BodyM16};

@@ -3,7 +3,7 @@ import * as styles from './EditProfile.styles';
 import Image from 'next/image';
 import goingBackIcon from '@icons/icon/Arrow/LeftBigArrow.svg';
 import EditIcon from '@icons/icon/Icon24/Correction.svg';
-import ProfileIcon from '@icons/icon/Nav/my_on.svg';
+import ProfileIcon from '@icons/icon/Icon24/profile.svg';
 import { useRouter } from 'next/router';
 
 interface EditProfileProps {
@@ -23,10 +23,6 @@ const EditProfile = (props: EditProfileProps) => {
   function onSubmit() {
     //TODO : 닉네임 변경 API 호출
     console.log(nickname);
-  }
-
-  function setOnFocus() {
-    setIsFocused(true);
   }
 
   return (
