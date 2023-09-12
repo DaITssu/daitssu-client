@@ -3,12 +3,16 @@ import * as styles from './Agree.style';
 import AgreeText from './AgreeText';
 import NavigationBar from '@/components/common/Navbar/NavigationBar';
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { userNavAtom } from '@/states/userNavAtom';
+
 import Image from 'next/image';
 import DefaultRadio from '@icons/icon/Radio/DefaultRadio.svg';
 import CheckedRadio from '@icons/icon/Radio/CheckedRadio.svg';
 
 const Agree = () => {
   const [agreeArray, setAgreeArray] = useState([false, false, false, false]);
+  const activeNavType = useRecoilValue(userNavAtom).activeNavType;
 
   const handleOnClickCheck = (idx: number) => {
     if (idx === 0) {
@@ -181,8 +185,10 @@ const Agree = () => {
         <styles.FinishButtonBox>
           <Button label="완료" width={358} />
         </styles.FinishButtonBox>
-        <NavigationBar focusType="MY_PAGE" />
       </styles.FlexBox>
+      <styles.NavBarWrapper>
+        <NavigationBar focusType={activeNavType} />
+      </styles.NavBarWrapper>
     </>
   );
 };
