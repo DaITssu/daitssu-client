@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import * as styles from './EditProfile.styles';
 import Image from 'next/image';
 import goingBackIcon from '@icons/icon/Arrow/LeftBigArrow.svg';
+import EditIcon from '@icons/icon/Icon24/Correction.svg';
+import ProfileIcon from '@icons/icon/Nav/my_on.svg';
 import { useRouter } from 'next/router';
 
 interface EditProfileProps {
   name: string;
+  nickname: string;
   studentId: string;
   semester: string;
   department: string;
@@ -13,6 +16,19 @@ interface EditProfileProps {
 
 const EditProfile = (props: EditProfileProps) => {
   const router = useRouter();
+
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [nickname, setNickname] = useState<string>(props.nickname);
+
+  function onSubmit() {
+    //TODO : 닉네임 변경 API 호출
+    console.log(nickname);
+  }
+
+  function setOnFocus() {
+    setIsFocused(true);
+  }
+
   return (
     <div>
       <styles.EditProfileAppbar>
@@ -26,26 +42,30 @@ const EditProfile = (props: EditProfileProps) => {
         <p>프로필 수정</p>
         <div></div>
       </styles.EditProfileAppbar>
-      <styles.ProfileImageContainer>
-        <Image
-          src="/images/profile/profile.png"
-          width={100}
-          height={100}
-          alt="profile"
-        />
-      </styles.ProfileImageContainer>
-      <styles.EditProfileButtonContainer>
-        <styles.EditProfileButton onClick={() => {}}>
-          프로필 사진 변경
-        </styles.EditProfileButton>
-      </styles.EditProfileButtonContainer>
-
-      <h1>학적 정보</h1>
+      <styles.EditProfileContainer>
+        <styles.ProfileImageContainer>
+          <Image src={ProfileIcon} width={100} height={100} alt="profile" />
+        </styles.ProfileImageContainer>
+        <styles.EditProfileButtonContainer>
+          <styles.EditProfileTextfield
+            placeholder={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            onSubmit={onSubmit}
+          ></styles.EditProfileTextfield>
+          <Image
+            src={EditIcon}
+            width={24}
+            height={24}
+            alt="edit"
+            onClick={onSubmit}
+          />
+        </styles.EditProfileButtonContainer>
+      </styles.EditProfileContainer>
+      <styles.BigTitle>학적정보</styles.BigTitle>
       <styles.InformationText>
         <styles.InformationTitle>이름</styles.InformationTitle>
         <styles.InformationContent>{props.name}</styles.InformationContent>
       </styles.InformationText>
-
       <styles.InformationText>
         <styles.InformationTitle>학번</styles.InformationTitle>
         <styles.InformationContent>{props.studentId}</styles.InformationContent>
