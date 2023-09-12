@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 
 export const FlexBox = styled.div`
   background-color: white;
+  height: 82vh;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
 `;
 
 export const TopBox = styled.div``;
@@ -65,6 +69,7 @@ export const InfoBox = styled.div`
 export const FinishButtonBox = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: auto;
 `;
 
 export const NavBarWrapper = styled.div`
