@@ -9,29 +9,25 @@ import Modal from '@/components/common/Modal';
 import EditEventModal from '../EditEventModal';
 import CalendarIcon from '@icons/icon/Icon24/CalenderUpdate.svg';
 import Image from 'next/image';
-import { COLORS } from '@/styles/constants/colors';
-import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
-interface CalendarProps {
-  year: number;
-  month: number;
-  selectDay: number;
-
-  dayTasks: { [key: number]: Array<string> };
-  onDayClick: (day: number) => void;
-  onMonthChange: (year: number, month: number) => void;
-
-  modals?: {
-    [key: string]: {
-      open: () => void;
-      close: () => void;
-      PopUp: React.FC;
-    };
-  };
-}
-
-const CalendarScreen = (props: CalendarProps) => {
+const CalendarScreen = () => {
   const { open, PopUp, close } = useModal();
+
+  const [year, setYear] = useState<number>(2023);
+  const [month, setMonth] = useState<number>(8);
+  const [selectDay, setSelectDay] = useState<number>(23);
+  const [dayTasks, setDayTasks] = useState<{ [key: number]: Array<string> }>(
+    {},
+  );
+
+  function onDayClick(day: number) {
+    setSelectDay(day);
+  }
+
+  function onMonthChange(year: number, month: number) {
+    setYear(year);
+    setMonth(month);
+  }
 
   // now
   const now = new Date();
@@ -42,12 +38,12 @@ const CalendarScreen = (props: CalendarProps) => {
     <>
       <styles.CalendarScreenContainer>
         <Calendar
-          year={props.year}
-          month={props.month}
-          selectDay={props.selectDay}
-          dayTasks={props.dayTasks}
-          onDayClick={props.onDayClick}
-          onMonthChange={props.onMonthChange}
+          year={year}
+          month={month}
+          selectDay={selectDay}
+          dayTasks={dayTasks}
+          onDayClick={onDayClick}
+          onMonthChange={onMonthChange}
         />
       </styles.CalendarScreenContainer>
 
@@ -55,21 +51,17 @@ const CalendarScreen = (props: CalendarProps) => {
         <styles.rowSpaceBetween>
           <styles.row>
             <styles.TodayOrDateText>
-              {now.getFullYear() === props.year &&
-              now.getMonth() + 1 === props.month &&
-              now.getDate() === props.selectDay
+              {now.getFullYear() === year &&
+              now.getMonth() + 1 === month &&
+              now.getDate() === selectDay
                 ? 'Today'
-                : props.month +
-                  '/' +
-                  props.selectDay +
-                  ' ' +
-                  week[now.getDay()]}
+                : month + '/' + selectDay + ' ' + week[now.getDay()]}
             </styles.TodayOrDateText>
             <styles.TodayOrDateText style={{ padding: '0px 10px 0px 10px' }}>
               {' · '}
             </styles.TodayOrDateText>
             <styles.countText>
-              {props.dayTasks[props.selectDay]?.length ?? 0}
+              {dayTasks[selectDay]?.length ?? 0}
             </styles.countText>
           </styles.row>
           <styles.row>
@@ -92,7 +84,7 @@ const CalendarScreen = (props: CalendarProps) => {
         </styles.rowSpaceBetween>
         <SubjectList
           subjectList={[SubjectDTOExample, SubjectDTOExample]}
-          key={String(props.month) + String(props.selectDay)}
+          key={String(month) + String(selectDay)}
         />
       </styles.SubjectListContainer>
       <PopUp>
