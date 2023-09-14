@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
-import BackgroundImg from '@images/landing_background.png';
+import { Button } from '../common/Button/Button.styles';
 
 export const LandingLayout = styled.div`
   width: 100vw;
