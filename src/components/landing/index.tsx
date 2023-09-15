@@ -14,7 +14,7 @@ const Landing = () => {
         src={BackgroundImg.src}
         alt="배경 이미지"
         fill
-        style={{ objectFit: 'cover', top: 0 }}
+        style={{ objectFit: 'cover' }}
       />
       <LandingLogo />
       <AuthContent />
