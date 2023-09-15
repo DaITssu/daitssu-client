@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import * as styles from './NoticeFunSystem.style';
+import RightArrow from '@icons/icon/Arrow/RightSmallArrow.svg';
+import Image from 'next/image';
 
 interface SummaryText{
   textContent : string;
@@ -15,7 +17,6 @@ export interface NoticeFunSystemProps{
 const NoticeFunSystem:React.FC<NoticeFunSystemProps> = ({title, summaries}) => {
 
   return (
-    <div>
       <styles.SummaryBox>
         <styles.TopBox>
           <styles.Title>
@@ -23,7 +24,7 @@ const NoticeFunSystem:React.FC<NoticeFunSystemProps> = ({title, summaries}) => {
           </styles.Title>
           <styles.MoreButton>
             더보기
-            <img className= "arrow" src = "/assets/icon/Arrow/RightSmallArrow.svg"/>
+            <Image src ={RightArrow} alt = "right arrow"/>
           </styles.MoreButton>
         </styles.TopBox >
         
@@ -57,7 +58,6 @@ const NoticeFunSystem:React.FC<NoticeFunSystemProps> = ({title, summaries}) => {
         </styles.TextBox>
       </styles.SummaryBox>
       
-    </div>
   );
 };
 
