@@ -14,13 +14,13 @@ export interface NoticeFunSystemProps{
 }
 
 
-const NoticeFunSystem:React.FC<NoticeFunSystemProps> = ({title, summaries}) => {
+const NoticeFunSystem= (props:NoticeFunSystemProps) => {
 
   return (
       <styles.SummaryBox>
         <styles.TopBox>
           <styles.Title>
-            {title}
+            {props.title}
           </styles.Title>
           <styles.MoreButton>
             더보기
@@ -33,26 +33,26 @@ const NoticeFunSystem:React.FC<NoticeFunSystemProps> = ({title, summaries}) => {
           <styles.Line top="112px"/>
           <styles.TextLine top = "16px">
             <styles.TextSummary>
-              {summaries[0].textContent}
+              {props.summaries[0].textContent}
             </styles.TextSummary>
             <styles.Date>
-              {summaries[0].date}
+              {props.summaries[0].date}
             </styles.Date>
           </styles.TextLine>
           <styles.TextLine top = "73px">
             <styles.TextSummary>
-              {summaries[1].textContent}
+              {props.summaries[1].textContent}
             </styles.TextSummary>
             <styles.Date>
-              {summaries[1].date}
+              {props.summaries[1].date}
             </styles.Date>
           </styles.TextLine>
           <styles.TextLine top = "130px">
             <styles.TextSummary>
-              {summaries[2].textContent}
+              {props.summaries[2].textContent}
             </styles.TextSummary>
             <styles.Date>
-              {summaries[2].date}
+              {props.summaries[2].date}
             </styles.Date>
           </styles.TextLine>
         </styles.TextBox>
