@@ -1,5 +1,5 @@
 import React from 'react';
-import { COLORS } from '../../../../styles/constants/colors';
+import { COLORS } from '../../../../../styles/constants/colors';
 import * as styles from "./TitleBox.styles"
 
 interface FormData {

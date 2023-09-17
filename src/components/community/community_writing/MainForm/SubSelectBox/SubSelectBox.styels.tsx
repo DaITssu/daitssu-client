@@ -1,4 +1,4 @@
-import { COLORS } from '../../../../styles/constants/colors';
+
 import styled from '@emotion/styled';
 interface SubjectSelectProps {
   width?: number;

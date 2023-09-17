@@ -1,4 +1,4 @@
-import { COLORS } from '../../../../styles/constants/colors';
+import { COLORS } from '@/styles/constants/colors';
 import styled from '@emotion/styled';
 import React from 'react'; // React import 추가
 

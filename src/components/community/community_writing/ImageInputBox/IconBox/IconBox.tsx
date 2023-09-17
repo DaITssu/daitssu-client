@@ -1,5 +1,5 @@
 import React from 'react';
-import { COLORS } from '../../../../styles/constants/colors';
+import { COLORS } from '@/styles/constants/colors';
 import { FiCamera } from 'react-icons/fi'; 
 import * as styles from "./IconBox.styles"
 interface FormData {

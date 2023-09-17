@@ -1,11 +1,11 @@
 import { format } from 'path';
 import React, { ChangeEvent, useState } from 'react';
 import { FiCamera } from 'react-icons/fi'; // react-icons에서 FiCamera 아이콘 불러오기
-import SubmitHeader from '@/components/community_writing/MainForm/MainForm';
-import TitleForm from '@/components/community_writing/InputForm/TitleForm/TitleForm';
-import HorizontalLine from '@/components/community_writing/HorizontalLine/HorizontalLine';
-import TextForm from '@/components/community_writing/InputForm/TextForm/TextForm';
-import ImageInputBox from '@/components/community_writing/ImageInputBox/ImageInputBox';
+import SubmitHeader from '@/components/community/community_writing/MainForm/MainForm';
+import TitleForm from '@/components/community/community_writing/InputForm/TitleForm/TitleForm';
+import HorizontalLine from '@/components/community/community_writing/HorizontalLine/HorizontalLine';
+import TextForm from '@/components/community/community_writing/InputForm/TextForm/TextForm';
+import ImageInputBox from '@/components/community/community_writing/ImageInputBox/ImageInputBox';
 
 
 interface FormData {

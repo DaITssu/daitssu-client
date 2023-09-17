@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+
 import React from 'react';
 import * as styles from "./SubSelectBox.styels"
 import { SelectListBox } from './SelectListBox./SelectListBox';
