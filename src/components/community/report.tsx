@@ -80,7 +80,12 @@ export const Report = () => {
           type="text"
         ></styles.ReportInput>
       </div>
-      <div style={{ cursor: 'pointer' }} onClick={() => {}}>
+      <div
+        style={{ cursor: 'pointer' }}
+        onClick={() => {
+          //TODO : 신고하기 API 연결
+        }}
+      >
         <Button label="신고하기" color={COLORS.SSU.error} />
       </div>
 
