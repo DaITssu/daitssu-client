@@ -35,6 +35,7 @@ interface DeleteTextProps {
 }
 
 export const DeleteText = styled.div<DeleteTextProps>`
+  ${TEXT_STYLES.BodyM16}
   color: ${(props) =>
     props.isPossibleDelete
       ? `${COLORS.SSU.primary}`
