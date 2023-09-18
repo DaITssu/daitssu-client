@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Agree from './AgreeInfo';
+import AgreeInfo from './AgreeInfo';
 
-const meta: Meta<typeof Agree> = {
-  title: 'Agree',
-  component: Agree,
+const meta: Meta<typeof AgreeInfo> = {
+  title: 'AgreeInfo',
+  component: AgreeInfo,
 };
 
 export default meta;
-type Story = StoryObj<typeof Agree>;
+type Story = StoryObj<typeof AgreeInfo>;
 
 export const Primary: Story = {};

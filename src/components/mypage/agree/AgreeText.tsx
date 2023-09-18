@@ -6,21 +6,9 @@ interface ATProps {
   type: string;
   text: string;
   arrow: boolean;
-  AllAgree?: boolean;
-  check: boolean;
-  agreeArray: Array<boolean>;
-  setAgreeArray: Function;
 }
 
-const AgreeText = ({
-  type,
-  text,
-  arrow,
-  AllAgree,
-  check,
-  agreeArray,
-  setAgreeArray,
-}: ATProps) => {
+const AgreeText = ({ type, text, arrow }: ATProps) => {
   return (
     <>
       <styles.ContainBox>
@@ -30,7 +18,12 @@ const AgreeText = ({
         <styles.TextBox>{text}</styles.TextBox>
       </styles.ContainBox>
       {arrow ? (
-        <Link href={`/my/agree/info/${text}`}>
+        <Link
+          href={{
+            pathname: '/my/agree/info',
+            query: { param: text },
+          }}
+        >
           <styles.ArrowBox>
             <Image
               src={RightArrow}
