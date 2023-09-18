@@ -3,8 +3,6 @@ import styled from '@emotion/styled';
 import { TEXT_STYLES } from '../../styles/constants/textStyles';
 
 export const ReportScreen = styled.div`
-  width: 440px;
-  height: 844px;
   border: solid black 1px;
 `;
 
