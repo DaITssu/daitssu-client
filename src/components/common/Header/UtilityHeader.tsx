@@ -33,7 +33,7 @@ const UtilityHeader = ({
         <styles.LogoText>{child}</styles.LogoText>
         <styles.LogoRightImg>
           {isCommunity && (
-            <Image src={Menu} width={25} height={25} alt="headerLeftArrow" />
+            <Image src={Menu} width={25} height={25} alt="menuBar" />
           )}
           {isDeleteBtn && (
             <styles.DeleteText isPossibleDelete={isPossibleDelete}>
