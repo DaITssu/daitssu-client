@@ -1,8 +1,8 @@
 import * as styles from './report.styles';
 import { useState, useEffect } from 'react';
-import { TEXT_STYLES } from '../../styles/constants/textStyles';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import { NextPage } from 'next';
-import { COLORS } from '../../styles/constants/colors';
+import { COLORS } from '@/styles/constants/colors';
 import Button from '../common/Button';
 import BottomPopUp from '../common/BottomPopUp';
 import React from 'react';
