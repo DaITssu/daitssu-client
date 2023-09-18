@@ -1,3 +1,5 @@
+import LoginLayout from '@/components/login/LoginLayout/LoginLayout';
+
 export default function Login() {
-  return <div>로그인</div>;
+  return <LoginLayout />;
 }
