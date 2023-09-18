@@ -34,7 +34,7 @@ export const Input = styled.input<{ width?: string; height?: string }>`
   color: ${COLORS.grayscale.Gray1};
   ${TEXT_STYLES.BodyR16};
 
-  //type='number'일 때 화살표 없애긴
+  //type='number'일 때 화살표 없애기
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
