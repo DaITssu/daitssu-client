@@ -23,4 +23,6 @@ export const Content = styled.div`
 export const LoginHeader = styled.div`
   color: ${COLORS.SSU.primary};
   ${TEXT_STYLES.HeadSM20}
+
+  margin-bottom: 52px;
 `;
