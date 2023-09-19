@@ -3,7 +3,7 @@ import Image from 'next/image';
 import RightArrow from '@icons/icon/Arrow/RightBigArrow.svg';
 import Link from 'next/link';
 interface ATProps {
-  type: string;
+  type: 'compulsory' | 'select' | 'none';
   text: string;
   arrow: boolean;
 }
