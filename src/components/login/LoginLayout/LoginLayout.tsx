@@ -12,6 +12,10 @@ export default function LoginLayout() {
   const [isSelectedAutoLogon, setIsSelectedAutoLogon] =
     useState<boolean>(false);
 
+  const handleClickAutoLogon = () => {
+    setIsSelectedAutoLogon(!isSelectedAutoLogon);
+  };
+
   return (
     <styles.LayoutContainer>
       <styles.Content>
@@ -32,7 +36,7 @@ export default function LoginLayout() {
         />
         <AutoLogon
           isSelected={isSelectedAutoLogon}
-          setIsSelected={setIsSelectedAutoLogon}
+          handleClickAutoLogon={handleClickAutoLogon}
         />
         <Button label="로그인" height={51} />
         <FindAuth />

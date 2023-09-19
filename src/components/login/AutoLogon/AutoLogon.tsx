@@ -6,19 +6,15 @@ import BlueCheckedBoxIcon from '@icons/icon/CheckBox/BlueCheckedBox.svg';
 
 interface AutoLogonProps {
   isSelected: boolean;
-  setIsSelected: React.Dispatch<React.SetStateAction<boolean>>;
+  handleClickAutoLogon: () => void;
 }
 export default function AutoLogon({
   isSelected,
-  setIsSelected,
+  handleClickAutoLogon,
 }: AutoLogonProps) {
-  const handleClickCheckBtn = () => {
-    setIsSelected(!isSelected);
-  };
-
   return (
     <styles.AutoLogonContainer>
-      <styles.CheckBtn onClick={handleClickCheckBtn}>
+      <styles.CheckBtn onClick={handleClickAutoLogon}>
         {isSelected ? (
           <Image src={BlueCheckedBoxIcon} alt="자동로그인 체크박스" />
         ) : (
