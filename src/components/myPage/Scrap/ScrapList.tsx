@@ -1,5 +1,5 @@
 import Category from '@/components/common/Category';
-import * as styles from '@/components/myPage/Scrap/ScrapList.style';
+import * as styles from './ScrapList.style';
 import Image from 'next/image';
 import DefaultCheckBox from '@icons/icon/CheckBox/DefaultCheckBox.svg';
 import Comment from '@icons/icon/Icon24/Comment.svg';
