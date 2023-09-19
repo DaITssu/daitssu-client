@@ -7,7 +7,6 @@ const meta: Meta<typeof InputBox> = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
   argTypes: {
     type: {
       control: 'radio',
