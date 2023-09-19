@@ -20,8 +20,6 @@ export const MiddleBox = styled.div`
   height: 20px;
 `;
 
-export const BottomBox = styled.div``;
-
 export const ContainBox = styled.div`
   display: flex;
   padding: 12px 15px;

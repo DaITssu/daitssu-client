@@ -18,7 +18,6 @@ const AgreeInfo = () => {
           <div style={{ padding: '12px 15px' }}>{paramValue}</div>
         </styles.TopBox>
         <styles.MiddleBox />
-        <styles.BottomBox></styles.BottomBox>
         <styles.InfoBox></styles.InfoBox>
         <styles.FinishButtonBox>
           <Button label="동의하기" width={358} />
