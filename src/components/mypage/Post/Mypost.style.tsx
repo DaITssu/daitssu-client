@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const Container = styled.div``;
 
@@ -42,11 +43,7 @@ export const CheckBox = styled.div`
 export const TagBox = styled.div``;
 
 export const MyCommentText = styled.div`
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 24px */
-  letter-spacing: -0.176px;
+  ${TEXT_STYLES.BodyM16};
 `;
 
 export const PostInfoBox = styled.div`
