@@ -18,7 +18,6 @@ const MyComment = () => {
               alt="check"
               width={15}
               height={15}
-              priority
               onClick={() => {
                 setIsChecked(!isChecked);
               }}
@@ -29,7 +28,6 @@ const MyComment = () => {
               alt="check"
               width={15}
               height={15}
-              priority
               onClick={() => {
                 setIsChecked(!isChecked);
               }}
@@ -43,7 +41,7 @@ const MyComment = () => {
             <Category label="질문" BgColor={false} />
           </styles.TagBox>
           <styles.PostInfoBox>
-            <styles.PostTitleBox>오늘 학교 가는 분?</styles.PostTitleBox>{' '}
+            <styles.PostTitleBox>오늘 학교 가는 분?</styles.PostTitleBox>
             <styles.PostCommentText>&nbsp;에 남긴 댓글</styles.PostCommentText>
           </styles.PostInfoBox>
         </styles.TopBox>
