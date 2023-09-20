@@ -6,6 +6,7 @@ import SettingIcon from '@icons/icon/SubscribeList/Setting.svg';
 import { useRouter } from 'next/router';
 import useModal from '@/components/common/Modal/useModal';
 import Modal from '@/components/common/Modal';
+import CancelIcon from '@icons/icon/SubscribeList/Cancel.svg';
 
 interface EditProfileProps {
   name: string;
@@ -151,7 +152,8 @@ const SubscribeList = (props: EditProfileProps) => {
                   }}
                   key={index}
                 >
-                  {title + ' X'}
+                  {title}
+                  <Image src={CancelIcon} width={21} height={21} alt="cancel" />
                 </styles.selectableCategory>
               ))}
               {noticeList
@@ -190,7 +192,8 @@ const SubscribeList = (props: EditProfileProps) => {
                   }}
                   key={index}
                 >
-                  {title + ' X'}
+                  {title}
+                  <Image src={CancelIcon} width={21} height={21} alt="cancel" />
                 </styles.selectableCategory>
               ))}
               {funsystemList
