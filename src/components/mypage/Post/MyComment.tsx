@@ -6,7 +6,7 @@ import CheckedBox from '@icons/icon/CheckBox/BlueCheckedBox.svg';
 import { useState } from 'react';
 
 const MyComment = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
     <styles.FlexBox>
