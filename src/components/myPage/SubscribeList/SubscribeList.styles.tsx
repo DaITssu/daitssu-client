@@ -49,6 +49,8 @@ export const selectableCategory = styled.div<SelectableCategoryProps>`
   display: flex;
   padding: 7px 10px;
   margin: 5px 5px;
+  justify-content: center;
+  align-items: center;
   color: ${(props) =>
     props.selected ? COLORS.SSU.primary : COLORS.grayscale.Gray1};
   ${TEXT_STYLES.CapM14};
