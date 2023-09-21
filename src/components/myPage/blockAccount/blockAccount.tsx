@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ProfileImg from '/public/noticeInfo/profile.svg';
+import ProfileImg from '@icons/icon/Icon24/profile.svg';
 import Image from 'next/image';
 import * as styles from './bolckAccount.style';
 
