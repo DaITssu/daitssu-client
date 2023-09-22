@@ -23,7 +23,7 @@ export const TabBox = styled.div`
   width: 100%;
   height: 40px;
   left: 0px;
-  top: 46px;
+  top: 56px;
   padding-top: 4px;
   ${TEXT_STYLES.BodyR16};
 `;
@@ -34,5 +34,5 @@ export const TabContents = styled.div`
 `;
 
 export const PostContianer = styled.div`
-  margin-top: -113px;
+  margin-top: -103px;
 `;
