@@ -5,7 +5,6 @@ import NavigationBar from '@/components/common/Navbar/NavigationBar';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { userNavAtom } from '@/states/userNavAtom';
-
 import Image from 'next/image';
 import DefaultRadio from '@icons/icon/Radio/DefaultRadio.svg';
 import CheckedRadio from '@icons/icon/Radio/CheckedRadio.svg';
@@ -58,15 +57,10 @@ const Agree = () => {
                 />
               )}
             </styles.CheckBox>
-
             <AgreeText
               type="none"
               text="약관 전체 동의 (선택사항 모두 포함)"
               arrow={false}
-              AllAgree={false}
-              check={agreeArray[0]}
-              agreeArray={agreeArray}
-              setAgreeArray={setAgreeArray}
             />
           </styles.ContainCheckBox>
         </styles.TopBox>
@@ -96,15 +90,7 @@ const Agree = () => {
                 />
               )}
             </styles.CheckBox>
-
-            <AgreeText
-              type="compulsory"
-              text="다잇슈 이용약관"
-              arrow={true}
-              check={agreeArray[1]}
-              agreeArray={agreeArray}
-              setAgreeArray={setAgreeArray}
-            />
+            <AgreeText type="compulsory" text="다잇슈 이용약관" arrow={true} />
           </styles.ContainCheckBox>
           <styles.ContainCheckBox>
             <styles.CheckBox
@@ -130,17 +116,12 @@ const Agree = () => {
                 />
               )}
             </styles.CheckBox>
-
             <AgreeText
               type="compulsory"
               text="개인정보 수집 및 이용약관"
               arrow={true}
-              check={agreeArray[2]}
-              agreeArray={agreeArray}
-              setAgreeArray={setAgreeArray}
             />
           </styles.ContainCheckBox>
-
           <styles.ContainCheckBox>
             <styles.CheckBox
               onClick={() => {
@@ -165,15 +146,7 @@ const Agree = () => {
                 />
               )}
             </styles.CheckBox>
-
-            <AgreeText
-              type="select"
-              text="제3자 정보 제공 동의"
-              arrow={true}
-              check={agreeArray[3]}
-              agreeArray={agreeArray}
-              setAgreeArray={setAgreeArray}
-            />
+            <AgreeText type="select" text="제3자 정보 제공 동의" arrow={true} />
           </styles.ContainCheckBox>
         </styles.BottomBox>
         <styles.InfoBox>
