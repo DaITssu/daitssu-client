@@ -16,7 +16,7 @@ export const NavBarWrapper = styled.div`
 export const FlexBox = styled.div`
   display: flex;
   width: 100%;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 1px solid ${COLORS.grayscale.Gray3};
   padding-top: 0.8rem;
 `;
 
@@ -60,12 +60,8 @@ export const PostTitleBox = styled.div`
 `;
 
 export const PostCommentText = styled.div`
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 150%; /* 21px */
-  letter-spacing: -0.154px;
-
+  ${TEXT_STYLES.CapM14}
   display: flex;
   align-items: center;
 `;
@@ -76,9 +72,8 @@ export const BottomBox = styled.div`
 `;
 
 export const ContentBox = styled.div`
-  font-size: 14px;
-  font-weight: 400;
-  color: #6e6e6e;
+  ${TEXT_STYLES.CapR14}
+  color: ${COLORS.grayscale.Gray1};
   margin-top: 0.6rem;
   padding-right: 1rem;
 `;
