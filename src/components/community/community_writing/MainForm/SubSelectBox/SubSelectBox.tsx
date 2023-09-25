@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import React from 'react';
-import * as styles from "./SubSelectBox.styels"
-import { SelectListBox } from './SelectListBox./SelectListBox';
+import * as styles from "./SubSelectBox.styles"
+import { SelectListBox } from './SelectListBox/SelectListBox';
 interface SubSelectBoxProps {
   options: string[]; // options를 문자열 배열로 변경
   chosen?: string | null; // chosen을 문자열 또는 null로 변경

@@ -5,7 +5,7 @@ import React, {FC, ChangeEvent, useState, useEffect} from 'react';
 import CommunityItem, {CommunityItemProps} from './CommunityListItem';
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from '@emotion/react';
-
+import Link from 'next/link';
 
 const CommunityList:FC = ()=>{
 
@@ -65,7 +65,10 @@ const [mounted, setMounted] = useState<boolean>(false); //기본 브라우저의
           item = {item}/>;
         })}
       </styles.CommunityListBox>
-      <styles.PlusButton src="/assets/icon/Button/plus_button.svg" onClick = {plus_button_onClick}/>
+      <Link href={'/community/writing'}>
+        <styles.PlusButton src="/assets/icon/Button/plus_button.svg" onClick = {plus_button_onClick}/>
+      </Link>
+      
     </>
     
   );

@@ -12,7 +12,7 @@ import DefaultLiked from '@icons/icon/Liked/DefaultLiked.svg';
 import Commentsvg from '@icons/icon/Icon24/Comment.svg';
 import FilledScarp from '@icons/icon/Scrap/FilledScrap.svg';
 import DefaultScrap from '@icons/icon/Scrap/DefaultScrap.svg';
-
+import Link from 'next/link';
 const CommunityInfo = () => {
   const [isLike, setIsLike] = useState<boolean>(false);
   const [isScrap, setIsScrap] = useState<boolean>(false);
@@ -33,13 +33,15 @@ const CommunityInfo = () => {
     <styles.Container>
       <styles.MenuBox>
         <styles.LeftBox>
-          <Image
-            src="/noticeInfo/backarrow.svg"
-            alt="goback"
-            width={8.95}
-            height={15.64}
-            priority
-          />
+          <Link href = {'/community'}>
+            <Image
+              src="/noticeInfo/backarrow.svg"
+              alt="goback"
+              width={8.95}
+              height={15.64}
+              priority
+            />
+          </Link>
         </styles.LeftBox>
         <styles.CenterBox>커뮤니티</styles.CenterBox>
         <styles.RightBox>
@@ -54,18 +56,20 @@ const CommunityInfo = () => {
           </styles.MenuIconBox>
           {menu ? (
             <styles.PopupContainerBox>
-              <styles.ReportBox>
-                <styles.PopIconBox>
-                  <Image
-                    src={Sue}
-                    alt="sue icon"
-                    width={18}
-                    height={18}
-                    priority
-                  />
-                </styles.PopIconBox>
-                <styles.PopTextBox>신고하기</styles.PopTextBox>
-              </styles.ReportBox>
+              <Link href ={'/community/info/report'}>
+                <styles.ReportBox>
+                  <styles.PopIconBox>
+                    <Image
+                      src={Sue}
+                      alt="sue icon"
+                      width={18}
+                      height={18}
+                      priority
+                    />
+                  </styles.PopIconBox>
+                  <styles.PopTextBox>신고하기</styles.PopTextBox>
+                </styles.ReportBox>
+              </Link>
               <styles.BlockBox>
                 <styles.PopIconBox>
                   <Image
