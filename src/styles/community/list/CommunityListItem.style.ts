@@ -8,10 +8,12 @@ height : 134px;
 position: relative;
 border: 0;
 /* white */
+margin : 0 auto;
 background: #FFFFFF;
 /* gray 3 */
 border-top: 1px solid #D9D9D9;
-
+display : flex;
+justify-content: center;
 `;
 export const Minutes = styled.div`
 

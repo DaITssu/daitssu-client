@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const CommunityListBox = styled.div
 `
 position : absolute;
-width:390px;
+width: 100%;
 height:670px;
 top : 166px;
 overflow : auto;
@@ -13,18 +13,15 @@ scrollbar-width: none;
 ::-webkit-scrollbar {
   display: none;
 }
+background: #FFFFFF;
 `;
 
-export const PlusButton = styled.img
-`
-/* Group 139 */
-
-position: absolute;
-width: 80px;
-height: 80px;
-left: 310px;
-top: 679px;
-
+export const PlusButton = styled.img`
+  position: fixed; 
+  width: 80px;
+  height: 80px;
+  bottom: 20px; 
+  right: 20px; 
 `;
 
 export const TagList = styled.div
@@ -38,7 +35,7 @@ align-items : center;
 gap :12px;
 padding-left: 16px;
 position: absolute;
-width: 390px;
+width: 100%;
 height: 59px;
 left: 0px;
 top: 107px;
@@ -47,7 +44,8 @@ top: 107px;
 background: #FFFFFF;
 /* gray 3 */
 border-bottom: 1px solid #D9D9D9;
-
+margin : 0 auto;
+justify-content: center;
 `;
 
 export const TagButton = styled.button
