@@ -7,7 +7,7 @@ export default function FindAuth() {
 
   const handleClickBtn = (type: 'find' | 'signup') => {
     if (type === 'find') {
-      router.push('https://smartid.ssu.ac.kr/Symtra_Sso/smln_IDFind.asp');
+      router.push('/login/findAccount');
     } else if (type === 'signup') {
       router.push('https://smartid.ssu.ac.kr/Symtra_Sso/smln_IDFind.asp');
     }
