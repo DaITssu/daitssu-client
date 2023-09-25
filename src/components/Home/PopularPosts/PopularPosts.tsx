@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import * as styles from './PopularPosts.styles';
 import CommentIcon from '@icons/icon/Icon18/SmallComment.svg';
+import { useRouter } from 'next/router';
 
 export interface PostDetailProps {
   id: number;
@@ -37,12 +38,15 @@ const PopularPosts = ({ posts }: { posts: PostDetailProps[] }) => {
 };
 
 const PostDetail = ({
+  id,
   title,
   content,
   type,
   commentCount,
   createdAt,
 }: PostDetailProps) => {
+  const router = useRouter();
+
   let typeTrans = '';
   if (type === 'info') {
     typeTrans = '정보';
@@ -68,8 +72,13 @@ const PostDetail = ({
     return `${diffDay}일 전`;
   }
 
+  function onClick() {
+    //TODO 실제 게시글로 이동
+    router.push(`/post/${id}`);
+  }
+
   return (
-    <styles.PostContainer>
+    <styles.PostContainer onClick={onClick}>
       <styles.RowSpacer>
         <styles.Row>
           <styles.PostType>{typeTrans}</styles.PostType>
