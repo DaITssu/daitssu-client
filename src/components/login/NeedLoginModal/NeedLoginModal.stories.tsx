@@ -6,7 +6,7 @@ import Modal from '@/components/common/Modal';
 import useModal from '@/components/common/Modal/useModal';
 
 const meta: Meta<typeof NeedLoginModal> = {
-  title: 'NeedLoginModal',
+  title: 'Login/NeedLoginModal',
   component: NeedLoginModal,
 };
 
