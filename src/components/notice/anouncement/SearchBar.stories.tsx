@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import SearchBar from './SearchBar';
 
 const meta: Meta<typeof SearchBar> = {
-  title: 'SearchBar',
+  title: 'notice/SearchBar',
   component: SearchBar,
 };
 
