@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import * as styles from './SelectButton.style';
+import BottomArrow from '@icons/icon/Arrow/DownBigArrow.svg';
+import UpArrow from '@icons/icon/Arrow/UpBigArrow.svg';
 
 const ButtonGroup = () => {
   const [selectedButton, setSelectedButton] = useState<string>('전체');
@@ -105,11 +107,11 @@ const ButtonGroup = () => {
         </styles.ButtonGroupStyles>
         {!expand ? (
           <styles.ExpandButton onClick={handleExpandClick}>
-            <Image src={'/bottomArrow.png'} width={20} height={20} alt={''} />
+            <Image src={BottomArrow} width={20} height={20} alt={''} />
           </styles.ExpandButton>
         ) : (
           <styles.ExpandButton onClick={handleExpandClick}>
-            <Image src={'/topArrow.png'} width={20} height={20} alt={''} />
+            <Image src={UpArrow} width={20} height={20} alt={''} />
           </styles.ExpandButton>
         )}
       </styles.ButtonGroupContainer>

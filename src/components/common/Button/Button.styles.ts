@@ -7,6 +7,7 @@ import styled from '@emotion/styled';
 interface ButtonProps {
   width?: number;
   height?: number;
+  color?: string;
 }
 
 export const Button = styled.div<ButtonProps>`
@@ -16,6 +17,7 @@ export const Button = styled.div<ButtonProps>`
   border-radius: 12px;
   text-align: center;
   color: ${COLORS.grayscale.white};
-  background-color: ${COLORS.SSU.primary};
+  background-color: ${(props) =>
+    props.color ? `${props.color}` : `${COLORS.SSU.primary}`};
   ${TEXT_STYLES.BtnM18}
 `;
