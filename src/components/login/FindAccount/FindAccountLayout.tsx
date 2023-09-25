@@ -4,10 +4,11 @@ import { useRouter } from 'next/router';
 export default function FindAccountLayout() {
   const router = useRouter();
 
-  //TODO: 라우터 맞게 수정
   const handleClickFindButton = (type: 'ID' | 'Password') => {
-    if (type === 'ID') router.push('/findId');
-    if (type === 'Password') router.push('/findPassword');
+    if (type === 'ID')
+      router.push('https://smartid.ssu.ac.kr/Symtra_Sso/smln_IDFind.asp');
+    if (type === 'Password')
+      router.push('https://smartid.ssu.ac.kr/Symtra_Sso/smln_pwd.asp');
   };
 
   return (
