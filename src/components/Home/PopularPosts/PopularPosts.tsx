@@ -17,7 +17,7 @@ const PopularPosts = ({ posts }: { posts: PostDetailProps[] }) => {
     <styles.Container>
       <styles.RowSpacer>
         <styles.Title>인기 게시글</styles.Title>
-        <styles.MoreButton>더보기</styles.MoreButton>
+        <styles.MoreButton>더보기 {'>'}</styles.MoreButton>
       </styles.RowSpacer>
       <>
         {posts.map((post) => (
@@ -52,6 +52,22 @@ const PostDetail = ({
     typeTrans = '자유';
   }
 
+  function beforeTime(date: string) {
+    const now = new Date();
+    const created = new Date(date);
+    const diff = now.getTime() - created.getTime();
+    const diffDay = Math.floor(diff / (1000 * 60 * 60 * 24));
+    if (diffDay === 0) {
+      const diffHour = Math.floor(diff / (1000 * 60 * 60));
+      if (diffHour === 0) {
+        const diffMin = Math.floor(diff / (1000 * 60));
+        return `${diffMin}분 전`;
+      }
+      return `${diffHour}시간 전`;
+    }
+    return `${diffDay}일 전`;
+  }
+
   return (
     <styles.PostContainer>
       <styles.RowSpacer>
@@ -59,7 +75,7 @@ const PostDetail = ({
           <styles.PostType>{typeTrans}</styles.PostType>
           <styles.PostTitle>{title}</styles.PostTitle>
         </styles.Row>
-        <styles.PostTime>{createdAt}</styles.PostTime>
+        <styles.PostTime>{beforeTime(createdAt)}</styles.PostTime>
       </styles.RowSpacer>
       <styles.RowSpacer>
         <styles.PostContent>{content}</styles.PostContent>
