@@ -2,6 +2,7 @@ import Image from 'next/image';
 import * as styles from './PopularPosts.styles';
 import CommentIcon from '@icons/icon/Icon18/SmallComment.svg';
 import { useRouter } from 'next/router';
+import RightSmallArrow from '@icons/icon/Arrow/RightSmallArrow.svg';
 import { beforeTime } from '@utils/time';
 
 export interface PostDetailProps {
@@ -9,7 +10,6 @@ export interface PostDetailProps {
   title: string;
   content: string;
   type: 'info' | 'question' | 'free';
-
   commentCount: number;
   createdAt: string;
 }
@@ -19,7 +19,15 @@ const PopularPosts = ({ posts }: { posts: PostDetailProps[] }) => {
     <styles.Container>
       <styles.RowSpacer>
         <styles.Title>인기 게시글</styles.Title>
-        <styles.MoreButton>더보기 {'>'}</styles.MoreButton>
+        <styles.MoreButton>
+          더보기{' '}
+          <Image
+            src={RightSmallArrow}
+            width={20}
+            height={20}
+            alt="오른쪽 화살표"
+          />
+        </styles.MoreButton>
       </styles.RowSpacer>
       <>
         {posts.map((post) => (
