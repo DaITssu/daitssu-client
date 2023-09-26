@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const NoticeDate = styled.text`
   position: absolute;
-  left: 81.28%;
+  left: 78.28%;
   right: 3.35%;
   top: 71.29%;
   bottom: 7.92%;
@@ -100,7 +100,6 @@ export const NoticeStatus = styled.div`
   gap: 10px;
 
   position: absolute;
-  width: 25px;
   height: 18px;
   left: 12px;
   top: calc(50% - 24px / 2 - 28.5px);
@@ -108,6 +107,8 @@ export const NoticeStatus = styled.div`
   /* gray 3 */
   background: #d9d9d9;
   border-radius: 12px;
+  white-space: nowrap;
+  width: min-content;
 `;
 
 export const NoticeTitleFont = styled.div`
