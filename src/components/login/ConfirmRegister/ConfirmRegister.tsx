@@ -10,7 +10,7 @@ export default function ConfirmRegister() {
   const router = useRouter();
 
   function onClickConfirm() {
-    router.push('/');
+    router.push('/login');
   }
 
   return (
