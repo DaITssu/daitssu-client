@@ -18,8 +18,8 @@ export const InformComponent = ({
 }: ICProps) => {
   return (
     <styles.ComponentContainer>
-      <styles.LeftBox>{icon}</styles.LeftBox>
-      <styles.RightBox>
+      <styles.LeadingBox>{icon}</styles.LeadingBox>
+      <styles.ContentBox>
         <styles.RightTopBox>
           <styles.TypeBox type={type}>
             {type === 'none' ? ' ' : type}
@@ -28,7 +28,7 @@ export const InformComponent = ({
           <styles.TimeBox>{time}분 전</styles.TimeBox>
         </styles.RightTopBox>
         <styles.RightBottomBox>{detail}</styles.RightBottomBox>
-      </styles.RightBox>
+      </styles.ContentBox>
     </styles.ComponentContainer>
   );
 };

@@ -23,12 +23,12 @@ export const ComponentContainer = styled.div`
   }
 `;
 
-export const LeftBox = styled.div`
+export const LeadingBox = styled.div`
   margin-bottom: auto;
   padding-top: 5px;
 `;
 
-export const RightBox = styled.div`
+export const ContentBox = styled.div`
   padding-left: 10px;
 `;
 
