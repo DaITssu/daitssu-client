@@ -2,6 +2,7 @@ import Image from 'next/image';
 import * as styles from './PopularPosts.styles';
 import CommentIcon from '@icons/icon/Icon18/SmallComment.svg';
 import { useRouter } from 'next/router';
+import { beforeTime } from '@utils/time';
 
 export interface PostDetailProps {
   id: number;
@@ -54,22 +55,6 @@ const PostDetail = ({
     typeTrans = '질문';
   } else {
     typeTrans = '자유';
-  }
-
-  function beforeTime(date: string) {
-    const now = new Date();
-    const created = new Date(date);
-    const diff = now.getTime() - created.getTime();
-    const diffDay = Math.floor(diff / (1000 * 60 * 60 * 24));
-    if (diffDay === 0) {
-      const diffHour = Math.floor(diff / (1000 * 60 * 60));
-      if (diffHour === 0) {
-        const diffMin = Math.floor(diff / (1000 * 60));
-        return `${diffMin}분 전`;
-      }
-      return `${diffHour}시간 전`;
-    }
-    return `${diffDay}일 전`;
   }
 
   function onClick() {
