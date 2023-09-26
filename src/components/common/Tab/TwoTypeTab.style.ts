@@ -7,7 +7,6 @@ interface TabFontBoxProps {
 }
 
 export const TabFontBox = styled.div<TabFontBoxProps>`
-  font-style: normal;
   line-height: 210%;
   text-align: center;
   width: 50%;
@@ -18,6 +17,7 @@ export const TabFontBox = styled.div<TabFontBoxProps>`
   border-bottom: 2px solid
     ${(props) =>
       props.isSelected ? `${COLORS.SSU.primary}` : `${COLORS.grayscale.Gray3}`};
+  ${TEXT_STYLES.BodyM16};
 `;
 
 export const TabBox = styled.div`
