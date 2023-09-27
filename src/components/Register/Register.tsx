@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import * as styles from './Register.styles';
 import CheckedRadio from '@icons/icon/Radio/CheckedRadio.svg';
 import DefaultRadio from '@icons/icon/Radio/DefaultRadio.svg';
-import RightArrow from '@icons/icon/Arrow/RightBigArrow.svg';
-import * as styles from './Register.style';
+
 import Image from 'next/image';
 import TosItem from './TosItems/TosItem';
 import TOS from './TOS/TOS';
@@ -106,9 +106,6 @@ const Register = () => {
             isChecked={checkPrivacy}
             onCheckboxClick={() => setCheckPrivacy((res) => !res)}
             text=" 다있슈 이용약관"
-            checkedRadio={CheckedRadio}
-            defaultRadio={DefaultRadio}
-            rightArrow={RightArrow}
             onArrowClick={() => {
               setCurrentAgreement({
                 title: '다있슈 이용약관',
@@ -123,9 +120,6 @@ const Register = () => {
             isChecked={checkTermsOfUse}
             onCheckboxClick={() => setCheckTermsOfUse((res) => !res)}
             text=" 개인정보 수집 및 이용약관"
-            checkedRadio={CheckedRadio}
-            defaultRadio={DefaultRadio}
-            rightArrow={RightArrow}
             onArrowClick={() => {
               setCurrentAgreement({
                 title: '개인정보 수집 및 이용약관',
@@ -141,9 +135,6 @@ const Register = () => {
             onCheckboxClick={() => setCheckThirdPartyInfo((res) => !res)}
             text=" 제3자 정보 제공 동의"
             isEssential={false}
-            checkedRadio={CheckedRadio}
-            defaultRadio={DefaultRadio}
-            rightArrow={RightArrow}
             onArrowClick={() => {
               setCurrentAgreement({
                 title: '제3자 정보 제공 동의',

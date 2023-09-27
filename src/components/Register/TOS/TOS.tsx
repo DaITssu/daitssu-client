@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import * as styles from './TOS.style';
+import * as styles from './TOS.styles';
 import CloseBtn from '@icons/icon/Icon18/Close.svg';
 import Button from '@/components/common/Button';
 import Image from 'next/image';
