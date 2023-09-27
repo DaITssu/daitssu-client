@@ -1,4 +1,9 @@
-import * as styles from './TosItem.style';
+import * as styles from './TosItem.styles';
+
+import CheckedRadio from '@icons/icon/Radio/CheckedRadio.svg';
+import DefaultRadio from '@icons/icon/Radio/DefaultRadio.svg';
+import RightArrow from '@icons/icon/Arrow/RightBigArrow.svg';
+
 import Image from 'next/image';
 interface TosItemProps {
   isChecked: boolean;
@@ -6,9 +11,6 @@ interface TosItemProps {
   text: string;
   isEssential?: boolean;
   onArrowClick: () => void;
-  checkedRadio: string;
-  defaultRadio: string;
-  rightArrow: string;
 }
 
 const TosItem: React.FC<TosItemProps> = ({
@@ -17,17 +19,14 @@ const TosItem: React.FC<TosItemProps> = ({
   text,
   isEssential = true,
   onArrowClick,
-  checkedRadio,
-  defaultRadio,
-  rightArrow,
 }) => {
   return (
     <styles.TosItemStyle>
       <styles.TosItemImageDiv onClick={onCheckboxClick}>
         {isChecked ? (
-          <Image src={checkedRadio} alt="CheckedRadio" />
+          <Image src={CheckedRadio} alt="CheckedRadio" />
         ) : (
-          <Image src={defaultRadio} alt="DefaultRadio" />
+          <Image src={DefaultRadio} alt="DefaultRadio" />
         )}
       </styles.TosItemImageDiv>
       <div style={{ width: '12px' }}></div>
@@ -41,7 +40,7 @@ const TosItem: React.FC<TosItemProps> = ({
       </styles.BoxHeaderText>
       <Image
         onClick={onArrowClick}
-        src={rightArrow}
+        src={RightArrow}
         alt="RightArrow"
         style={{ position: 'absolute', right: '16px' }}
       ></Image>
