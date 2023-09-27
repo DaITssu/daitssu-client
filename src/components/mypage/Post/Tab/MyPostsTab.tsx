@@ -1,15 +1,29 @@
 import { useState } from 'react';
 import * as styles from './MyPostsTab.style';
+import ScrapList from '../../Scrap/ScrapList';
+import MyComment from '../MyComment';
 
 const MyPostsTab = () => {
   const data = [
     {
       title: '글',
-      contents: '글 목록!', // 컴포넌트 맞게 넣기 
+      contents: (
+        <styles.PostContianer>
+          <ScrapList /> <ScrapList /> <ScrapList /> <ScrapList />
+          <ScrapList /> <ScrapList />
+        </styles.PostContianer>
+      ),
     },
     {
       title: '댓글',
-      contents: '댓글 목록!', // 컴포넌트 맞게 넣기 
+      contents: (
+        <styles.PostContianer>
+          <MyComment />
+          <MyComment />
+          <MyComment />
+          <MyComment />
+        </styles.PostContianer>
+      ),
     },
   ];
   const [index, setIndex] = useState(0);
@@ -31,9 +45,7 @@ const MyPostsTab = () => {
           </styles.TabFontBox>
         ))}
       </styles.TabBox>
-      <styles.TabContents>
-        {data[index].contents}
-      </styles.TabContents>
+      <styles.TabContents>{data[index].contents}</styles.TabContents>
     </div>
   );
 };

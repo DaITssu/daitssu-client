@@ -1,13 +1,12 @@
+import * as styles from './Mypost.style';
 import Category from '@/components/common/Category';
-import * as styles from './ScrapList.style';
 import Image from 'next/image';
 import DefaultCheckBox from '@icons/icon/CheckBox/DefaultCheckBox.svg';
 import CheckedBox from '@icons/icon/CheckBox/BlueCheckedBox.svg';
-import Comment from '@icons/icon/Icon24/Comment.svg';
 import { useState } from 'react';
 
-const ScrapList = () => {
-  const [isChecked, setIsChecked] = useState(false);
+const MyComment = () => {
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
     <styles.FlexBox>
@@ -19,7 +18,6 @@ const ScrapList = () => {
               alt="check"
               width={15}
               height={15}
-              priority
               onClick={() => {
                 setIsChecked(!isChecked);
               }}
@@ -30,7 +28,6 @@ const ScrapList = () => {
               alt="check"
               width={15}
               height={15}
-              priority
               onClick={() => {
                 setIsChecked(!isChecked);
               }}
@@ -41,31 +38,18 @@ const ScrapList = () => {
       <styles.RightBox>
         <styles.TopBox>
           <styles.TagBox>
-            <Category label="잡담" BgColor={false} />
+            <Category label="질문" BgColor={false} />
           </styles.TagBox>
-          <styles.TimeBox>3분 전</styles.TimeBox>
+          <styles.PostInfoBox>
+            <styles.PostTitleBox>오늘 학교 가는 분?</styles.PostTitleBox>
+            <styles.PostCommentText>&nbsp;에 남긴 댓글</styles.PostCommentText>
+          </styles.PostInfoBox>
         </styles.TopBox>
-        <styles.TitleBox>서점에</styles.TitleBox>
-        <styles.BottomBox>
-          <styles.ContentBox>
-            서점에 이 책도 파나요 서점에 이 책도 파나요 서점에 이 책도 파나요
-          </styles.ContentBox>
-          <styles.MessageBox>
-            <styles.MessageIconBox>
-              <Image
-                src={Comment}
-                alt="comment"
-                width={15}
-                height={15}
-                priority
-              />
-            </styles.MessageIconBox>
-            <styles.MessageCntBox>5</styles.MessageCntBox>
-          </styles.MessageBox>
-        </styles.BottomBox>
+        <styles.MyCommentText>서점에</styles.MyCommentText>
+        <styles.BottomBox></styles.BottomBox>
       </styles.RightBox>
     </styles.FlexBox>
   );
 };
 
-export default ScrapList;
+export default MyComment;
