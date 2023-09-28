@@ -43,7 +43,7 @@ const TosItem: React.FC<TosItemProps> = ({
         src={RightArrow}
         alt="RightArrow"
         style={{ position: 'absolute', right: '16px' }}
-      ></Image>
+      />
     </styles.TosItemStyle>
   );
 };
