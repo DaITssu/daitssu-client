@@ -5,16 +5,19 @@ import { useRecoilValue } from 'recoil';
 import { Outlet } from 'react-router-dom';
 import * as styles from './layout.style';
 import NavigationBar from '@/components/common/Navbar/NavigationBar';
+import useNavbar from '@/hooks/useNavbar';
 
 const MainLayout = ({ children }: PropsWithChildren<{}>) => {
   const activeNavType = useRecoilValue(userNavAtom).activeNavType;
+
+  const { renderNavbar } = useNavbar();
 
   return (
     <>
       <Header />
       {children || <Outlet />}
       <styles.NavBarWrapper>
-        <NavigationBar focusType={activeNavType} />
+        <NavigationBar focusType={activeNavType} render={renderNavbar} />
       </styles.NavBarWrapper>
     </>
   );
