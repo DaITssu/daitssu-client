@@ -12,8 +12,9 @@ interface TOSProps {
 }
 const TOS = ({ onAgree, closeModal, title }: TOSProps) => {
   const getTOSContent = (title: string) => {
-    if (title === '다있슈 이용약관') {
-      return `다있슈 이용약관 내용`;
+    // TODO : 이용약관 완성되면 연결
+    if (title === '다잇슈 이용약관') {
+      return `다잇슈 이용약관 내용`;
     } else if (title === '개인정보 수집 및 이용약관') {
       return '개인정보 수집 및 이용약관 내용';
     } else if (title === '제3자 정보 제공 동의') {
