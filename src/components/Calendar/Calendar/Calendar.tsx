@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DayBlock from '../DayBlock/DayBlock';
-import WeekBlock from '../WeekBlock/WeekBlock';
+import WeekBlock from './WeekBlock/WeekBlock';
 import MonthControlButton from '../MonthControlButton/MonthControlButton';
 import * as styles from './Calendar.styles';
 
