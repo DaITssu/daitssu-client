@@ -8,11 +8,6 @@ import Status from '../../common/Status/index';
 import { TEXT_STYLES } from '../../../styles/constants/textStyles';
 import { COLORS } from '../../../styles/constants/colors';
 
-const getTaskStatus = (dueDate: Date, task: TaskDTO) => {
-  if (task.isFinished) return 1;
-  return Date.now() > dueDate.getTime() ? 2 : 0;
-};
-
 const SubjectContents = ({ task }: TaskProps) => {
   const date = new Date(task.dueDate);
 
@@ -22,7 +17,13 @@ const SubjectContents = ({ task }: TaskProps) => {
     hour12: false,
   });
 
-  const statusNumber = getTaskStatus(date, task);
+  // 1 : 완료, 2 : 시간초과, 0 : 미완료
+  const statusNumber = task.isFinished
+    ? 1
+    : Date.now() > date.getTime()
+    ? 2
+    : 0;
+
   const statusMapping = {
     0: '미완료',
     1: '완료',
