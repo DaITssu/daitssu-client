@@ -7,6 +7,7 @@ import {
 } from '@tanstack/react-query';
 import { useState } from 'react';
 import { RecoilRoot } from 'recoil';
+import Header from '@/components/common/Header/Header';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <Hydrate state={pageProps.dehydratedState}>
+          <Header />
           <Component {...pageProps} />
         </Hydrate>
       </RecoilRoot>
