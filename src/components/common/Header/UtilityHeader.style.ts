@@ -3,12 +3,15 @@ import styled from '@emotion/styled';
 import { TEXT_STYLES } from '../../../styles/constants/textStyles';
 
 export const Conatiner = styled.div`
+  position: absolute;
+  top: 0;
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 60px;
   padding: 20px;
   justify-content: center;
   background-color: white;
+  z-index: 8888;
 `;
 
 export const LogoText = styled.div`
@@ -44,5 +47,32 @@ export const DeleteText = styled.div<DeleteTextProps>`
 
 export const ConfirmText = styled.div`
   ${TEXT_STYLES.HeadM18}
-  color: var(--Primary-color, #5ebeeb);
+  color: ${COLORS.SSU.primary};
+`;
+export const DropdownMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  position: absolute;
+  background-color: white;
+  right: 0;
+  border: 1px solid ${COLORS.grayscale.Gray4};
+`;
+
+export const DropdownItem = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:not(:last-child) {
+    border-bottom: 1px solid ${COLORS.grayscale.Gray4};
+  }
+`;
+
+export const DropdownItemText = styled.div`
+  ${TEXT_STYLES.CapR14}
+  padding: 5px 10px;
+  &:hover {
+    background-color: #f6f6f6;
+  }
 `;
