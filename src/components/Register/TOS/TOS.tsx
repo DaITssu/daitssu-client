@@ -24,40 +24,38 @@ const TOS = ({ onAgree, closeModal, title }: TOSProps) => {
   };
 
   return (
-    <>
-      <styles.ModalBackground onClick={() => closeModal()}>
-        <styles.ModalContent
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <styles.TOSStyle>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <styles.TOSHedaer>{title}</styles.TOSHedaer>
-              <Image
-                style={{ margin: '15px' }}
-                src={CloseBtn}
-                alt="close-button"
-                onClick={() => {
-                  closeModal();
-                }}
-              />
-            </div>
-            <styles.Divider />
-            <styles.TOSBody>{getTOSContent(title)}</styles.TOSBody>
-            <styles.AgreeBtnDiv>
-              <Button
-                label="동의하기"
-                onClick={() => {
-                  onAgree();
-                  closeModal();
-                }}
-              />
-            </styles.AgreeBtnDiv>
-          </styles.TOSStyle>
-        </styles.ModalContent>
-      </styles.ModalBackground>
-    </>
+    <styles.ModalBackground onClick={() => closeModal()}>
+      <styles.ModalContent
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <styles.TOSStyle>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <styles.TOSHedaer>{title}</styles.TOSHedaer>
+            <Image
+              style={{ margin: '15px' }}
+              src={CloseBtn}
+              alt="close-button"
+              onClick={() => {
+                closeModal();
+              }}
+            />
+          </div>
+          <styles.Divider />
+          <styles.TOSBody>{getTOSContent(title)}</styles.TOSBody>
+          <styles.AgreeBtnDiv>
+            <Button
+              label="동의하기"
+              onClick={() => {
+                onAgree();
+                closeModal();
+              }}
+            />
+          </styles.AgreeBtnDiv>
+        </styles.TOSStyle>
+      </styles.ModalContent>
+    </styles.ModalBackground>
   );
 };
 export default TOS;
