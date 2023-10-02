@@ -19,7 +19,7 @@ const AlarmSetting = (props: AlarmProps) => {
     <>
       {props.subjects.map((subject, index) => (
         <div key={index}>
-          <SubjectTitle subject={subject}></SubjectTitle>
+          <SubjectTitle subject={subject} />
           {subject.tasks.map((task, index) => (
             <SubjectTaskDetail task={task} key={index} />
           ))}
@@ -58,10 +58,10 @@ const SubjectTaskDetail = ({ task }: TaskProps) => {
     <styles.Container>
       <styles.LeftDiv>
         <Image priority src={icon} alt={icon} width={24} height={24} />
-        <styles.Titles>
-          <styles.Label>{task.title}</styles.Label>
-          <styles.SubLabel>{time + '까지'}</styles.SubLabel>
-        </styles.Titles>
+        <div style={{ flexDirection: 'column' }}>
+          <styles.Title>{task.title}</styles.Title>
+          <styles.SubTitle>{time + '까지'}</styles.SubTitle>
+        </div>
       </styles.LeftDiv>
       <ToggleButton isToggle={isToggle} onToggle={toggle} />
     </styles.Container>

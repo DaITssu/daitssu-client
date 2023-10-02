@@ -17,18 +17,13 @@ export const LeftDiv = styled.div`
   gap: 16px;
 `;
 
-export const Titles = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Label = styled.p`
+export const Title = styled.p`
   margin: 0;
   ${TEXT_STYLES.BodyR16}
   color: ${COLORS.grayscale.Gray1};
 `;
 
-export const SubLabel = styled.p`
+export const SubTitle = styled.p`
   margin: 0;
   ${TEXT_STYLES.CapR14}
   color: ${COLORS.grayscale.Gray2};
