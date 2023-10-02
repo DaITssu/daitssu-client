@@ -10,7 +10,7 @@ export default {
 const Template: Story = (args) => (
   <TosItem
     onCheckboxClick={() => {}}
-    text={' 다있슈 이용약관'}
+    text={' 다잇슈 이용약관'}
     onArrowClick={() => {}}
     isChecked={false}
     {...args}

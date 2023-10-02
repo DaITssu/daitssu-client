@@ -11,7 +11,7 @@ const Template: Story = (args) => (
   <TOS
     onAgree={() => {}}
     closeModal={() => {}}
-    title={'다있슈 이용약관'}
+    title={'다잇슈 이용약관'}
     {...args}
   />
 );
