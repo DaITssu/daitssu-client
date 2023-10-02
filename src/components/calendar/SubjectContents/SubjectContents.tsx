@@ -3,10 +3,10 @@ import * as styles from './SubjectContents.style';
 import video from '@icons/icon/LectureAssignment/Video.svg';
 import comment from '@icons/icon/LectureAssignment/Comment.svg';
 import assignment from '@icons/icon/LectureAssignment/Assignment.svg';
-import { TaskDTO, TaskProps } from '@/types/Task';
+import { TaskProps } from '@/types/Task';
 import Status from '../../common/Status/index';
-import { TEXT_STYLES } from '../../../styles/constants/textStyles';
-import { COLORS } from '../../../styles/constants/colors';
+import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 const SubjectContents = ({ task }: TaskProps) => {
   const date = new Date(task.dueDate);
