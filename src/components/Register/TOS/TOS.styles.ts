@@ -5,7 +5,7 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 export const TOSStyle = styled.div`
   background-color: white;
   display: flex;
-  flex-direction: column; /* 컨테이너의 주 축을 세로로 설정 */
+  flex-direction: column;
   height: 500px;
 `;
 
