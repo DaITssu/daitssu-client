@@ -46,7 +46,7 @@ const SubjectTaskDetail = ({ task }: TaskProps) => {
   const icon = iconMapping[task.type] || video;
 
   //실제로 finish가 알림 off랑 동일한 기능이지 않음으로
-  //TODO 알림 온오프 기능 추가
+  //TODO 알림 온오프 필드값 추가 <- 실제 API 나온 이후에 작업
   const [isToggle, setIsToggle] = useState(task.isFinished);
 
   function toggle() {
