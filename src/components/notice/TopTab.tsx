@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import NoticeList from './NoticeList';
-import { jsx, css } from '@emotion/react';
 import * as styles from '../../styles/constants/TopTab.style';
 
 const TopTab = () => {
