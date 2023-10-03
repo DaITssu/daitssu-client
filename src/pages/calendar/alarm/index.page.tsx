@@ -1,5 +1,6 @@
 import AlarmSetting from '@/components/Calendar/AlarmSetting';
 import Header from '@/components/common/Header/Header';
+import { useEffect } from 'react';
 
 export default function AlarmScreen() {
   const example = [
@@ -46,6 +47,10 @@ export default function AlarmScreen() {
       ],
     },
   ];
+
+  useEffect(() => {
+    //TODO 과제 알림 데이터 불러오는 API 연결 함수 작성
+  }, []);
 
   return (
     <>
