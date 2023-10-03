@@ -35,5 +35,3 @@ export const MyCommentLabel = styled.label`
     font-size: 16px;
   }
 `;
-
-export const MyCommentBtn = styled.button``;
