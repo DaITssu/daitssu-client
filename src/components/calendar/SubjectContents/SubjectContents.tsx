@@ -18,18 +18,23 @@ const SubjectContents = ({ task }: TaskProps) => {
   });
 
   // 1 : 완료, 2 : 시간초과, 0 : 미완료
+  enum StatusNumber {
+    FINISHED = 1,
+    OVERDUE = 2,
+    UNFINISHED = 0,
+  }
   const statusNumber = task.isFinished
-    ? 1
+    ? StatusNumber.FINISHED
     : Date.now() > date.getTime()
-    ? 2
-    : 0;
+    ? StatusNumber.OVERDUE
+    : StatusNumber.UNFINISHED;
 
-  const statusMapping = {
-    0: '미완료',
-    1: '완료',
-    2: '시간초과',
-  };
-  const statusLabel = statusMapping[statusNumber] || '미완료';
+  const statusLabel =
+    statusNumber === StatusNumber.FINISHED
+      ? '완료'
+      : statusNumber === StatusNumber.OVERDUE
+      ? '시간초과'
+      : '미완료';
 
   const iconMapping: { [key: string]: any } = {
     video: video,
