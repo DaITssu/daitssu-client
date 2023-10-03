@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
+import { COLORS } from '@/styles/constants/colors';
 
 export const ButtonGroupContainer = styled.div<{ expand: boolean }>`
   width: 390px;
   height: 59px;
   position: relative;
-  background-color: white;
   height: ${({ expand }) => (expand ? '200px' : '40px')};
 `;
 
@@ -32,9 +32,9 @@ export const Button = styled.button<ButtonProps>`
   padding: 10px 20px;
   margin-right: 10px;
   margin-bottom: 10px;
-  border: 2px solid #5ebeeb;
-  color: #5ebeeb;
-  background-color: #ffffff;
+  border: 2px solid ${COLORS.SSU.primary};
+  color: ${COLORS.SSU.primary};
+  background-color: ${COLORS.grayscale.white};
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   border-radius: 25px;
@@ -44,15 +44,15 @@ export const Button = styled.button<ButtonProps>`
   }
 
   &:hover {
-    background-color: #5ebeeb;
-    color: #ffffff;
+    background-color: ${COLORS.SSU.primary};
+    color: ${COLORS.grayscale.white};
   }
 
   ${({ selected }) =>
     selected &&
     `
-    background-color: #5ebeeb;
-    color: #ffffff;
+    background-color: ${COLORS.SSU.primary};
+    color: ${COLORS.grayscale.white};
   `}
 `;
 

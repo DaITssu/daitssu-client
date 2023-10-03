@@ -1,18 +1,15 @@
 import styled from '@emotion/styled';
+import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 interface TabFontBoxProps {
   isSelected: boolean;
 }
 
 export const TabFontBox = styled.div<TabFontBoxProps>`
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 210%;
-  letter-spacing: -0.011em;
+  ${TEXT_STYLES.BodyM16};
   text-align: center;
-  color: #313131;
+  color: ${COLORS.grayscale.Black};
   position: relative;
   width: 71px;
   height: 34px;
