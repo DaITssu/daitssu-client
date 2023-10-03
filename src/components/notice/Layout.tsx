@@ -4,8 +4,10 @@ import Anouncement from './anouncement';
 const Layout = () => {
   return (
     <div>
-      <Anouncement />
+      {/** TODO: 헤더 */}
       <TopTab />
+      <Anouncement />
+      {/** TODO: nav */}
     </div>
   );
 };
