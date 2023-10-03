@@ -2,7 +2,7 @@ import { format } from 'path';
 import React, { ChangeEvent, useState } from 'react';
 import SubmitHeader from '@/components/community/community_writing/MainForm/MainForm';
 import TitleForm from '@/components/community/community_writing/InputForm/TitleForm/TitleForm';
-import HorizontalLine from '@/components/community/community_writing/HorizontalLine/HorizontalLine';
+import HorizontalLine from './HorizontalLine/HorizontalLine';
 import TextForm from '@/components/community/community_writing/InputForm/TextForm/TextForm';
 import ImageInputBox from '@/components/community/community_writing/ImageInputBox/ImageInputBox';
 
