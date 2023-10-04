@@ -8,10 +8,8 @@ export const CommentWhiteBox = styled.div`
 `;
 
 export const CLeftBox = styled.div`
-  div {
-    width: 45px;
-    height: 45px;
-  }
+  width: 45px;
+  height: 45px;
 `;
 
 export const CRightBox = styled.div`
