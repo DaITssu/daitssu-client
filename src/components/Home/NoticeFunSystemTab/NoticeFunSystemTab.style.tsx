@@ -23,7 +23,7 @@ export const TabBox = styled.div`
   width: 100%;
   height: 40px;
   left: 0px;
-  top: 107px;
+  top: 164px;
   padding-top : 4px;
   ${TEXT_STYLES.BodyR16};
 `;
