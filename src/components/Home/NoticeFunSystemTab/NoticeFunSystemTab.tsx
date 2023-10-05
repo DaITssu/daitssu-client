@@ -7,7 +7,7 @@ const NoticeFunSystemTab = () => {
   const data = [
     {
       title: '공지사항',
-      contents:<NoticeList items={[]}/>,
+      contents:<NoticeList items={[]}/>
     },
     {
       title: '펀시스템',
@@ -37,9 +37,7 @@ const NoticeFunSystemTab = () => {
           </styles.TabFontBox>
         ))}
       </styles.TabBox>
-      <styles.TabContents>
-        {data[index].contents}
-      </styles.TabContents>
+      {data[index].contents}
     </div>
   );
 };

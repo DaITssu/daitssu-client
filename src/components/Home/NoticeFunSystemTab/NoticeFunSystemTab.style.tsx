@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
+
 interface TabFontBoxProp {
   isSelected: boolean;
 }
@@ -18,7 +19,6 @@ export const TabFontBox = styled.div<TabFontBoxProp>`
 `;
 
 export const TabBox = styled.div`
-  box-sizing: border-box;
   position: absolute;
   width: 100%;
   height: 40px;
@@ -28,7 +28,3 @@ export const TabBox = styled.div`
   ${TEXT_STYLES.BodyR16};
 `;
 
-export const TabContents = styled.div`
-  top: 200px;
-  position: absolute;
-`;

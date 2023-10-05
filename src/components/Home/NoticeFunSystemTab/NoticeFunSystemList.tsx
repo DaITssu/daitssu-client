@@ -1,5 +1,5 @@
-import * as styles from '../../styles/constants/NoticeList.style';
-import NoticeItem, { NoticeItemProps } from './NoticeItem';
+import * as styles from '../../../styles/constants/NoticeList.style';
+import NoticeItem, { NoticeItemProps } from '../../notice/NoticeItem';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 
 const NoticeList: FC<{ items: NoticeItemProps[] }> = ({ items }) => {
