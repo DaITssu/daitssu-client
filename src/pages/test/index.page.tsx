@@ -38,6 +38,7 @@ export default function TestPage() {
 
     const postResponse = postCourseVideoAPI(1, 'course');
     postResponse.then((res) => {
+      //이어서 post 후 원하는 작업 수행
       console.log(res);
     });
   }, []);
