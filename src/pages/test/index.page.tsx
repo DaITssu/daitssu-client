@@ -7,6 +7,10 @@ import { api_getPost } from '@/apis/test';
 import { QueryClient, dehydrate } from '@tanstack/react-query';
 import Header from '@/components/common/Header/Header';
 
+import { useEffect } from 'react';
+import { getUserAPI } from '@/apis/userAPIS';
+import { postCourseVideoAPI } from '@/apis/courseAPIS';
+
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery(api_getPost[1]({ pathParams: [1] }), () =>
@@ -24,6 +28,19 @@ export async function getServerSideProps() {
 export default function TestPage() {
   const { count, increment, decrement } = useTestCount();
   const { data } = useApiQuery(api_getPost, { pathParams: [1] });
+
+  //api 예제 코드
+  useEffect(() => {
+    const getResponse = getUserAPI(1);
+    getResponse.then((res) => {
+      console.log(res);
+    });
+
+    const postResponse = postCourseVideoAPI(1, 'course');
+    postResponse.then((res) => {
+      console.log(res);
+    });
+  }, []);
 
   return (
     <>
