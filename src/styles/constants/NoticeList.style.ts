@@ -26,4 +26,5 @@ export const NoticeListBoxShort = styled.div`
   }
   padding : 12px;
   box-sizing : border-box;
+
 `;

@@ -2,12 +2,29 @@ import { useState } from 'react';
 import * as styles from './NoticeFunSystemTab.style';
 import NoticeList from '@/components/notice/NoticeList';
 import LineSearchBar from './LineSearchBar/LineSearchBar';
+
+interface NoticeFunSystemTabArgs {
+  data: {
+    title: string;
+    contents: {
+      bundle: string;
+      title: string;
+      views: number;
+      date: string;
+    }[];
+  }[];
+}
+
+
+
 const NoticeFunSystemTab = () => {
 
   const data = [
     {
       title: '공지사항',
-      contents:<NoticeList items={[]}/>
+      contents:<NoticeList items={[
+        
+      ]}/>
     },
     {
       title: '펀시스템',
@@ -25,7 +42,7 @@ const NoticeFunSystemTab = () => {
   };
 
   return (
-    <div>
+    <>
       <LineSearchBar/>
       <styles.TabBox>
         {data.map((element, idx) => (
@@ -38,7 +55,7 @@ const NoticeFunSystemTab = () => {
         ))}
       </styles.TabBox>
       {data[index].contents}
-    </div>
+    </>
   );
 };
 

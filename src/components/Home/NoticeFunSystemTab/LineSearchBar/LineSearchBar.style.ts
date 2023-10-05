@@ -42,5 +42,5 @@ export const Circle = styled.div`
   background-color : ${COLORS.grayscale.Gray3};
 `;
 export const CancelImage = styled(Image)`
-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
 `;
