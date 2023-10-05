@@ -9,8 +9,10 @@ import Modal from '@/components/common/Modal';
 import EditEventModal from '../EditEventModal';
 import CalendarIcon from '@icons/icon/Icon24/CalenderUpdate.svg';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const CalendarScreen = () => {
+  const router = useRouter();
   const { open, PopUp, close } = useModal();
 
   const [year, setYear] = useState<number>(2023);
@@ -27,6 +29,11 @@ const CalendarScreen = () => {
   function onMonthChange(year: number, month: number) {
     setYear(year);
     setMonth(month);
+  }
+
+  function onEditAlarmClick() {
+    //TODO 알림 화면에서 보여줄 데이터 전달
+    router.push('/calendar/alarm');
   }
 
   // now
@@ -78,7 +85,7 @@ const CalendarScreen = () => {
                 alt="Calendar Update"
               />
             </div>
-            <CalendarButton text={'알림설정'} onClick={open} />
+            <CalendarButton text={'알림설정'} onClick={onEditAlarmClick} />
             <CalendarButton text={'추가'} onClick={open} />
           </styles.row>
         </styles.rowSpaceBetween>

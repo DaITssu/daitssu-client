@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Subject from './Subject';
 
 const meta: Meta<typeof Subject> = {
-  title: 'Calendar',
+  title: 'Calendar/Subject',
   component: Subject,
 };
 

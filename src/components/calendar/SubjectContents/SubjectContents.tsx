@@ -3,15 +3,10 @@ import * as styles from './SubjectContents.style';
 import video from '@icons/icon/LectureAssignment/Video.svg';
 import comment from '@icons/icon/LectureAssignment/Comment.svg';
 import assignment from '@icons/icon/LectureAssignment/Assignment.svg';
-import { TaskDTO, TaskProps } from '@/types/Task';
+import { TaskProps } from '@/types/Task';
 import Status from '../../common/Status/index';
-import { TEXT_STYLES } from '../../../styles/constants/textStyles';
-import { COLORS } from '../../../styles/constants/colors';
-
-const getTaskStatus = (dueDate: Date, task: TaskDTO) => {
-  if (task.isFinished) return 1;
-  return Date.now() > dueDate.getTime() ? 2 : 0;
-};
+import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 const SubjectContents = ({ task }: TaskProps) => {
   const date = new Date(task.dueDate);
@@ -22,13 +17,24 @@ const SubjectContents = ({ task }: TaskProps) => {
     hour12: false,
   });
 
-  const statusNumber = getTaskStatus(date, task);
-  const statusMapping = {
-    0: '미완료',
-    1: '완료',
-    2: '시간초과',
-  };
-  const statusLabel = statusMapping[statusNumber] || '미완료';
+  // 1 : 완료, 2 : 시간초과, 0 : 미완료
+  enum StatusNumber {
+    FINISHED = 1,
+    OVERDUE = 2,
+    UNFINISHED = 0,
+  }
+  const statusNumber = task.isFinished
+    ? StatusNumber.FINISHED
+    : Date.now() > date.getTime()
+    ? StatusNumber.OVERDUE
+    : StatusNumber.UNFINISHED;
+
+  const statusLabel =
+    statusNumber === StatusNumber.FINISHED
+      ? '완료'
+      : statusNumber === StatusNumber.OVERDUE
+      ? '시간초과'
+      : '미완료';
 
   const iconMapping: { [key: string]: any } = {
     video: video,
