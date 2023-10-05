@@ -8,16 +8,15 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export interface UtilityHeaderProps {
-  child: string;
-  isCommunity?: boolean;
-  onClickReport?: Function;
-  onClickBen?: Function;
-
-  isDeleteBtn?: boolean;
-  isPossibleDelete?: boolean;
-  onClickDeleteBtn?: Function;
-  isConfirmBtn?: boolean;
-  onClickConfrimBtn?: Function;
+  child: string; // 헤더에 들어갈 문자열
+  isCommunity?: boolean; // 커뮤니티 아이콘 존재여부
+  onClickReport?: Function; // 신고하기 버튼 클릭 시 동작
+  onClickBen?: Function; // 차단하기 버튼 클릭 시 동작
+  isDeleteBtn?: boolean; // "삭제" 버튼 존재여부
+  isPossibleDelete?: boolean; // "삭제" 버튼 점등관리
+  onClickDeleteBtn?: Function; // "삭제" 버튼 클릭 시 동작
+  isConfirmBtn?: boolean; //"확인"버튼 존재여부
+  onClickConfrimBtn?: Function; // "확인 버튼 클릭 시 동작
 }
 
 const UtilityHeader = ({
