@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
+import { COLORS } from '@/styles/constants/colors';
 
 export const Container = styled.div`
   width: 390px;
-  hr {
-    border: solid 1px rgba(217, 217, 217, 1);
-  }
 `;
 
 export const Padding = styled.div`
@@ -101,8 +100,7 @@ export const ProfileTopBox = styled.div``;
 
 export const NickNameBox = styled.div`
   display: flex;
-  font-size: 16px;
-  font-weight: 500;
+  ${TEXT_STYLES.BodyM16}
   align-items: center;
   margin-left: 10px;
 `;
@@ -115,18 +113,18 @@ export const ProfileBottomBox = styled.div`
 
 export const DateBox = styled.div`
   margin-left: 10px;
-  font-size: 14px;
+  ${TEXT_STYLES.CapR14}
   align-items: center;
-  color: #6e6e6e;
+  color: ${COLORS.grayscale.Gray1};
   display: flex;
 `;
 
 export const TimeBox = styled.div`
   display: flex;
-  font-size: 14px;
+  ${TEXT_STYLES.CapR14}
   align-items: center;
   margin-left: 7px;
-  color: #6e6e6e;
+  color: ${COLORS.grayscale.Gray1};
 `;
 
 export const ViewBox = styled.div`
@@ -140,22 +138,19 @@ export const ViewIconBox = styled.div`
 
 export const ViewCountBox = styled.div`
   margin-left: 6px;
-  font-size: 14px;
+  ${TEXT_STYLES.CapR14}
   align-items: center;
-  color: #6e6e6e;
+  color: ${COLORS.grayscale.Gray1};
 `;
 
 export const TitleBox = styled.div`
   margin: 10px 0;
-  font-weight: 500;
-  font-size: 20px;
+  ${TEXT_STYLES.HeadM20}
 `;
 
 export const ContentBox = styled.div`
-  font-weight: 400;
-  font-size: 16px;
   margin-bottom: 15px;
-  line-height: 24px;
+  ${TEXT_STYLES.BodyR16}
 `;
 
 export const UnderBarBox = styled.div`
@@ -175,17 +170,16 @@ export const IconBox = styled.div`
 `;
 
 export const CountBox = styled.div`
-  font-size: 16px;
-  font-weight: 500;
-  color: #6e6e6e;
+  color: ${COLORS.grayscale.Gray1};
+  ${TEXT_STYLES.BodyM16}
   margin-left: 5px;
 `;
 
 export const BottomBox = styled.div``;
 
 export const CommentTitleBox = styled.div`
-  background-color: rgba(249, 249, 249, 1);
-  font-size: 16px;
+  background-color: ${COLORS.grayscale.Gray5};
+  ${TEXT_STYLES.BodyM16}
   height: 48px;
   display: flex;
   align-items: center;
