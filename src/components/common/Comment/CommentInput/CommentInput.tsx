@@ -1,3 +1,4 @@
+import Button from '../../Button';
 import * as styles from './CommentInput.styles';
 
 function CommentInput() {
@@ -10,8 +11,7 @@ function CommentInput() {
           </styles.MyCommentLabel>
         </styles.MyLeftBox>
         <styles.MyRightBox>
-          {/** TODO: common Btn으로 디자인 변경하기 */}
-          <styles.MyCommentBtn>등록</styles.MyCommentBtn>
+          <Button label="등록" width={57} height={45} />
         </styles.MyRightBox>
       </styles.CommentFlexBox>
     </styles.MyCommentBox>

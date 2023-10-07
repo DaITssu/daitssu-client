@@ -54,8 +54,7 @@ export const PostInfoBox = styled.div`
 `;
 
 export const PostTitleBox = styled.div`
-  font-size: 14px;
-  font-weight: 500;
+  ${TEXT_STYLES.BodyM16};
   color: ${COLORS.grayscale.Gray1};
 `;
 
