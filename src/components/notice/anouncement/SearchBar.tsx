@@ -17,7 +17,12 @@ const SearchBar = () => {
         placeholder="검색어를 입력하세요"
         onKeyDown={handleOnKeyPress}
       />
-      <styles.GlassImage src={searchicon} width={20} height={20} alt={''} />
+      <styles.GlassImage
+        src={searchicon}
+        width={20}
+        height={20}
+        alt={'search'}
+      />
     </styles.SearchBarStyles>
   );
 };
