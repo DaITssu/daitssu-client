@@ -17,7 +17,8 @@ export const TabFontBox = styled.div<TabFontBoxProps>`
   padding-top: 5px;
   /* Apply different styles based on isSelected prop */
   border-bottom: 2px solid
-    ${(props) => (props.isSelected ? '#5EBEEB' : '#D9D9D9')};
+    ${(props) =>
+      props.isSelected ? `${COLORS.SSU.primary}` : `${COLORS.grayscale.Gray3}`};
 `;
 
 export const Rectangle242 = styled.div`
@@ -27,7 +28,6 @@ export const Rectangle242 = styled.div`
   height: 36px;
   left: 0px;
   top: 60px;
-  /* gray 3 */
-  border-bottom: 2px solid #d9d9d9;
+  border-bottom: 2px solid ${COLORS.grayscale.Gray3};
   padding-left: 16px;
 `;
