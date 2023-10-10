@@ -1,5 +1,5 @@
-import { COLORS } from '@/styles/constants/colors';
-import {TEXT_STYLES} from '@/styles/constants/textStyles';
+import { COLORS } from '../../../styles/constants/colors';
+import {TEXT_STYLES} from '../../../styles/constants/textStyles';
 import styled from '@emotion/styled';
 import React from 'react'; // React import 추가
 
@@ -53,8 +53,7 @@ export const SubjectCardText = styled.div<Props2>`
 `;
 
 interface CategoryProps {
-  /** 상태값 종류, true->채워진 배경 | false->흰 배경 */
-  BgColor: boolean;
+  isBgColor: boolean;
 }
 
 export const Category = styled.div<CategoryProps>`
@@ -65,10 +64,23 @@ export const Category = styled.div<CategoryProps>`
   text-align: center;
   display: inline-block;
   color: ${(props) =>
-    props.BgColor ? COLORS.grayscale.white : COLORS.SSU.primary};
+    props.isBgColor ? COLORS.grayscale.white : COLORS.SSU.primary};
   background-color: ${(props) =>
-    props.BgColor ? COLORS.SSU.primary : COLORS.grayscale.white};
+    props.isBgColor ? COLORS.SSU.primary : COLORS.grayscale.white};
   border: 1px solid
-    ${(props) => (props.BgColor ? COLORS.SSU.primary : COLORS.SSU.primary)};
+    ${(props) => (props.isBgColor ? COLORS.SSU.primary : COLORS.SSU.primary)};
   ${TEXT_STYLES.CapM14};
+`;
+
+
+interface SubjectCardOuterProps {
+  width?:number;
+
+}
+
+export const SubjectCardOuter = styled.div<SubjectCardOuterProps>`
+    width: ${(props) => (props.width ? `${props.width}px` : '171px')};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;

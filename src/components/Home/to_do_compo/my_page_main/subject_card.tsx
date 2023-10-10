@@ -11,14 +11,14 @@ interface FormData {
   color:string;
   width?:number;
   height?:number;
-  errN?:number
+  alarmN?:number
 }
 
 export default function SubjectHomeCard(f:FormData) {
   const [formData, setFormData] = useState<FormData>({
     title: f.title,
     time: f.time,
-    errN:f.errN,
+    alarmN:f.alarmN,
     color: f.color,
     width:f.width,
     height:f.height
@@ -27,8 +27,7 @@ export default function SubjectHomeCard(f:FormData) {
     
       <styles.SubjectCard color={formData.color} width={formData.width} height={formData.height}
       onClick={()=>{console.log("clicked")}}>
-        <div style={{ width:"170px" ,display: "flex", 
-            justifyContent: "space-between", alignItems: "center"}}>
+        <styles.SubjectCardOuter>
             <styles.SubjectCardText color={COLORS.grayscale.Black} 
             fontSize={TEXT_STYLES.HeadM18.fontSize} fontFamily={TEXT_STYLES.HeadM18.fontFamily}
             fontWeight={TEXT_STYLES.HeadM18.fontWeight} letterSpacing={TEXT_STYLES.HeadM18.letterSpacing}
@@ -37,9 +36,9 @@ export default function SubjectHomeCard(f:FormData) {
               <styles.SubjectCardText color={COLORS.grayscale.white} 
               fontSize={TEXT_STYLES.CapM12.fontSize} fontFamily={TEXT_STYLES.CapM12.fontFamily}
               fontWeight={TEXT_STYLES.CapM12.fontWeight} letterSpacing={TEXT_STYLES.CapM12.letterSpacing}
-              >{formData.errN}</styles.SubjectCardText>
+              >{formData.alarmN}</styles.SubjectCardText>
             </styles.NoticeNumRound>
-        </div>
+          </styles.SubjectCardOuter>
         <styles.SubjectCardText> {formData.time}</styles.SubjectCardText>
       </styles.SubjectCard>
   );
