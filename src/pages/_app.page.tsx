@@ -8,6 +8,7 @@ import {
 } from '@tanstack/react-query';
 import { useState } from 'react';
 import { RecoilRoot } from 'recoil';
+import Header from '@/components/common/Header/Header';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -22,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
               content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"
             />
           </Head>
+          <Header />
           <Component {...pageProps} />
         </Hydrate>
       </RecoilRoot>

@@ -14,7 +14,6 @@ const MainLayout = ({ children }: PropsWithChildren<{}>) => {
 
   return (
     <>
-      <Header />
       {children || <Outlet />}
       <styles.NavBarWrapper>
         <NavigationBar focusType={activeNavType} render={renderNavbar} />

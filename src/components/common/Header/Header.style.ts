@@ -8,6 +8,7 @@ export const Conatiner = styled.div`
   height: 60px;
   padding: 20px;
   justify-content: space-between;
+  background-color: white;
 `;
 
 export const LogoText = styled.div`
