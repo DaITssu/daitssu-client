@@ -3,7 +3,6 @@ import React, { ChangeEvent, useState } from 'react';
 import { Subject } from '@/components/myPage/assignesAbout/subjects_data';
 import SubjectCard from '@/components/myPage/assignesAbout/my_page_main/subject_card';
 import { title } from 'process';
-import SubmitHeader from '@/components/myPage/assignesAbout/Header/Header';
 
 export interface FormData {
   subjects:Array<Subject>;
@@ -35,7 +34,6 @@ const MypageMain: React.FC<FormData> = ({ subjects,width }) => {
     <div style={{display: "flex",
     flexDirection: "column", 
     alignItems: "center", width:`${formData.width}`}}>
-      <SubmitHeader width={formData.width} onClose={before_page} label="나의 과목"/>
       <div>
         {formData.subjects.map((sub, index) => (
           <>

@@ -1,11 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Subject } from '@/components/myPage/assignesAbout/subjects_data';
-import SubmitHeader from '@/components/myPage/assignesAbout/Header/Header';
 import MyAssignTitleBox from '@/components/myPage/assignesAbout/my_page_my_assign/title_box';
 import MyAssignListBox from '@/components/myPage/assignesAbout/my_page_my_assign/\blist_box';
 import HorizontalLine from '@/components/myPage/assignesAbout/HorizontalLine/HorizontalLine';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+
 interface MypageMyAssignProps {
   subject_j: string;
   color: string;
@@ -23,7 +21,6 @@ function MypageMyAssign({ subject_j, color,width }:MypageMyAssignProps){
     <div style={{display: "flex",
     flexDirection: "column", 
     alignItems: "center", width:`${width}`}}>
-      <SubmitHeader width={width} height={230} onClose={before_page} label="나의 과목" />
       <br/>
       <MyAssignTitleBox color={color} width={width} 
         title={subject.get_title()} semester={subject.get_semester()} studentId={subject.get_studentId()}/>

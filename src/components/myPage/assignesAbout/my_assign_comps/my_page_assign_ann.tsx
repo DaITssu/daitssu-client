@@ -5,7 +5,6 @@ import AssignListTitleBox from '@/components/myPage/assignesAbout/my_page_my_ass
 import { COLORS } from '@/styles/constants/colors';
 import AnnouncemeCard from '@/components/myPage/assignesAbout/my_page_announce/ann_card';
 
-import SubmitHeader from '@/components/myPage/assignesAbout/Header/Header';
 interface FormData_d {
   subject:Subject;
   width:number;
@@ -34,10 +33,10 @@ const MypageAssignList: React.FC<FormData_d> = ({ width,subject,assIndex }) => {
   return (
     <div style={{display: "flex",
     flexDirection: "column", 
-    alignItems: "center", width:`${formData.width}`}}>
-      <SubmitHeader width={formData.width} onClose={before_page} label="공지"/>
+    alignItems: "center", width:`${formData.width}px`,backgroundColor:`${COLORS.grayscale.white}`,
+    height: "500px"}}>
       <AssignListTitleBox width={formData.width} title={formData.subject.get_title()}/>
-      <div style={{width:formData.width, height:"25px",
+      <div style={{width:`${formData.width}px`, height:"25px",
         backgroundColor:`${COLORS.grayscale.Gray5}`,marginBottom:"3px" }}></div>
       
       <br/>

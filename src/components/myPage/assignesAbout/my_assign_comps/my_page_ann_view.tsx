@@ -1,7 +1,6 @@
 
 import React, { ChangeEvent, useState } from 'react';
 import { Subject } from '@/components/myPage/assignesAbout/subjects_data';
-import SubmitHeader from '@/components/myPage/assignesAbout/Header/Header';
 import { COLORS } from '@/styles/constants/colors';
 import HorizontalLine from '@/components/myPage/assignesAbout/HorizontalLine/HorizontalLine';
 import * as style from "@/components/myPage/assignesAbout/total.styles"
@@ -35,8 +34,8 @@ const MypageAssignList: React.FC<FormData_d> = ({ width,subject,assIndex }) => {
   return (
     <div style={{display: "flex",
     flexDirection: "column", 
-    alignItems: "center", width:`${formData.width}`}}>
-      <SubmitHeader width={formData.width} onClose={before_page} label="공지"/>
+    alignItems: "center", width:`${formData.width}`, backgroundColor:`${COLORS.grayscale.white}`}}>
+      
       
       <style.MyAssignTitleBox height={84}> 
         <style.MyAssignTitleBoxText color={COLORS.grayscale.Black} 

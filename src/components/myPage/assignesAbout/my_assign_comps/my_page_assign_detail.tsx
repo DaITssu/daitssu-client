@@ -3,7 +3,6 @@ import React, { ChangeEvent, useState } from 'react';
 import { Subject } from '@/components/myPage/assignesAbout/subjects_data';
 import SubjectCard from '@/components/myPage/assignesAbout/my_page_main/subject_card';
 import { title } from 'process';
-import SubmitHeader from '@/components/myPage/assignesAbout/Header/Header';
 import AssignListTitleBox from '@/components/myPage/assignesAbout/my_page_my_assign/assign_title_box';
 import AssignBoxEach from '@/components/myPage/assignesAbout/my_page_my_assign/assign_each_box';
 import { COLORS } from '@/styles/constants/colors';
@@ -39,7 +38,6 @@ const MypageAssignList: React.FC<FormData_d> = ({ width,subject,assIndex }) => {
     <div style={{display: "flex",
     flexDirection: "column", 
     alignItems: "center", width:`${formData.width}`}}>
-      <SubmitHeader width={formData.width} onClose={before_page} label="과제 목록"/>
       <AssignListTitleBox width={formData.width} title={formData.subject.get_assign_title(formData.assIndex)}/>
       <div style={{width:formData.width, height:"25px",
         backgroundColor:`${COLORS.grayscale.Gray5}`,marginBottom:"3px" }}></div>
