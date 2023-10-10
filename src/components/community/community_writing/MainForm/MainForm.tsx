@@ -1,5 +1,5 @@
 
-import { SubSelectBox } from "./SubSelectBox/SubSelectBox";
+import { SubSelectBox } from "@/components/community/community_writing/MainForm/SubSelectBox/SubSelectBox";
 
 interface SubmitHeadernProps {
   label?: string;

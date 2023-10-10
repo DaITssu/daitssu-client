@@ -1,4 +1,4 @@
-import { COLORS } from '../../../../styles/constants/colors';
+import { COLORS } from '@/styles/constants/colors';
 import styled from '@emotion/styled';
 import React from 'react'; // React import 추가
 
@@ -18,4 +18,3 @@ export const ImageBox = styled.img<ImageBoxProps>`
 `;
 
 
-// onChange 이벤트 핸들러 추가

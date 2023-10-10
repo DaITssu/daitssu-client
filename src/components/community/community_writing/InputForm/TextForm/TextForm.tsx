@@ -1,5 +1,5 @@
 import React from 'react';
-import * as styles from "./TextForm.styles"
+import * as styles from "@/components/community/community_writing/InputForm/TextForm/TextForm.styles"
 
 interface TextFormProps{
   name:string;

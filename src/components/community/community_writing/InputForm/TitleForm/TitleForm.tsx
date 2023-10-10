@@ -1,4 +1,4 @@
-import * as styles from "./TitleForm.styles"
+import * as styles from "@/components/community/community_writing/InputForm/TitleForm/TitleForm.styles"
 interface TitleFormnProps {
   label?: string;
   width?: number;

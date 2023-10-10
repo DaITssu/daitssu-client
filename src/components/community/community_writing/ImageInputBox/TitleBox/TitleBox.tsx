@@ -1,6 +1,6 @@
 import React from 'react';
 import { COLORS } from '@/styles/constants/colors';
-import * as styles from "./TitleBox.styles"
+import * as styles from "@/components/community/community_writing/ImageInputBox/TitleBox/TitleBox.styles"
 
 interface FormData {
   width?:number;

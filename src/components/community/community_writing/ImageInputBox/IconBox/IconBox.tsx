@@ -1,6 +1,6 @@
 import React from 'react';
 import { COLORS } from '@/styles/constants/colors';
-import * as styles from "./IconBox.styles"
+import * as styles from "@/components/community/community_writing/ImageInputBox/IconBox/IconBox.styles"
 interface FormData {
   iconSize?:number;
   width?:number;
