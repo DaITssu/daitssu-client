@@ -4,8 +4,6 @@ import {TEXT_STYLES} from '@/styles/constants/textStyles';
 import { useState } from "react";
 import * as styles from "../ann_card.styles";
 import { COLORS } from "@/styles/constants/colors";
-import Link from "next/link";
-import { title } from "process";
 
 
 interface FormData {

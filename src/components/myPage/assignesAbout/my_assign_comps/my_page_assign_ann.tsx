@@ -33,7 +33,7 @@ const MypageAssignList: React.FC<FormData_d> = ({ width,subject,assIndex }) => {
   return (
     <div style={{display: "flex",
     flexDirection: "column", 
-    alignItems: "center", width:`${formData.width}px`,backgroundColor:`${COLORS.grayscale.white}`,
+    alignItems: "center", width:`${formData.width}`,backgroundColor:`${COLORS.grayscale.white}`,
     height: "500px"}}>
       <AssignListTitleBox width={formData.width} title={formData.subject.get_title()}/>
       <div style={{width:`${formData.width}px`, height:"25px",

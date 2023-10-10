@@ -1,8 +1,6 @@
 
 import React, { ChangeEvent, useState } from 'react';
 import { Subject } from '@/components/myPage/assignesAbout/subjects_data';
-import SubjectCard from '@/components/myPage/assignesAbout/my_page_main/subject_card';
-import { title } from 'process';
 import AssignListTitleBox from '@/components/myPage/assignesAbout/my_page_my_assign/assign_title_box';
 import AssignBoxEach from '@/components/myPage/assignesAbout/my_page_my_assign/assign_each_box';
 import { COLORS } from '@/styles/constants/colors';
@@ -30,7 +28,8 @@ const MypageAssignList: React.FC<FormData> = ({ width,subject }) => {
   return (
     <div style={{display: "flex",
     flexDirection: "column", 
-    alignItems: "center", width:`${formData.width}`}}>
+    alignItems: "center", width:`${formData.width}`,backgroundColor:`${COLORS.grayscale.white}`,
+    height:"500px"}}>
       <AssignListTitleBox width={formData.width} title={formData.subject.get_title()}/>
       <div style={{width:formData.width, height:"25px",
         backgroundColor:`${COLORS.grayscale.Gray5}`,marginBottom:"3px" }}></div>
