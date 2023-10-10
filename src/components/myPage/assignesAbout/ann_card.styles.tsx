@@ -3,14 +3,14 @@ import {TEXT_STYLES} from '@/styles/constants/textStyles';
 import styled from '@emotion/styled';
 import React from 'react'; // React import 추가
 
-interface Props {
+interface SubjectCardProps {
   width?: number;
   height?: number;
   color:string;
   margin?:number;
 }
 
-export const SubjectCard = styled.div<Props>`
+export const SubjectCard = styled.div<SubjectCardProps>`
   width: ${(props) => (props.width ? `${props.width}px` : '100px')};
   height: ${(props) => (props.height ? `${props.height}px` : '73px')};
   margin-left:${(props) => (props.margin ? `${props.margin}px` : '5px')};
@@ -25,7 +25,7 @@ export const SubjectCard = styled.div<Props>`
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-interface Props2 {
+interface SubjectCardTextProps {
   fontSize?: number;
   color?:string;
   fontFamily?: string;
@@ -33,7 +33,7 @@ interface Props2 {
   fontWeight?: number;
   
 }
-export const SubjectCardText = styled.div<Props2>`
+export const SubjectCardText = styled.div<SubjectCardTextProps>`
   width:80px;
   color: ${(props) => (props.color ? `${props.color}` : COLORS.grayscale.Gray1)};
   font-size: ${(props) => (props.fontSize ? `${props.fontSize+3}px` : `${TEXT_STYLES.CapR14.fontSize}px` )};

@@ -3,14 +3,14 @@ import {TEXT_STYLES} from '@/styles/constants/textStyles';
 import styled from '@emotion/styled';
 import React from 'react'; // React import 추가
 
-interface Props {
+interface MyAssignTitleBoxProps {
   width?: number;
   height?: number;
   color?:string;
   margin?:number;
 }
 
-export const MyAssignTitleBox = styled.div<Props>`
+export const MyAssignTitleBox = styled.div<MyAssignTitleBoxProps>`
   display: flex;
   flex-direction: column; /* 세로로 요소를 나열합니다. */
   justify-content: center; /* 세로 중앙 정렬을 수행합니다. */
@@ -25,7 +25,7 @@ export const MyAssignTitleBox = styled.div<Props>`
 
 
 
-interface Props2 {
+interface MyAssignTitleBoxTextProps {
   fontSize?: number;
   color?:string;
   fontFamily?: string;
@@ -33,7 +33,7 @@ interface Props2 {
   fontWeight?: number;
   
 }
-export const MyAssignTitleBoxText = styled.div<Props2>`
+export const MyAssignTitleBoxText = styled.div<MyAssignTitleBoxTextProps>`
   color: ${(props) => (props.color ? `${props.color}` : COLORS.grayscale.Gray1)};
   font-size: ${(props) => (props.fontSize ? `${props.fontSize}px` : `${TEXT_STYLES.CapR14.fontSize}px` )};
   font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}` : TEXT_STYLES.CapR14.fontWeight)};

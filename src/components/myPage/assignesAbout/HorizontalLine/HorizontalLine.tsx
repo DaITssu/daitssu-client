@@ -1,7 +1,7 @@
 import React from 'react';
 import { COLORS } from '@/styles/constants/colors';
 // HorizontalLine.js
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 interface HorizontalLineProps {
   width?: number;
   color?: string;
