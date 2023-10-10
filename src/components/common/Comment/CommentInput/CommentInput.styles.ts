@@ -1,3 +1,5 @@
+import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import styled from '@emotion/styled';
 
 export const MyCommentBox = styled.div`
@@ -23,17 +25,17 @@ export const MyRightBox = styled.div`
 
 export const MyCommentLabel = styled.label`
   input {
-    background-color: rgba(238, 238, 238, 1);
+    background-color: ${COLORS.grayscale.Gray4};
     width: 293px;
     height: 45px;
     border-radius: 10px;
     border: none;
+    padding-left: 10px;
+    outline: none;
   }
   input::placeholder {
-    color: rgba(110, 110, 110, 1);
-    font-weight: 500;
-    font-size: 16px;
+    color: ${COLORS.grayscale.Gray1};
+    ${TEXT_STYLES.BodyM16};
+    padding-left: 0;
   }
 `;
-
-export const MyCommentBtn = styled.button``;

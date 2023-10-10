@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container } from '../Calendar/Calendar.styles';
-import { DayBlockN, DayBlockBox } from '../DayBlock/DayBlock.styles';
+import { Container } from '../Calendar.styles';
+import { DayBlockN, DayBlockBox } from '../../DayBlock/DayBlock.styles';
 
 const WeekBlock = () => {
   const dayList: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
