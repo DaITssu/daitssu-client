@@ -1,6 +1,4 @@
-import Button from '@/components/common/Button';
 import * as styles from './Agree.style';
-import AgreeText from './AgreeText';
 import NavigationBar from '@/components/common/Navbar/NavigationBar';
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
