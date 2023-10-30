@@ -4,7 +4,7 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const FlexBox = styled.div`
   background-color: white;
-  height: 82vh;
+  height: 77vh;
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
@@ -83,4 +83,38 @@ export const NavBarWrapper = styled.div`
   width: 100%;
   text-align: center;
   z-index: 10;
+`;
+
+export const TosItemStyle = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const TosItemImageDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ConfirmButton = styled.div<{ isCheck: boolean }>`
+  ${TEXT_STYLES.HeadM18}
+  height: 50px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: ${(props) =>
+    props.isCheck ? COLORS.SSU.primary : COLORS.grayscale.Gray3};
+  border-radius: 12px;
+`;
+export const Box = styled.div`
+  width: 100%;
+
+  padding: 15px;
+  background-color: white;
+`;
+
+export const BoxHeaderText = styled.div`
+  ${TEXT_STYLES.BodyM16}
 `;

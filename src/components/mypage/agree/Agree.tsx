@@ -2,14 +2,18 @@ import Button from '@/components/common/Button';
 import * as styles from './Agree.style';
 import AgreeText from './AgreeText';
 import NavigationBar from '@/components/common/Navbar/NavigationBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { userNavAtom } from '@/states/userNavAtom';
 import Image from 'next/image';
 import DefaultRadio from '@icons/icon/Radio/DefaultRadio.svg';
 import CheckedRadio from '@icons/icon/Radio/CheckedRadio.svg';
+import TosItem from '@/components/Register/TosItems/TosItem';
+import TOS from '@/components/Register/TOS/TOS';
 
 const Agree = () => {
+  const [showModal, setShowModal] = useState(false);
+
   const [agreeArray, setAgreeArray] = useState([false, false, false, false]);
   const activeNavType = useRecoilValue(userNavAtom).activeNavType;
 
@@ -28,127 +32,110 @@ const Agree = () => {
     }
   };
 
+  const [checkAllAgree, setCheckAllAgree] = useState<boolean>(false);
+  const [checkPrivacy, setCheckPrivacy] = useState<boolean>(false);
+  const [checkTermsOfUse, setCheckTermsOfUse] = useState<boolean>(false);
+  const [checkThirdPartyInfo, setCheckThirdPartyInfo] =
+    useState<boolean>(false);
+
+  const [currentAgreement, setCurrentAgreement] = useState({
+    title: '',
+    onAgree: () => {},
+  });
+
+  function handleAllAgreeChange(newValue: boolean) {
+    setCheckAllAgree(newValue);
+    setCheckPrivacy(newValue);
+    setCheckTermsOfUse(newValue);
+    setCheckThirdPartyInfo(newValue);
+  }
+
+  useEffect(() => {
+    if (checkPrivacy && checkTermsOfUse && checkThirdPartyInfo) {
+      setCheckAllAgree(true);
+    } else {
+      setCheckAllAgree(false);
+    }
+  }, [checkPrivacy, checkTermsOfUse, checkThirdPartyInfo]);
+
   return (
     <>
       <div style={{ height: '46px' }}> 헤더자리</div>
       <styles.FlexBox>
-        <styles.TopBox>
-          <styles.ContainCheckBox>
-            <styles.CheckBox
+        <styles.Box>
+          <styles.TosItemStyle>
+            <styles.TosItemImageDiv
               onClick={() => {
-                handleOnClickCheck(0);
+                handleAllAgreeChange(!checkAllAgree);
               }}
             >
-              {agreeArray[0] ? (
-                <Image
-                  src={CheckedRadio}
-                  alt="check"
-                  width={18}
-                  height={18}
-                  priority
-                />
+              {checkAllAgree ? (
+                <Image src={CheckedRadio} alt="DefaultRadio" />
               ) : (
-                <Image
-                  src={DefaultRadio}
-                  alt="uncheck"
-                  width={18}
-                  height={18}
-                  priority
-                />
+                <Image src={DefaultRadio} alt="CheckRadio" />
               )}
-            </styles.CheckBox>
-            <AgreeText
-              type="none"
-              text="약관 전체 동의 (선택사항 모두 포함)"
-              arrow={false}
-            />
-          </styles.ContainCheckBox>
-        </styles.TopBox>
+            </styles.TosItemImageDiv>
+            <div style={{ width: '12px' }}></div>
+            <styles.BoxHeaderText>
+              약관 전체 동의 (선택사항 모두 포함)
+            </styles.BoxHeaderText>
+          </styles.TosItemStyle>
+        </styles.Box>
         <styles.MiddleBox />
-        <styles.BottomBox>
-          <styles.ContainCheckBox>
-            <styles.CheckBox
-              onClick={() => {
-                handleOnClickCheck(1);
-              }}
-            >
-              {agreeArray[1] ? (
-                <Image
-                  src={CheckedRadio}
-                  alt="check"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              ) : (
-                <Image
-                  src={DefaultRadio}
-                  alt="uncheck"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              )}
-            </styles.CheckBox>
-            <AgreeText type="compulsory" text="다잇슈 이용약관" arrow={true} />
-          </styles.ContainCheckBox>
-          <styles.ContainCheckBox>
-            <styles.CheckBox
-              onClick={() => {
-                handleOnClickCheck(2);
-              }}
-            >
-              {agreeArray[2] ? (
-                <Image
-                  src={CheckedRadio}
-                  alt="check"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              ) : (
-                <Image
-                  src={DefaultRadio}
-                  alt="uncheck"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              )}
-            </styles.CheckBox>
-            <AgreeText
-              type="compulsory"
-              text="개인정보 수집 및 이용약관"
-              arrow={true}
-            />
-          </styles.ContainCheckBox>
-          <styles.ContainCheckBox>
-            <styles.CheckBox
-              onClick={() => {
-                handleOnClickCheck(3);
-              }}
-            >
-              {agreeArray[3] ? (
-                <Image
-                  src={CheckedRadio}
-                  alt="check"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              ) : (
-                <Image
-                  src={DefaultRadio}
-                  alt="uncheck"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              )}
-            </styles.CheckBox>
-            <AgreeText type="select" text="제3자 정보 제공 동의" arrow={true} />
-          </styles.ContainCheckBox>
-        </styles.BottomBox>
+        <styles.Box style={{ padding: '0 15px', marginTop: '5px' }}>
+          <TosItem
+            isChecked={checkPrivacy}
+            onCheckboxClick={() => setCheckPrivacy((res) => !res)}
+            text=" 다잇슈 이용약관"
+            onArrowClick={() => {
+              setCurrentAgreement({
+                title: '다잇슈 이용약관',
+                onAgree: () => {
+                  setCheckPrivacy(true);
+                },
+              });
+              setShowModal(true);
+            }}
+          />
+          <TosItem
+            isChecked={checkTermsOfUse}
+            onCheckboxClick={() => setCheckTermsOfUse((res) => !res)}
+            text=" 개인정보 수집 및 이용약관"
+            onArrowClick={() => {
+              setCurrentAgreement({
+                title: '개인정보 수집 및 이용약관',
+                onAgree: () => {
+                  setCheckTermsOfUse(true);
+                },
+              });
+              setShowModal(true);
+            }}
+          />
+          <TosItem
+            isChecked={checkThirdPartyInfo}
+            onCheckboxClick={() => setCheckThirdPartyInfo((res) => !res)}
+            text=" 제3자 정보 제공 동의"
+            isEssential={false}
+            onArrowClick={() => {
+              setCurrentAgreement({
+                title: '제3자 정보 제공 동의',
+                onAgree: () => {
+                  setCheckThirdPartyInfo(true);
+                },
+              });
+              setShowModal(true);
+            }}
+          />
+        </styles.Box>
+        {showModal && (
+          <TOS
+            title={currentAgreement.title}
+            onAgree={currentAgreement.onAgree}
+            closeModal={() => {
+              setShowModal(false);
+            }}
+          />
+        )}
         <styles.InfoBox>
           <p>회원님께서는 동의를 거부할 수 있습니다.</p>
           <p>단, 필수항목 동의 거부 시에는 회원가입이 제한됩니다.</p>
@@ -156,7 +143,14 @@ const Agree = () => {
           <p>약관동의 후 해당 서비스 사용이 가능합니다.</p>
         </styles.InfoBox>
         <styles.FinishButtonBox>
-          <Button label="완료" width={358} />
+          <styles.Box>
+            <div style={{ height: '30px' }}></div>
+            <styles.ConfirmButton
+              isCheck={checkPrivacy && checkTermsOfUse ? true : false}
+            >
+              완료
+            </styles.ConfirmButton>
+          </styles.Box>
         </styles.FinishButtonBox>
       </styles.FlexBox>
       <styles.NavBarWrapper>
