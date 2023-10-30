@@ -105,10 +105,10 @@ const Register = () => {
           <TosItem
             isChecked={checkPrivacy}
             onCheckboxClick={() => setCheckPrivacy((res) => !res)}
-            text=" 다있슈 이용약관"
+            text=" 다잇슈 이용약관"
             onArrowClick={() => {
               setCurrentAgreement({
-                title: '다있슈 이용약관',
+                title: '다잇슈 이용약관',
                 onAgree: () => {
                   setCheckPrivacy(true);
                 },

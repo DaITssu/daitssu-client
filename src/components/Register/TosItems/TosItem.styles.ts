@@ -17,14 +17,13 @@ export const TosItemImageDiv = styled.div`
 export const Box = styled.div`
   width: 100%;
 
-  padding: 16px;
+  padding: 15px;
   background-color: white;
 `;
 
 export const BoxHeaderText = styled.div`
   ${TEXT_STYLES.BodyM16}
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 10px 0;
 `;
 
 export const EssentialText = styled.div`

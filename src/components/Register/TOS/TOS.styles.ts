@@ -34,8 +34,7 @@ export const TOSBody = styled.div`
 
 export const AgreeBtnDiv = styled.div`
   margin: 0 auto;
-
-  padding-bottom: 24px;
+  padding-bottom: 10px;
   padding-top: 10px;
 `;
 

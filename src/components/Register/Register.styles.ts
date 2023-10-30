@@ -15,8 +15,7 @@ export const Box = styled.div`
 
 export const BoxHeaderText = styled.div`
   ${TEXT_STYLES.BodyM16}
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 10px 0;
 `;
 
 export const BoxInnerText = styled.div`
@@ -87,6 +86,7 @@ export const ConfirmButton = styled.div<{ isCheck: boolean }>`
 `;
 
 export const WarningText = styled.div`
+  margin-top: 20px;
   ${TEXT_STYLES.CapR12};
   color: ${COLORS.SSU.error};
 `;
