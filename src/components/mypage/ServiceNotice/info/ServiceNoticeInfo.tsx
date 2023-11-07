@@ -1,4 +1,4 @@
-import * as styles from './ServiceNoticeInfo.style';
+import * as styles from './ServiceNoticeInfo.styles';
 import { useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
