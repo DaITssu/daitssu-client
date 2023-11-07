@@ -46,6 +46,7 @@ const TOS = ({ onAgree, closeModal, title }: TOSProps) => {
           <styles.TOSBody>{getTOSContent(title)}</styles.TOSBody>
           <styles.AgreeBtnDiv>
             <Button
+              width={330}
               label="동의하기"
               onClick={() => {
                 onAgree();
