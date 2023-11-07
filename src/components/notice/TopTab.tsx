@@ -1,11 +1,8 @@
 import { useState } from 'react';
-<<<<<<< HEAD
 import NoticeList from './NoticeList';
 import { jsx, css } from '@emotion/react';
 import * as styles from './TopTab.styles';
-=======
-import * as styles from '../../styles/constants/TopTab.style';
->>>>>>> main
+
 
 const TopTab = () => {
   const data = [
