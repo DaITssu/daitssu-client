@@ -23,7 +23,7 @@ const NoticeItem: React.FC<Props> = ({ item }: Props) => {
         <styles.NoticeStatus>{item.bundle}</styles.NoticeStatus>
 
         <styles.NoticeTitleFont>{item.title}</styles.NoticeTitleFont>
-        <styles.ViewIcon src= {viewIcon} width={18} height={18} alt={''}  />
+        <styles.ViewIcon src= {viewIcon} width={18} height={18} alt={'view_icon'}  />
         <styles.NoticeViews>
           {item.views.toLocaleString('ko-KR')}회
         </styles.NoticeViews>
