@@ -1,7 +1,13 @@
+import styled from '@emotion/styled';
+
+const StyledDiv = styled.div`
+  height: 2000px;
+`;
+
 const Main = () => {
   return (
     <>
-      <h1>home화면입니다</h1>
+      <StyledDiv>home화면입니다</StyledDiv>
     </>
   );
 };

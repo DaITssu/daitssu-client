@@ -6,7 +6,7 @@ import Modal from '@/components/common/Modal';
 import useModal from '@/components/common/Modal/useModal';
 
 const meta: Meta<typeof EditEventModal> = {
-  title: 'Calendar',
+  title: 'Calendar/EditEventModal',
   component: EditEventModal,
 };
 

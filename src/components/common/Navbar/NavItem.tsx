@@ -17,9 +17,21 @@ const NavItem = ({ type, isFocused }: NavItemProps) => {
     <styles.IconContainer>
       <Link href={url}>
         {isFocused ? (
-          <Image src={Icon.active} width={24} height={24} alt="active" />
+          <Image
+            src={Icon.active}
+            width={24}
+            height={24}
+            alt="active"
+            priority
+          />
         ) : (
-          <Image src={Icon.default} width={24} height={24} alt="default" />
+          <Image
+            src={Icon.default}
+            width={24}
+            height={24}
+            alt="default"
+            priority
+          />
         )}
       </Link>
     </styles.IconContainer>

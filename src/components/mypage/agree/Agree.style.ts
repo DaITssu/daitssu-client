@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const FlexBox = styled.div`
   background-color: white;
@@ -36,18 +38,19 @@ export const CheckBox = styled.div`
 export const TypeBox = styled.div<{ type: string }>`
   display: flex;
   align-items: center;
-  font-size: 16px;
-  line-height: 16px;
+  ${TEXT_STYLES.BodyM16};
 
-  color: ${(props) => (props.type === 'compulsory' ? '#F36262' : '#BDBDBD')};
+  color: ${(props) =>
+    props.type === 'compulsory'
+      ? `${COLORS.SSU.error}`
+      : `${COLORS.grayscale.Gray2}`};
   margin-right: ${(props) => (props.type === 'none' ? '' : '5px')};
 `;
 
 export const TextBox = styled.div`
   display: flex;
   align-items: center;
-  font-size: 16px;
-  line-height: 16px;
+  ${TEXT_STYLES.BodyM16};
 `;
 
 export const ArrowBox = styled.div`
@@ -59,8 +62,9 @@ export const ArrowBox = styled.div`
 
 export const InfoBox = styled.div`
   padding: 15px;
-  font-size: 12px;
-  color: #f36262;
+  color: ${COLORS.SSU.error};
+  ${TEXT_STYLES.CapR12};
+
   p {
     margin-top: 2px;
   }

@@ -1,34 +1,31 @@
 import styled from '@emotion/styled';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
+import { COLORS } from '@/styles/constants/colors';
+
 interface TabFontBoxProps {
   isSelected: boolean;
 }
 
 export const TabFontBox = styled.div<TabFontBoxProps>`
-  font-style: normal;
   line-height: 210%;
   text-align: center;
-  position: relative;
   width: 50%;
   height: 36px;
   display: inline-block;
-  color: ${(props) => (props.isSelected ? '#5EBEEB' : '#313131')};
+  color: ${(props) =>
+    props.isSelected ? `${COLORS.SSU.primary}` : `${COLORS.grayscale.Black}`};
   border-bottom: 2px solid
-  ${(props) => (props.isSelected ? '#5EBEEB' : '#D9D9D9')};
+    ${(props) =>
+      props.isSelected ? `${COLORS.SSU.primary}` : `${COLORS.grayscale.Gray3}`};
+  ${TEXT_STYLES.BodyM16};
 `;
 
 export const TabBox = styled.div`
   box-sizing: border-box;
-  position: absolute;
   width: 100%;
   height: 40px;
-  left: 0px;
-  top: 107px;
-  padding-top : 4px;
+  padding-top: 4px;
   ${TEXT_STYLES.BodyR16};
 `;
 
-export const TabContents = styled.div`
-  top: 200px;
-  position: absolute;
-`;
+export const TabContents = styled.div``;

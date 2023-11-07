@@ -4,12 +4,13 @@ import NavItem from './NavItem';
 
 interface NavigationBarProps {
   focusType: keyof typeof NAV_LIST;
+  render?: boolean;
 }
 
-const NavigationBar = ({ focusType }: NavigationBarProps) => {
+const NavigationBar = ({ focusType, render = true }: NavigationBarProps) => {
   return (
     <>
-      <styles.Navigaton>
+      <styles.Navigaton render={render}>
         <NavItem
           type={NAV_LIST.ANNOUNCEMENT}
           isFocused={focusType === NAV_LIST.ANNOUNCEMENT}
