@@ -1,4 +1,4 @@
-import * as styles from '../../../styles/constants/NoticeList.style';
+import * as styles from '../../notice/NoticeList.style';
 import NoticeItem, { NoticeItemProps } from '../../notice/NoticeItem';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 
