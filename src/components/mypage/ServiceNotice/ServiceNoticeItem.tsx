@@ -1,4 +1,4 @@
-import * as styles from './ServiceNoticeItem.style';
+import * as styles from './ServiceNoticeItem.styles';
 import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';

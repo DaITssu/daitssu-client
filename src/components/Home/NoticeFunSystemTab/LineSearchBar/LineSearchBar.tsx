@@ -1,5 +1,5 @@
 import React, { KeyboardEvent, useState } from 'react';
-import * as styles from './LineSearchBar.style';
+import * as styles from './LineSearchBar.styles';
 import searchicon from '@icons/icon/Search/BlueSearch.svg';
 import cancelicon from '@icons/icon/SubscribeList/Cancel.svg';
 

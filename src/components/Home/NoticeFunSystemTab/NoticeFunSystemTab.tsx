@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as styles from './NoticeFunSystemTab.style';
+import * as styles from './NoticeFunSystemTab.styles';
 import NoticeList from '@/components/notice/NoticeList';
 import LineSearchBar from './LineSearchBar/LineSearchBar';
 
