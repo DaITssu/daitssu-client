@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Subject } from '@/components/myPage/assignesAbout/subjects_data';
 import { COLORS } from '@/styles/constants/colors';
-import HorizontalLine from '@/components/myPage/assignesAbout/HorizontalLine/HorizontalLine';
 import * as style from "@/components/myPage/assignesAbout/total.styles"
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
+import { useEffect } from 'react';
 import EachWeekAttendance from '@/components/myPage/assignesAbout/attendance_table/each_week';
 interface FormData {
   subject:Subject;
@@ -12,22 +12,25 @@ interface FormData {
 }
 const MypageAssignList: React.FC<FormData> = ({ width,subject,numberList }) => {
   const [formData, setFormData] = useState<FormData>({
-    subject:subject,
-    width: width,
-    numberList:numberList
+    subject:new Subject("웹프로그래밍 (가)","2028년 19학기-34",1241523),
+    width: 390,
+    numberList:[[1,1],[1,1],[2,3],[1,1],[1,3],[2,1]]
   });
 
-  formData.subject= new Subject("웹프로그래밍 (가)","2028년 19학기-34",1241523);
-  formData.width=390;
-  formData.numberList=[[1,1],[1,1],[2,3],[1,1],[1,3],[2,1]];
-  const elementCount: { [key: number]: number } = {};
+  const [elementCount, setElementCount] = useState<{ [key: number]: number }>({});
 
-  for (const row of formData.numberList) {
-    for (const element of row) {
-      elementCount[element] = (elementCount[element] || 0) + 1;
+  useEffect(() => {
+    const updatedElementCount: { [key: number]: number } = {};
+    if(numberList!=null){
+      for (const row of numberList) {
+        for (const element of row) {
+          updatedElementCount[element] = (updatedElementCount[element] || 0) + 1;
+        }
+      }
+      setElementCount(updatedElementCount);
     }
-  }
-  
+  }, [numberList]);
+
 
   
   function before_page(){

@@ -25,6 +25,9 @@ const EachWeekAttendance = ({weekN,attList,color}: SubmitHeadernProps) => {
         return ;
     }
   };
+  if (rows_num==0){
+    return <></>;
+  }
   const attIconList=attList.map(mapNumberToText)
   const smallBoxHeight=74/rows_num;
   return (<>

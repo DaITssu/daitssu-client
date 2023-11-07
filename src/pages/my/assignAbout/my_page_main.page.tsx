@@ -6,7 +6,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <MypageAssignList />
+      <MypageAssignList 
+        ass_link="./my_page_my_subj"
+      />
       {/* <NavigationBar focusType={'MY_PAGE'} /> */}
     </>
   );
