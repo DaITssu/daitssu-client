@@ -1,15 +1,13 @@
-
 import React from 'react';
 import { Story } from '@storybook/react';
-import NoticeList from './NoticeList';
-import { NoticeItemProps } from './NoticeItem';
+import NoticeFunSystemTab from './NoticeFunSystemTab';
 
 export default {
-  title: 'Notice-Funsystem/NoticeList',
-  component: NoticeList,
-}
+  title: 'Home/NoticeFunSystemTab',
+  component: NoticeFunSystemTab,
+};
 
-const Template: Story<{ items: NoticeItemProps[] }> = (args) => <NoticeList {...args} />;
+const Template: Story = (args) => <NoticeFunSystemTab {...args} />;
 
 export const Default = Template.bind({});
 
@@ -57,5 +55,5 @@ Default.args= {
       views: 1706,
       date: '24/05/11',
     },
-  ]
+  ],
 }
