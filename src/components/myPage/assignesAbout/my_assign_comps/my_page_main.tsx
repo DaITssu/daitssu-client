@@ -50,7 +50,8 @@ const MypageMain: React.FC<FormData> = ({ subjects,width,ass_link}) => {
   }, []); // 빈 배열을 두어서 컴포넌트가 마운트될 때 한 번만 API를 호출
 
   const colorList=["#FFD4D4","#FFDDED","#FFE2D2","#FFF1CD","#E9F7C1","#C2F0D7","#D0E0FF",
-    "#D5F3F2","#E4DAD5","#E9E1F7","#EBEBEB" ]
+  "#D5F3F2","#E4DAD5","#E9E1F7","#EBEBEB","#FFD4D4","#FFDDED","#FFE2D2","#FFF1CD","#E9F7C1","#C2F0D7","#D0E0FF",
+  "#D5F3F2","#E4DAD5","#E9E1F7","#EBEBEB" ]
 
   function load_subjects(){
     //subject API로 받아와야됨
