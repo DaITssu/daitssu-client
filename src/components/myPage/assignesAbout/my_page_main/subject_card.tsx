@@ -9,11 +9,13 @@ import { title } from "process";
 
 
 interface FormData {
+  ass_id?:number;
   title?: string;
   semester?: string;
   studentId?:number;
   color:string;
   width?:number;
+  link?:string;
 }
 
 export default function SubjectCard(f:FormData) {
@@ -22,20 +24,25 @@ export default function SubjectCard(f:FormData) {
     semester: f.semester,
     studentId: f.studentId,
     color: f.color,
-    width:f.width
+    width:f.width,
+    link: (f.link? f.link : "/my_page/my_page_my_assign"),
+    ass_id:f.ass_id
   });
   return (
     
     <Link style={{display: "table-cell", verticalAlign: "middle"}}
       href={{
-        pathname: `/my_page/my_page_my_assign`,
+        pathname:formData.link,
         query: { 
-          subject_j: JSON.stringify(new Subject(formData.title,formData.semester, formData.studentId)),
+          ass_id:formData.ass_id,
+          title:formData.title,
+          semester:formData.semester,
+          studentId:formData.studentId,
           color: formData.color,
         }
       }}
       
-        as={`/my_page/my_page_my_assign/${formData.title}`}>
+        as={f.link? f.link+`/${formData.title}` :`/my_page/my_page_my_assign/${formData.title}`}>
       <styles.SubjectCard color={formData.color} width={formData.width}
       onClick={()=>{console.log("Link Clicked");
       console.log(JSON.stringify(new Subject(formData.title,formData.semester, formData.studentId)));}}>

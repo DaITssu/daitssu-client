@@ -8,18 +8,23 @@ import EachWeekAttendance from '@/components/myPage/assignesAbout/attendance_tab
 interface FormData {
   subject:Subject;
   width:number;
-  numberList:Array<Array<number>>
+  numberList:Array<Array<number>>;
+  ass_id:number
 }
-const MypageAssignList: React.FC<FormData> = ({ width,subject,numberList }) => {
+const MypageAssignList: React.FC<FormData> = ({ width,subject,numberList,ass_id }) => {
   const [formData, setFormData] = useState<FormData>({
-    subject:new Subject("웹프로그래밍 (가)","2028년 19학기-34",1241523),
-    width: 390,
-    numberList:[[1,1],[1,1],[2,3],[1,1],[1,3],[2,1]]
+    subject:subject,
+    width: width,
+    numberList:[[1,1],[1,1],[2,3],[1,1],[1,3],[2,1]],
+    ass_id:ass_id
   });
 
   const [elementCount, setElementCount] = useState<{ [key: number]: number }>({});
 
   useEffect(() => {
+    //출결데이터 api 연결하여 numberList에 저장하여야함 아직 api 나오지 않아 진행 불가
+    //
+
     const updatedElementCount: { [key: number]: number } = {};
     if(numberList!=null){
       for (const row of numberList) {
@@ -29,6 +34,7 @@ const MypageAssignList: React.FC<FormData> = ({ width,subject,numberList }) => {
       }
       setElementCount(updatedElementCount);
     }
+
   }, [numberList]);
 
 

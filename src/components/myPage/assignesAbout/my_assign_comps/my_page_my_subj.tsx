@@ -6,26 +6,26 @@ import HorizontalLine from '@/components/myPage/assignesAbout/HorizontalLine/Hor
 import Link from 'next/link';
 
 interface MypageMyAssignProps {
-  subject_j?: string;
+  subject_i?: Subject;
   color: string;
   width?: number;
   link_assigns?: string;
   link_ann?: string;
   link_att?: string;
+  ass_id?:number;
 }
 
 function MypageMyAssign({
-  subject_j,
+  subject_i,
   color,
   width,
   link_assigns,
   link_ann,
   link_att,
+  ass_id
 }: MypageMyAssignProps) {
   
-  const subject =
-    typeof subject_j === 'string'
-      ? JSON.parse(subject_j)
+  const subject =subject_i?subject_i
       : new Subject('전달안됨', '2028년 19학기-34', 1241523);
 
   return (
@@ -41,7 +41,7 @@ function MypageMyAssign({
       <MyAssignTitleBox
         color={color}
         width={width}
-        title={subject.get_title()}
+        title={subject.get_title() as string}
         semester={subject.get_semester()}
         studentId={subject.get_studentId()}
       />
@@ -57,7 +57,15 @@ function MypageMyAssign({
 
       <HorizontalLine></HorizontalLine>
 
-      <Link href={link_att || '/unun'}>
+      <Link href={{
+        pathname: link_att || 'unn',
+        query: { 
+          title: subject_i? subject_i.get_title(): "none",
+          semester:subject_i? subject_i.get_semester():"none",
+          studentId: subject_i? subject_i.get_studentId(): "none",
+          ass_id:ass_id
+        }
+      }}>
         <MyAssignListBox title="출결 상황" />
       </Link>
 

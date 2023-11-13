@@ -11,8 +11,8 @@ interface Props {
 }
 
 export const SubjectCard = styled.div<Props>`
-  width: ${(props) => (props.width ? `${props.width}px` : '171px')};
-  height: ${(props) => (props.height ? `${props.height}px` : '102px')};
+  width: ${(props) => (props.width ? `${props.width}px` : '191px')};
+  height: ${(props) => (props.height ? `${props.height}px` : '122px')};
   padding: 15px;
   margin-left:${(props) => (props.margin ? `${props.margin}px` : '5px')};
 
@@ -21,6 +21,7 @@ export const SubjectCard = styled.div<Props>`
   
   outline: 2px solid ${COLORS.grayscale.white}; 
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 `;
 
 interface Props2 {
@@ -33,9 +34,9 @@ interface Props2 {
 }
 export const SubjectCardText = styled.div<Props2>`
   color: ${(props) => (props.color ? `${props.color}` : COLORS.grayscale.Gray1)};
-  font-size: ${(props) => (props.fontSize ? `${props.fontSize+3}px` : `${TEXT_STYLES.CapR14.fontSize+3}px` )};
-  font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}` : TEXT_STYLES.CapR14.fontWeight)};
-  letter-spacing: ${(props) => (props.letterSpacing ? `${props.letterSpacing}` : TEXT_STYLES.CapR14.letterSpacing)};
-  font-family: ${(props) => (props.fontFamily ? `${props.fontFamily}` : TEXT_STYLES.CapR14.fontFamily)};
+  font-size: ${(props) => (props.fontSize ? `${props.fontSize}px` : `${TEXT_STYLES.BodyM16.fontSize}px` )};
+  font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}` : TEXT_STYLES.BodyM16.fontWeight)};
+  letter-spacing: ${(props) => (props.letterSpacing ? `${props.letterSpacing}` : TEXT_STYLES.BodyM16.letterSpacing)};
+  font-family: ${(props) => (props.fontFamily ? `${props.fontFamily}` : TEXT_STYLES.BodyM16.fontFamily)};
   margin-bottom: 6px;
 `;
