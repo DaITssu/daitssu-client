@@ -1,5 +1,4 @@
 import AlarmSetting from '@/components/Calendar/AlarmSetting';
-import Header from '@/components/common/Header/Header';
 import { useEffect } from 'react';
 
 export default function AlarmScreen() {
@@ -54,7 +53,6 @@ export default function AlarmScreen() {
 
   return (
     <>
-      <Header />
       <AlarmSetting subjects={example} />
     </>
   );
