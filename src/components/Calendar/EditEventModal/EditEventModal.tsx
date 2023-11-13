@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/locale';
 import calendar from '@icons/icon/Calendars/calendar.svg';
 import Image from 'next/image';
+import { postCourseVideoAPI } from '@/apis/courseAPIS';
 
 interface EditEventModalProps {
   event?: EventProps;
@@ -20,7 +21,7 @@ interface EventProps {
 }
 
 const EditEventModal = (props: EditEventModalProps) => {
-  const [type, setType] = useState(props.event?.type ?? '');
+  const [type, setType] = useState(props.event?.type ?? 'video');
   const [title, setTitle] = useState(props.event?.title ?? '');
   const [closeTime, setCloseTime] = useState<Date | null>(
     props.event?.closeTime ?? new Date(),
@@ -30,7 +31,16 @@ const EditEventModal = (props: EditEventModalProps) => {
   );
 
   const onSubmit = () => {
-    console.log('submit');
+    //TODO : 서버에 데이터 전달
+    if (type === 'video') {
+      const response = postCourseVideoAPI({
+        title: title,
+        dueDate: closeTime,
+      });
+    }
+    if (type === 'assignment') {
+      console.log('assignment');
+    }
     props.onClose();
   };
 
@@ -74,6 +84,9 @@ const EditEventModal = (props: EditEventModalProps) => {
   );
 
   CalendarButton.displayName = 'CalendarButton';
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setType(event.target.value);
+  };
 
   return (
     <div>
@@ -82,7 +95,7 @@ const EditEventModal = (props: EditEventModalProps) => {
           <styles.typeTitle>종류</styles.typeTitle>
         </styles.rowFirstItem>
         <styles.rowSecondItem>
-          <styles.typeDropDown>
+          <styles.typeDropDown onChange={handleChange}>
             {/* 동영상, 과제 */}
             <option value="video">동영상</option>
             <option value="assignment">과제</option>
