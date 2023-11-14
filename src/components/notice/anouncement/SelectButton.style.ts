@@ -1,18 +1,22 @@
 import styled from '@emotion/styled';
+import { COLORS } from '@/styles/constants/colors';
+
+export const Padding = styled.div`
+  padding: 10px;
+`;
 
 export const ButtonGroupContainer = styled.div<{ expand: boolean }>`
   width: 390px;
   height: 59px;
   position: relative;
-  background-color: white;
-  height: ${({ expand }) => (expand ? '200px' : '40px')};
+  height: ${({ expand }) => (expand ? '210px' : '59px')};
 `;
 
 export const ButtonGroupStyles = styled.div<{ expand: boolean }>`
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  max-height: ${({ expand }) => (expand ? '200px' : '40px')};
+  max-height: ${({ expand }) => (expand ? '210px' : '59px')};
   transition: max-height 0.3s;
 `;
 
@@ -32,9 +36,9 @@ export const Button = styled.button<ButtonProps>`
   padding: 10px 20px;
   margin-right: 10px;
   margin-bottom: 10px;
-  border: 2px solid #5ebeeb;
-  color: #5ebeeb;
-  background-color: #ffffff;
+  border: 2px solid ${COLORS.SSU.primary};
+  color: ${COLORS.SSU.primary};
+  background-color: ${COLORS.grayscale.white};
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   border-radius: 25px;
@@ -44,25 +48,25 @@ export const Button = styled.button<ButtonProps>`
   }
 
   &:hover {
-    background-color: #5ebeeb;
-    color: #ffffff;
+    background-color: ${COLORS.SSU.primary};
+    color: ${COLORS.grayscale.white};
   }
 
   ${({ selected }) =>
     selected &&
     `
-    background-color: #5ebeeb;
-    color: #ffffff;
+    background-color: ${COLORS.SSU.primary};
+    color: ${COLORS.grayscale.white};
   `}
 `;
 
 export const ExpandButton = styled.button`
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 10px;
+  top: 10px;
 
   transform: translateY(50%);
-  background-color: white;
+  background-color: transparent;
   border: none;
   cursor: pointer;
 `;

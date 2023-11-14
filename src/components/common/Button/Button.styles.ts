@@ -1,4 +1,5 @@
-import { COLORS } from '../../../styles/constants/colors';
+import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import styled from '@emotion/styled';
 
 // 가독성을 위해 스타일 파일은 별도로 둡니다.
@@ -18,4 +19,5 @@ export const Button = styled.div<ButtonProps>`
   color: ${COLORS.grayscale.white};
   background-color: ${(props) =>
     props.color ? `${props.color}` : `${COLORS.SSU.primary}`};
+  ${TEXT_STYLES.BtnM18}
 `;

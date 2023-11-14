@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import * as styles from './ServiceNoticeList.style';
+import * as styles from './ServiceNoticeList.styles';
 import ServiceNoticeItem, { ServiceNoticeItemProps } from './ServiceNoticeItem';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 

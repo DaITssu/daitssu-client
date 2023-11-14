@@ -1,21 +1,41 @@
 import Category from '@/components/common/Category';
-import * as styles from '@/components/myPage/Scrap/ScrapList.style';
+import * as styles from './ScrapList.style';
 import Image from 'next/image';
 import DefaultCheckBox from '@icons/icon/CheckBox/DefaultCheckBox.svg';
+import CheckedBox from '@icons/icon/CheckBox/BlueCheckedBox.svg';
 import Comment from '@icons/icon/Icon24/Comment.svg';
+import { useState } from 'react';
 
 const ScrapList = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
     <styles.FlexBox>
       <styles.LeftBox>
         <styles.CheckBox>
-          <Image
-            src={DefaultCheckBox}
-            alt="check"
-            width={15}
-            height={15}
-            priority
-          />
+          {isChecked ? (
+            <Image
+              src={CheckedBox}
+              alt="check"
+              width={15}
+              height={15}
+              priority
+              onClick={() => {
+                setIsChecked(!isChecked);
+              }}
+            />
+          ) : (
+            <Image
+              src={DefaultCheckBox}
+              alt="check"
+              width={15}
+              height={15}
+              priority
+              onClick={() => {
+                setIsChecked(!isChecked);
+              }}
+            />
+          )}
         </styles.CheckBox>
       </styles.LeftBox>
       <styles.RightBox>

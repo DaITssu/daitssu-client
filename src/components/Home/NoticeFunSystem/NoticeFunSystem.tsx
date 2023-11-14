@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as styles from './NoticeFunSystem.style';
+import * as styles from './NoticeFunSystem.styles';
 import RightArrow from '@icons/icon/Arrow/RightSmallArrow.svg';
 import Image from 'next/image';
 

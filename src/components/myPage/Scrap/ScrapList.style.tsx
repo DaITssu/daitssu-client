@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
+import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const FlexBox = styled.div`
   display: flex;
   background-color: white;
   width: 100%;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 1px solid ${COLORS.grayscale.Gray3};
   padding-top: 0.8rem;
 `;
 
@@ -32,14 +34,13 @@ export const TagBox = styled.div``;
 export const TimeBox = styled.div`
   display: flex;
   align-items: center;
-  font-size: 14px;
-  color: #6e6e6e;
+  color: ${COLORS.grayscale.Gray1};
   margin-left: auto;
+  ${TEXT_STYLES.CapR14};
 `;
 
 export const TitleBox = styled.div`
-  font-size: 16px;
-  font-weight: 500;
+  ${TEXT_STYLES.BodyM16};
 `;
 
 export const BottomBox = styled.div`
@@ -48,11 +49,10 @@ export const BottomBox = styled.div`
 `;
 
 export const ContentBox = styled.div`
-  font-size: 14px;
-  font-weight: 400;
-  color: #6e6e6e;
+  color: ${COLORS.grayscale.Gray1};
   margin-top: 0.6rem;
   padding-right: 1rem;
+  ${TEXT_STYLES.CapR14};
 `;
 
 export const MessageBox = styled.div`
@@ -63,8 +63,7 @@ export const MessageBox = styled.div`
 export const MessageIconBox = styled.div``;
 
 export const MessageCntBox = styled.div`
-  font-size: 14px;
-  font-weight: 400;
-  color: #6e6e6e;
+  ${TEXT_STYLES.CapR14};
+  color: ${COLORS.grayscale.Gray1};
   margin-left: 0.5rem;
 `;

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const Container = styled.div`
   width: 390px;
@@ -33,7 +34,7 @@ export const TypeBox = styled.div`
   margin: 0px 0 10px;
   text-decoration: underline;
   text-underline-position: under;
-  font-size: 14px;
+  ${TEXT_STYLES.CapR14};
   color: ${COLORS.grayscale.Gray1};
 `;
 
@@ -47,20 +48,20 @@ export const MiddleBox = styled.div`
 `;
 
 export const TitleBox = styled.div`
-  font-size: 20px;
   margin-bottom: 10px;
-  line-height: 30px;
+  ${TEXT_STYLES.HeadM20};
 `;
 
 export const DateBox = styled.div`
   display: flex;
   text-align: center;
-  font-size: 14px;
+  ${TEXT_STYLES.CapR14};
+  align-items: center;
+
   span {
     margin-left: 5px;
     text-align: center;
     display: flex;
-    align-items: center;
     color: ${COLORS.grayscale.Gray1};
   }
 `;
@@ -69,11 +70,11 @@ export const WatchBox = styled.div`
   margin-left: 15px;
   display: flex;
   text-align: center;
-  font-size: 14px;
+  align-items: center;
+  ${TEXT_STYLES.CapR14};
   span {
     text-align: center;
     display: flex;
-    align-items: center;
     color: ${COLORS.grayscale.Gray1};
   }
 `;
@@ -106,6 +107,7 @@ export const DropdownTextBox = styled.div`
   margin-left: 8px;
   display: flex;
   align-items: center;
+  ${TEXT_STYLES.CapR14};
 `;
 
 export const UrlBox = styled.li`
@@ -125,9 +127,7 @@ export const KakaoBox = styled.li`
 export const ContentBox = styled.div`
   margin-top: 20px;
   margin-bottom: 40px;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  ${TEXT_STYLES.BodyR16};
 `;
 
 export const FileBox = styled.div`
@@ -139,14 +139,16 @@ export const FileTopBox = styled.div`
   padding-bottom: 5px;
 `;
 
-export const FileIconBox = styled.div``;
+export const FileIconBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const FileTitleBox = styled.div`
-  font-size: 16px;
   margin-left: 10px;
   display: flex;
   align-items: center;
-  font-weight: 500;
+  ${TEXT_STYLES.BodyM16};
 `;
 
 export const FileAttachBox = styled.div`
@@ -159,7 +161,7 @@ export const FileAttachBox = styled.div`
 `;
 
 export const FileNameBox = styled.div`
-  font-size: 14px;
+  ${TEXT_STYLES.CapR14};
   display: flex;
   align-items: center;
 `;
@@ -174,7 +176,7 @@ export const BottomBox = styled.div``;
 
 export const CommentTitleBox = styled.div`
   background-color: ${COLORS.grayscale.Gray5};
-  font-size: 16px;
+  ${TEXT_STYLES.BodyM16};
   height: 48px;
   display: flex;
   align-items: center;

@@ -1,3 +1,5 @@
+import { COLORS } from '@/styles/constants/colors';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import styled from '@emotion/styled';
 
 export const CommentWhiteBox = styled.div`
@@ -6,11 +8,8 @@ export const CommentWhiteBox = styled.div`
 `;
 
 export const CLeftBox = styled.div`
-  div {
-    width: 45px;
-    height: 45px;
-    background-color: gray;
-  }
+  width: 45px;
+  height: 45px;
 `;
 
 export const CRightBox = styled.div`
@@ -27,18 +26,17 @@ export const CTopBox = styled.div`
 `;
 export const NicknameBox = styled.div`
   display: flex;
-  font-size: 16px;
-  font-weight: 500;
+  ${TEXT_STYLES.BodyM16};
   align-items: center;
 `;
 
 export const TimeBox = styled.div`
   display: flex;
   margin-left: 10px;
-  font-size: 14px;
+  ${TEXT_STYLES.CapR14};
   align-items: center;
   margin-right: auto;
-  color: rgba(110, 110, 110, 1);
+  color: ${COLORS.grayscale.Gray1};
 `;
 
 export const OtherBox = styled.div`
@@ -58,5 +56,5 @@ export const ReportBox = styled.div`
 `;
 
 export const CommentContentBox = styled.div`
-  font-weight: 400;
+  ${TEXT_STYLES.BodyR16};
 `;

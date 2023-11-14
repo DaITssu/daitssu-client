@@ -1,6 +1,6 @@
-import { COLORS } from '../../../styles/constants/colors';
 import styled from '@emotion/styled';
-import { TEXT_STYLES } from '../../../styles/constants/textStyles';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
+import { COLORS } from '@/styles/constants/colors';
 
 // 가독성을 위해 스타일 파일은 별도로 둡니다.
 

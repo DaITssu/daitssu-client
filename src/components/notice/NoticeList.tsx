@@ -1,5 +1,4 @@
-import styled from '@emotion/styled';
-import * as styles from '../../styles/constants/NoticeList.style';
+import * as styles from './NoticeList.styles';
 import NoticeItem, { NoticeItemProps } from './NoticeItem';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 
@@ -12,13 +11,14 @@ const NoticeList: FC<{ items: NoticeItemProps[] }> = ({ items }) => {
 
   return (
     mounted && (
-      <styles.NoticeListBox>
+      <styles.NoticeListBoxShort>
         {items.map((item: NoticeItemProps, key: number) => {
           return <NoticeItem key={key} item={item} />;
         })}
-      </styles.NoticeListBox>
+      </styles.NoticeListBoxShort>
     )
   );
 };
 
 export default NoticeList;
+3

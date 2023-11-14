@@ -11,12 +11,17 @@ export const SearchBarStyles = styled.input`
 
 export const AbsoluteBox = styled.div`
   position: absolute;
-  top: 158px;
+  top: 96px;
   z-index: 1;
 `;
 
 export const SearchBox = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
 `;
 
-export const TagBox = styled.div``;
+export const TagBox = styled.div`
+  background-color: white;
+`;

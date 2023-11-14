@@ -3,6 +3,7 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import NoticeList from './NoticeList';
 import { NoticeItemProps } from './NoticeItem';
+
 export default {
   title: 'Notice-Funsystem/NoticeList',
   component: NoticeList,

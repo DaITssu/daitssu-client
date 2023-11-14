@@ -1,46 +1,35 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
+import { TEXT_STYLES } from '@/styles/constants/textStyles';
+import {COLORS} from '@/styles/constants/colors';
 
 export const NoticeDate = styled.text`
   position: absolute;
-  left: 81.28%;
-  right: 3.35%;
+  right : 12px;
   top: 71.29%;
   bottom: 7.92%;
-
-  /* Caption R 14 */
-  font-family: 'Pretendard';
+  float : right;
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
+  ${TEXT_STYLES.CapR14};
   line-height: 150%;
-  /* identical to box height, or 21px */
   letter-spacing: -0.011em;
-
-  /* gray 1 */
-  color: #6e6e6e;
+  color:${COLORS.grayscale.Gray1};
 `;
 
 export const NoticeViews = styled.text`
+
   position: absolute;
-  left: 8.5%;
+  left: 35px;
   right: 70%;
   top: 71.29%;
   bottom: 7.92%;
   text-align: left;
-  /* Caption R 14 */
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
+  ${TEXT_STYLES.CapR14};
   line-height: 150%;
-  /* identical to box height, or 21px */
-  letter-spacing: -0.011em;
-
-  /* gray 1 */
-  color: #6e6e6e;
+  color:${COLORS.grayscale.Gray1};
 `;
 
-export const ViewIcon = styled.img`
+export const ViewIcon = styled(Image)`
   position: absolute;
   top: 73px;
   left: 11px;
@@ -49,40 +38,29 @@ export const ViewIcon = styled.img`
 export const Noticeitem = styled.button`
   list-style: none;
   position: relative;
-  width: 358px;
+  width: 100%;
   height: 101px;
   margin-bottom: 12px;
   border-top: 10px;
-
   border: 0;
-  background: #f9f9f9;
+  background: ${COLORS.grayscale.Gray5};
   border-radius: 12px;
   &:active {
-    background-color: #e7f5fc;
+    background-color: ${COLORS.SSU.secondary};
   }
+  display : flex;
+  justify-content: center;
+  box-sizing: border-box;
 `;
 
 export const NoticeText = styled.div`
   width: 24px;
   height: 18px;
   text-align: left;
-  /* Caption M 12
-
-  커뮤니티 카테고리
-  */
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 150%;
-  /* identical to box height, or 18px */
+  ${TEXT_STYLES.CapM12};
   text-align: center;
-  letter-spacing: -0.025em;
+  color: ${COLORS.grayscale.Black};
 
-  /* black */
-  color: #313131;
-
-  /* Inside auto layout */
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -92,7 +70,7 @@ export const NoticeText = styled.div`
 `;
 
 export const NoticeStatus = styled.div`
-  /* Auto layout */
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -100,34 +78,26 @@ export const NoticeStatus = styled.div`
   gap: 10px;
 
   position: absolute;
-  width: 25px;
   height: 18px;
   left: 12px;
   top: calc(50% - 24px / 2 - 28.5px);
 
-  /* gray 3 */
-  background: #d9d9d9;
+  background: ${COLORS.grayscale.Gray3};
   border-radius: 12px;
+  white-space: nowrap;
+  width: min-content;
 `;
 
 export const NoticeTitleFont = styled.div`
   position: absolute;
-  left: 3.35%;
+  left : 12px;
   right: 10.11%;
   top: 39.6%;
   bottom: 36.63%;
   text-align: left;
-  /* Body M 16 */
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  /* identical to box height, or 24px */
-  letter-spacing: -0.011em;
+  ${TEXT_STYLES.BodyM16}
 
-  /* black */
-  color: #313131;
+  color:${COLORS.grayscale.Black};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

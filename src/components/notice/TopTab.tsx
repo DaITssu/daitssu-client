@@ -1,18 +1,21 @@
 import { useState } from 'react';
 import NoticeList from './NoticeList';
 import { jsx, css } from '@emotion/react';
-import * as styles from '../../styles/constants/TopTab.style';
+import * as styles from './TopTab.styles';
+
 
 const TopTab = () => {
   const data = [
     {
       id: 0,
       title: '공지사항',
+      // TODO: noticelist 추가 필요 (디자인 수정 필요)
       contents: '공지사항 내용!',
     },
     {
       id: 1,
       title: '펀시스템',
+      // TODO: noticelist 추가 필요 (디자인 수정 필요)
       contents: '펀시스템 내용!',
     },
   ];
