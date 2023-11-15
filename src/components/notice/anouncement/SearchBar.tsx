@@ -1,5 +1,5 @@
 import React, { KeyboardEvent } from 'react';
-import * as styles from './SearchBar.style';
+import * as styles from './SearchBar.styles';
 import searchicon from '@icons/icon/Search/GraySearch.svg';
 
 const SearchBar = () => {

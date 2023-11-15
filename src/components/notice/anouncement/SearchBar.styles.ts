@@ -5,11 +5,14 @@ import { COLORS } from '@/styles/constants/colors';
 export const SearchBarStyles = styled.div`
   display: flex;
   align-items: center;
-  width: 358px;
+  width: 100%;
   height: 45px;
+  left : 0px;
   border-radius: 25px;
   padding: 0 10px;
   border: 1px solid ${COLORS.grayscale.Gray1};
+  background : ${COLORS.grayscale.white};
+  margin : 10px 10px;
 `;
 
 export const Input = styled.input`
