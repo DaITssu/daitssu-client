@@ -74,7 +74,7 @@ export const NoticeStatus = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 3px 10px;
+  padding: 10px 10px;
   gap: 10px;
 
   position: absolute;
