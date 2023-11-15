@@ -1,5 +1,6 @@
 import * as styles from './report.styles';
 import { useState, useEffect } from 'react';
+
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import { NextPage } from 'next';
 import { COLORS } from '@/styles/constants/colors';
@@ -93,5 +94,6 @@ export const Report = () => {
     </div>
   );
 };
+
 
 export default Report;
