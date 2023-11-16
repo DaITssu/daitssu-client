@@ -21,4 +21,3 @@ const NoticeList: FC<{ items: NoticeItemProps[] }> = ({ items }) => {
 };
 
 export default NoticeList;
-3

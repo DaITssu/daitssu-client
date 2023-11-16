@@ -6,10 +6,12 @@ export const Padding = styled.div`
 `;
 
 export const ButtonGroupContainer = styled.div<{ expand: boolean }>`
-  width: 390px;
+  width: 100%;
   height: 59px;
   position: relative;
-  height: ${({ expand }) => (expand ? '210px' : '59px')};
+  background : ${COLORS.grayscale.white};
+  height: ${({ expand }) => (expand ? '100%' : '59px')};
+  padding-right : 20px;
 `;
 
 export const ButtonGroupStyles = styled.div<{ expand: boolean }>`
@@ -20,18 +22,23 @@ export const ButtonGroupStyles = styled.div<{ expand: boolean }>`
   transition: max-height 0.3s;
 `;
 
-export const grayBackgroundStyles = styled.div`
-  /* width: 100%; */
-  height: 350px;
+export const GrayBackgroundStyles = styled.div`
+  width : 100%;
+  height: 100%;
+  position : absolute;
   background-color: black;
   opacity: 0.2;
   transition: opacity 1s;
+  z-index : 5;
 `;
 
 export interface ButtonProps {
   selected: boolean;
 }
-
+export const Background = styled.div`
+  width  : 100%;
+  height : 100%;
+`;
 export const Button = styled.button<ButtonProps>`
   padding: 10px 20px;
   margin-right: 10px;

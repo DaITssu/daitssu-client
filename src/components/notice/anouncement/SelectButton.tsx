@@ -17,7 +17,7 @@ const ButtonGroup = () => {
   };
 
   return (
-    <>
+    <styles.Background>
       <styles.ButtonGroupContainer expand={expand}>
         <styles.ButtonGroupStyles expand={expand}>
           <styles.Padding>
@@ -118,9 +118,9 @@ const ButtonGroup = () => {
         )}
       </styles.ButtonGroupContainer>
       {expand ? (
-        <styles.grayBackgroundStyles></styles.grayBackgroundStyles>
+        <styles.GrayBackgroundStyles/>
       ) : null}
-    </>
+    </styles.Background>
   );
 };
 
