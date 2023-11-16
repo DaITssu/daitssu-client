@@ -3,7 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import view from '@icons/icon/Icon18/SmallHits.svg';
-import { getNoticeKor } from './CategoryMapping';
+import { getKor } from './CategoryMapping';
 
 export interface NoticeItemProps {
   id: number;
@@ -25,7 +25,7 @@ const NoticeItem: React.FC<Props> = ({ item }: Props) => {
   return (
     <Link href={`/notice/${item.id}`}>
       <styles.Noticeitem onClick={notice_onClick}>
-        <styles.NoticeStatus>{getNoticeKor(item.category)}</styles.NoticeStatus>
+        <styles.NoticeStatus>{getKor(item.category)}</styles.NoticeStatus>
 
         <styles.NoticeTitleFont>{item.title}</styles.NoticeTitleFont>
         <styles.ViewIcon src= {view} width={18} height={18} alt={'view_icon'}  />

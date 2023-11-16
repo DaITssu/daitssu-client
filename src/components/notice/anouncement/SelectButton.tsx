@@ -3,10 +3,16 @@ import Image from 'next/image';
 import * as styles from './SelectButton.style';
 import BottomArrow from '@icons/icon/Arrow/DownBigArrow.svg';
 import UpArrow from '@icons/icon/Arrow/UpBigArrow.svg';
-import { NoticeCategory, getNoticeEng, getNoticeKor } from '../CategoryMapping';
+import { FunSystemCategory, NoticeCategory, getKor } from '../CategoryMapping';
 
-const ButtonGroup = ({ category }: { category: (selectedButton: string) => void }) => {
-  const [selectedButton, setSelectedButton] = useState<string>('전체');
+interface ButtonGroupProps {
+  index: number; // index prop 추가
+  category: (selectedButton: string) => void;
+}
+const ButtonGroup: React.FC<ButtonGroupProps> = ({ index, category }) =>{
+
+  const [selectedButton, setSelectedButton] = useState<string>('ALL');
+
   const [expand, setExpand] = useState<boolean>(false);
 
   const handleButtonClick = (buttonText: string) => {
@@ -18,8 +24,7 @@ const ButtonGroup = ({ category }: { category: (selectedButton: string) => void 
   const handleExpandClick = () => {
     setExpand(!expand);
   };
-
-  const categories = Object.keys(NoticeCategory);
+  const categories = index ? Object.keys(FunSystemCategory) : Object.keys(NoticeCategory);
 
   return (
     <styles.Background>
@@ -32,7 +37,7 @@ const ButtonGroup = ({ category }: { category: (selectedButton: string) => void 
                 selected = {selectedButton === category}
                 onClick={()=>handleButtonClick(category)}
               >
-                {getNoticeKor(category)}
+                {getKor(category)}
               </styles.Button>
             ))}
           </styles.Padding>
