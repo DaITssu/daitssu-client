@@ -1,3 +1,4 @@
+
 import React, { KeyboardEvent, useState } from 'react';
 import * as styles from './SearchBar.styles';
 import searchicon from '@icons/icon/Search/GraySearch.svg';

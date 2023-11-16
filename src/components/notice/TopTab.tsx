@@ -3,6 +3,7 @@ import NoticeList from './NoticeList';
 import * as styles from './TopTab.styles';
 import SearchBar from './anouncement/SearchBar'
 import ButtonGroup from './anouncement/SelectButton';
+
 import { getFunSystemAPIwithCategory, getNoticeAPI, getNoticeAPIwithCategory } from '@/apis/noticeAPIS';
 
 
@@ -100,6 +101,7 @@ const TopTab = () => {
         <NoticeList items={funSystemData} />
       )}
       
+
     </styles.TabContentBox>
   );
 };
