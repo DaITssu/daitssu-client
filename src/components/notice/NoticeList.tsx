@@ -12,8 +12,8 @@ const NoticeList: FC<{ items: NoticeItemProps[] }> = ({ items }) => {
   return (
     mounted && (
       <styles.NoticeListBoxShort>
-        {items.map((item: NoticeItemProps, key: number) => {
-          return <NoticeItem key={key} item={item} />;
+        {items.map((item: NoticeItemProps) => {
+          return <NoticeItem key={item.id} item={item} />;
         })}
       </styles.NoticeListBoxShort>
     )
