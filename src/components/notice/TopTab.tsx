@@ -6,6 +6,7 @@ import ButtonGroup from './anouncement/SelectButton';
 import { getFunSystemAPIwithCategory, getNoticeAPIwithCategory } from '@/apis/noticeAPIS';
 import { NoticeItemProps } from './NoticeItem';
 
+
 const TopTab = () => {
   
   const [noticeData, setNoticeData] = useState<NoticeItemProps[]>([]);
@@ -111,6 +112,7 @@ const TopTab = () => {
         <NoticeList items={funSystemData} />
       )}
       
+
     </styles.TabContentBox>
   );
 };

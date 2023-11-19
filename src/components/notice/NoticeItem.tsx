@@ -5,6 +5,7 @@ import Link from 'next/link';
 import view from '@icons/icon/Icon18/SmallHits.svg';
 import { getKor } from './CategoryMapping';
 
+
 export interface NoticeItemProps {
   id: number;
   title: string;
