@@ -19,12 +19,13 @@ export const getNoticeAPI = async (searchKeyword:String="") => {
 };
 
 
-export const getNoticeAPIwithCategory = async (searchKeyword:String ="",category :String) => {
+export const getNoticeAPIwithCategory = async (searchKeyword:String ="",category :String, page:number =0) => {
   try {
     if(category === "ALL"){
       const response = await axiosInstance.get(`/notice`,{
         params : {
           searchKeyword : String(searchKeyword),
+          page : page,
         }
       });
       return response.data;
@@ -32,6 +33,7 @@ export const getNoticeAPIwithCategory = async (searchKeyword:String ="",category
       const response = await axiosInstance.get(`/notice/${category}`,{
         params : {
           searchKeyword : String(searchKeyword),
+          page : page,
         }
       });
       return response.data;
@@ -46,12 +48,13 @@ export const getNoticeAPIwithCategory = async (searchKeyword:String ="",category
   }
 };
 
-export const getFunSystemAPIwithCategory = async (searchKeyword:String ="",category :String) => {
+export const getFunSystemAPIwithCategory = async (searchKeyword:String ="",category :String, page:number =0) => {
   try {
     if(category === "ALL"){
       const response = await axiosInstance.get(`/funsystem`,{
         params : {
           searchKeyword : String(searchKeyword),
+          page : page,
         }
       });
       return response.data;
@@ -59,6 +62,7 @@ export const getFunSystemAPIwithCategory = async (searchKeyword:String ="",categ
       const response = await axiosInstance.get(`/funsystem/${category}`,{
         params : {
           searchKeyword : String(searchKeyword),
+          page : page,
         }
       });
       return response.data;

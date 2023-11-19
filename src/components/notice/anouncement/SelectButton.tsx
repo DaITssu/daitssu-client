@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import * as styles from './SelectButton.style';
 import BottomArrow from '@icons/icon/Arrow/DownBigArrow.svg';
@@ -11,14 +11,16 @@ interface ButtonGroupProps {
 }
 const ButtonGroup: React.FC<ButtonGroupProps> = ({ index, category }) =>{
 
-  const [selectedButton, setSelectedButton] = useState<string>('ALL');
-
+  const [selectedButton, setSelectedButton] = useState<string>("ALL");
   const [expand, setExpand] = useState<boolean>(false);
 
-  const handleButtonClick = (buttonText: string) => {
-    setSelectedButton(buttonText);
+  useEffect(() => {
+    setSelectedButton('ALL');
+  }, [index])
 
+  const handleButtonClick = (buttonText: string) => {
     category(buttonText);
+    setSelectedButton(buttonText);
   };
 
   const handleExpandClick = () => {
