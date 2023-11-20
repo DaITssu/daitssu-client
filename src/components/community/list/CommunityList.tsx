@@ -1,6 +1,6 @@
 
 import styled from '@emotion/styled';
-import * as styles from '../../../styles/community/list/CommunityList.style';
+import * as styles from './CommunityList.style';
 import React, {FC, ChangeEvent, useState, useEffect} from 'react';
 import CommunityItem, {CommunityItemProps} from './CommunityListItem';
 /** @jsxImportSource @emotion/react */

@@ -1,5 +1,5 @@
 
-import * as styles from "../../../styles/community/list/CommunityListItem.style";
+import * as styles from "./CommunityListItem.style";
 import React from 'react';
 import Link from "next/link";
 import bubble from "@icons/icon/Icon18/SmallComment.svg"
