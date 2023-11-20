@@ -6,7 +6,7 @@ export const CommunityListBox = styled.div
 `
 position : relative;
 width: 100%;
-height:100%;
+height:100vh;
 overflow : auto;
 left:0px;
 -ms-overflow-style: none;
