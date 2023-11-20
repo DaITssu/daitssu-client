@@ -2,6 +2,7 @@
 import * as styles from "../../../styles/community/list/CommunityListItem.style";
 import React from 'react';
 import Link from "next/link";
+import bubble from "@icons/icon/Icon18/SmallComment.svg"
 export interface CommunityItemProps {
   bundle: string;
   title: string;
@@ -29,10 +30,12 @@ const CommunityListItem:React.FC<Props> = ({item}:Props)=>{
           <styles.Contents>
             {item.contents}
           </styles.Contents>
-          <styles.BubbleGroup src = "/assets/icon/Bubble/TextBubble.png"/>
-          <styles.Review>
-            {item.review}
-          </styles.Review>
+          <styles.Bubble>
+            <styles.BubbleGroup src = {bubble} width={18} height={18} alt={'chat_icon'}/>
+            <styles.Review>
+                {item.review}
+            </styles.Review>
+          </styles.Bubble>
           <styles.Minutes>
             {item.minutes}분전
           </styles.Minutes>
