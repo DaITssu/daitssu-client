@@ -6,6 +6,7 @@ import CommunityItem, {CommunityItemProps} from './CommunityListItem';
 import { jsx, css } from '@emotion/react';
 import Link from 'next/link';
 import { getCommunityItemAPI } from '@/apis/communityAPIS';
+import { COLORS } from '@/styles/constants/colors';
 
 
 const CommunityList:FC = ()=>{
@@ -85,8 +86,8 @@ const CommunityList:FC = ()=>{
             key = {idx}
             css={[
               index === idx
-              ? css`background-color: #5EBEEB;color: #FFFFFF;` // 선택됨
-              : css`background-color: #FFFFFF;color: #5EBEEB;`,// 선택안됨
+              ? css`background-color: ${COLORS.SSU.primary};color: ${COLORS.grayscale.white};` // 선택됨
+              : css`background-color: ${COLORS.grayscale.white};${COLORS.SSU.primary};`,// 선택안됨
             ]}
           onClick={()=> selectTagHandler(idx)}>{kor}</styles.TagButton>
         ))}
