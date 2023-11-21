@@ -1,4 +1,4 @@
-import { ReactElement, forwardRef, useState } from 'react';
+import { ReactElement, forwardRef, use, useEffect, useState } from 'react';
 import * as styles from './EditEventModal.styles';
 import ToggleButton from '@/components/common/Button/ToggleButton';
 import DatePicker from 'react-datepicker';
@@ -6,7 +6,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/locale';
 import calendar from '@icons/icon/Calendars/calendar.svg';
 import Image from 'next/image';
-import { postCourseVideoAPI } from '@/apis/courseAPIS';
+import {
+  Course,
+  getCourseAPI,
+  postCourseAssignmentAPI,
+  postCourseVideoAPI,
+} from '@/apis/courseAPIS';
 
 interface EditEventModalProps {
   event?: EventProps;
@@ -30,28 +35,32 @@ const EditEventModal = (props: EditEventModalProps) => {
     props.event?.isFinished ?? false,
   );
 
+  const [subjectList, setSubjectList] = useState<Course[]>([]);
+  const [selectedSubject, setSelectedSubject] = useState<Course | null>(null);
+
+  useEffect(() => {
+    getCourseAPI().then((res) => {
+      if (res) {
+        setSubjectList(res.data);
+        // 초기 subject 설정
+        setSelectedSubject(res.data[0]);
+      }
+    });
+  }, []);
+
   const onSubmit = () => {
-    //TODO : 서버에 데이터 전달
     if (type === 'video') {
-      const response = postCourseVideoAPI({
-        title: title,
-        dueDate: closeTime,
-      });
+      if (selectedSubject) {
+        postCourseAssignmentAPI(selectedSubject.id, title);
+      }
     }
     if (type === 'assignment') {
-      console.log('assignment');
+      if (selectedSubject) {
+        postCourseVideoAPI(selectedSubject.id, title);
+      }
     }
     props.onClose();
   };
-
-  const subjectList = [
-    '웹프로그래밍및실습',
-    '컴파일러',
-    '리눅스시스템프로그래밍',
-    '컴퓨터그래픽스',
-    '컴퓨터네트워크',
-    '데이터베이스',
-  ];
 
   type CalendarButtonProps = {
     onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -84,8 +93,16 @@ const EditEventModal = (props: EditEventModalProps) => {
   );
 
   CalendarButton.displayName = 'CalendarButton';
+
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setType(event.target.value);
+  };
+
+  const handleSubjectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedSubject = subjectList.find(
+      (subject) => subject.name === event.target.value,
+    );
+    setSelectedSubject(selectedSubject ?? null);
   };
 
   return (
@@ -107,10 +124,10 @@ const EditEventModal = (props: EditEventModalProps) => {
           <styles.typeTitle>분류</styles.typeTitle>
         </styles.rowFirstItem>
         <styles.rowSecondItem>
-          <styles.classifyDropDown>
+          <styles.classifyDropDown onChange={handleSubjectChange}>
             {subjectList.map((subject) => (
-              <option value={subject} key={subject}>
-                {subject}
+              <option value={subject.name} key={subject.id}>
+                {subject.name}
               </option>
             ))}
           </styles.classifyDropDown>
@@ -136,7 +153,11 @@ const EditEventModal = (props: EditEventModalProps) => {
           <styles.typeTitle>제목</styles.typeTitle>
         </styles.rowFirstItem>
         <styles.rowSecondItem>
-          <styles.input placeholder="일정 제목을 입력하세요." />
+          {/* set title */}
+          <styles.input
+            placeholder="일정 제목을 입력하세요."
+            onChange={(event) => setTitle(event.target.value)}
+          />
         </styles.rowSecondItem>
       </styles.rowContainer>
       {/* event가 있으면 온오프 추가 */}

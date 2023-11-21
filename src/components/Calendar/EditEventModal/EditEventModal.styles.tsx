@@ -43,6 +43,7 @@ export const input = styled.input`
   padding: 0.5rem 0.5rem;
   ${TEXT_STYLES.CapR14}
   width: 90%;
+  color: ${COLORS.grayscale.Black};
   ::placeholder {
     ${TEXT_STYLES.CapR14}
   }
