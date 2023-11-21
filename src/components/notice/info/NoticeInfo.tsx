@@ -1,5 +1,5 @@
 import * as styles from './NoticeInfo.style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
@@ -10,12 +10,23 @@ import Download from '@icons/icon/Icon24/Download.svg';
 import Calendar from '@icons/icon/Nav/calendar_off.svg';
 import Url from '@icons/icon/Icon18/Url.svg';
 import Kakao from '@icons/icon/Icon18/Kakao.svg';
+import { getNoticeInfoAPI } from '@/apis/noticeAPIs';
+import { NoticeInfoProps } from '@/types/NoticeFunsystem';
 
 const NoticeInfo = () => {
+  const [noticeData, setNoticeData] = useState<NoticeInfoProps>();
   const [share, setShare] = useState<boolean>(false);
   const handleShareClick = () => {
     setShare(!share);
   };
+  useEffect(() => {
+    // TODO: 들어오는 아이디 값으로 변경 필요
+    const getNoticeInfo = getNoticeInfoAPI(3367);
+    getNoticeInfo.then((res) => {
+      setNoticeData(res.data);
+    });
+  }, []);
+
   return (
     <styles.Container>
       {/** TODO: 공통 헤더로 수정 */}
@@ -33,7 +44,7 @@ const NoticeInfo = () => {
       </styles.MenuBox>
       <styles.InfoBox>
         <styles.TypeBox>학사</styles.TypeBox>
-        <styles.TitleBox>2023-1학기 신청 기간 안내 (05.15 ~)</styles.TitleBox>
+        <styles.TitleBox>{noticeData?.title}</styles.TitleBox>
         <styles.MiddleBox>
           <styles.DateBox>
             <Image
@@ -43,7 +54,7 @@ const NoticeInfo = () => {
               height={18}
               priority
             />
-            <span>2023/05/11</span>
+            <span>{noticeData?.createdAt.slice(0, 10)}</span>
           </styles.DateBox>
           <styles.WatchBox>
             <Image
@@ -53,7 +64,7 @@ const NoticeInfo = () => {
               height={18}
               priority
             />
-            <span>1706회</span>
+            <span>{noticeData?.views}</span>
           </styles.WatchBox>
           <styles.ShareBox onClick={handleShareClick}>
             <styles.ShareIconBox>
