@@ -31,9 +31,9 @@ const CalendarScreen = () => {
   function onMonthChange(year: number, month: number) {
     setYear(year);
     setMonth(month);
-    let current = new Date(year, month - 1, 1);
+
     const getCalendarResponse = getCalendarAPI(
-      `${current.getFullYear()}-${current.getMonth() + 1}`,
+      `${year}-${month < 10 ? '0' + month.toString() : month}`,
     );
     getCalendarResponse.then((res) => {
       //TODO : 서버에서 받아온 데이터를 dayTasks에 저장
@@ -46,11 +46,18 @@ const CalendarScreen = () => {
     router.push('/calendar/alarm');
   }
 
+  function onTapRefresh() {
+    //TODO : Refresh 로직 구현(토큰으로 로그인)
+    console.log('강제 업데이트');
+  }
   useEffect(() => {
     let current = new Date();
+    const year = current.getFullYear();
+    const month = current.getMonth() + 1;
     // 이번달 데이터 저장
+
     const getCalendarResponse = getCalendarAPI(
-      `${current.getFullYear()}-${current.getMonth() + 1}`,
+      `${year}-${month < 10 ? '0' + month.toString() : month}`,
     );
     getCalendarResponse.then((res) => {
       console.log(res);
@@ -94,9 +101,7 @@ const CalendarScreen = () => {
           </styles.row>
           <styles.row>
             <div
-              onClick={() => {
-                // TODO : 새로고침 기능 추가
-              }}
+              onClick={onTapRefresh}
               style={{ display: 'flex', alignItems: 'center' }}
             >
               <Image
