@@ -93,6 +93,46 @@ export const postCourseAssignmentAPI = async (
   }
 };
 
+export const getCourseAPI = async () => {
+  try {
+    const response = await axiosInstance.get(`/course`);
+    return response.data as CourseResponse;
+  } catch (error) {
+    //에러 출력 - 미사용시 주석처리
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data);
+    }
+  }
+};
+
+interface CourseResponse {
+  code: number;
+  message: string;
+  data: Course[];
+}
+
+export interface Course {
+  id: number;
+  name: string;
+  videos: Video[];
+  assignments: Assignment[];
+  term: number;
+}
+
+interface Video {
+  id: number;
+  name: string;
+  duaAt: string;
+  startAt: string;
+}
+
+interface Assignment {
+  id: number;
+  name: string;
+  dueAt: string;
+  startAt: string;
+}
+
 export const getCalendarAPI = async (date: string) => {
   try {
     const response = await axiosInstance.get(`/course/calendar/${date}`);
