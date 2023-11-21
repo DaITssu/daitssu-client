@@ -12,6 +12,7 @@ import Url from '@icons/icon/Icon18/Url.svg';
 import Kakao from '@icons/icon/Icon18/Kakao.svg';
 import { getNoticeInfoAPI } from '@/apis/noticeAPIs';
 import { NoticeInfoProps } from '@/types/NoticeFunsystem';
+import UtilityHeader from '@/components/common/Header/UtilityHeader';
 
 const NoticeInfo = () => {
   const [noticeData, setNoticeData] = useState<NoticeInfoProps>();
@@ -29,19 +30,7 @@ const NoticeInfo = () => {
 
   return (
     <styles.Container>
-      {/** TODO: 공통 헤더로 수정 */}
-      <styles.MenuBox>
-        <styles.LeftBox>
-          <Image
-            src="/noticeInfo/backarrow.svg"
-            alt="goback"
-            width={8.95}
-            height={15.64}
-            priority
-          />
-        </styles.LeftBox>
-        <styles.CenterBox>공지사항</styles.CenterBox>
-      </styles.MenuBox>
+      <UtilityHeader child="공지사항" />
       <styles.InfoBox>
         <styles.TypeBox>학사</styles.TypeBox>
         <styles.TitleBox>{noticeData?.title}</styles.TitleBox>
