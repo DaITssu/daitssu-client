@@ -11,3 +11,14 @@ export interface NoticeInfoProps {
   views: number;
 }
 
+export interface FunsystemInfoProps {
+  id: number;
+  title: string;
+  content: string;
+  category: string;
+  imageUrl: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+  views: number;
+}
