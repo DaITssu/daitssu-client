@@ -9,7 +9,7 @@ import { getCommunityItemAPI } from '@/apis/communityAPIS';
 import { COLORS } from '@/styles/constants/colors';
 
 
-const CommunityList:FC = ()=>{
+const CommunityList :FC<{ isButtonVisible: boolean; search: string }> = ({ isButtonVisible, search })=>{
 
   
   const [page, setPage] = useState(0);
@@ -21,7 +21,7 @@ const CommunityList:FC = ()=>{
   const fetchData = async() =>{
     try{
       setFetching(true);
-      const data = await getCommunityItemAPI("",category,page);
+      const data = await getCommunityItemAPI(search,category,page);
       if (data) {
         if (page === 0) {
           setItems(data.data.articles);
@@ -51,12 +51,16 @@ const CommunityList:FC = ()=>{
 
   useEffect(() => {
     fetchData();
-    console.log(items);
     window.addEventListener("scroll",handleScroll);
     return()=>{
       window.removeEventListener("scroll", handleScroll);
     };
-  },[category,index]);
+  },[index,search]);
+
+  useEffect(() => {
+    setPage(0);
+    fetchData();
+  }, [search, category]);
 
   const selectTagHandler = (n : number) =>{
     setCategory(tag[n].eng);
@@ -80,18 +84,20 @@ const CommunityList:FC = ()=>{
 
   return(
     <>
-      <styles.TagList>
-        {tag.map(({kor,eng}, idx) =>(
-          <styles.TagButton
-            key = {idx}
-            css={[
-              index === idx
-              ? css`background-color: ${COLORS.SSU.primary};color: ${COLORS.grayscale.white};` // 선택됨
-              : css`background-color: ${COLORS.grayscale.white};${COLORS.SSU.primary};`,// 선택안됨
-            ]}
-          onClick={()=> selectTagHandler(idx)}>{kor}</styles.TagButton>
-        ))}
-      </styles.TagList>
+      {isButtonVisible &&
+        <styles.TagList>
+          {tag.map(({kor,eng}, idx) =>(
+            <styles.TagButton
+              key = {idx}
+              css={[
+                index === idx
+                ? css`background-color: ${COLORS.SSU.primary};color: ${COLORS.grayscale.white};` // 선택됨
+                : css`background-color: ${COLORS.grayscale.white};${COLORS.SSU.primary};`,// 선택안됨
+              ]}
+            onClick={()=> selectTagHandler(idx)}>{kor}</styles.TagButton>
+          ))}
+        </styles.TagList>
+      }
       <styles.CommunityListBox>
         
         {items.map((item:CommunityItemProps,key:number)=> {
