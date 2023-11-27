@@ -6,13 +6,10 @@ import {COLORS} from '@/styles/constants/colors';
 export const SearchBarBox = styled.div`
   width : 100%;
   height :56px;
-  top : 108px;
-  left : 0px;
   padding-left : 16px;
   padding-right : 16px;
   padding-bottom : 8px; 
   box-sizing : border-box;
-  position : absolute;
   background: ${COLORS.grayscale.white};
 `;
 
