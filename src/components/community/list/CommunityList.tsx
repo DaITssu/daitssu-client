@@ -8,9 +8,7 @@ import Link from 'next/link';
 import { getCommunityItemAPI } from '@/apis/communityAPIS';
 import { COLORS } from '@/styles/constants/colors';
 
-
 const CommunityList :FC<{ isButtonVisible: boolean; search: string }> = ({ isButtonVisible, search })=>{
-
   
   const [page, setPage] = useState(0);
   const [category, setCategory] = useState("ALL");
@@ -55,6 +53,7 @@ const CommunityList :FC<{ isButtonVisible: boolean; search: string }> = ({ isBut
     return()=>{
       window.removeEventListener("scroll", handleScroll);
     };
+
   },[index,search]);
 
   useEffect(() => {
@@ -98,6 +97,7 @@ const CommunityList :FC<{ isButtonVisible: boolean; search: string }> = ({ isBut
           ))}
         </styles.TagList>
       }
+
       <styles.CommunityListBox>
         
         {items.map((item:CommunityItemProps,key:number)=> {

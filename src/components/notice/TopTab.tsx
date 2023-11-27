@@ -3,6 +3,7 @@ import NoticeList from './NoticeList';
 import * as styles from './TopTab.styles';
 import SearchBar from './anouncement/SearchBar';
 import ButtonGroup from './anouncement/SelectButton';
+
 import FunSystemList from './FunSystemList';
 
 const TopTab = () => {
@@ -21,6 +22,7 @@ const TopTab = () => {
 
   const selectMenuHandler = (n: number) => {
     setIndex(n);
+
     setCategory("ALL");
     setSearch("");
   };

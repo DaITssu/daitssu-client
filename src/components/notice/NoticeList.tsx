@@ -52,7 +52,6 @@ useEffect(() => {
 },[]);
 
   return (
-    
     <styles.NoticeListBoxShort>
       {noticeData.map((item: NoticeItemProps) => {
         return <NoticeItem key={item.id} item={item} />;
