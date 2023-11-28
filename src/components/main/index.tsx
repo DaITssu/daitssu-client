@@ -18,17 +18,17 @@ const Main = () => {
     const noticeResponse = getNotice();
     const funSystemResponse = getFunsystem();
 
-    popularArticleResponse.then((data) => {
-      setPosts(data.data);
-    });
+    // popularArticleResponse.then((data) => {
+    //   setPosts(data);
+    // });
 
-    noticeResponse.then((data) => {
-      setNoticeList(data.data);
-    });
+    // noticeResponse.then((data) => {
+    //   setNoticeList(data);
+    // });
 
-    funSystemResponse.then((data) => {
-      setFunSystemList(data.data);
-    });
+    // funSystemResponse.then((data) => {
+    //   setFunSystemList(data);
+    // });
   }, []);
 
   return (
