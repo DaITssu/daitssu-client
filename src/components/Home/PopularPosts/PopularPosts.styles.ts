@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   background-color: ${COLORS.grayscale.Gray5};
   flex-direction: column;
+  padding: 20px;
 `;
 
 export const RowSpacer = styled.div`
