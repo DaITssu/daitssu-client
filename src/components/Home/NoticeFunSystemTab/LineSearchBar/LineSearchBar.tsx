@@ -3,18 +3,20 @@ import * as styles from './LineSearchBar.styles';
 import searchicon from '@icons/icon/Search/BlueSearch.svg';
 import cancelicon from '@icons/icon/SubscribeList/Cancel.svg';
 
-const LineSearchBar = () => {
+const LineSearchBar = ({onSearch}:{onSearch : (searchText:string)=>void}) => {
   const [searchText, setSearchText] = useState('');
 
   const handleOnKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      console.log('you press enter key');
-      // TODO: 엔터 키가 눌렸을 때 검색 동작 구현
+      onSearch(searchText);
     }
   };
 
   const handleClearSearch = () => {
     setSearchText('');
+  };
+  const handleSearch = () =>{
+    onSearch(searchText);
   };
 
   return (
@@ -31,7 +33,12 @@ const LineSearchBar = () => {
           <styles.CancelImage src={cancelicon} width={18} height={18} alt={''} />
         </styles.Circle>
         
-        <styles.GlassImage src={searchicon} width={24} height={24} alt={''} />
+        <styles.GlassImage 
+          src={searchicon}
+          width={24} 
+          height={24} 
+          alt={''} 
+          onClick={handleSearch}/>
       </styles.SearchBarStyles>
     </styles.SearchBarBox>
     

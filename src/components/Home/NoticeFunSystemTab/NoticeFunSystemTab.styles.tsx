@@ -19,12 +19,21 @@ export const TabFontBox = styled.div<TabFontBoxProp>`
 `;
 
 export const TabBox = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 40px;
-  left: 0px;
-  top: 164px;
   padding-top : 4px;
   ${TEXT_STYLES.BodyR16};
+`;
+
+export const TabContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index : 100;
+  background : ${COLORS.grayscale.white};
+  left: 0px;
+  top: 117px;
+
 `;
 
