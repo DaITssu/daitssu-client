@@ -4,7 +4,7 @@ export interface CourseResponse {
   data: Course[];
 }
 
-export interface Course {
+interface Course {
   id: number;
   name: string;
   videos: Video[];
