@@ -1,4 +1,5 @@
 import { axiosInstance } from '@/apis/axiosInstance';
+import { CourseResponse } from '@/types/course';
 import axios from 'axios';
 import { type } from 'os';
 
@@ -104,34 +105,6 @@ export const getCourseAPI = async () => {
     }
   }
 };
-
-interface CourseResponse {
-  code: number;
-  message: string;
-  data: Course[];
-}
-
-export interface Course {
-  id: number;
-  name: string;
-  videos: Video[];
-  assignments: Assignment[];
-  term: number;
-}
-
-interface Video {
-  id: number;
-  name: string;
-  duaAt: string;
-  startAt: string;
-}
-
-interface Assignment {
-  id: number;
-  name: string;
-  dueAt: string;
-  startAt: string;
-}
 
 export const getCalendarAPI = async (date: string) => {
   try {
