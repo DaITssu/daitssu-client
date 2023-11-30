@@ -4,8 +4,11 @@ import RightArrow from '@icons/icon/Arrow/RightSmallArrow.svg';
 import Image from 'next/image';
 
 export interface SummaryText {
-  textContent: string;
-  date: string;
+  id: number;
+  title: string;
+  category: String;
+  createdAt: string;
+  views: number;
 }
 
 export interface NoticeFunSystemProps {
@@ -30,14 +33,21 @@ const NoticeFunSystem = (props: NoticeFunSystemProps) => {
         {props.summaries.map((summary, index) => (
           <div key={index}>
             <styles.TextLine top={`${16 + index * 57}px`}>
-              <styles.TextSummary>{summary.textContent}</styles.TextSummary>
-              <styles.Date>{summary.date}</styles.Date>
+              <styles.TextSummary>{summary.title}</styles.TextSummary>
+              <styles.Date>{calculateDate(summary.createdAt)}</styles.Date>
             </styles.TextLine>
           </div>
         ))}
       </styles.TextBox>
     </styles.SummaryBox>
   );
+};
+
+const calculateDate = (createdAt: string) => {
+  const date = new Date(createdAt);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return `${month}-${day}`;
 };
 
 export default NoticeFunSystem;
