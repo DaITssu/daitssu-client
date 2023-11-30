@@ -40,23 +40,27 @@ const Calendar = (props: CalendarProps) => {
   };
 
   const changeMonth = (value: number) => {
-    const newMonth = month + value;
+    let newYear = year;
+    let newMonth = month + value;
+
     if (newMonth > 12) {
-      setYear((year) => year + 1);
-      setMonth(newMonth % 12);
+      newYear = year + 1;
+      newMonth = 1;
     } else if (newMonth < 1) {
-      setYear((year) => year - 1);
-      setMonth((newMonth % 12) + 12);
-    } else {
-      setMonth(newMonth);
+      newYear = year - 1;
+      newMonth = 12;
     }
+    setYear(newYear);
+    setMonth(newMonth);
+
     const firstDayOfMonth = new Date(year, newMonth - 1, 1);
     setFirD(firstDayOfMonth.getDay());
+
     const lastDayOfMonth11 = new Date(year, newMonth, 1);
     const lastDayOfMonth22 = new Date(lastDayOfMonth11.getTime() - 1);
     setLastDN(lastDayOfMonth22.getDate());
 
-    props.onMonthChange(year, newMonth);
+    props.onMonthChange(newYear, newMonth);
   };
 
   const currentDate: Date = new Date();

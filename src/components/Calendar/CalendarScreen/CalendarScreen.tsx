@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SubjectList from '../SubjectList';
 import { SubjectDTOExample } from '@/types/Subject';
 import Calendar from '../Calendar/Calendar';
@@ -10,14 +10,16 @@ import EditEventModal from '../EditEventModal';
 import CalendarIcon from '@icons/icon/Icon24/CalenderUpdate.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { getCalendarAPI } from '@/apis/courseAPIS';
 
 const CalendarScreen = () => {
   const router = useRouter();
   const { open, PopUp, close } = useModal();
+  let today = new Date();
 
-  const [year, setYear] = useState<number>(2023);
-  const [month, setMonth] = useState<number>(8);
-  const [selectDay, setSelectDay] = useState<number>(23);
+  const [year, setYear] = useState<number>(today.getFullYear());
+  const [month, setMonth] = useState<number>(today.getMonth() + 1);
+  const [selectDay, setSelectDay] = useState<number>(today.getDate());
   const [dayTasks, setDayTasks] = useState<{ [key: number]: Array<string> }>(
     {},
   );
@@ -29,12 +31,38 @@ const CalendarScreen = () => {
   function onMonthChange(year: number, month: number) {
     setYear(year);
     setMonth(month);
+
+    const getCalendarResponse = getCalendarAPI(
+      `${year}-${month < 10 ? '0' + month.toString() : month}`,
+    );
+    getCalendarResponse.then((res) => {
+      //TODO : 서버에서 받아온 데이터를 dayTasks에 저장
+      console.log(res);
+    });
   }
 
   function onEditAlarmClick() {
     //TODO 알림 화면에서 보여줄 데이터 전달
     router.push('/calendar/alarm');
   }
+
+  function onTapRefresh() {
+    //TODO : Refresh 로직 구현(토큰으로 로그인)
+    console.log('강제 업데이트');
+  }
+  useEffect(() => {
+    let current = new Date();
+    const year = current.getFullYear();
+    const month = current.getMonth() + 1;
+    // 이번달 데이터 저장
+
+    const getCalendarResponse = getCalendarAPI(
+      `${year}-${month < 10 ? '0' + month.toString() : month}`,
+    );
+    getCalendarResponse.then((res) => {
+      console.log(res);
+    });
+  }, []);
 
   // now
   const now = new Date();
@@ -73,9 +101,7 @@ const CalendarScreen = () => {
           </styles.row>
           <styles.row>
             <div
-              onClick={() => {
-                // TODO : 새로고침 기능 추가
-              }}
+              onClick={onTapRefresh}
               style={{ display: 'flex', alignItems: 'center' }}
             >
               <Image

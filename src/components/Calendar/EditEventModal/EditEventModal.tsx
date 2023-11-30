@@ -1,4 +1,4 @@
-import { ReactElement, forwardRef, useState } from 'react';
+import { ReactElement, forwardRef, use, useEffect, useState } from 'react';
 import * as styles from './EditEventModal.styles';
 import ToggleButton from '@/components/common/Button/ToggleButton';
 import DatePicker from 'react-datepicker';
@@ -6,6 +6,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/locale';
 import calendar from '@icons/icon/Calendars/calendar.svg';
 import Image from 'next/image';
+import {
+  Course,
+  getCourseAPI,
+  postCourseAssignmentAPI,
+  postCourseVideoAPI,
+} from '@/apis/courseAPIS';
 
 interface EditEventModalProps {
   event?: EventProps;
@@ -20,7 +26,7 @@ interface EventProps {
 }
 
 const EditEventModal = (props: EditEventModalProps) => {
-  const [type, setType] = useState(props.event?.type ?? '');
+  const [type, setType] = useState(props.event?.type ?? 'video');
   const [title, setTitle] = useState(props.event?.title ?? '');
   const [closeTime, setCloseTime] = useState<Date | null>(
     props.event?.closeTime ?? new Date(),
@@ -29,19 +35,32 @@ const EditEventModal = (props: EditEventModalProps) => {
     props.event?.isFinished ?? false,
   );
 
+  const [subjectList, setSubjectList] = useState<Course[]>([]);
+  const [selectedSubject, setSelectedSubject] = useState<Course | null>(null);
+
+  useEffect(() => {
+    getCourseAPI().then((res) => {
+      if (res) {
+        setSubjectList(res.data);
+        // 초기 subject 설정
+        setSelectedSubject(res.data[0]);
+      }
+    });
+  }, []);
+
   const onSubmit = () => {
-    console.log('submit');
+    if (type === 'video') {
+      if (selectedSubject) {
+        postCourseAssignmentAPI(selectedSubject.id, title);
+      }
+    }
+    if (type === 'assignment') {
+      if (selectedSubject) {
+        postCourseVideoAPI(selectedSubject.id, title);
+      }
+    }
     props.onClose();
   };
-
-  const subjectList = [
-    '웹프로그래밍및실습',
-    '컴파일러',
-    '리눅스시스템프로그래밍',
-    '컴퓨터그래픽스',
-    '컴퓨터네트워크',
-    '데이터베이스',
-  ];
 
   type CalendarButtonProps = {
     onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -75,6 +94,17 @@ const EditEventModal = (props: EditEventModalProps) => {
 
   CalendarButton.displayName = 'CalendarButton';
 
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setType(event.target.value);
+  };
+
+  const handleSubjectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedSubject = subjectList.find(
+      (subject) => subject.name === event.target.value,
+    );
+    setSelectedSubject(selectedSubject ?? null);
+  };
+
   return (
     <div>
       <styles.rowContainer>
@@ -82,7 +112,7 @@ const EditEventModal = (props: EditEventModalProps) => {
           <styles.typeTitle>종류</styles.typeTitle>
         </styles.rowFirstItem>
         <styles.rowSecondItem>
-          <styles.typeDropDown>
+          <styles.typeDropDown onChange={handleChange}>
             {/* 동영상, 과제 */}
             <option value="video">동영상</option>
             <option value="assignment">과제</option>
@@ -94,10 +124,10 @@ const EditEventModal = (props: EditEventModalProps) => {
           <styles.typeTitle>분류</styles.typeTitle>
         </styles.rowFirstItem>
         <styles.rowSecondItem>
-          <styles.classifyDropDown>
+          <styles.classifyDropDown onChange={handleSubjectChange}>
             {subjectList.map((subject) => (
-              <option value={subject} key={subject}>
-                {subject}
+              <option value={subject.name} key={subject.id}>
+                {subject.name}
               </option>
             ))}
           </styles.classifyDropDown>
@@ -123,7 +153,11 @@ const EditEventModal = (props: EditEventModalProps) => {
           <styles.typeTitle>제목</styles.typeTitle>
         </styles.rowFirstItem>
         <styles.rowSecondItem>
-          <styles.input placeholder="일정 제목을 입력하세요." />
+          {/* set title */}
+          <styles.input
+            placeholder="일정 제목을 입력하세요."
+            onChange={(event) => setTitle(event.target.value)}
+          />
         </styles.rowSecondItem>
       </styles.rowContainer>
       {/* event가 있으면 온오프 추가 */}
