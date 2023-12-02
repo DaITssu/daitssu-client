@@ -10,14 +10,15 @@ import Download from '@icons/icon/Icon24/Download.svg';
 import Calendar from '@icons/icon/Nav/calendar_off.svg';
 import Url from '@icons/icon/Icon18/Url.svg';
 import Kakao from '@icons/icon/Icon18/Kakao.svg';
-import { getNoticeInfoAPI } from '@/apis/noticeAPIS';
-import { NoticeInfoProps } from '@/types/NoticeFunsystem';
+import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIS';
+import { Comments, NoticeInfoProps } from '@/types/NoticeFunsystem';
 import UtilityHeader from '@/components/common/Header/UtilityHeader';
 import { useRouter } from 'next/router';
 import { getKor } from '../CategoryMapping';
 
 const NoticeInfo = () => {
   const [noticeData, setNoticeData] = useState<NoticeInfoProps>();
+  const [noticeComments, setNoticeComments] = useState<Comments[]>();
   const [share, setShare] = useState<boolean>(false);
   const handleShareClick = () => {
     setShare(!share);
@@ -38,11 +39,20 @@ const NoticeInfo = () => {
     });
   }, []);
 
+  // 공지사항 댓글 API 연결
+  useEffect(() => {
+    const getNoticeComments = getNoticeInfoCommentAPI(Number(pathId));
+    getNoticeComments.then((res) => {
+      setNoticeComments(res.data);
+      console.log('comment', res.data);
+    });
+  });
+
   return (
     <styles.Container>
       <UtilityHeader child="공지사항" />
       <styles.InfoBox>
-        <styles.TypeBox>{getKor(noticeData.category)}</styles.TypeBox>
+        <styles.TypeBox>{getKor(noticeData?.category)}</styles.TypeBox>
         <styles.TitleBox>{noticeData?.title}</styles.TitleBox>
         <styles.MiddleBox>
           <styles.DateBox>
@@ -157,6 +167,9 @@ const NoticeInfo = () => {
       <styles.BottomBox>
         <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
       </styles.BottomBox>
+      {noticeComments?.map((comment) => {
+        return <Comment key={comment.commentId} nickname={} />;
+      })}
       <Comment />
       <CommentInput />
     </styles.Container>
