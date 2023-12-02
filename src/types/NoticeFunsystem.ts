@@ -22,3 +22,12 @@ export interface FunsystemInfoProps {
   updatedAt: string;
   views: number;
 }
+
+export interface Comments {
+  commentId: number;
+  userId: number;
+  content: string;
+  originalCommentId: number | null;
+  createdAt: string;
+  updatedAt: string;
+}
