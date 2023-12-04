@@ -63,7 +63,7 @@ const NoticeList: FC<{ category: string; search: string }> = ({
   return (
     <styles.NoticeListBoxShort>
       {funSystemData.map((item: NoticeItemProps) => {
-        return <NoticeItem key={item.id} item={item} />;
+        return <NoticeItem key={item.id} item={item} type="funsystem" />;
       })}
     </styles.NoticeListBoxShort>
   );

@@ -15,16 +15,17 @@ export interface NoticeItemProps {
 
 interface Props {
   item: NoticeItemProps;
+  type: 'notice' | 'funsystem' | 'community';
 }
 const formattedDate = (originalDate: String) => {
   const parts = originalDate.split('T')[0].split('-');
   return `${parts[0].slice(2)}/${parts[1]}/${parts[2]}`;
 };
-const NoticeItem: React.FC<Props> = ({ item }: Props) => {
+const NoticeItem: React.FC<Props> = ({ item, type }: Props) => {
   const notice_onClick = () => {};
 
   return (
-    <Link href={`/notice/${item.id}`}>
+    <Link href={`/${type}/${item.id}`}>
       <styles.Noticeitem onClick={notice_onClick}>
         <styles.NoticeStatus>{getKor(item.category)}</styles.NoticeStatus>
 
