@@ -12,3 +12,15 @@ export const getFunsystemInfoAPI = async (funId: number) => {
     return null;
   }
 };
+
+export const getFunsystemInfoCommentAPI = async (funId: number) => {
+  try {
+    const response = await axiosInstance.get(`/funsystem/${funId}/comments`);
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data);
+    }
+    return null;
+  }
+};
