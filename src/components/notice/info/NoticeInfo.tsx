@@ -10,11 +10,19 @@ import Download from '@icons/icon/Icon24/Download.svg';
 import Calendar from '@icons/icon/Nav/calendar_off.svg';
 import Url from '@icons/icon/Icon18/Url.svg';
 import Kakao from '@icons/icon/Icon18/Kakao.svg';
-import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIS';
+import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIs';
+import {
+  getCommunityInfoAPI,
+  getCommunityInfoCommentAPI,
+} from '@/apis/communityAPIS';
 import { Comments, NoticeInfoProps } from '@/types/NoticeFunsystem';
 import UtilityHeader from '@/components/common/Header/UtilityHeader';
 import { useRouter } from 'next/router';
 import { getKor } from '../CategoryMapping';
+import {
+  getFunsystemInfoAPI,
+  getFunsystemInfoCommentAPI,
+} from '@/apis/funsystemAPIs';
 
 const NoticeInfo = () => {
   const [noticeData, setNoticeData] = useState<NoticeInfoProps>();
@@ -30,29 +38,66 @@ const NoticeInfo = () => {
   const numericPart = path.match(/\d+/);
   const pathId = numericPart ? numericPart[0] : 1;
 
-  // 공지사항 API 연결
-  useEffect(() => {
-    const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
-    getNoticeInfo.then((res) => {
-      setNoticeData(res.data);
-      console.log(res.data);
-    });
-  }, []);
+  function extractCategoryFromUrl(url: string): string | null {
+    const regex = /\/(funsystem|notice|community)\/(\d+)/;
+    const match = url.match(regex);
 
-  // 공지사항 댓글 API 연결
+    if (match && match[1]) {
+      return match[1];
+    } else {
+      return null;
+    }
+  }
+
   useEffect(() => {
-    const getNoticeComments = getNoticeInfoCommentAPI(Number(pathId));
-    getNoticeComments.then((res) => {
-      setNoticeComments(res.data);
-      console.log('comment', res.data);
-    });
-  });
+    // 공지사항 API 연결
+    if (extractCategoryFromUrl(path) === 'notice') {
+      const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
+      getNoticeInfo.then((res) => {
+        setNoticeData(res.data);
+        console.log(res.data);
+      });
+
+      const getNoticeComments = getNoticeInfoCommentAPI(Number(pathId));
+      getNoticeComments.then((res) => {
+        setNoticeComments(res.data);
+      });
+    }
+
+    // 펀시스템 API 연결
+    if (extractCategoryFromUrl(path) === 'funsystem') {
+      const getFunsystemInfo = getFunsystemInfoAPI(Number(pathId));
+      getFunsystemInfo.then((res) => {
+        setNoticeData(res.data);
+      });
+
+      const getFunsystemComments = getFunsystemInfoCommentAPI(Number(pathId));
+      getFunsystemComments.then((res) => {
+        setNoticeComments(res.data);
+      });
+    }
+
+    // 커뮤니티 API 연결
+    if (extractCategoryFromUrl(path) === 'community') {
+      const getCommunityInfo = getCommunityInfoAPI(Number(pathId));
+      getCommunityInfo.then((res) => {
+        setNoticeData(res.data);
+      });
+
+      const getCommunityComments = getCommunityInfoCommentAPI(Number(pathId));
+      getCommunityComments.then((res) => {
+        setNoticeComments(res.data);
+      });
+    }
+  }, []);
 
   return (
     <styles.Container>
       <UtilityHeader child="공지사항" />
       <styles.InfoBox>
-        <styles.TypeBox>{getKor(noticeData?.category)}</styles.TypeBox>
+        <styles.TypeBox>
+          {noticeData !== undefined && getKor(noticeData?.category)}
+        </styles.TypeBox>
         <styles.TitleBox>{noticeData?.title}</styles.TitleBox>
         <styles.MiddleBox>
           <styles.DateBox>
@@ -168,9 +213,19 @@ const NoticeInfo = () => {
         <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
       </styles.BottomBox>
       {noticeComments?.map((comment) => {
-        return <Comment key={comment.commentId} nickname={} />;
+        return (
+          <Comment
+            key={comment.commentId}
+            nickname={''}
+            createdAt={comment.createdAt}
+            updatedAt={comment.updatedAt}
+            content={comment.content}
+            commentId={comment.commentId}
+            originalCommentId={comment.originalCommentId}
+            userId={comment.userId}
+          />
+        );
       })}
-      <Comment />
       <CommentInput />
     </styles.Container>
   );
