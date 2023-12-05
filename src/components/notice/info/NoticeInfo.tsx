@@ -25,8 +25,8 @@ import {
 } from '@/apis/funsystemAPIs';
 
 const NoticeInfo = () => {
-  const [noticeData, setNoticeData] = useState<NoticeInfoProps>();
-  const [noticeComments, setNoticeComments] = useState<Comments[]>();
+  const [data, setData] = useState<NoticeInfoProps>();
+  const [comments, setComments] = useState<Comments[]>();
   const [share, setShare] = useState<boolean>(false);
   const handleShareClick = () => {
     setShare(!share);
@@ -54,13 +54,13 @@ const NoticeInfo = () => {
     if (extractCategoryFromUrl(path) === 'notice') {
       const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
       getNoticeInfo.then((res) => {
-        setNoticeData(res.data);
+        setData(res.data);
         console.log(res.data);
       });
 
-      const getNoticeComments = getNoticeInfoCommentAPI(Number(pathId));
-      getNoticeComments.then((res) => {
-        setNoticeComments(res.data);
+      const getcomments = getNoticeInfoCommentAPI(Number(pathId));
+      getcomments.then((res) => {
+        setComments(res.data);
       });
     }
 
@@ -68,12 +68,12 @@ const NoticeInfo = () => {
     if (extractCategoryFromUrl(path) === 'funsystem') {
       const getFunsystemInfo = getFunsystemInfoAPI(Number(pathId));
       getFunsystemInfo.then((res) => {
-        setNoticeData(res.data);
+        setData(res.data);
       });
 
       const getFunsystemComments = getFunsystemInfoCommentAPI(Number(pathId));
       getFunsystemComments.then((res) => {
-        setNoticeComments(res.data);
+        setComments(res.data);
       });
     }
 
@@ -81,12 +81,12 @@ const NoticeInfo = () => {
     if (extractCategoryFromUrl(path) === 'community') {
       const getCommunityInfo = getCommunityInfoAPI(Number(pathId));
       getCommunityInfo.then((res) => {
-        setNoticeData(res.data);
+        setData(res.data);
       });
 
       const getCommunityComments = getCommunityInfoCommentAPI(Number(pathId));
       getCommunityComments.then((res) => {
-        setNoticeComments(res.data);
+        setComments(res.data);
       });
     }
   }, []);
@@ -96,9 +96,9 @@ const NoticeInfo = () => {
       <UtilityHeader child="공지사항" />
       <styles.InfoBox>
         <styles.TypeBox>
-          {noticeData !== undefined && getKor(noticeData?.category)}
+          {data !== undefined && getKor(data?.category)}
         </styles.TypeBox>
-        <styles.TitleBox>{noticeData?.title}</styles.TitleBox>
+        <styles.TitleBox>{data?.title}</styles.TitleBox>
         <styles.MiddleBox>
           <styles.DateBox>
             <Image
@@ -108,7 +108,7 @@ const NoticeInfo = () => {
               height={18}
               priority
             />
-            <span>{noticeData?.createdAt.slice(0, 10)}</span>
+            <span>{data?.createdAt.slice(0, 10)}</span>
           </styles.DateBox>
           <styles.WatchBox>
             <Image
@@ -118,7 +118,7 @@ const NoticeInfo = () => {
               height={18}
               priority
             />
-            <span>{noticeData?.views}</span>
+            <span>{data?.views}</span>
           </styles.WatchBox>
           <styles.ShareBox onClick={handleShareClick}>
             <styles.ShareIconBox>
@@ -174,8 +174,8 @@ const NoticeInfo = () => {
           </styles.ShareBox>
         </styles.MiddleBox>
         <hr />
-        <styles.ContentBox>{noticeData?.content}</styles.ContentBox>
-        {noticeData?.fileUrl.length !== 0 && (
+        <styles.ContentBox>{data?.content}</styles.ContentBox>
+        {data?.fileUrl.length !== 0 && (
           <>
             <hr />
             <styles.FileBox>
@@ -212,7 +212,7 @@ const NoticeInfo = () => {
       <styles.BottomBox>
         <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
       </styles.BottomBox>
-      {noticeComments?.map((comment) => {
+      {comments?.map((comment) => {
         return (
           <Comment
             key={comment.commentId}
