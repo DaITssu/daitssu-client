@@ -175,40 +175,39 @@ const NoticeInfo = () => {
         </styles.MiddleBox>
         <hr />
         <styles.ContentBox>{data?.content}</styles.ContentBox>
-        {data?.fileUrl?.length !== 0 ||
-          (data?.fileUrl !== undefined && (
-            <>
-              <hr />
-              <styles.FileBox>
-                <styles.FileTopBox>
-                  <styles.FileIconBox>
-                    <Image
-                      src={AttchedFile}
-                      alt="attchment"
-                      width={20}
-                      height={20}
-                      priority
-                    />
-                  </styles.FileIconBox>
-                  <styles.FileTitleBox>첨부파일</styles.FileTitleBox>
-                </styles.FileTopBox>
-                <styles.FileAttachBox>
-                  <styles.FileNameBox>
-                    2023-1학기-전공별-다전공-선발-방법.xlsx
-                  </styles.FileNameBox>
-                  <styles.FileDownBox>
-                    <Image
-                      src={Download}
-                      alt="download button"
-                      width={20}
-                      height={20}
-                      priority
-                    />
-                  </styles.FileDownBox>
-                </styles.FileAttachBox>
-              </styles.FileBox>
-            </>
-          ))}
+        {data?.fileUrl !== undefined && data?.fileUrl.length !== 0 && (
+          <>
+            <hr />
+            <styles.FileBox>
+              <styles.FileTopBox>
+                <styles.FileIconBox>
+                  <Image
+                    src={AttchedFile}
+                    alt="attchment"
+                    width={20}
+                    height={20}
+                    priority
+                  />
+                </styles.FileIconBox>
+                <styles.FileTitleBox>첨부파일</styles.FileTitleBox>
+              </styles.FileTopBox>
+              <styles.FileAttachBox>
+                <styles.FileNameBox>
+                  2023-1학기-전공별-다전공-선발-방법.xlsx
+                </styles.FileNameBox>
+                <styles.FileDownBox>
+                  <Image
+                    src={Download}
+                    alt="download button"
+                    width={20}
+                    height={20}
+                    priority
+                  />
+                </styles.FileDownBox>
+              </styles.FileAttachBox>
+            </styles.FileBox>
+          </>
+        )}
       </styles.InfoBox>
       <styles.BottomBox>
         <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
