@@ -6,17 +6,28 @@ import Report from '@icons/icon/Icon18/report.svg';
 import { useEffect, useState } from 'react';
 
 interface CProps {
+  userId: number;
+  commentId: number;
+  originalCommentId: number | null;
   nickname: string;
-  time: string;
+  createdAt: string;
+  updatedAt: string;
   content: string;
-  type: null | number;
 }
 
 interface TimeDifferenceProps {
   targetTime: string;
 }
 
-const Comment = ({ nickname, time, content, type = null }: CProps) => {
+const Comment = ({
+  userId,
+  commentId,
+  originalCommentId,
+  nickname,
+  createdAt,
+  updatedAt,
+  content,
+}: CProps) => {
   const [difference, setDifference] = useState<number | null>(null);
   const TimeDifference: React.FC<TimeDifferenceProps> = ({ targetTime }) => {
     const getFormattedTimeDifference = (
@@ -51,7 +62,7 @@ const Comment = ({ nickname, time, content, type = null }: CProps) => {
     return <div>{formattedTimeDifference}</div>;
   };
   return (
-    <styles.CommentWhiteBox>
+    <styles.CommentWhiteBox padding={originalCommentId === null}>
       <styles.CLeftBox>
         <Image
           src={Profile}
@@ -65,7 +76,7 @@ const Comment = ({ nickname, time, content, type = null }: CProps) => {
         <styles.CTopBox>
           <styles.NicknameBox>{nickname}</styles.NicknameBox>
           <styles.TimeBox>
-            <TimeDifference targetTime={time} />
+            <TimeDifference targetTime={createdAt} />
           </styles.TimeBox>
           <styles.OtherBox>
             <styles.MessageBox>
