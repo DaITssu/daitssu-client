@@ -19,10 +19,6 @@ const ServiceNoticeItem: React.FC<Props> = ({ item }: Props) => {
     <Link href={'/notice/info'}> 
       <styles.Noticeitem onClick={notice_onClick}>
         <styles.NoticeTitleFont>{item.title}</styles.NoticeTitleFont>
-        <styles.ViewIcon src="/assets/icon/Icon18/SmallHits.svg" />
-        <styles.NoticeViews>
-          {item.views.toLocaleString('ko-KR')}회
-        </styles.NoticeViews>
         <styles.NoticeDate>{item.date}</styles.NoticeDate>
       </styles.Noticeitem>
     </Link>

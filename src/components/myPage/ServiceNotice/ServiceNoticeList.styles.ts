@@ -1,16 +1,18 @@
 
+import { COLORS } from '@/styles/constants/colors';
 import styled from '@emotion/styled';
 
 export const NoticeListBox = styled.div
 `
-padding-top: 10px;
-width:390px;
-height:486px;
+padding : 10px;
+width : 100%;
+height : 100%;
 overflow : auto;
--ms-overflow-style: none;
-scrollbar-width: none;
+-ms-overflow-style : none;
+scrollbar-width : none;
 ::-webkit-scrollbar{
   display:none;
 }
-background : #ffffff;
+left : 0;
+background : ${COLORS.grayscale.white};
 `;
