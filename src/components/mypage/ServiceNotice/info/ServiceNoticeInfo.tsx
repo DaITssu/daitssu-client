@@ -3,7 +3,9 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
-
+import backArrow from '@icons/icon/Arrow/LeftBigArrow.svg';
+import watchIcon from '@icons/icon/Icon18/SmallHits.svg';
+import calendarIcon from '@icons/icon/Calendars/calendar.svg';
 export interface ServiceNoticeInfoProps {
   title: string;
   date: string;
@@ -24,14 +26,11 @@ const ServiceNoticeInfo : React.FC<ServiceNoticeInfoProps> = ({
   return (
     <styles.Container>
       <styles.MenuBox>
-        <styles.LeftBox>
-          <Image
-            src="/noticeInfo/backarrow.svg"
-            alt="goback"
-            width={8.95}
-            height={15.64}
-            priority
-          />
+        <styles.LeftBox
+          src = {backArrow}
+          alt="goback"
+        >
+          
         </styles.LeftBox>
         <styles.CenterBox>서비스 공지사항</styles.CenterBox>
       </styles.MenuBox>
@@ -39,27 +38,17 @@ const ServiceNoticeInfo : React.FC<ServiceNoticeInfoProps> = ({
    
         <styles.TitleBox>{title}</styles.TitleBox>
         <styles.MiddleBox>
-          <styles.DateBox>
-            <Image
-              src="/noticeInfo/calendar.svg"
-              alt="date image"
-              width={18}
-              height={18}
-              priority
-            />
-            <span>{date}</span>
-          </styles.DateBox>
-          <styles.WatchBox>
-            <Image
-              src="/noticeInfo/watch.svg"
-              alt="watch count"
-              width={18}
-              height={18}
-              priority
-            />
-            <span>{watchCount}회</span>
+          <styles.DateBox
+            src={calendarIcon}
+            alt="date image"
+          />
+         
+          <span>{date}</span>
+          <styles.WatchBox
+            src = {watchIcon}
+            alt="watch count">
           </styles.WatchBox>
-          
+          <span>{watchCount}회</span>
         </styles.MiddleBox>
         <hr />
         <styles.ContentBox>
