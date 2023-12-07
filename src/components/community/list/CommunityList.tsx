@@ -2,7 +2,6 @@
 import * as styles from './CommunityList.style';
 import React, {FC, useState, useEffect} from 'react';
 import CommunityItem, {CommunityItemProps} from './CommunityListItem';
-/** @jsxImportSource @emotion/react */
 import { jsx, css } from '@emotion/react';
 import Link from 'next/link';
 import { getCommunityItemAPI } from '@/apis/communityAPIS';
