@@ -2,11 +2,11 @@
 import * as styles from './CommunityList.style';
 import React, {FC, useState, useEffect} from 'react';
 import CommunityItem, {CommunityItemProps} from './CommunityListItem';
-/** @jsxImportSource @emotion/react */
 import { jsx, css } from '@emotion/react';
 import Link from 'next/link';
 import { getCommunityItemAPI } from '@/apis/communityAPIS';
 import { COLORS } from '@/styles/constants/colors';
+import plus_img from '@icons/icon/Button/plus_button.svg';
 
 const CommunityList :FC<{ isButtonVisible: boolean; search: string }> = ({ isButtonVisible, search })=>{
   
@@ -107,7 +107,7 @@ const CommunityList :FC<{ isButtonVisible: boolean; search: string }> = ({ isBut
         })}
       </styles.CommunityListBox>
       <Link href={'/community/writing'}>
-        <styles.PlusButton src="/assets/icon/Button/plus_button.svg" onClick = {plus_button_onClick}/>
+        <styles.PlusButton src={plus_img} onClick = {plus_button_onClick} width={25} height={25} alt={'plus_button'}/>
       </Link>
       
     </> 
