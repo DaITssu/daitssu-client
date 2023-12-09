@@ -1,7 +1,6 @@
 import { axiosInstance } from "@/apis/axiosInstance";
 import axios from "axios";
 
-//Todo : 페이지네이션 
 export const getNoticeAPI = async (searchKeyword:String="") => {
   try {
     const response = await axiosInstance.get(`/notice`,{
