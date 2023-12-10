@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
-import AgreeInfo from '@/components/mypage/agree/info/AgreeInfo';
+import AgreeInfo from '@/components/myPage/agree/info/AgreeInfo';
 
 const inter = Inter({ subsets: ['latin'] });
 
