@@ -10,7 +10,6 @@ import Download from '@icons/icon/Icon24/Download.svg';
 import Calendar from '@icons/icon/Nav/calendar_off.svg';
 import Url from '@icons/icon/Icon18/Url.svg';
 import Kakao from '@icons/icon/Icon18/Kakao.svg';
-import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIs';
 import {
   getCommunityInfoAPI,
   getCommunityInfoCommentAPI,
@@ -23,6 +22,7 @@ import {
   getFunsystemInfoAPI,
   getFunsystemInfoCommentAPI,
 } from '@/apis/funsystemAPIs';
+import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIS';
 
 const NoticeInfo = () => {
   const [data, setData] = useState<NoticeInfoProps>();
