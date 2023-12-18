@@ -4,6 +4,8 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const Container = styled.div`
   width: 390px;
+  height: 100vh;
+  background-color: ${COLORS.grayscale.white};
   hr {
     border: solid 1px ${COLORS.grayscale.Gray3};
   }
