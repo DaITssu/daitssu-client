@@ -1,5 +1,5 @@
 import * as styles from './NoticeInfo.style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
@@ -10,30 +10,90 @@ import Download from '@icons/icon/Icon24/Download.svg';
 import Calendar from '@icons/icon/Nav/calendar_off.svg';
 import Url from '@icons/icon/Icon18/Url.svg';
 import Kakao from '@icons/icon/Icon18/Kakao.svg';
+import {
+  getCommunityInfoAPI,
+  getCommunityInfoCommentAPI,
+} from '@/apis/communityAPIS';
+import { Comments, NoticeInfoProps } from '@/types/NoticeFunsystem';
+import UtilityHeader from '@/components/common/Header/UtilityHeader';
+import { useRouter } from 'next/router';
+import { getKor } from '../CategoryMapping';
+import {
+  getFunsystemInfoAPI,
+  getFunsystemInfoCommentAPI,
+} from '@/apis/funsystemAPIs';
+import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIs';
 
 const NoticeInfo = () => {
+  const [data, setData] = useState<NoticeInfoProps>();
+  const [comments, setComments] = useState<Comments[]>();
   const [share, setShare] = useState<boolean>(false);
   const handleShareClick = () => {
     setShare(!share);
   };
+
+  // 현재 주소 값
+  const router = useRouter();
+  const path = router.asPath;
+  const numericPart = path.match(/\d+/);
+  const pathId = numericPart ? numericPart[0] : 1;
+
+  function extractCategoryFromUrl(url: string): string | null {
+    const regex = /\/(funsystem|notice|community)\/(\d+)/;
+    const match = url.match(regex);
+
+    if (match && match[1]) {
+      return match[1];
+    } else {
+      return null;
+    }
+  }
+
+  useEffect(() => {
+    // 공지사항 API 연결
+    if (extractCategoryFromUrl(path) === 'notice') {
+      const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
+      getNoticeInfo.then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      });
+
+      const getcomments = getNoticeInfoCommentAPI(Number(pathId));
+      getcomments.then((res) => {
+        setComments(res.data);
+      });
+    }
+
+    // 펀시스템 API 연결
+    if (extractCategoryFromUrl(path) === 'funsystem') {
+      const getFunsystemInfo = getFunsystemInfoAPI(Number(pathId));
+      getFunsystemInfo.then((res) => {
+        setData(res.data);
+      });
+
+      const getFunsystemComments = getFunsystemInfoCommentAPI(Number(pathId));
+      getFunsystemComments.then((res) => {
+        setComments(res.data);
+      });
+    }
+  }, []);
+
+  // 클립보드에 링크 복사
+  const handleCopyClipBoard = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        'https://www.daitssu.com' + router.asPath,
+      );
+    } catch (e) {}
+  };
   return (
     <styles.Container>
-      {/** TODO: 공통 헤더로 수정 */}
-      <styles.MenuBox>
-        <styles.LeftBox>
-          <Image
-            src="/noticeInfo/backarrow.svg"
-            alt="goback"
-            width={8.95}
-            height={15.64}
-            priority
-          />
-        </styles.LeftBox>
-        <styles.CenterBox>공지사항</styles.CenterBox>
-      </styles.MenuBox>
+      <UtilityHeader child="공지사항" />
       <styles.InfoBox>
-        <styles.TypeBox>학사</styles.TypeBox>
-        <styles.TitleBox>2023-1학기 신청 기간 안내 (05.15 ~)</styles.TitleBox>
+        <styles.TypeBox>
+          {data !== undefined && getKor(data?.category)}
+        </styles.TypeBox>
+        <styles.TitleBox>{data?.title}</styles.TitleBox>
         <styles.MiddleBox>
           <styles.DateBox>
             <Image
@@ -43,7 +103,7 @@ const NoticeInfo = () => {
               height={18}
               priority
             />
-            <span>2023/05/11</span>
+            <span>{data?.createdAt.slice(0, 10)}</span>
           </styles.DateBox>
           <styles.WatchBox>
             <Image
@@ -53,7 +113,7 @@ const NoticeInfo = () => {
               height={18}
               priority
             />
-            <span>1706회</span>
+            <span>{data?.views}</span>
           </styles.WatchBox>
           <styles.ShareBox onClick={handleShareClick}>
             <styles.ShareIconBox>
@@ -88,7 +148,9 @@ const NoticeInfo = () => {
                       priority
                     />
                   </styles.DropdownIconBox>
-                  <styles.DropdownTextBox>url 복사</styles.DropdownTextBox>
+                  <styles.DropdownTextBox onClick={handleCopyClipBoard}>
+                    url 복사
+                  </styles.DropdownTextBox>
                 </styles.UrlBox>
                 <styles.KakaoBox>
                   <styles.DropdownIconBox>
@@ -109,44 +171,58 @@ const NoticeInfo = () => {
           </styles.ShareBox>
         </styles.MiddleBox>
         <hr />
-        <styles.ContentBox>
-          2023-1학기 다전공 신청기간 안내드립니다. 2023-1학기 다전공 신청기간
-          안내드립니다. 2023-1학기 다전공 신청기간 안내드립니다.
-        </styles.ContentBox>
-        <hr />
-        <styles.FileBox>
-          <styles.FileTopBox>
-            <styles.FileIconBox>
-              <Image
-                src={AttchedFile}
-                alt="attchment"
-                width={20}
-                height={20}
-                priority
-              />
-            </styles.FileIconBox>
-            <styles.FileTitleBox>첨부파일</styles.FileTitleBox>
-          </styles.FileTopBox>
-          <styles.FileAttachBox>
-            <styles.FileNameBox>
-              2023-1학기-전공별-다전공-선발-방법.xlsx
-            </styles.FileNameBox>
-            <styles.FileDownBox>
-              <Image
-                src={Download}
-                alt="download button"
-                width={20}
-                height={20}
-                priority
-              />
-            </styles.FileDownBox>
-          </styles.FileAttachBox>
-        </styles.FileBox>
+        <styles.ContentBox>{data?.content}</styles.ContentBox>
+        {data?.fileUrl !== undefined && data?.fileUrl.length !== 0 && (
+          <>
+            <hr />
+            <styles.FileBox>
+              <styles.FileTopBox>
+                <styles.FileIconBox>
+                  <Image
+                    src={AttchedFile}
+                    alt="attchment"
+                    width={20}
+                    height={20}
+                    priority
+                  />
+                </styles.FileIconBox>
+                <styles.FileTitleBox>첨부파일</styles.FileTitleBox>
+              </styles.FileTopBox>
+              <styles.FileAttachBox>
+                <styles.FileNameBox>
+                  2023-1학기-전공별-다전공-선발-방법.xlsx
+                </styles.FileNameBox>
+                <styles.FileDownBox>
+                  <Image
+                    src={Download}
+                    alt="download button"
+                    width={20}
+                    height={20}
+                    priority
+                  />
+                </styles.FileDownBox>
+              </styles.FileAttachBox>
+            </styles.FileBox>
+          </>
+        )}
       </styles.InfoBox>
       <styles.BottomBox>
         <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
       </styles.BottomBox>
-      <Comment />
+      {comments?.map((comment) => {
+        return (
+          <Comment
+            key={comment.commentId}
+            nickname={''}
+            createdAt={comment.createdAt}
+            updatedAt={comment.updatedAt}
+            content={comment.content}
+            commentId={comment.commentId}
+            originalCommentId={comment.originalCommentId}
+            userId={comment.userId}
+          />
+        );
+      })}
       <CommentInput />
     </styles.Container>
   );

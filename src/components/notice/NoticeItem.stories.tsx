@@ -7,7 +7,9 @@ export default {
   component: NoticeItem,
 };
 
-const Template: Story<NoticeItemProps> = (args) => <NoticeItem item={args} />;
+const Template: Story<NoticeItemProps> = (args) => (
+  <NoticeItem type="notice" item={args} />
+);
 
 export const Default = Template.bind({});
 
