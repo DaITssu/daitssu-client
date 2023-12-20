@@ -1,7 +1,7 @@
 import * as styles from './NoticeList.styles';
 import NoticeItem, { NoticeItemProps } from './NoticeItem';
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
-import { getFunSystemAPIwithCategory } from '@/apis/noticeAPIS';
+import { getFunSystemAPIwithCategory } from '@/apis/noticeAPIs';
 
 const NoticeList: FC<{ category: string; search: string }> = ({
   category,

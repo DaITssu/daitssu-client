@@ -23,7 +23,6 @@ import {
   getFunsystemInfoCommentAPI,
 } from '@/apis/funsystemAPIs';
 import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIs';
-import { Router, useLocation } from 'react-router-dom';
 
 const NoticeInfo = () => {
   const [data, setData] = useState<NoticeInfoProps>();
@@ -74,19 +73,6 @@ const NoticeInfo = () => {
 
       const getFunsystemComments = getFunsystemInfoCommentAPI(Number(pathId));
       getFunsystemComments.then((res) => {
-        setComments(res.data);
-      });
-    }
-
-    // 커뮤니티 API 연결
-    if (extractCategoryFromUrl(path) === 'community') {
-      const getCommunityInfo = getCommunityInfoAPI(Number(pathId));
-      getCommunityInfo.then((res) => {
-        setData(res.data);
-      });
-
-      const getCommunityComments = getCommunityInfoCommentAPI(Number(pathId));
-      getCommunityComments.then((res) => {
         setComments(res.data);
       });
     }
