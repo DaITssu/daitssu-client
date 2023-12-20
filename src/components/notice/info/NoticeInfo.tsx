@@ -22,7 +22,8 @@ import {
   getFunsystemInfoAPI,
   getFunsystemInfoCommentAPI,
 } from '@/apis/funsystemAPIs';
-import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIS';
+import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIs';
+import { Router, useLocation } from 'react-router-dom';
 
 const NoticeInfo = () => {
   const [data, setData] = useState<NoticeInfoProps>();
@@ -91,6 +92,14 @@ const NoticeInfo = () => {
     }
   }, []);
 
+  // 클립보드에 링크 복사
+  const handleCopyClipBoard = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        'https://www.daitssu.com' + router.asPath,
+      );
+    } catch (e) {}
+  };
   return (
     <styles.Container>
       <UtilityHeader child="공지사항" />
@@ -153,7 +162,9 @@ const NoticeInfo = () => {
                       priority
                     />
                   </styles.DropdownIconBox>
-                  <styles.DropdownTextBox>url 복사</styles.DropdownTextBox>
+                  <styles.DropdownTextBox onClick={handleCopyClipBoard}>
+                    url 복사
+                  </styles.DropdownTextBox>
                 </styles.UrlBox>
                 <styles.KakaoBox>
                   <styles.DropdownIconBox>
