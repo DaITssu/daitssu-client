@@ -33,7 +33,7 @@ const CommunityInfo = () => {
     <styles.Container>
       <styles.MenuBox>
         <styles.LeftBox>
-          <Link href = {'/community'}>
+          <Link href={'/community'}>
             <Image
               src="/noticeInfo/backarrow.svg"
               alt="goback"
@@ -56,7 +56,7 @@ const CommunityInfo = () => {
           </styles.MenuIconBox>
           {menu ? (
             <styles.PopupContainerBox>
-              <Link href ={'/community/info/report'}>
+              <Link href={'/community/info/report'}>
                 <styles.ReportBox>
                   <styles.PopIconBox>
                     <Image
@@ -194,7 +194,10 @@ const CommunityInfo = () => {
       <styles.BottomBox>
         <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
       </styles.BottomBox>
-      <Comment />
+      {/* 
+      
+      TODO: 커뮤니티용 api 연결
+      <Comment /> */}
       <CommentInput />
     </styles.Container>
   );
