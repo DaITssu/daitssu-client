@@ -6,6 +6,8 @@ import AutoLogon from '../AutoLogon/AutoLogon';
 import Button from '@/components/common/Button';
 import FindAuth from '../FindAuth/FindAuth';
 
+import { signInAPI } from '@/apis/authAPIS';
+
 export default function LoginLayout() {
   const [ID, setID] = useState<number>();
   const [password, setPassword] = useState<string>('');
@@ -14,6 +16,19 @@ export default function LoginLayout() {
 
   const handleClickAutoLogon = () => {
     setIsSelectedAutoLogon(!isSelectedAutoLogon);
+  };
+
+  const handleClickLoginBtn = () => {
+    const signInResponse = signInAPI(String(ID), password);
+    signInResponse.then((res) => {
+      console.log(res);
+      if (res?.code === 1001) {
+        alert('회원 정보를 찾을 수 없습니다.');
+        setPassword('');
+      } else if (res?.code === 0) {
+        console.log('로그인 성공');
+      }
+    });
   };
 
   return (
@@ -38,7 +53,7 @@ export default function LoginLayout() {
           isSelected={isSelectedAutoLogon}
           handleClickAutoLogon={handleClickAutoLogon}
         />
-        <Button label="로그인" height={51} />
+        <Button label="로그인" height={51} onClick={handleClickLoginBtn} />
         <FindAuth />
       </styles.Content>
     </styles.LayoutContainer>

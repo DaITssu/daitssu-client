@@ -9,7 +9,7 @@ export default function FindAuth() {
     if (type === 'find') {
       router.push('/login/findAccount');
     } else if (type === 'signup') {
-      router.push('https://smartid.ssu.ac.kr/Symtra_Sso/smln_IDFind.asp');
+      router.push('/register');
     }
   };
 
@@ -18,9 +18,9 @@ export default function FindAuth() {
       <styles.FindIDPasswordBtn onClick={() => handleClickBtn('find')}>
         아이디/비밀번호 찾기
       </styles.FindIDPasswordBtn>
-      <styles.SignUpBtn onClick={() => handleClickBtn('signup')}>
+      {/* <styles.SignUpBtn onClick={() => handleClickBtn('signup')}>
         회원가입
-      </styles.SignUpBtn>
+      </styles.SignUpBtn> */}
     </styles.FindAuthContainer>
   );
 }
