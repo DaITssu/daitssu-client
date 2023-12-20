@@ -1,5 +1,5 @@
 import * as styles from './CommunityInfo.style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
@@ -12,8 +12,15 @@ import DefaultLiked from '@icons/icon/Liked/DefaultLiked.svg';
 import Commentsvg from '@icons/icon/Icon24/Comment.svg';
 import FilledScarp from '@icons/icon/Scrap/FilledScrap.svg';
 import DefaultScrap from '@icons/icon/Scrap/DefaultScrap.svg';
-import Link from 'next/link';
+import {
+  getCommunityInfoAPI,
+  getCommunityInfoCommentAPI,
+} from '@/apis/communityAPIS';
+import { useRouter } from 'next/router';
+import { Comments, NoticeInfoProps } from '@/types/NoticeFunsystem';
+import UtilityHeader from '@/components/common/Header/UtilityHeader';
 const CommunityInfo = () => {
+  const [comments, setComments] = useState<Comments[]>();
   const [isLike, setIsLike] = useState<boolean>(false);
   const [isScrap, setIsScrap] = useState<boolean>(false);
   const [menu, setMenu] = useState<boolean>(false);
@@ -31,63 +38,7 @@ const CommunityInfo = () => {
 
   return (
     <styles.Container>
-      <styles.MenuBox>
-        <styles.LeftBox>
-          <Link href={'/community'}>
-            <Image
-              src="/noticeInfo/backarrow.svg"
-              alt="goback"
-              width={8.95}
-              height={15.64}
-              priority
-            />
-          </Link>
-        </styles.LeftBox>
-        <styles.CenterBox>커뮤니티</styles.CenterBox>
-        <styles.RightBox>
-          <styles.MenuIconBox onClick={handleMenuClick}>
-            <Image
-              src="/assets/icon/Icon24/Menu.svg"
-              alt="menu icon"
-              width={24}
-              height={24}
-              priority
-            />
-          </styles.MenuIconBox>
-          {menu ? (
-            <styles.PopupContainerBox>
-              <Link href={'/community/info/report'}>
-                <styles.ReportBox>
-                  <styles.PopIconBox>
-                    <Image
-                      src={Sue}
-                      alt="sue icon"
-                      width={18}
-                      height={18}
-                      priority
-                    />
-                  </styles.PopIconBox>
-                  <styles.PopTextBox>신고하기</styles.PopTextBox>
-                </styles.ReportBox>
-              </Link>
-              <styles.BlockBox>
-                <styles.PopIconBox>
-                  <Image
-                    src={Ben}
-                    alt="ben icon"
-                    width={18}
-                    height={18}
-                    priority
-                  />
-                </styles.PopIconBox>
-                <styles.PopTextBox>차단하기</styles.PopTextBox>
-              </styles.BlockBox>
-            </styles.PopupContainerBox>
-          ) : (
-            ''
-          )}
-        </styles.RightBox>
-      </styles.MenuBox>
+      <UtilityHeader child="커뮤니티" isCommunity={true} />
       <styles.InfoBox>
         <Category label="질문" BgColor={false} />
       </styles.InfoBox>
@@ -194,10 +145,7 @@ const CommunityInfo = () => {
       <styles.BottomBox>
         <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
       </styles.BottomBox>
-      {/* 
-      
-      TODO: 커뮤니티용 api 연결
-      <Comment /> */}
+
       <CommentInput />
     </styles.Container>
   );
