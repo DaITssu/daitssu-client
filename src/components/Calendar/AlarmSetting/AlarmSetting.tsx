@@ -5,10 +5,9 @@ import video from '@icons/icon/LectureAssignment/Video.svg';
 import comment from '@icons/icon/LectureAssignment/Comment.svg';
 import assignment from '@icons/icon/LectureAssignment/Assignment.svg';
 import Image from 'next/image';
-import SubjectTitle from '../SubjectTitle';
 import { SubjectDTO } from '@/types/Subject';
-
 import { TaskProps } from '@/types/Task';
+import SubjectTitle from '@/components/Calendar/SubjectTitle/index';
 
 interface AlarmProps {
   subjects: SubjectDTO[];

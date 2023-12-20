@@ -1,6 +1,7 @@
 import { COLORS } from '@/styles/constants/colors';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 export const CommunityListBox = styled.div
 `
@@ -17,7 +18,7 @@ scrollbar-width: none;
 background: ${COLORS.grayscale.white};
 `;
 
-export const PlusButton = styled.img`
+export const PlusButton = styled(Image)`
   position: fixed; 
   width: 80px;
   height: 80px;

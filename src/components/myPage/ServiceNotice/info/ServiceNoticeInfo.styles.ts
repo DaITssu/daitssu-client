@@ -1,12 +1,14 @@
+import { COLORS } from '@/styles/constants/colors';
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 export const Container = styled.div`
-  width: 390px;
+  width: 100%;
   height : 797px;
   hr {
     border: solid 1px rgba(217, 217, 217, 1);
   }
-  background-color : #ffffff;
+  background-color : ${COLORS.grayscale.white};
   
 `;
 
@@ -14,10 +16,10 @@ export const MenuBox = styled.div`
   display: flex;
   height: 46px;
   align-items : center;
- 
+
 `;
 
-export const LeftBox = styled.div`
+export const LeftBox = styled(Image)`
   padding-left : 15px;
   position: absolute;
 `;
@@ -56,8 +58,9 @@ export const TitleBox = styled.div`
   line-height: 30px;
 `;
 
-export const DateBox = styled.div`
+export const DateBox = styled(Image)`
   display: flex;
+  margin-top : 3px;
   text-align: center;
   font-size: 14px;
   span {
@@ -69,9 +72,10 @@ export const DateBox = styled.div`
   }
 `;
 
-export const WatchBox = styled.div`
+export const WatchBox = styled(Image)`
   margin-left: 15px;
   display: flex;
+  margin-top : 3px;
   text-align: center;
   font-size: 14px;
   span {
@@ -89,8 +93,6 @@ export const ContentBox = styled.div`
   line-height: 24px;
   font-weight: 400;
 `;
-
-
 
 
 export const FileIconBox = styled.div``;

@@ -28,7 +28,7 @@ export interface CommunityItemProps {
   content : string;
   writerNickName : string;
   updatedAt : string;
-  imageUrls : string[];
+  imageUrls : {url:string[]};
   review : number;
 }
 
