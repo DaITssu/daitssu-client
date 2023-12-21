@@ -54,7 +54,6 @@ const NoticeInfo = () => {
       const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
       getNoticeInfo.then((res) => {
         setData(res.data);
-        console.log(res.data);
       });
 
       const getcomments = getNoticeInfoCommentAPI(Number(pathId));
