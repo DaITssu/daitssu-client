@@ -35,8 +35,7 @@ const NoticeInfo = () => {
   // 현재 주소 값
   const router = useRouter();
   const path = router.asPath;
-  const numericPart = path.match(/\d+/);
-  const pathId = numericPart ? numericPart[0] : 1;
+  const pathId = router.query.id;
 
   function extractCategoryFromUrl(url: string): string | null {
     const regex = /\/(funsystem|notice|community)\/(\d+)/;
