@@ -74,6 +74,13 @@ export const TEXT_STYLES = {
     letterSpacing: -0.22,
     fontFamily: 'Pretendard',
   },
+  //Head SB 18
+  HeadSB18: {
+    fontSize: 18,
+    fontWeight: 600,
+    letterSpacing: -0.198,
+    fontFamily: 'Pretendard',
+  },
   //Button M 18
   BtnM18: {
     fontSize: 18,
