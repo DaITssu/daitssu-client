@@ -2,8 +2,8 @@ import { COLORS } from '@/styles/constants/colors';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import styled from '@emotion/styled';
 
-export const CommentWhiteBox = styled.div`
-  padding: 15px 10px;
+export const CommentWhiteBox = styled.div<{ padding: boolean }>`
+  padding: 15px 10px 15px ${(props) => (props.padding ? '10px' : '60px')};
   display: flex;
 `;
 
