@@ -13,7 +13,7 @@ export interface IUserNavAtom {
   activeNavType: NavListType;
 }
 
-const { persistAtom } = recoilPersist({
+export const { persistAtom } = recoilPersist({
   key: 'navLocalStorage', //원하는 key 값 입력
   storage: storage,
 });
