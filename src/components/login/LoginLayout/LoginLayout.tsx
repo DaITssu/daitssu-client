@@ -9,6 +9,7 @@ import FindAuth from '../FindAuth/FindAuth';
 import Modal from '@/components/common/Modal';
 import LoginErrorModal from '../LoginErrorModal/LoginErrorModal';
 import useModal from '@/components/common/Modal/useModal';
+import UtilityHeader from '@/components/common/Header/UtilityHeader';
 
 import LoginProcess from '../LoginProcess/LoginProcess';
 
@@ -61,7 +62,7 @@ export default function LoginLayout() {
         return res;
       })
       .then((res) => {
-        if (res?.code !== 0) open();
+        if (res?.code !== 0) open(); //에러 메시지 모달 open
       });
   };
 
@@ -71,6 +72,7 @@ export default function LoginLayout() {
         <LoginProcess />
       ) : (
         <styles.LayoutContainer>
+          <UtilityHeader child="로그인" />
           <styles.Content>
             <styles.LoginHeader>숭실대 통합 LOGIN</styles.LoginHeader>
             <InputBox

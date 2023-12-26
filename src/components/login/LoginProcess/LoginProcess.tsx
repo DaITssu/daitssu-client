@@ -1,10 +1,12 @@
 import * as styles from '../LoginLayout/LoginLayout.styles';
 import * as ProcessStyles from './LoginProcess.styles';
 import Loader from '@/components/common/Loader/Loader';
+import UtilityHeader from '@/components/common/Header/UtilityHeader';
 
 export default function LoginProcess() {
   return (
     <styles.LayoutContainer>
+      <UtilityHeader child="로그인" />
       <styles.Content>
         <styles.LoginHeader>숭실대 통합 LOGIN</styles.LoginHeader>
         <Loader />
