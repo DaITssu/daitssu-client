@@ -15,11 +15,15 @@ export interface PostDetailProps {
 }
 
 const PopularPosts = ({ posts }: { posts: PostDetailProps[] }) => {
+  const router = useRouter();
+  const handleOnClickMore = () => {
+    router.push('/community');
+  };
   return (
     <styles.Container>
       <styles.RowSpacer>
         <styles.Title>인기 게시글</styles.Title>
-        <styles.MoreButton>
+        <styles.MoreButton onClick={handleOnClickMore}>
           더보기{' '}
           <Image
             src={RightSmallArrow}
