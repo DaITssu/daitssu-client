@@ -1,4 +1,3 @@
-import Header from '@/components/common/Header/Header';
 import { userNavAtom } from '@/states/userNavAtom';
 import { PropsWithChildren } from 'react';
 import { useRecoilValue } from 'recoil';
