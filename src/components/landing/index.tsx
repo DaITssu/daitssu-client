@@ -18,7 +18,6 @@ const Landing = () => {
       />
       <LandingLogo />
       <AuthContent />
-      <ScrollDownBtn />
     </styles.LandingLayout>
   );
 };
