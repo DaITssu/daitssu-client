@@ -19,15 +19,18 @@ const Main = () => {
     const funSystemResponse = getFunsystem();
 
     popularArticleResponse.then((data) => {
-      setPosts(data.data);
+      const result: PostDetailProps[] = data.data;
+      setPosts(result.slice(0, 3));
     });
 
     noticeResponse.then((data) => {
-      setNoticeList(data.data.content);
+      const result: SummaryText[] = data.data.content;
+      setNoticeList(result.slice(0, 3));
     });
 
     funSystemResponse.then((data) => {
-      setFunSystemList(data.data.content);
+      const result: SummaryText[] = data.data.content;
+      setFunSystemList(result.slice(0, 3));
     });
   }, []);
 
