@@ -20,17 +20,29 @@ const Main = () => {
 
     popularArticleResponse.then((data) => {
       const result: PostDetailProps[] = data.data;
-      setPosts(result.slice(0, 3));
+      if (result.length > 3) {
+        setPosts(result.slice(0, 3));
+      } else {
+        setPosts(result);
+      }
     });
 
     noticeResponse.then((data) => {
-      const result: SummaryText[] = data.data.content;
-      setNoticeList(result.slice(0, 3));
+      const result: SummaryText[] = data.data.notices;
+      if (result.length > 3) {
+        setNoticeList(result.slice(0, 3));
+      } else {
+        setNoticeList(result);
+      }
     });
 
     funSystemResponse.then((data) => {
-      const result: SummaryText[] = data.data.content;
-      setFunSystemList(result.slice(0, 3));
+      const result: SummaryText[] = data.data.funSystems;
+      if (result.length > 3) {
+        setFunSystemList(result.slice(0, 3));
+      } else {
+        setFunSystemList(result);
+      }
     });
   }, []);
 
