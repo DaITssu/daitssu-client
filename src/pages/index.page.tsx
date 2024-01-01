@@ -24,11 +24,9 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div>
-      <MainLayout>
-        <Main />
-      </MainLayout>
-    </div>
+    <MainLayout>
+      <Main />
+    </MainLayout>
   );
 };
 export default MainPage;
