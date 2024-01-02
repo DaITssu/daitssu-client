@@ -14,3 +14,9 @@ export const accessTokenAtom = atom<string>({
   default: '',
   effects_UNSTABLE: isBrowser ? [persistAtom] : [],
 });
+
+export const refreshTokenAtom = atom<string>({
+  key: 'refreshToken',
+  default: '',
+  effects_UNSTABLE: isBrowser ? [persistAtom] : [],
+});
