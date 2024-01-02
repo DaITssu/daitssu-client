@@ -15,7 +15,11 @@ import LoginProcess from '../LoginProcess/LoginProcess';
 
 import { signInAPI } from '@/apis/authAPIS';
 
-import { loginAtom, accessTokenAtom } from '@/states/authAtom';
+import {
+  loginAtom,
+  accessTokenAtom,
+  refreshTokenAtom,
+} from '@/states/authAtom';
 import { useSetRecoilState } from 'recoil';
 
 export default function LoginLayout() {
@@ -33,6 +37,7 @@ export default function LoginLayout() {
   //Atom
   const setLoginAtom = useSetRecoilState(loginAtom);
   const setAccessTokenAtom = useSetRecoilState(accessTokenAtom);
+  const setRefreshTokenAtom = useSetRecoilState(refreshTokenAtom);
 
   const router = useRouter();
 
@@ -50,10 +55,20 @@ export default function LoginLayout() {
           //로그인 성공
           setLoginAtom(true);
           setAccessTokenAtom(res.data.accessToken.token);
+          setRefreshTokenAtom(res.data.refreshToken.token);
           router.push('/');
         } else if (res?.code === 1001) {
           //회원가입
-          router.push('/register');
+          router.push(
+            {
+              pathname: '/register',
+              query: {
+                studentId: ID,
+                password,
+              },
+            },
+            '/register', //마스킹해서 브라우저에 query 안보이게
+          );
         } else {
           //로그인 실패
           setMessage(res?.message || '');
@@ -62,7 +77,7 @@ export default function LoginLayout() {
         return res;
       })
       .then((res) => {
-        if (res?.code !== 0) open(); //에러 메시지 모달 open
+        if (res?.code !== 0 && res?.code !== 1001) open(); //에러 메시지 모달 open
       });
   };
 
