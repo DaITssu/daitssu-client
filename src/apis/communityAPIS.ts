@@ -60,3 +60,47 @@ export const getCommunityInfoCommentAPI = async (articleID: number) => {
     return null;
   }
 };
+
+export const postCommunityScrapAPI = async (
+  articleID: number,
+  isActive: boolean,
+) => {
+  try {
+    const response = await axiosInstance.post(
+      `/community/article/${articleID}/scrap?isActive=${isActive}`,
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data);
+    }
+    return null;
+  }
+};
+
+export const postCommunityLikeAPI = async (articleID: number) => {
+  try {
+    const response = await axiosInstance.post(
+      `/community/article/${articleID}/like`,
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data);
+    }
+    return null;
+  }
+};
+export const postCommunityDislikeAPI = async (articleID: number) => {
+  try {
+    const response = await axiosInstance.post(
+      `/community/article/${articleID}/dislike`,
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data);
+    }
+    return null;
+  }
+};

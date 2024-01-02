@@ -13,6 +13,9 @@ import DefaultScrap from '@icons/icon/Scrap/DefaultScrap.svg';
 import {
   getCommunityInfoAPI,
   getCommunityInfoCommentAPI,
+  postCommunityDislikeAPI,
+  postCommunityLikeAPI,
+  postCommunityScrapAPI,
 } from '@/apis/communityAPIS';
 import { useRouter } from 'next/router';
 import { Comments } from '@/types/NoticeFunsystem';
@@ -28,21 +31,28 @@ const CommunityInfo = () => {
     setMenu(!menu);
   };
 
-  const handleLikeClick = () => {
-    setIsLike(!isLike);
-  };
-
-  const handleScrapClick = () => {
-    setIsScrap(!isScrap);
-  };
-
   // 현재 주소 값
   const router = useRouter();
   const path = router.asPath;
   const pathId = router.query.id;
 
+  const handleLikeClick = () => {
+    setIsLike(!isLike);
+    if (!isLike) {
+      postCommunityLikeAPI(Number(pathId));
+    } else {
+      postCommunityDislikeAPI(Number(pathId));
+    }
+  };
+
+  const handleScrapClick = () => {
+    setIsScrap(!isScrap);
+    if (!isScrap) {
+      postCommunityScrapAPI(Number(pathId), !isScrap);
+    }
+  };
+
   useEffect(() => {
-    // 공지사항 API 연결
     const getCommunityInfo = getCommunityInfoAPI(Number(pathId));
     getCommunityInfo.then((res) => {
       setData(res.data);
