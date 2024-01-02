@@ -3,7 +3,7 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import { COLORS } from '@/styles/constants/colors';
 
 export const Container = styled.div`
-  width: 390px;
+  width: 100%;
 `;
 
 export const Padding = styled.div`
@@ -88,7 +88,7 @@ export const ProfileCenterBox = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto 0;
-  width: 345px;
+  width: 100%;
 `;
 
 export const ProfileRightBox = styled.div`
@@ -109,6 +109,7 @@ export const ProfileBottomBox = styled.div`
   display: flex;
   height: 24px;
   align-items: center;
+  width: 100%;
 `;
 
 export const DateBox = styled.div`
@@ -151,6 +152,7 @@ export const TitleBox = styled.div`
 export const ContentBox = styled.div`
   margin-bottom: 15px;
   ${TEXT_STYLES.BodyR16}
+  word-break: break-all;
 `;
 
 export const UnderBarBox = styled.div`
