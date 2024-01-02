@@ -12,3 +12,13 @@ export interface AuthResponse {
     };
   };
 }
+
+export interface UserInfoResponse {
+  code: number;
+  message: string;
+  data: {
+    name: string;
+    studentId: string;
+    term: string;
+  };
+}
