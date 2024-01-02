@@ -4,6 +4,8 @@ import { COLORS } from '@/styles/constants/colors';
 
 export const Container = styled.div`
   width: 100%;
+  height: 100vh;
+  background-color: white;
 `;
 
 export const Padding = styled.div`
