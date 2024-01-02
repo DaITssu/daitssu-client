@@ -1,11 +1,13 @@
 import MainLayout from './layout';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { userNavAtom, IUserNavAtom } from '@/states/userNavAtom';
 import { NAV_LIST } from '@/components/common/Navbar/Navigation';
 import '../styles/Home.module.css';
 import Main from '@/components/main';
 import Landing from '@/components/landing';
+import { useRecoilValue } from 'recoil';
+import { loginAtom } from '@/states/authAtom';
 
 const MainPage = () => {
   const setNavAtom = useSetRecoilState(userNavAtom);
@@ -13,8 +15,7 @@ const MainPage = () => {
     activeNavType: NAV_LIST.HOME,
   };
 
-  //TODO: 추후 전역 상태로 관리
-  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const isLogin = useRecoilValue(loginAtom);
 
   //mobile height size 설정
   useEffect(() => {
