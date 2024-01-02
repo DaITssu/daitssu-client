@@ -170,6 +170,20 @@ const CommunityInfo = () => {
       <styles.BottomBox>
         <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
       </styles.BottomBox>
+      {comments?.map((comment) => {
+        return (
+          <Comment
+            key={comment.commentId}
+            nickname={''}
+            createdAt={comment.createdAt}
+            updatedAt={comment.updatedAt}
+            content={comment.content}
+            commentId={comment.commentId}
+            originalCommentId={comment.originalCommentId}
+            userId={comment.userId}
+          />
+        );
+      })}
 
       <CommentInput />
     </styles.Container>
