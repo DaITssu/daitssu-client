@@ -9,17 +9,21 @@ export interface PostDetailProps {
   id: number;
   title: string;
   content: string;
-  type: 'info' | 'question' | 'free';
+  topic: string;
   commentCount: number;
-  createdAt: string;
+  updatedAt: string;
 }
 
 const PopularPosts = ({ posts }: { posts: PostDetailProps[] }) => {
+  const router = useRouter();
+  const handleOnClickMore = () => {
+    router.push('/community');
+  };
   return (
     <styles.Container>
       <styles.RowSpacer>
         <styles.Title>인기 게시글</styles.Title>
-        <styles.MoreButton>
+        <styles.MoreButton onClick={handleOnClickMore}>
           더보기{' '}
           <Image
             src={RightSmallArrow}
@@ -35,9 +39,9 @@ const PopularPosts = ({ posts }: { posts: PostDetailProps[] }) => {
             id={post.id}
             title={post.title}
             content={post.content}
-            type={post.type}
+            topic={post.topic}
             commentCount={post.commentCount}
-            createdAt={post.createdAt}
+            updatedAt={post.updatedAt}
             key={post.id}
           />
         ))}
@@ -50,20 +54,11 @@ const PostDetail = ({
   id,
   title,
   content,
-  type,
+  topic,
   commentCount,
-  createdAt,
+  updatedAt,
 }: PostDetailProps) => {
   const router = useRouter();
-
-  let typeTrans = '';
-  if (type === 'info') {
-    typeTrans = '정보';
-  } else if (type === 'question') {
-    typeTrans = '질문';
-  } else {
-    typeTrans = '자유';
-  }
 
   function onClick() {
     //TODO 실제 게시글로 이동
@@ -74,10 +69,10 @@ const PostDetail = ({
     <styles.PostContainer onClick={onClick}>
       <styles.RowSpacer>
         <styles.Row>
-          <styles.PostType>{typeTrans}</styles.PostType>
+          <styles.PostType>{topic}</styles.PostType>
           <styles.PostTitle>{title}</styles.PostTitle>
         </styles.Row>
-        <styles.PostTime>{beforeTime(createdAt)}</styles.PostTime>
+        <styles.PostTime>{beforeTime(updatedAt)}</styles.PostTime>
       </styles.RowSpacer>
       <styles.RowSpacer>
         <styles.PostContent>{content}</styles.PostContent>

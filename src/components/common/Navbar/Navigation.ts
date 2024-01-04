@@ -8,7 +8,7 @@ export const NAV_LIST = {
 
 export const NAV_URL_LIST = {
   [NAV_LIST.HOME]: '/',
-  [NAV_LIST.ANNOUNCEMENT]: '/announcement',
+  [NAV_LIST.ANNOUNCEMENT]: '/notice',
   [NAV_LIST.COMMUNITY]: '/community',
   [NAV_LIST.CALENDAR]: '/calendar',
   [NAV_LIST.MY_PAGE]: '/myPage',
