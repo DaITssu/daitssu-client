@@ -99,7 +99,7 @@ const CommunityInfo = () => {
                       priority
                     />
                   </styles.ViewIconBox>
-                  <styles.ViewCountBox>{data?.views}</styles.ViewCountBox>
+                  <styles.ViewCountBox>{data?.views}회</styles.ViewCountBox>
                 </styles.ViewBox>
               </styles.ProfileRightBox>
             </styles.ProfileBottomBox>
