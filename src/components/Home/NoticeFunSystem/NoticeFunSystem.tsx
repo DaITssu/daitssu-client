@@ -30,7 +30,7 @@ const NoticeFunSystem = (props: NoticeFunSystemProps) => {
       <styles.TextBox>
         <styles.Line top="55px" />
         <styles.Line top="112px" />
-        {props.summaries.map((summary, index) => (
+        {props.summaries?.map((summary, index) => (
           <div key={index}>
             <styles.TextLine top={`${16 + index * 57}px`}>
               <styles.TextSummary>{summary.title}</styles.TextSummary>
