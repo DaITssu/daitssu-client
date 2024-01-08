@@ -11,6 +11,9 @@ const Header = () => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 
+  //TOOD: recoil 전역상태로 수정
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+
   const handleSearchIconClick = () => {
     setIsSearchVisible((prev) => !prev);
   };
@@ -29,6 +32,10 @@ const Header = () => {
       setIsHeaderVisible(false);
     } else {
       setIsHeaderVisible(true);
+    }
+    //첫 랜딩 페이지 & 미로그인시 헤더 안보이게
+    if (path == '/' && !isLogin) {
+      setIsHeaderVisible(false);
     }
   }, [router.pathname]);
 
