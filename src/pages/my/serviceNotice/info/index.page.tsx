@@ -4,13 +4,15 @@ import { useRouter } from 'next/router';
 
 export default function Home() {
   const router = useRouter();
-  const { title, contents, date } = router.query;
-  return <>
-    <UtilityHeader
-      child = "서비스 공지사항"
-    />
-    <ServiceNoticeInfo title={title as string} 
-      content={contents as string} 
-      date={date as string}/>
-  </>
+  const { title, content, createdAt } = router.query;
+  return (
+    <>
+      <UtilityHeader child="서비스 공지사항" />
+      <ServiceNoticeInfo
+        title={title as string}
+        content={content as string}
+        createdAt={createdAt as string}
+      />
+    </>
+  );
 }
