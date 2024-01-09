@@ -3,31 +3,16 @@ import { COLORS } from '@/styles/constants/colors';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const Container = styled.div`
-  width: 390px;
+  width: 100%;
+  height: 100vh;
+  background-color: ${COLORS.grayscale.white};
   hr {
     border: solid 1px ${COLORS.grayscale.Gray3};
   }
 `;
 
-export const MenuBox = styled.div`
-  display: flex;
-  height: 46px;
-`;
-
-export const LeftBox = styled.div`
-  margin-left: 10px;
-  position: absolute;
-  top: 4%;
-`;
-
-export const CenterBox = styled.div`
-  font-size: 20px;
-  margin: auto;
-  font-weight: 500;
-`;
-
 export const InfoBox = styled.div`
-  padding: 10px;
+  padding: 15px;
 `;
 
 export const TypeBox = styled.div`
@@ -128,6 +113,7 @@ export const ContentBox = styled.div`
   margin-top: 20px;
   margin-bottom: 40px;
   ${TEXT_STYLES.BodyR16};
+  word-break: break-all;
 `;
 
 export const FileBox = styled.div`

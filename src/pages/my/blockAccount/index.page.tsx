@@ -1,7 +1,5 @@
 import Header from '@/components/common/Header/Header';
-import NavigationBar from '@/components/common/Navbar/NavigationBar';
-import BlockAccount from '@/components/myPage/blockAccount/BlockAccount';
-import Setting from '@/components/myPage/setting/Setting';
+import BlockAccount from '@/components/myPage/blockAccount/blockAccount';
 
 export default function Home() {
   return (

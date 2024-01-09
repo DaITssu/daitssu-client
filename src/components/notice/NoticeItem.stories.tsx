@@ -1,13 +1,15 @@
-import type {  Story } from '@storybook/react';
+import type { Story } from '@storybook/react';
 import React from 'react';
-import NoticeItem, {NoticeItemProps} from './NoticeItem';
+import NoticeItem, { NoticeItemProps } from './NoticeItem';
 
 export default {
   title: 'Notice-Funsystem/NoticeItem',
   component: NoticeItem,
 };
 
-const Template: Story<NoticeItemProps> = (args) => <NoticeItem item={args} />;
+const Template: Story<NoticeItemProps> = (args) => (
+  <NoticeItem type="notice" item={args} />
+);
 
 export const Default = Template.bind({});
 
@@ -16,4 +18,4 @@ Default.args = {
   title: 'Example Notice Title',
   views: 12345,
   date: '2023-08-09',
-} as NoticeItemProps;
+} as unknown as NoticeItemProps;

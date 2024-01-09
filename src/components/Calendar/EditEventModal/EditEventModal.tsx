@@ -7,11 +7,11 @@ import { ko } from 'date-fns/locale';
 import calendar from '@icons/icon/Calendars/calendar.svg';
 import Image from 'next/image';
 import {
-  Course,
   getCourseAPI,
   postCourseAssignmentAPI,
   postCourseVideoAPI,
 } from '@/apis/courseAPIS';
+import { Course } from '@/types/course';
 
 interface EditEventModalProps {
   event?: EventProps;
