@@ -1,16 +1,21 @@
 import MainLayout from './layout';
 import { useEffect } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { loginAtom } from '@/states/authAtom';
 import { userNavAtom, IUserNavAtom } from '@/states/userNavAtom';
 import { NAV_LIST } from '@/components/common/Navbar/Navigation';
 import '../styles/Home.module.css';
 import Main from '@/components/main';
+import Landing from '@/components/landing';
 
 const MainPage = () => {
   const setNavAtom = useSetRecoilState(userNavAtom);
   const navState: IUserNavAtom = {
     activeNavType: NAV_LIST.HOME,
   };
+
+  //로그인 여부
+  const isLogin = useRecoilValue(loginAtom);
 
   //mobile height size 설정
   useEffect(() => {
@@ -23,10 +28,14 @@ const MainPage = () => {
     });
   }, []);
 
-  return (
-    <MainLayout>
-      <Main />
-    </MainLayout>
-  );
+  if (isLogin) {
+    return (
+      <MainLayout>
+        <Main />
+      </MainLayout>
+    );
+  } else {
+    return <Landing />;
+  }
 };
 export default MainPage;
