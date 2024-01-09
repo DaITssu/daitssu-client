@@ -2,6 +2,7 @@ import { useState } from 'react';
 import * as styles from './NoticeFunSystem.styles';
 import RightArrow from '@icons/icon/Arrow/RightSmallArrow.svg';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export interface SummaryText {
   id: number;
@@ -17,11 +18,21 @@ export interface NoticeFunSystemProps {
 }
 
 const NoticeFunSystem = (props: NoticeFunSystemProps) => {
+  const router = useRouter();
+
+  function handleOnClickMore() {
+    if (props.title === '공지사항') {
+      router.push('/notice');
+    } else {
+      router.push('/funsystem');
+    }
+  }
+
   return (
     <styles.SummaryBox>
       <styles.TopBox>
         <styles.Title>{props.title}</styles.Title>
-        <styles.MoreButton>
+        <styles.MoreButton onClick={handleOnClickMore}>
           더보기
           <Image src={RightArrow} alt="right arrow" />
         </styles.MoreButton>

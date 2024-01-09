@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
-import {COLORS} from '@/styles/constants/colors';
+import { COLORS } from '@/styles/constants/colors';
 
 export const SearchBarBox = styled.div`
-  width : 100%;
-  height :56px;
-  padding-left : 16px;
-  padding-right : 16px;
-  padding-bottom : 8px; 
-  box-sizing : border-box;
+  width: 100%;
+  height: 56px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  box-sizing: border-box;
   background: ${COLORS.grayscale.white};
 `;
 
@@ -26,6 +26,8 @@ export const Input = styled.input`
   border: none;
   outline: none;
   ${TEXT_STYLES.BodyM16};
+  background-color: white;
+  color: ${COLORS.grayscale.Black};
 `;
 
 export const GlassImage = styled(Image)`
@@ -33,10 +35,10 @@ export const GlassImage = styled(Image)`
 `;
 export const Circle = styled.div`
   margin-right: 15px;
-  width : 18px;
-  height : 18px;
-  border-radius : 50%;
-  background-color : ${COLORS.grayscale.Gray3};
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: ${COLORS.grayscale.Gray3};
 `;
 export const CancelImage = styled(Image)`
   filter: brightness(0) invert(1);

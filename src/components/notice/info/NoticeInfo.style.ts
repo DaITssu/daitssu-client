@@ -3,7 +3,7 @@ import { COLORS } from '@/styles/constants/colors';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const Container = styled.div`
-  width: 390px;
+  width: 100%;
   height: 100vh;
   background-color: ${COLORS.grayscale.white};
   hr {
@@ -113,6 +113,7 @@ export const ContentBox = styled.div`
   margin-top: 20px;
   margin-bottom: 40px;
   ${TEXT_STYLES.BodyR16};
+  word-break: break-all;
 `;
 
 export const FileBox = styled.div`
