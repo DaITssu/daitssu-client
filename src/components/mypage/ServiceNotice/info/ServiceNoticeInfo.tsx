@@ -1,38 +1,27 @@
 import * as styles from './ServiceNoticeInfo.styles';
-import { useState } from 'react';
 import calendarIcon from '@icons/icon/Calendars/calendar.svg';
 
 export interface ServiceNoticeInfoProps {
   title: string;
-  date: string;
+  createdAt: string;
   content: string;
 }
 
-const ServiceNoticeInfo : React.FC<ServiceNoticeInfoProps> = ({
+const ServiceNoticeInfo: React.FC<ServiceNoticeInfoProps> = ({
   title,
-  date,
   content,
+  createdAt,
 }) => {
-  const [share, setShare] = useState<boolean>(false);
-  const handleShareClick = () => {
-    setShare(!share);
-  };
   return (
     <styles.Container>
       <styles.InfoBox>
         <styles.TitleBox>{title}</styles.TitleBox>
         <styles.MiddleBox>
-          <styles.DateBox
-            src={calendarIcon}
-            alt="date image"
-          />
-          <span>{date}</span>
-          
+          <styles.DateBox src={calendarIcon} alt="date image" />
+          <span>{createdAt}</span>
         </styles.MiddleBox>
         <hr />
-        <styles.ContentBox>
-          {content}
-        </styles.ContentBox>
+        <styles.ContentBox>{content}</styles.ContentBox>
       </styles.InfoBox>
     </styles.Container>
   );

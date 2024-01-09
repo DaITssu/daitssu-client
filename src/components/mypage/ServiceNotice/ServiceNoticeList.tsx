@@ -5,25 +5,28 @@ import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 import { getServiceNoticeAPI } from '@/apis/serviceNoticeAPIS';
 
 const ServiceNoticeList = () => {
+  const [serviceNoticeItems, setServiceNoticeItems] = useState<
+    ServiceNoticeItemProps[]
+  >([]);
 
-  const [serviceNoticeItems, setServiceNoticeItems] = useState<ServiceNoticeItemProps[]>([]);
-
-  const fetchServiceNoticeData = async() =>{
-    try{
+  const fetchServiceNoticeData = async () => {
+    try {
       const serviceNoticeData = await getServiceNoticeAPI();
-      if(serviceNoticeData){
-        console.log('data : ',serviceNoticeData.data);
+      if (serviceNoticeData) {
+        console.log('data : ', serviceNoticeData.data);
         setServiceNoticeItems(serviceNoticeData.data);
       }
-      
-    }catch(error){
-      console.error('서비스 공지사항 리스트 데이터 불러오는 중 오류 발생 : ', error);
+    } catch (error) {
+      console.error(
+        '서비스 공지사항 리스트 데이터 불러오는 중 오류 발생 : ',
+        error,
+      );
     }
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchServiceNoticeData();
-  },[serviceNoticeItems]);
+  }, []);
 
   return (
     <styles.NoticeListBox>
