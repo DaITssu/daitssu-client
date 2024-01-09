@@ -13,20 +13,24 @@ interface TitleFormProps {
 }
 
 export const TitleForm = styled.input<TitleFormProps>`
-  width: ${(props) => (props.width ? `${props.width}px` : '400px')};
+  width: ${(props) => (props.width ? `${props.width}px` : '100%')};
   height: ${(props) => (props.height ? `${props.height}px` : '20px')};
   margin-top: ${(props) => (props.margin ? `${props.margin}px` : '0px')};
   border-radius: 12px;
   align-items: center;
   display: flex;
   font-size: 20px;
-  border: 1px none; // 원하는 스타일 추가
+  border: 1px none; 
   outline: none;
-  padding: 10px; // 원하는 스타일 추가
+  padding: 10px; 
+
   &::placeholder {
-    font-size: 20px; /* 원하는 플레이스홀더 텍스트의 글씨 크기로 조정 */
-    color: ${COLORS.grayscale.Gray1}; /* 플레이스홀더 텍스트의 색상 지정 */
+    font-size: 20px; 
+    color: ${COLORS.grayscale.Gray3}; 
   }
+  color: ${COLORS.grayscale.Black}; 
+
+  background-color: ${COLORS.grayscale.white}
 `;
 
 // onChange 이벤트 핸들러 추가

@@ -60,3 +60,28 @@ export const getCommunityInfoCommentAPI = async (articleID: number) => {
     return null;
   }
 };
+
+
+interface postCommunityWritingApiResponse {
+  topic: string;
+  title: string;
+  content: string;
+  images: string[]; // 가령 이미지 URL들을 담은 배열로 가정합니다.
+}
+
+export const postCommunityWritingAPI = async (postData: {
+  topic: string;
+  title: string;
+  content: string;
+  images: string[];
+}) => {
+  try {
+    const response = await axiosInstance.post('/community/article', postData);
+    return response.data as postCommunityWritingApiResponse;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data);
+    }
+    return null;
+  }
+};

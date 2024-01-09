@@ -10,7 +10,7 @@ interface SubjectSelectProps {
 }
 
 export const SubjectSelectBox = styled.div<SubjectSelectProps>`
-  width: ${(props) => (props.width ? `${props.width}px` : '390px')};
+  width: ${(props) => (props.width ? `${props.width}px` : '100%')};
   height: ${(props) => (props.height ? `${props.height}px` : '46px')};
   margin-top: ${(props) => (props.marginTop ? `${props.marginTop}px` : '0px')};
   margin-bottom: ${(props) => (props.marginBottom ? `${props.marginBottom}px` : '0px')};
@@ -28,7 +28,7 @@ interface SubjectSelectListProps {
 }
 
 export const SubjectSelectBoxList = styled.div<SubjectSelectListProps>`
-  width: ${(props) => (props.width ? `${props.width}px` : '92px')};
+  width: ${(props) => (props.width ? `${props.width}px` : '70%')};
   height: ${(props) => (props.height ? `${props.height}px` : '46px')};
   margin-top: ${(props) => (props.marginTop ? `${props.marginTop}px` : '0px')};
   border-radius: 12px;
