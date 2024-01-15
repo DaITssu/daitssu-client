@@ -28,9 +28,6 @@ export const getCommunityItemAPI = async (
       return response.data;
     }
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log(error.response?.data);
-    }
     return null;
   }
 };
@@ -40,9 +37,6 @@ export const getCommunityInfoAPI = async (articleID: number) => {
     const response = await axiosInstance.get(`/community/article/${articleID}`);
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log(error.response?.data);
-    }
     return null;
   }
 };
@@ -54,9 +48,6 @@ export const getCommunityInfoCommentAPI = async (articleID: number) => {
     );
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log(error.response?.data);
-    }
     return null;
   }
 };
@@ -71,9 +62,6 @@ export const postCommunityScrapAPI = async (
     );
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log(error.response?.data);
-    }
     return null;
   }
 };
@@ -85,9 +73,6 @@ export const postCommunityLikeAPI = async (articleID: number) => {
     );
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log(error.response?.data);
-    }
     return null;
   }
 };
@@ -98,9 +83,6 @@ export const postCommunityDislikeAPI = async (articleID: number) => {
     );
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log(error.response?.data);
-    }
     return null;
   }
 };
