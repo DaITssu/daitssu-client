@@ -57,7 +57,7 @@ const NoticeList: FC<{ category: string; search: string }> = ({
 
   return (
     <styles.NoticeListBoxShort>
-      {noticeData.map((item: NoticeItemProps) => {
+      {noticeData?.map((item: NoticeItemProps) => {
         return <NoticeItem key={item.id} item={item} type="notice" />;
       })}
     </styles.NoticeListBoxShort>
