@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import * as styles from './Register.styles';
 import CheckedRadio from '@icons/icon/Radio/CheckedRadio.svg';
@@ -7,8 +8,12 @@ import DefaultRadio from '@icons/icon/Radio/DefaultRadio.svg';
 import Image from 'next/image';
 import TosItem from './TosItems/TosItem';
 import TOS from './TOS/TOS';
+import { UserInfoResponse } from '@/types/Auth';
+import { getUserInfoAPI } from '@/apis/authAPIS';
 
 const Register = () => {
+  const { query } = useRouter();
+  const [userInfo, setUserInfo] = useState<UserInfoResponse>();
   const [showModal, setShowModal] = useState(false);
 
   const [nickname, setNickname] = useState<string>('');
@@ -42,6 +47,16 @@ const Register = () => {
     }
   }, [checkPrivacy, checkTermsOfUse, checkThirdPartyInfo]);
 
+  useEffect(() => {
+    const response = getUserInfoAPI(
+      String(query?.studentId),
+      String(query?.password),
+    );
+    response.then((res) => {
+      setUserInfo(res);
+    });
+  }, []);
+
   return (
     <>
       <styles.RegisterContainer>
@@ -74,13 +89,19 @@ const Register = () => {
         <styles.Box>
           <styles.BoxHeaderText>회원 정보를 확인해주세요</styles.BoxHeaderText>
           <styles.BoxInnerText>이름</styles.BoxInnerText>
-          <styles.RegisterTextArea readOnly value="홍수민" />
+          <styles.RegisterTextArea
+            readOnly
+            value={userInfo?.data?.name || ''}
+          />
           <styles.BoxInnerText>학부</styles.BoxInnerText>
           <styles.RegisterTextArea readOnly value="글로벌미디어학부" />
           <styles.BoxInnerText>학번</styles.BoxInnerText>
-          <styles.RegisterTextArea readOnly value="20001212" />
+          <styles.RegisterTextArea readOnly value={query?.studentId || ''} />
           <styles.BoxInnerText>학년/학기</styles.BoxInnerText>
-          <styles.RegisterTextArea readOnly value="2학년/3학기" />
+          <styles.RegisterTextArea
+            readOnly
+            value={userInfo?.data?.term || ''}
+          />
         </styles.Box>
         <div style={{ height: '16px' }}></div>
         <styles.Box>

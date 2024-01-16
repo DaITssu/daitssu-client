@@ -4,7 +4,7 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const FindAuthContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   width: 190px;
   margin-top: 14px;
