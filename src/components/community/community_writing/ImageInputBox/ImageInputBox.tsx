@@ -1,5 +1,4 @@
 import React from 'react';
-import { FiCamera } from 'react-icons/fi'; // react-icons에서 FiCamera 아이콘 불러오기
 import ImageBox from './ImageBox/ImageBox';
 import IconBox from './IconBox/IconBox';
 import TitleBox from './TitleBox/TitleBox';
