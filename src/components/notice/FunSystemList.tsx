@@ -22,9 +22,12 @@ const NoticeList: FC<{ category: string; search: string }> = ({
 
       if (funSystemData) {
         if (page === 0) {
-          setFunSystemData(funSystemData.data.content);
+          setFunSystemData(funSystemData.data.funSystems);
         } else {
-          setFunSystemData((prev) => [...prev, ...funSystemData.data.content]);
+          setFunSystemData((prev) => [
+            ...prev,
+            ...funSystemData.data.funSystems,
+          ]);
         }
       } else {
         console.error(

@@ -17,9 +17,9 @@ const NoticeList: FC<{ category: string; search: string }> = ({
       const noticeData = await getNoticeAPIwithCategory(search, category, page);
       if (noticeData) {
         if (page === 0) {
-          setNoticeData(noticeData.data.content);
+          setNoticeData(noticeData.data.notices);
         } else {
-          setNoticeData((prev) => [...prev, ...noticeData.data.content]);
+          setNoticeData((prev) => [...prev, ...noticeData.data.notices]);
         }
       } else {
         console.error(
