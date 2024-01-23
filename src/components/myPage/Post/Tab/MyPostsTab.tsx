@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import * as styles from './MyPostsTab.style';
 import ScrapList from '../../Scrap/ScrapList';
 import MyComment from '../MyComment';
-import { getMyPageArticles } from '@/apis/myPageAPIs';
+import { getMyPageArticles, getMyPageComments } from '@/apis/myPageAPIs';
 
-interface MyPost {
+export interface MyPostProps {
   id: number;
   topic: string;
   title: string;
@@ -13,15 +13,31 @@ interface MyPost {
   commentSize: number;
 }
 
+export interface MPCommentsProps {
+  userId: number;
+  commentId: number;
+  originalCommentId: number | null;
+  createdAt: string;
+  updatedAt: string;
+  content: string;
+}
+
 const MyPostsTab = () => {
-  const [articles, setArticles] = useState<MyPost[]>([]);
+  const [articles, setArticles] = useState<MyPostProps[]>([]);
+  const [comments, setComments] = useState<MPCommentsProps[]>([]);
   useEffect(() => {
     const myPageArticleResponse = getMyPageArticles();
 
     myPageArticleResponse.then((res) => {
-      setArticles(res.data);
+      setArticles(res?.data);
     });
-  });
+
+    const myPageCommentResponse = getMyPageComments();
+
+    myPageCommentResponse.then((res) => {
+      setComments(res?.data);
+    });
+  }, []);
 
   const data = [
     {
@@ -48,10 +64,19 @@ const MyPostsTab = () => {
       title: '댓글',
       contents: (
         <styles.PostContianer>
-          <MyComment />
-          <MyComment />
-          <MyComment />
-          <MyComment />
+          {comments?.map((el) => {
+            return (
+              <MyComment
+                key={el.commentId}
+                commentId={el.commentId}
+                userId={el.userId}
+                content={el.content}
+                originalCommentId={el.originalCommentId}
+                createdAt={el.createdAt}
+                updatedAt={el.updatedAt}
+              />
+            );
+          })}
         </styles.PostContianer>
       ),
     },
