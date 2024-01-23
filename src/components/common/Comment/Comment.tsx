@@ -16,10 +16,6 @@ interface CProps {
   content: string;
 }
 
-interface TimeDifferenceProps {
-  targetTime: string;
-}
-
 const Comment = ({
   userId,
   commentId,
