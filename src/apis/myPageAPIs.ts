@@ -24,3 +24,15 @@ export const getMyPageComments = async () => {
     return null;
   }
 };
+
+export const getMyPageScraps = async () => {
+  try {
+    const response = await axiosInstance.get(`/myPage/scraps`);
+    return response.data;
+  } catch (error) {
+    // if (axios.isAxiosError(error)) {
+    //   console.log(error.response?.data);
+    // }
+    return null;
+  }
+};
