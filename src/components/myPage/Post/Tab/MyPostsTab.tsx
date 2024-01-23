@@ -1,26 +1,10 @@
 import { useEffect, useState } from 'react';
 import * as styles from './MyPostsTab.style';
 import ScrapList from '../../Scrap/ScrapList';
-import MyComment from '../MyComment';
 import { getMyPageArticles, getMyPageComments } from '@/apis/myPageAPIs';
-
-export interface MyPostProps {
-  id: number;
-  topic: string;
-  title: string;
-  content: string;
-  createdAt: string;
-  commentSize: number;
-}
-
-export interface MPCommentsProps {
-  userId: number;
-  commentId: number;
-  originalCommentId: number | null;
-  createdAt: string;
-  updatedAt: string;
-  content: string;
-}
+import { MyPostProps } from '../MyPost';
+import CommentList from '../../Comment/CommentList';
+import { MPCommentsProps } from '../../Comment/MyComment';
 
 const MyPostsTab = () => {
   const [articles, setArticles] = useState<MyPostProps[]>([]);
@@ -66,7 +50,7 @@ const MyPostsTab = () => {
         <styles.PostContianer>
           {comments?.map((el) => {
             return (
-              <MyComment
+              <CommentList
                 key={el.commentId}
                 commentId={el.commentId}
                 userId={el.userId}
