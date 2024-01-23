@@ -1,16 +1,46 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as styles from './MyPostsTab.style';
 import ScrapList from '../../Scrap/ScrapList';
 import MyComment from '../MyComment';
+import { getMyPageArticles } from '@/apis/myPageAPIs';
+
+interface MyPost {
+  id: number;
+  topic: string;
+  title: string;
+  content: string;
+  createdAt: string;
+  commentSize: number;
+}
 
 const MyPostsTab = () => {
+  const [articles, setArticles] = useState<MyPost[]>([]);
+  useEffect(() => {
+    const myPageArticleResponse = getMyPageArticles();
+
+    myPageArticleResponse.then((res) => {
+      setArticles(res.data);
+    });
+  });
+
   const data = [
     {
       title: '글',
       contents: (
         <styles.PostContianer>
-          <ScrapList /> <ScrapList /> <ScrapList /> <ScrapList />
-          <ScrapList /> <ScrapList />
+          {articles?.map((el) => {
+            return (
+              <ScrapList
+                key={el.id}
+                id={el.id}
+                topic={el.topic}
+                title={el.title}
+                content={el.content}
+                createdAt={el.createdAt}
+                commentSize={el.commentSize}
+              />
+            );
+          })}
         </styles.PostContianer>
       ),
     },

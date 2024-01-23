@@ -5,8 +5,17 @@ import DefaultCheckBox from '@icons/icon/CheckBox/DefaultCheckBox.svg';
 import CheckedBox from '@icons/icon/CheckBox/BlueCheckedBox.svg';
 import Comment from '@icons/icon/Icon24/Comment.svg';
 import { useState } from 'react';
+import { MyPostProps } from '../Post/Tab/MyPostsTab';
+import { beforeTime } from '@/utils/time';
 
-const ScrapList = () => {
+const ScrapList = ({
+  id,
+  topic,
+  title,
+  content,
+  createdAt,
+  commentSize,
+}: MyPostProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -41,15 +50,13 @@ const ScrapList = () => {
       <styles.RightBox>
         <styles.TopBox>
           <styles.TagBox>
-            <Category label="잡담" BgColor={false} />
+            <Category label={topic} BgColor={false} />
           </styles.TagBox>
-          <styles.TimeBox>3분 전</styles.TimeBox>
+          <styles.TimeBox>{beforeTime(createdAt)}</styles.TimeBox>
         </styles.TopBox>
-        <styles.TitleBox>서점에</styles.TitleBox>
+        <styles.TitleBox>{title}</styles.TitleBox>
         <styles.BottomBox>
-          <styles.ContentBox>
-            서점에 이 책도 파나요 서점에 이 책도 파나요 서점에 이 책도 파나요
-          </styles.ContentBox>
+          <styles.ContentBox>{content}</styles.ContentBox>
           <styles.MessageBox>
             <styles.MessageIconBox>
               <Image
@@ -60,7 +67,7 @@ const ScrapList = () => {
                 priority
               />
             </styles.MessageIconBox>
-            <styles.MessageCntBox>5</styles.MessageCntBox>
+            <styles.MessageCntBox>{commentSize}</styles.MessageCntBox>
           </styles.MessageBox>
         </styles.BottomBox>
       </styles.RightBox>
