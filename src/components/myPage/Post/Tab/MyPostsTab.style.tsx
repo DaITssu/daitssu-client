@@ -26,11 +26,13 @@ export const TabBox = styled.div`
   top: 56px;
   padding-top: 4px;
   ${TEXT_STYLES.BodyR16};
+  background-color: white;
 `;
 
 export const TabContents = styled.div`
   top: 200px;
   position: absolute;
+  width: 100%;
 `;
 
 export const PostContianer = styled.div`
