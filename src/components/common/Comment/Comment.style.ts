@@ -13,7 +13,7 @@ export const CLeftBox = styled.div`
 `;
 
 export const CRightBox = styled.div`
-  width: 373px;
+  width: 90vw;
   margin-left: 17px;
   display: flex;
   flex-direction: column;
