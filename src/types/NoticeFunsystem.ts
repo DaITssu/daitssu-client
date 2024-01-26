@@ -30,4 +30,5 @@ export interface Comments {
   originalCommentId: number | null;
   createdAt: string;
   updatedAt: string;
+  nickname: string;
 }

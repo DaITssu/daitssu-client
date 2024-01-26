@@ -4,8 +4,6 @@ import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
 import Category from '@/components/common/Category';
-import Sue from '@icons/icon/Icon18/Sue.svg';
-import Ben from '@icons/icon/Icon18/Ben.svg';
 import SamllHits from '@icons/icon/Icon18/SmallHits.svg';
 import FilledLiked from '@icons/icon/Liked/FilledLiked.svg';
 import DefaultLiked from '@icons/icon/Liked/DefaultLiked.svg';
@@ -15,11 +13,16 @@ import DefaultScrap from '@icons/icon/Scrap/DefaultScrap.svg';
 import {
   getCommunityInfoAPI,
   getCommunityInfoCommentAPI,
+  postCommunityDislikeAPI,
+  postCommunityLikeAPI,
+  postCommunityScrapAPI,
 } from '@/apis/communityAPIS';
 import { useRouter } from 'next/router';
-import { Comments, NoticeInfoProps } from '@/types/NoticeFunsystem';
+import { Comments } from '@/types/NoticeFunsystem';
 import UtilityHeader from '@/components/common/Header/UtilityHeader';
+import { CommunityInfoProps } from '@/types/Community';
 const CommunityInfo = () => {
+  const [data, setData] = useState<CommunityInfoProps>();
   const [comments, setComments] = useState<Comments[]>();
   const [isLike, setIsLike] = useState<boolean>(false);
   const [isScrap, setIsScrap] = useState<boolean>(false);
@@ -28,19 +31,44 @@ const CommunityInfo = () => {
     setMenu(!menu);
   };
 
+  // 현재 주소 값
+  const router = useRouter();
+  const path = router.asPath;
+  const pathId = router.query.id;
+
   const handleLikeClick = () => {
     setIsLike(!isLike);
+    if (!isLike) {
+      postCommunityLikeAPI(Number(pathId));
+    } else {
+      postCommunityDislikeAPI(Number(pathId));
+    }
   };
 
   const handleScrapClick = () => {
     setIsScrap(!isScrap);
+    if (!isScrap) {
+      postCommunityScrapAPI(Number(pathId), !isScrap);
+    }
   };
+
+  useEffect(() => {
+    const getCommunityInfo = getCommunityInfoAPI(Number(pathId));
+    getCommunityInfo.then((res) => {
+      setData(res.data);
+    });
+
+    const getcomments = getCommunityInfoCommentAPI(Number(pathId));
+    getcomments.then((res) => {
+      setComments(res?.data);
+    });
+  }, []);
 
   return (
     <styles.Container>
       <UtilityHeader child="커뮤니티" isCommunity={true} />
       <styles.InfoBox>
-        <Category label="질문" BgColor={false} />
+        <Category label={data?.topic} BgColor={false} />
       </styles.InfoBox>
       <styles.Padding>
         <styles.ProfileBox>
@@ -55,11 +83,11 @@ const CommunityInfo = () => {
           </styles.ProfileLeftBox>
           <styles.ProfileCenterBox>
             <styles.ProfileTopBox>
-              <styles.NickNameBox>닉네임</styles.NickNameBox>
+              <styles.NickNameBox>{data?.writerNickName}</styles.NickNameBox>
             </styles.ProfileTopBox>
             <styles.ProfileBottomBox>
-              <styles.DateBox>2023/05/20</styles.DateBox>
-              <styles.TimeBox>21:23</styles.TimeBox>
+              <styles.DateBox>{data?.updatedAt.slice(0, 10)}</styles.DateBox>
+              <styles.TimeBox>{data?.updatedAt.slice(11, 16)}</styles.TimeBox>
               <styles.ProfileRightBox>
                 <styles.ViewBox>
                   <styles.ViewIconBox>
@@ -71,17 +99,14 @@ const CommunityInfo = () => {
                       priority
                     />
                   </styles.ViewIconBox>
-                  <styles.ViewCountBox>5회</styles.ViewCountBox>
+                  <styles.ViewCountBox>{data?.views}회</styles.ViewCountBox>
                 </styles.ViewBox>
               </styles.ProfileRightBox>
             </styles.ProfileBottomBox>
           </styles.ProfileCenterBox>
         </styles.ProfileBox>
-        <styles.TitleBox>이거 어떻게 하는 거예요</styles.TitleBox>
-        <styles.ContentBox>
-          엄청나게 잘해서 A+를 받겠어~ 엄청나게 잘해서 A+를 받겠어~ 종강아
-          어서와
-        </styles.ContentBox>
+        <styles.TitleBox>{data?.title}</styles.TitleBox>
+        <styles.ContentBox>{data?.content}</styles.ContentBox>
         <styles.UnderBarBox>
           <styles.IconCountBox>
             <styles.IconBox onClick={handleLikeClick}>
@@ -104,7 +129,7 @@ const CommunityInfo = () => {
               )}
               {/** TODO: 눌렀을때 모양 변경 */}
             </styles.IconBox>
-            <styles.CountBox>5</styles.CountBox>
+            <styles.CountBox>{data?.likes}</styles.CountBox>
           </styles.IconCountBox>
           <styles.IconCountBox>
             <styles.IconBox>
@@ -116,7 +141,7 @@ const CommunityInfo = () => {
                 priority
               />
             </styles.IconBox>
-            <styles.CountBox>5</styles.CountBox>
+            <styles.CountBox>{data?.comments}</styles.CountBox>
           </styles.IconCountBox>
           <styles.IconCountBox>
             <styles.IconBox onClick={handleScrapClick}>
@@ -138,13 +163,27 @@ const CommunityInfo = () => {
                 />
               )}
             </styles.IconBox>
-            <styles.CountBox>0</styles.CountBox>
+            <styles.CountBox>{data?.scrapCount}</styles.CountBox>
           </styles.IconCountBox>
         </styles.UnderBarBox>
       </styles.Padding>
       <styles.BottomBox>
         <styles.CommentTitleBox>댓글</styles.CommentTitleBox>
       </styles.BottomBox>
+      {comments?.map((comment) => {
+        return (
+          <Comment
+            key={comment.commentId}
+            nickname={comment.nickname}
+            createdAt={comment.createdAt}
+            updatedAt={comment.updatedAt}
+            content={comment.content}
+            commentId={comment.commentId}
+            originalCommentId={comment.originalCommentId}
+            userId={comment.userId}
+          />
+        );
+      })}
 
       <CommentInput />
     </styles.Container>
