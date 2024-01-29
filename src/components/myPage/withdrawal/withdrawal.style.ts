@@ -44,10 +44,10 @@ export const WithdrawalInput = styled.input`
   width: 100%;
   border: 1px solid ${COLORS.grayscale.Gray3};
   border-radius: 6px;
+  padding: 10px;
 
   ::placeholder {
     color: var(--gray-2, #bdbdbd);
-    padding: 10px;
     /* Caption R 14 */
     font-family: Pretendard;
     font-size: 14px;
