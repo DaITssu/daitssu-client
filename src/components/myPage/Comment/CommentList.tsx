@@ -1,14 +1,14 @@
-import * as styles from './Mypost.style';
+import * as styles from '../Post/Mypost.style';
 import Category from '@/components/common/Category';
 import Image from 'next/image';
 import DefaultCheckBox from '@icons/icon/CheckBox/DefaultCheckBox.svg';
 import CheckedBox from '@icons/icon/CheckBox/BlueCheckedBox.svg';
 import { useState } from 'react';
-import { MPCommentsProps } from './Tab/MyPostsTab';
-import { atom, useAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import { commentsAtom } from '@/states/useComments';
+import { MPCommentsProps } from './MyComment';
 
-const MyComment = ({
+const CommentList = ({
   commentId,
   userId,
   content,
@@ -69,4 +69,4 @@ const MyComment = ({
   );
 };
 
-export default MyComment;
+export default CommentList;

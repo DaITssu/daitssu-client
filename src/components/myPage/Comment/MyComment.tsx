@@ -1,30 +1,30 @@
 import UtilityHeader from '@/components/common/Header/UtilityHeader';
-import * as styles from './Mypost.style';
+import * as styles from '../Post/Mypost.style';
 import MainLayout from '@/pages/layout';
 import { useEffect, useState } from 'react';
-import { getMyPageArticles } from '@/apis/myPageAPIs';
-import ScrapList from '../Scrap/ScrapList';
+import { getMyPageComments } from '@/apis/myPageAPIs';
 import { useRouter } from 'next/router';
+import CommentList from './CommentList';
 
-export interface MyPostProps {
-  id: number;
-  topic: string;
-  title: string;
-  content: string;
+export interface MPCommentsProps {
+  userId: number;
+  commentId: number;
+  originalCommentId: number | null;
   createdAt: string;
-  commentSize: number;
+  updatedAt: string;
+  content: string;
 }
 
-const MyPost = () => {
-  const [articles, setArticles] = useState<MyPostProps[]>([]);
+const MyComment = () => {
+  const [comments, setComments] = useState<MPCommentsProps[]>([]);
   useEffect(() => {
-    const myPageArticleResponse = getMyPageArticles();
+    const myPageCommentResponse = getMyPageComments();
 
-    myPageArticleResponse.then((res) => {
-      setArticles(res?.data);
+    myPageCommentResponse.then((res) => {
+      setComments(res?.data);
     });
   }, []);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(1);
 
   const selectMenuHandler = (n: number) => {
     setIndex(n);
@@ -36,7 +36,7 @@ const MyPost = () => {
   return (
     <styles.Container>
       <UtilityHeader
-        child="내 글 목록"
+        child="내 댓글 목록"
         isDeleteBtn={true}
         // TODO: 삭제함수버튼 구현
         // onClickDeleteBtn={}
@@ -49,8 +49,8 @@ const MyPost = () => {
                 key={idx}
                 isSelected={idx === index}
                 onClick={() => {
-                  if (idx === 1) {
-                    router.push('/my/comment');
+                  if (idx === 0) {
+                    router.push('/my/post');
                   }
                   selectMenuHandler(idx);
                 }}
@@ -61,16 +61,16 @@ const MyPost = () => {
           </styles.TabBox>
           <styles.TabContents>
             <styles.PostContianer>
-              {articles?.map((el) => {
+              {comments?.map((el) => {
                 return (
-                  <ScrapList
-                    key={el.id}
-                    id={el.id}
-                    topic={el.topic}
-                    title={el.title}
+                  <CommentList
+                    key={el.commentId}
+                    commentId={el.commentId}
+                    userId={el.userId}
                     content={el.content}
+                    originalCommentId={el.originalCommentId}
                     createdAt={el.createdAt}
-                    commentSize={el.commentSize}
+                    updatedAt={el.updatedAt}
                   />
                 );
               })}
@@ -82,4 +82,4 @@ const MyPost = () => {
   );
 };
 
-export default MyPost;
+export default MyComment;
