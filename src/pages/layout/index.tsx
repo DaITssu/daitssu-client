@@ -6,13 +6,10 @@ import * as styles from './layout.style';
 import NavigationBar from '@/components/common/Navbar/NavigationBar';
 import useNavbar from '@/hooks/useNavbar';
 
-import { useAxiosInterceptor } from '@/hooks/useAxiosInterceptor';
-
 const MainLayout = ({ children }: PropsWithChildren<{}>) => {
   const activeNavType = useRecoilValue(userNavAtom).activeNavType;
 
   const { renderNavbar } = useNavbar();
-  useAxiosInterceptor();
   const [isShow, setIsShow] = useState(false);
 
   useEffect(() => {
