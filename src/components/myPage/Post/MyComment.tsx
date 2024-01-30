@@ -5,6 +5,8 @@ import DefaultCheckBox from '@icons/icon/CheckBox/DefaultCheckBox.svg';
 import CheckedBox from '@icons/icon/CheckBox/BlueCheckedBox.svg';
 import { useState } from 'react';
 import { MPCommentsProps } from './Tab/MyPostsTab';
+import { atom, useAtom } from 'jotai';
+import { commentsAtom } from '@/states/useComments';
 
 const MyComment = ({
   commentId,
@@ -15,6 +17,11 @@ const MyComment = ({
   updatedAt,
 }: MPCommentsProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [comments, setComments] = useAtom(commentsAtom);
+
+  const handleUnChecked = (removeId: number) => {
+    setComments(comments.filter((id) => id !== removeId));
+  };
 
   return (
     <styles.FlexBox>
@@ -28,6 +35,7 @@ const MyComment = ({
               height={15}
               onClick={() => {
                 setIsChecked(!isChecked);
+                handleUnChecked(commentId);
               }}
             />
           ) : (
@@ -38,6 +46,7 @@ const MyComment = ({
               height={15}
               onClick={() => {
                 setIsChecked(!isChecked);
+                setComments([...comments, commentId]);
               }}
             />
           )}
