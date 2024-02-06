@@ -36,3 +36,17 @@ export const getMyPageScraps = async () => {
     return null;
   }
 };
+
+export const deleteMyPageComments = async (commentIds: Array<number>) => {
+  try {
+    const response = await axiosInstance.patch(`/myPage/comments`, {
+      commentIds,
+    });
+    return response.data;
+  } catch (error) {
+    // if (axios.isAxiosError(error)) {
+    //   console.log(error.response?.data);
+    // }
+    return null;
+  }
+};

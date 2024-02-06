@@ -2,9 +2,11 @@ import UtilityHeader from '@/components/common/Header/UtilityHeader';
 import * as styles from '../Post/Mypost.style';
 import MainLayout from '@/pages/layout';
 import { useEffect, useState } from 'react';
-import { getMyPageComments } from '@/apis/myPageAPIs';
+import { deleteMyPageComments, getMyPageComments } from '@/apis/myPageAPIs';
 import { useRouter } from 'next/router';
 import CommentList from './CommentList';
+import { commentsAtom } from '@/states/useComments';
+import { useAtom } from 'jotai';
 
 export interface MPCommentsProps {
   userId: number;
@@ -33,13 +35,19 @@ const MyComment = () => {
   const menuTab = [{ title: '글' }, { title: '댓글' }];
   const router = useRouter();
 
+  const [checks, setChecks] = useAtom(commentsAtom);
+
+  const hanldeOnClickDeleteComment = () => {
+    const deleteResponse = deleteMyPageComments(checks);
+    setChecks([]);
+  };
   return (
     <styles.Container>
       <UtilityHeader
         child="내 댓글 목록"
         isDeleteBtn={true}
-        // TODO: 삭제함수버튼 구현
-        // onClickDeleteBtn={}
+        isPossibleDelete={checks.length > 0}
+        onClickDeleteBtn={hanldeOnClickDeleteComment}
       />
       <MainLayout>
         <div>
