@@ -9,6 +9,13 @@ import DefaultRadio from '/public/assets/icon/Radio/DefaultRadio.svg';
 
 import { withdrawlAPI } from '@/apis/userAPIS';
 
+import {
+  loginAtom,
+  accessTokenAtom,
+  refreshTokenAtom,
+} from '@/states/authAtom';
+import { useResetRecoilState } from 'recoil';
+
 const Withdrawal = () => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const handleIconToggle = (icon: string) => {
@@ -26,6 +33,10 @@ const Withdrawal = () => {
 
   const router = useRouter();
 
+  const resetLogin = useResetRecoilState(loginAtom);
+  const resetAccessToken = useResetRecoilState(accessTokenAtom);
+  const resetRefreshToken = useResetRecoilState(refreshTokenAtom);
+
   const handleClickWithdrawlBtn = () => {
     const response = withdrawlAPI();
     response
@@ -33,6 +44,10 @@ const Withdrawal = () => {
         if (res === 200) {
           router.push('/');
           alert('회원탈퇴가 완료되었습니다.');
+          //로그아웃 처리
+          resetLogin();
+          resetAccessToken();
+          resetRefreshToken();
         } else {
           router.push('/');
           alert('회원탈퇴에 실패했습니다.');
