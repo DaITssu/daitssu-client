@@ -2,9 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import Image from 'next/image';
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import * as styles from './withdrawal.style';
 import CheckedRadio from '/public/assets/icon/Radio/CheckedRadio.svg';
 import DefaultRadio from '/public/assets/icon/Radio/DefaultRadio.svg';
+
+import { withdrawlAPI } from '@/apis/userAPIS';
+
+import {
+  loginAtom,
+  accessTokenAtom,
+  refreshTokenAtom,
+} from '@/states/authAtom';
+import { useResetRecoilState } from 'recoil';
 
 const Withdrawal = () => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
@@ -20,6 +30,35 @@ const Withdrawal = () => {
     '사용법이 어려움',
     '기타',
   ];
+
+  const router = useRouter();
+
+  const resetLogin = useResetRecoilState(loginAtom);
+  const resetAccessToken = useResetRecoilState(accessTokenAtom);
+  const resetRefreshToken = useResetRecoilState(refreshTokenAtom);
+
+  const handleClickWithdrawlBtn = () => {
+    const response = withdrawlAPI();
+    response
+      .then((res) => {
+        if (res === 200) {
+          router.push('/');
+          alert('회원탈퇴가 완료되었습니다.');
+          //로그아웃 처리
+          resetLogin();
+          resetAccessToken();
+          resetRefreshToken();
+        } else {
+          router.push('/');
+          alert('회원탈퇴에 실패했습니다.');
+        }
+      })
+      .catch(() => {
+        router.push('/');
+        alert('회원탈퇴에 실패했습니다.');
+      });
+  };
+
   return (
     <styles.withdrawalStyle>
       <styles.withdrawalHeader style={TEXT_STYLES.HeadSM20}>
@@ -52,7 +91,12 @@ const Withdrawal = () => {
       <div style={{ height: '20px' }}></div>
       <styles.WithdrawalInput placeholder="해당 내용을 확인하고 탈퇴하겠습니다." />
       <div style={{ height: '20px' }}></div>
-      <styles.WithdrawalButton style={TEXT_STYLES.HeadM18}>
+      <styles.WithdrawalButton
+        disabled={selectedIcon ? false : true}
+        onClick={handleClickWithdrawlBtn}
+        style={TEXT_STYLES.HeadM18}
+        active={selectedIcon ? true : false}
+      >
         탈퇴하기
       </styles.WithdrawalButton>
     </styles.withdrawalStyle>

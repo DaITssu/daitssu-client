@@ -7,8 +7,10 @@ import NoticeFunSystemTab from '@/components/Home/NoticeFunSystemTab/NoticeFunSy
 import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
 import { loginAtom } from '@/states/authAtom';
+import { useAxiosInterceptor } from '@/hooks/useAxiosInterceptor';
 
 const Header = () => {
+  useAxiosInterceptor();
   const router = useRouter();
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [isSearchVisible, setIsSearchVisible] = useState(false);

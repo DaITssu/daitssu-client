@@ -44,10 +44,10 @@ export const WithdrawalInput = styled.input`
   width: 100%;
   border: 1px solid ${COLORS.grayscale.Gray3};
   border-radius: 6px;
+  padding: 10px;
 
   ::placeholder {
     color: var(--gray-2, #bdbdbd);
-    padding: 10px;
     /* Caption R 14 */
     font-family: Pretendard;
     font-size: 14px;
@@ -58,10 +58,14 @@ export const WithdrawalInput = styled.input`
   }
 `;
 
-export const WithdrawalButton = styled.div`
+export const WithdrawalButton = styled.button<{ active: boolean }>`
   background-color: ${COLORS.SSU.error};
+  background-color: ${(props) =>
+    props.active ? COLORS.SSU.error : COLORS.grayscale.Gray3};
   color: white;
   border-radius: 12px;
+  border: none;
+  width: 100%;
   height: 50px;
   display: flex;
   justify-content: center;
