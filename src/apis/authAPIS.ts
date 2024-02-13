@@ -136,3 +136,20 @@ export const getUserInfoAPI = async (studentId: string, password: string) => {
     }
   }
 };
+
+/**
+ * 닉네임 중복체크
+ * @param nickname: 유저 닉네임
+ */
+export const checkUserNickname = async (nickname: string) => {
+  try {
+    const response = await axiosInstance.get(
+      `/auth/check-nickname?nickname=${nickname}`,
+    );
+    return response.status;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return error.status;
+    }
+  }
+};

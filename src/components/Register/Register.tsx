@@ -9,7 +9,7 @@ import Image from 'next/image';
 import TosItem from './TosItems/TosItem';
 import TOS from './TOS/TOS';
 import { UserInfoResponse } from '@/types/Auth';
-import { getUserInfoAPI } from '@/apis/authAPIS';
+import { getUserInfoAPI, checkUserNickname } from '@/apis/authAPIS';
 
 const Register = () => {
   const { query } = useRouter();
@@ -20,7 +20,7 @@ const Register = () => {
   const [isDuplicatedNickname, setIsDuplicatedNickname] =
     useState<boolean>(false);
 
-  const [checkNickname, setCheckNickName] = useState<boolean>(true);
+  const [checkNickname, setCheckNickName] = useState<boolean>(false);
   const [checkAllAgree, setCheckAllAgree] = useState<boolean>(false);
   const [checkPrivacy, setCheckPrivacy] = useState<boolean>(false);
   const [checkTermsOfUse, setCheckTermsOfUse] = useState<boolean>(false);
@@ -38,6 +38,19 @@ const Register = () => {
     setCheckTermsOfUse(newValue);
     setCheckThirdPartyInfo(newValue);
   }
+
+  const handleClickNicknameBtn = () => {
+    const response = checkUserNickname(nickname);
+    response.then((res) => {
+      if (res === 200) {
+        setCheckNickName(true);
+        setIsDuplicatedNickname(false);
+      } else {
+        setCheckNickName(false);
+        setIsDuplicatedNickname(true);
+      }
+    });
+  };
 
   useEffect(() => {
     if (checkPrivacy && checkTermsOfUse && checkThirdPartyInfo) {
@@ -72,9 +85,7 @@ const Register = () => {
               onChange={(e) => setNickname(e.target.value)}
             />
             <styles.RegisterNickNameInputButton
-              onClick={() => {
-                //TODO : 서버와 닉네임 중복확인
-              }}
+              onClick={handleClickNicknameBtn}
             >
               중복확인
             </styles.RegisterNickNameInputButton>
@@ -83,6 +94,11 @@ const Register = () => {
             <styles.WarningText>
               중복된 닉네임입니다. 다시 입력하세요
             </styles.WarningText>
+          )}
+          {!isDuplicatedNickname && checkNickname ? (
+            <styles.CompleteText>사용가능한 닉네임입니다.</styles.CompleteText>
+          ) : (
+            <></>
           )}
         </styles.Box>
         <div style={{ height: '16px' }}></div>

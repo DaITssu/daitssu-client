@@ -4,7 +4,6 @@ import Withdrawal from '@/components/myPage/withdrawal/withdrawal';
 export default function Home() {
   return (
     <>
-      <Header />
       <Withdrawal />
       {/* <NavigationBar focusType={'MY_PAGE'} /> */}
     </>
