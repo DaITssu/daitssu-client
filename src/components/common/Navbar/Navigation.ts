@@ -11,5 +11,5 @@ export const NAV_URL_LIST = {
   [NAV_LIST.ANNOUNCEMENT]: '/notice',
   [NAV_LIST.COMMUNITY]: '/community',
   [NAV_LIST.CALENDAR]: '/calendar',
-  [NAV_LIST.MY_PAGE]: '/myPage',
+  [NAV_LIST.MY_PAGE]: '/my',
 } as const;

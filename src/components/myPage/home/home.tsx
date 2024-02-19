@@ -7,6 +7,8 @@ import Scrap from '@icons/icon/SubscribeList/Scrap.svg';
 import Setting from '@icons/icon/SubscribeList/Setting.svg';
 import SubscribeList from '@icons/icon/SubscribeList/SubscribeList.svg';
 import Link from 'next/link';
+import profile from '@icons/icon/profile.svg';
+import { useRouter } from 'next/router';
 
 interface EditProfileProps {
   name: string;
@@ -14,22 +16,18 @@ interface EditProfileProps {
   department: string;
 }
 
-const home = (props: EditProfileProps) => {
+const MyPageComponent = (props: EditProfileProps) => {
+  const router = useRouter();
+
   function editOnClick() {
-    //TODO : edit profile
-    console.log('edit');
+    router.push('/my/edit');
   }
 
   return (
     <div>
       <styles.Content>
         <styles.ContentDetil>
-          <Image
-            src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png"
-            width={100}
-            height={100}
-            alt="profile"
-          />
+          <Image src={profile} width={100} height={100} alt="profile" />
           <div>
             <styles.ContentTitle>{props.name}</styles.ContentTitle>
             <styles.ContentSubTitle>{props.studentId}</styles.ContentSubTitle>
@@ -42,7 +40,7 @@ const home = (props: EditProfileProps) => {
       //TODO : 나의 과목 부분 6-2 부분 지정되고 추가 예정
        */}
       <styles.ContentList style={{ textDecoration: 'none' }}>
-        <Link href="/mypage/subscribe" style={{ textDecoration: 'none' }}>
+        <Link href="/my/subscribe" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
               <Image
@@ -57,7 +55,7 @@ const home = (props: EditProfileProps) => {
             <Image src={rightArrow} width={20} height={20} alt="go" />
           </styles.Content>
         </Link>
-        <Link href="/mypage/mycontents" style={{ textDecoration: 'none' }}>
+        <Link href="/my/contents" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
               <Image
@@ -72,7 +70,7 @@ const home = (props: EditProfileProps) => {
             <Image src={rightArrow} width={20} height={20} alt="go" />
           </styles.Content>
         </Link>
-        <Link href="/mypage/scrap" style={{ textDecoration: 'none' }}>
+        <Link href="/my/scrap" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
               <Image
@@ -87,7 +85,7 @@ const home = (props: EditProfileProps) => {
             <Image src={rightArrow} width={20} height={20} alt="go" />
           </styles.Content>
         </Link>
-        <Link href="/mypage/setting" style={{ textDecoration: 'none' }}>
+        <Link href="/my/setting" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
               <Image
@@ -107,4 +105,4 @@ const home = (props: EditProfileProps) => {
   );
 };
 
-export default home;
+export default MyPageComponent;
