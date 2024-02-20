@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <>
       <MyScraps />
+      <NavigationBar focusType={'MY_PAGE'} />
     </>
   );
 }
