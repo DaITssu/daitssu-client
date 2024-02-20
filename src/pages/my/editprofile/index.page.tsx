@@ -4,6 +4,7 @@ import EditProfile from '@/components/myPage/EditProfile';
 export default function Home() {
   return (
     <>
+      <Header />
       <EditProfile />
     </>
   );

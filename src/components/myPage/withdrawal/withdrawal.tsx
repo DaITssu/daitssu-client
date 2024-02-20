@@ -82,12 +82,7 @@ const Withdrawal = () => {
       <div style={{ height: '20px' }}></div>
       <styles.WithdrawalInput placeholder="해당 내용을 확인하고 탈퇴하겠습니다." />
       <div style={{ height: '20px' }}></div>
-      <styles.WithdrawalButton
-        disabled={selectedIcon ? false : true}
-        onClick={handleClickWithdrawlBtn}
-        style={TEXT_STYLES.HeadM18}
-        active={selectedIcon ? true : false}
-      >
+      <styles.WithdrawalButton style={TEXT_STYLES.HeadM18}>
         탈퇴하기
       </styles.WithdrawalButton>
     </styles.withdrawalStyle>

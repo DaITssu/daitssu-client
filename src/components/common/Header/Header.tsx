@@ -8,8 +8,8 @@ import { useRouter } from 'next/router';
 import LocalStorage from '@/utils/localStorage';
 import { useAxiosInterceptor } from '@/hooks/useAxiosInterceptor';
 
+
 const Header = () => {
-  useAxiosInterceptor();
   const router = useRouter();
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [isSearchVisible, setIsSearchVisible] = useState(false);

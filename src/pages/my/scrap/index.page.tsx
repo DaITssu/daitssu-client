@@ -5,6 +5,8 @@ import ScrapList from '@/components/myPage/Scrap/ScrapList';
 export default function Home() {
   return (
     <>
+      <Header />
+
       <ScrapList />
       <ScrapList />
       <ScrapList />
