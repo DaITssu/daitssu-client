@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { useRecoilValueLoadable } from 'recoil';
-import { accessTokenAtom } from '@/states/authAtom';
 
 //TODO: baseURL 환경변수로 분리
 
