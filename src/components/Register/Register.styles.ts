@@ -91,12 +91,6 @@ export const WarningText = styled.div`
   color: ${COLORS.SSU.error};
 `;
 
-export const CompleteText = styled.div`
-  margin-top: 20px;
-  ${TEXT_STYLES.CapR12};
-  color: ${COLORS.SSU.primary};
-`;
-
 export const EssentialText = styled.div`
   display: inline-block;
   color: ${COLORS.SSU.error};

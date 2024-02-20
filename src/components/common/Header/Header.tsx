@@ -5,11 +5,10 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import NoticeFunSystemTab from '@/components/Home/NoticeFunSystemTab/NoticeFunSystemTab';
 import { useRouter } from 'next/router';
-import LocalStorage from '@/utils/localStorage';
-import { useAxiosInterceptor } from '@/hooks/useAxiosInterceptor';
+import { useRecoilValue } from 'recoil';
+import { loginAtom } from '@/states/authAtom';
 
 const Header = () => {
-  useAxiosInterceptor();
   const router = useRouter();
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [isSearchVisible, setIsSearchVisible] = useState(false);

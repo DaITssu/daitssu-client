@@ -17,19 +17,6 @@ export const SettingBoxHeader = styled.div`
   color: var(--gray-2, #bdbdbd);
 `;
 
-export const SettingButton = styled.button`
-  width: 100%;
-  border: none;
-  background-color: white;
-  padding-top: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 15px;
-  border-bottom: 1px solid ${COLORS.grayscale.Gray4};
-  text-align: start;
-`;
-
 export const SettingDiv = styled.div`
   padding-top: 15px;
   display: flex;
