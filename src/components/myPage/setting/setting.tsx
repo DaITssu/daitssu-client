@@ -4,24 +4,15 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import * as styles from './setting.style';
 import Link from 'next/link';
-import {
-  loginAtom,
-  accessTokenAtom,
-  refreshTokenAtom,
-} from '@/states/authAtom';
-import { useResetRecoilState } from 'recoil';
+import LocalStorage from '@/utils/localStorage';
 
 const Setting = () => {
   const router = useRouter();
 
-  const resetLogin = useResetRecoilState(loginAtom);
-  const resetAccessToken = useResetRecoilState(accessTokenAtom);
-  const resetRefreshToken = useResetRecoilState(refreshTokenAtom);
-
   const handleClickLogout = () => {
-    resetLogin();
-    resetAccessToken();
-    resetRefreshToken();
+    LocalStorage.setItem('isLogin', '');
+    LocalStorage.removeItem('accessToken');
+    LocalStorage.removeItem('refreshToken');
     router.push('/');
   };
 
