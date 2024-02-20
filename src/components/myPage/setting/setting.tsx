@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from 'react';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import RightArrow from '@icons/icon/Arrow/RightBigArrow1.svg';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import * as styles from './setting.style';
 import Link from 'next/link';
+import LocalStorage from '@/utils/localStorage';
 
 const Setting = () => {
+  const router = useRouter();
+
+  const handleClickLogout = () => {
+    LocalStorage.setItem('isLogin', '');
+    LocalStorage.removeItem('accessToken');
+    LocalStorage.removeItem('refreshToken');
+    router.push('/');
+  };
+
   return (
     <styles.SettingStyle>
       <styles.SettingBox>
@@ -60,17 +70,14 @@ const Setting = () => {
       <div style={{ height: '20px' }}></div>
       <styles.SettingBox>
         <styles.SettingBoxHeader>로그아웃 및 탈퇴</styles.SettingBoxHeader>
-        <Link href={'/'}>
-          {/* 로그아웃 url 연결 */}
-          <styles.SettingDiv>
-            <styles.SettingDivText color="blue" style={TEXT_STYLES.HeadM18}>
-              로그아웃
-            </styles.SettingDivText>
-            <styles.SettinDivImg>
-              <Image src={RightArrow} width={24} height={24} alt="RightArrow" />
-            </styles.SettinDivImg>
-          </styles.SettingDiv>
-        </Link>
+        <styles.SettingButton onClick={handleClickLogout}>
+          <styles.SettingDivText color="blue" style={TEXT_STYLES.HeadM18}>
+            로그아웃
+          </styles.SettingDivText>
+          <styles.SettinDivImg>
+            <Image src={RightArrow} width={24} height={24} alt="RightArrow" />
+          </styles.SettinDivImg>
+        </styles.SettingButton>
         <Link href={'/my/withdrawal'}>
           {/* 탈퇴 하기 url 연결 */}
           <styles.SettingDiv>

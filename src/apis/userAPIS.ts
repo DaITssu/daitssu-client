@@ -13,3 +13,15 @@ export const getUserAPI = async (userId: number) => {
     return null;
   }
 };
+
+/**
+ * 유저 삭제
+ */
+export const withdrawlAPI = async () => {
+  try {
+    const response = await axiosInstance.patch('/user');
+    return response.status;
+  } catch (error) {
+    return 500;
+  }
+};
