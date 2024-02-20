@@ -4,7 +4,7 @@ import * as styles from './MyScrap.style';
 import ScrapList from './ScrapList';
 import { useEffect, useState } from 'react';
 import { getMyPageScraps } from '@/apis/myPageAPIs';
-import { MyPostProps } from '../Post/Tab/MyPostsTab';
+import { MyPostProps } from '../Post/MyPost';
 
 const MyScraps = () => {
   const [data, setData] = useState<MyPostProps[]>([]);

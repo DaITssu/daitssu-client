@@ -5,8 +5,8 @@ import DefaultCheckBox from '@icons/icon/CheckBox/DefaultCheckBox.svg';
 import CheckedBox from '@icons/icon/CheckBox/BlueCheckedBox.svg';
 import Comment from '@icons/icon/Icon24/Comment.svg';
 import { useState } from 'react';
-import { MyPostProps } from '../Post/Tab/MyPostsTab';
 import { beforeTime } from '@/utils/time';
+import { MyPostProps } from '../Post/MyPost';
 
 const ScrapList = ({
   id,
