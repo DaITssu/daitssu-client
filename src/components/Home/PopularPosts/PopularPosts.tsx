@@ -34,7 +34,7 @@ const PopularPosts = ({ posts }: { posts: PostDetailProps[] }) => {
         </styles.MoreButton>
       </styles.RowSpacer>
       <>
-        {posts.map((post) => (
+        {posts?.map((post) => (
           <PostDetail
             id={post.id}
             title={post.title}

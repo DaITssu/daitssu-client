@@ -5,8 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import NoticeFunSystemTab from '@/components/Home/NoticeFunSystemTab/NoticeFunSystemTab';
 import { useRouter } from 'next/router';
-import { useRecoilValue } from 'recoil';
-import { loginAtom } from '@/states/authAtom';
+import LocalStorage from '@/utils/localStorage';
 import { useAxiosInterceptor } from '@/hooks/useAxiosInterceptor';
 
 const Header = () => {
@@ -15,7 +14,7 @@ const Header = () => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 
-  const isLogin = useRecoilValue(loginAtom);
+  const isLogin = Boolean(LocalStorage.getItem('isLogin'));
 
   const handleSearchIconClick = () => {
     setIsSearchVisible((prev) => !prev);

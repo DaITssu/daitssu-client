@@ -15,12 +15,7 @@ import LoginProcess from '../LoginProcess/LoginProcess';
 
 import { signInAPI } from '@/apis/authAPIS';
 
-import {
-  loginAtom,
-  accessTokenAtom,
-  refreshTokenAtom,
-} from '@/states/authAtom';
-import { useSetRecoilState } from 'recoil';
+import LocalStorage from '@/utils/localStorage';
 
 export default function LoginLayout() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -33,11 +28,6 @@ export default function LoginLayout() {
   //모달
   const { open, PopUp, close } = useModal();
   const [message, setMessage] = useState('');
-
-  //Atom
-  const setLoginAtom = useSetRecoilState(loginAtom);
-  const setAccessTokenAtom = useSetRecoilState(accessTokenAtom);
-  const setRefreshTokenAtom = useSetRecoilState(refreshTokenAtom);
 
   const router = useRouter();
 
@@ -53,9 +43,7 @@ export default function LoginLayout() {
         setIsLoading(false);
         if (res?.code === 0) {
           //로그인 성공
-          setLoginAtom(true);
-          setAccessTokenAtom(res.data.accessToken.token);
-          setRefreshTokenAtom(res.data.refreshToken.token);
+          LocalStorage.setItem('isLogin', 'true');
           router.push('/');
         } else if (res?.code === 1001) {
           //회원가입
