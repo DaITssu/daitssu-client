@@ -19,8 +19,8 @@ const Main = () => {
     const funSystemResponse = getFunsystem();
 
     popularArticleResponse.then((data) => {
-      const result: PostDetailProps[] = data.data;
-      if (result.length > 3) {
+      const result: PostDetailProps[] = data?.data;
+      if (result?.length > 3) {
         setPosts(result.slice(0, 3));
       } else {
         setPosts(result);
@@ -28,8 +28,8 @@ const Main = () => {
     });
 
     noticeResponse.then((data) => {
-      const result: SummaryText[] = data.data.notices;
-      if (result.length > 3) {
+      const result: SummaryText[] = data?.data.notices;
+      if (result?.length > 3) {
         setNoticeList(result.slice(0, 3));
       } else {
         setNoticeList(result);
@@ -37,8 +37,8 @@ const Main = () => {
     });
 
     funSystemResponse.then((data) => {
-      const result: SummaryText[] = data.data.funSystems;
-      if (result.length > 3) {
+      const result: SummaryText[] = data?.data.funSystems;
+      if (result?.length > 3) {
         setFunSystemList(result.slice(0, 3));
       } else {
         setFunSystemList(result);
