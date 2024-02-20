@@ -7,4 +7,9 @@ const nextConfig = {
   pageExtensions: ['page.tsx', 'page.ts'],
 };
 
+if (process.env.NEXT_PUBLIC_NODE_ENV === 'prod') {
+  nextConfig.compiler = {
+    removeConsole: true,
+  };
+}
 module.exports = nextConfig;
