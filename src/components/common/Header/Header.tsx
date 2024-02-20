@@ -7,6 +7,7 @@ import NoticeFunSystemTab from '@/components/Home/NoticeFunSystemTab/NoticeFunSy
 import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
 import { loginAtom } from '@/states/authAtom';
+import LocalStorage from '@/utils/localStorage';
 
 const Header = () => {
   const router = useRouter();
