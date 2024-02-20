@@ -6,8 +6,7 @@ import router from 'next/router';
 
 //토큰 만료 시간 (ms)
 const ACCESS_EXPIRY_TIME = 60 * 60 * 1000; // 1시간
-//const REFRESH_EXPIRY_TIME = 7 * 24 * 60 * 60 * 1000; // 7일
-const REFRESH_EXPIRY_TIME = 30000;
+const REFRESH_EXPIRY_TIME = 7 * 24 * 60 * 60 * 1000; // 7일
 
 const signInSuccess = (responseData: AuthResponse) => {
   LocalStorage.setItem('accessToken', responseData.data.accessToken.token);
