@@ -5,9 +5,10 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import NoticeFunSystemTab from '@/components/Home/NoticeFunSystemTab/NoticeFunSystemTab';
 import { useRouter } from 'next/router';
-import LocalStorage from '@/utils/localStorage';
+import { useRecoilValue } from 'recoil';
+import { loginAtom } from '@/states/authAtom';
 import { useAxiosInterceptor } from '@/hooks/useAxiosInterceptor';
-
+import LocalStorage from '@/utils/localStorage';
 
 const Header = () => {
   useAxiosInterceptor();

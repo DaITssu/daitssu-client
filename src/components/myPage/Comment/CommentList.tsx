@@ -1,12 +1,27 @@
-import * as styles from './Mypost.style';
+import * as styles from '../Post/Mypost.style';
 import Category from '@/components/common/Category';
 import Image from 'next/image';
 import DefaultCheckBox from '@icons/icon/CheckBox/DefaultCheckBox.svg';
 import CheckedBox from '@icons/icon/CheckBox/BlueCheckedBox.svg';
 import { useState } from 'react';
+import { useAtom } from 'jotai';
+import { commentsAtom } from '@/states/useComments';
+import { MPCommentsProps } from './MyComment';
 
-const MyComment = () => {
+const CommentList = ({
+  commentId,
+  userId,
+  content,
+  originalCommentId,
+  createdAt,
+  updatedAt,
+}: MPCommentsProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [comments, setComments] = useAtom(commentsAtom);
+
+  const handleUnChecked = (removeId: number) => {
+    setComments(comments.filter((id) => id !== removeId));
+  };
 
   return (
     <styles.FlexBox>
@@ -20,6 +35,7 @@ const MyComment = () => {
               height={15}
               onClick={() => {
                 setIsChecked(!isChecked);
+                handleUnChecked(commentId);
               }}
             />
           ) : (
@@ -30,6 +46,7 @@ const MyComment = () => {
               height={15}
               onClick={() => {
                 setIsChecked(!isChecked);
+                setComments([...comments, commentId]);
               }}
             />
           )}
@@ -45,11 +62,11 @@ const MyComment = () => {
             <styles.PostCommentText>&nbsp;에 남긴 댓글</styles.PostCommentText>
           </styles.PostInfoBox>
         </styles.TopBox>
-        <styles.MyCommentText>서점에</styles.MyCommentText>
+        <styles.MyCommentText>{content}</styles.MyCommentText>
         <styles.BottomBox></styles.BottomBox>
       </styles.RightBox>
     </styles.FlexBox>
   );
 };
 
-export default MyComment;
+export default CommentList;

@@ -5,6 +5,7 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 export const FlexBox = styled.div`
   display: flex;
   background-color: white;
+  justify-content: center;
   width: 100%;
   border-bottom: 1px solid ${COLORS.grayscale.Gray3};
   padding-top: 0.8rem;
@@ -13,7 +14,8 @@ export const FlexBox = styled.div`
 export const LeftBox = styled.div``;
 
 export const RightBox = styled.div`
-  width: 340px;
+  width: 86%;
+  padding-right: 1.2rem;
 `;
 
 export const TopBox = styled.div`
@@ -57,10 +59,15 @@ export const ContentBox = styled.div`
 
 export const MessageBox = styled.div`
   display: flex;
+  align-items: center;
   margin-top: auto;
+  margin-left: auto;
 `;
 
-export const MessageIconBox = styled.div``;
+export const MessageIconBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const MessageCntBox = styled.div`
   ${TEXT_STYLES.CapR14};
