@@ -211,7 +211,7 @@ const NoticeInfo = () => {
         return (
           <Comment
             key={comment.commentId}
-            nickname={''}
+            nickname={comment.nickname}
             createdAt={comment.createdAt}
             updatedAt={comment.updatedAt}
             content={comment.content}
