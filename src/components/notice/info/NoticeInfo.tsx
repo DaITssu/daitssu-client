@@ -21,6 +21,7 @@ import { getKor } from '../CategoryMapping';
 import {
   getFunsystemInfoAPI,
   getFunsystemInfoCommentAPI,
+  postFunsystemCommentAPI,
 } from '@/apis/funsystemAPIs';
 import {
   getNoticeInfoAPI,
@@ -94,9 +95,10 @@ const NoticeInfo = () => {
   // 댓글 작성 API
   const handleOnClickEnrollComment = async () => {
     try {
-      await postNoticeCommentAPI(Number(pathId), input);
       // 공지사항 API 연결
       if (extractCategoryFromUrl(path) === 'notice') {
+        await postNoticeCommentAPI(Number(pathId), input);
+
         const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
         getNoticeInfo.then((res) => {
           setData(res.data);
@@ -110,6 +112,8 @@ const NoticeInfo = () => {
 
       // 펀시스템 API 연결
       if (extractCategoryFromUrl(path) === 'funsystem') {
+        await postFunsystemCommentAPI(Number(pathId), input);
+
         const getFunsystemInfo = getFunsystemInfoAPI(Number(pathId));
         getFunsystemInfo.then((res) => {
           setData(res.data);

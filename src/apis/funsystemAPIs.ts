@@ -24,3 +24,23 @@ export const getFunsystemInfoCommentAPI = async (funId: number) => {
     return null;
   }
 };
+
+export const postFunsystemCommentAPI = async (
+  funSystemId: number,
+  input: string,
+) => {
+  try {
+    const response = await axiosInstance.post(
+      `/funsystem/${funSystemId}/comments`,
+      {
+        content: input,
+      },
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data);
+    }
+    return null;
+  }
+};
