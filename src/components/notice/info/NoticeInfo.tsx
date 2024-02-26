@@ -125,6 +125,31 @@ const NoticeInfo = () => {
         });
       }
       await postNoticeCommentAPI(Number(pathId), input);
+      // 공지사항 API 연결
+      if (extractCategoryFromUrl(path) === 'notice') {
+        const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
+        getNoticeInfo.then((res) => {
+          setData(res.data);
+        });
+
+        const getcomments = getNoticeInfoCommentAPI(Number(pathId));
+        getcomments.then((res) => {
+          setComments(res.data);
+        });
+      }
+
+      // 펀시스템 API 연결
+      if (extractCategoryFromUrl(path) === 'funsystem') {
+        const getFunsystemInfo = getFunsystemInfoAPI(Number(pathId));
+        getFunsystemInfo.then((res) => {
+          setData(res.data);
+        });
+
+        const getFunsystemComments = getFunsystemInfoCommentAPI(Number(pathId));
+        getFunsystemComments.then((res) => {
+          setComments(res.data);
+        });
+      }
     } catch (e) {}
   };
 
