@@ -15,6 +15,9 @@ export interface MPCommentsProps {
   createdAt: string;
   updatedAt: string;
   content: string;
+  title: string;
+  topic: string;
+  articleId: number;
 }
 
 const MyComment = () => {
@@ -79,6 +82,9 @@ const MyComment = () => {
                     originalCommentId={el.originalCommentId}
                     createdAt={el.createdAt}
                     updatedAt={el.updatedAt}
+                    title={el.title}
+                    topic={el.topic}
+                    articleId={el.articleId}
                   />
                 );
               })}

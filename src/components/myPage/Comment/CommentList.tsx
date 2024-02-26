@@ -15,6 +15,9 @@ const CommentList = ({
   originalCommentId,
   createdAt,
   updatedAt,
+  title,
+  topic,
+  articleId,
 }: MPCommentsProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [comments, setComments] = useAtom(commentsAtom);
@@ -55,10 +58,10 @@ const CommentList = ({
       <styles.RightBox>
         <styles.TopBox>
           <styles.TagBox>
-            <Category label="질문" BgColor={false} />
+            <Category label={topic} BgColor={false} />
           </styles.TagBox>
           <styles.PostInfoBox>
-            <styles.PostTitleBox>오늘 학교 가는 분?</styles.PostTitleBox>
+            <styles.PostTitleBox>{title}</styles.PostTitleBox>
             <styles.PostCommentText>&nbsp;에 남긴 댓글</styles.PostCommentText>
           </styles.PostInfoBox>
         </styles.TopBox>
