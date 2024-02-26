@@ -124,6 +124,7 @@ const NoticeInfo = () => {
           setComments(res.data);
         });
       }
+      await postNoticeCommentAPI(Number(pathId), input);
     } catch (e) {}
   };
 
