@@ -70,8 +70,12 @@ const MyComment = () => {
               </styles.TabFontBox>
             ))}
           </styles.TabBox>
-          <styles.TabContents>
-            <styles.PostContianer>
+          <styles.TabContents
+            style={{ height: '70%', backgroundColor: 'white' }}
+          >
+            <styles.PostContianer
+              style={{ height: '100%', backgroundColor: 'white' }}
+            >
               {comments?.map((el) => {
                 return (
                   <CommentList
