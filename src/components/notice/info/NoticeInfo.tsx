@@ -1,5 +1,5 @@
 import * as styles from './NoticeInfo.style';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
@@ -22,12 +22,18 @@ import {
   getFunsystemInfoAPI,
   getFunsystemInfoCommentAPI,
 } from '@/apis/funsystemAPIs';
-import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIs';
+import {
+  getNoticeInfoAPI,
+  getNoticeInfoCommentAPI,
+  postNoticeCommentAPI,
+} from '@/apis/noticeAPIs';
 
 const NoticeInfo = () => {
   const [data, setData] = useState<NoticeInfoProps>();
   const [comments, setComments] = useState<Comments[]>();
   const [share, setShare] = useState<boolean>(false);
+  const [input, setInput] = useState<string>('');
+
   const handleShareClick = () => {
     setShare(!share);
   };
@@ -84,6 +90,15 @@ const NoticeInfo = () => {
       );
     } catch (e) {}
   };
+
+  // 댓글 작성 API
+  const handleOnClickEnrollComment = async () => {
+    try {
+      await postNoticeCommentAPI(Number(pathId), input);
+      this.force;
+    } catch (e) {}
+  };
+
   return (
     <styles.Container>
       <UtilityHeader child="공지사항" />
@@ -221,7 +236,13 @@ const NoticeInfo = () => {
           />
         );
       })}
-      <CommentInput />
+      <CommentInput
+        input={input}
+        setInput={setInput}
+        EnrollFunc={() => {
+          handleOnClickEnrollComment();
+        }}
+      />
     </styles.Container>
   );
 };
