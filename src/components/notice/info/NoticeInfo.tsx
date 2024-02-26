@@ -95,7 +95,6 @@ const NoticeInfo = () => {
   const handleOnClickEnrollComment = async () => {
     try {
       await postNoticeCommentAPI(Number(pathId), input);
-      this.force;
     } catch (e) {}
   };
 
