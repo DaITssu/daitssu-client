@@ -43,6 +43,10 @@ const MyComment = () => {
   const hanldeOnClickDeleteComment = () => {
     const deleteResponse = deleteMyPageComments(checks);
     setChecks([]);
+    const myPageCommentResponse = getMyPageComments();
+    myPageCommentResponse.then((res) => {
+      setComments(res?.data);
+    });
   };
   return (
     <styles.Container>
