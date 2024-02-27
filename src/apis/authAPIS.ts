@@ -20,7 +20,7 @@ const signInSuccess = (responseData: AuthResponse) => {
         console.error(error);
       },
     );
-  }, ACCESS_EXPIRY_TIME - 10000);
+  }, ACCESS_EXPIRY_TIME - 60000);
 };
 
 const logout = () => {
