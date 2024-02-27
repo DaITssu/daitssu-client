@@ -3,13 +3,18 @@ import NoticeList from './NoticeList';
 import * as styles from './TopTab.styles';
 import SearchBar from './anouncement/SearchBar';
 import ButtonGroup from './anouncement/SelectButton';
-
 import FunSystemList from './FunSystemList';
+import { useRouter } from 'next/router';
 
-const TopTab = () => {
-  const [index, setIndex] = useState(0);
+interface TProp {
+  type: '공지사항' | '펀시스템';
+}
+
+const TopTab = ({ type }: TProp) => {
+  const [index, setIndex] = useState(type === '공지사항' ? 0 : 1);
   const [category, setCategory] = useState('ALL');
   const [search, setSearch] = useState('');
+  const router = useRouter();
 
   const handleSearch = (searchText: string) => {
     setSearch(searchText);
@@ -21,9 +26,10 @@ const TopTab = () => {
 
   const selectMenuHandler = (n: number) => {
     setIndex(n);
-
     setCategory('ALL');
     setSearch('');
+    if (n === 0) router.push('/notice');
+    else router.push('/funsystem');
   };
 
   return (
@@ -32,8 +38,10 @@ const TopTab = () => {
         {['공지사항', '펀시스템'].map((title, idx) => (
           <styles.TabFontBox
             key={idx}
-            isSelected={idx === index}
-            onClick={() => selectMenuHandler(idx)}
+            isSelected={title === type}
+            onClick={() => {
+              selectMenuHandler(idx);
+            }}
           >
             {title}
           </styles.TabFontBox>
