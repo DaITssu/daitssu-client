@@ -56,11 +56,7 @@ export const signInAPI = async (
         return resolve(response.data);
       })
       .catch((error) => {
-        if (axios.isAxiosError(error)) {
-          return reject(error.response?.data);
-        } else {
-          return reject(error);
-        }
+        return resolve(error.response?.data);
       });
   });
 };

@@ -16,6 +16,7 @@ import LoginProcess from '../LoginProcess/LoginProcess';
 import { signInAPI } from '@/apis/authAPIS';
 
 import LocalStorage from '@/utils/localStorage';
+import { useValidUser } from '@/hooks/useValidUser';
 
 export default function LoginLayout() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -35,6 +36,8 @@ export default function LoginLayout() {
     setIsSelectedAutoLogon(!isSelectedAutoLogon);
   };
 
+  const { isValid, fetchUserInfo } = useValidUser(ID, password);
+
   const handleClickLoginBtn = () => {
     setIsLoading(true);
     const signInResponse = signInAPI(String(ID), password);
@@ -45,27 +48,38 @@ export default function LoginLayout() {
           //로그인 성공
           LocalStorage.setItem('isLogin', 'true');
           router.push('/');
+        } else if (res?.code === 1011) {
+          //비밀번호 틀림
+          setMessage('패스워드가 일치하지 않습니다.');
+          setPassword('');
         } else if (res?.code === 1001) {
-          //회원가입
-          router.push(
-            {
-              pathname: '/register',
-              query: {
-                studentId: ID,
-                password,
+          //유저 없음
+          fetchUserInfo();
+          if (isValid) {
+            //회원가입
+            router.push(
+              {
+                pathname: '/register',
+                query: {
+                  studentId: ID,
+                  password,
+                },
               },
-            },
-            '/register', //마스킹해서 브라우저에 query 안보이게
-          );
+              '/register', //마스킹해서 브라우저에 query 안보이게
+            );
+          } else {
+            setMessage('패스워드가 일치하지 않습니다.');
+            setPassword('');
+          }
         } else {
           //로그인 실패
-          setMessage(res?.message || '');
+          setMessage('로그인에 실패했습니다.');
           setPassword('');
         }
         return res;
       })
       .then((res) => {
-        if (res?.code !== 0 && res?.code !== 1001) open(); //에러 메시지 모달 open
+        if (res?.code !== 0 && !isValid) open(); //에러 메시지 모달 open
       });
   };
 
