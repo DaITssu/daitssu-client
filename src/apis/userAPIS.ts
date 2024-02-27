@@ -1,9 +1,9 @@
 import { axiosInstance } from '@/apis/axiosInstance';
 import axios from 'axios';
 
-export const getUserAPI = async (userId: number) => {
+export const getUserAPI = async () => {
   try {
-    const response = await axiosInstance.get(`/user/${userId}`);
+    const response = await axiosInstance.get(`/user`);
     return response.data;
   } catch (error) {
     //에러 출력 - 미사용시 주석처리

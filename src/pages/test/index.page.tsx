@@ -31,7 +31,7 @@ export default function TestPage() {
 
   //api 예제 코드
   useEffect(() => {
-    const getResponse = getUserAPI(1);
+    const getResponse = getUserAPI();
     getResponse.then((res) => {
       console.log(res);
     });
