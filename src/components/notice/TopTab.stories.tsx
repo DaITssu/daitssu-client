@@ -7,6 +7,6 @@ export default {
   component: TopTab,
 };
 
-const Template: Story = (args) => <TopTab {...args} />;
+const Template: Story = (args) => <TopTab type="공지사항" {...args} />;
 
 export const Default = Template.bind({});
