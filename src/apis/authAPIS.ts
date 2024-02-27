@@ -10,6 +10,7 @@ const REFRESH_EXPIRY_TIME = 7 * 24 * 60 * 60 * 1000; // 7일
 
 const signInSuccess = (responseData: AuthResponse) => {
   LocalStorage.setItem('accessToken', responseData.data.accessToken.token);
+  LocalStorage.setItem('refreshToken', responseData.data.refreshToken.token);
   const refreshToken = LocalStorage.getItem('refreshToken');
 
   //accessToken 만료 1분전 로그인 연장
@@ -19,7 +20,7 @@ const signInSuccess = (responseData: AuthResponse) => {
         console.error(error);
       },
     );
-  }, ACCESS_EXPIRY_TIME);
+  }, ACCESS_EXPIRY_TIME - 10000);
 };
 
 const logout = () => {
