@@ -12,6 +12,26 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { getCalendarAPI } from '@/apis/courseAPIS';
 
+export interface CalendersResponse {
+  course: string;
+  calendarResponses: CalendarResponse[];
+}
+
+interface CalendarResponse {
+  id: number;
+  type: CalendarType;
+  dueAt: string; /// DateTime
+  name: string;
+  isCompleted: boolean;
+}
+
+export enum CalendarType {
+  ASSIGNMENT = 'ASSIGNMENT',
+  VIDEO = 'VIDEO',
+  OFFLINE_LECTURE = 'OFFLINE_LECTURE',
+  QUIZ = 'QUIZ',
+}
+
 const CalendarScreen = () => {
   const router = useRouter();
   const { open, PopUp, close } = useModal();
@@ -20,9 +40,8 @@ const CalendarScreen = () => {
   const [year, setYear] = useState<number>(today.getFullYear());
   const [month, setMonth] = useState<number>(today.getMonth() + 1);
   const [selectDay, setSelectDay] = useState<number>(today.getDate());
-  const [dayTasks, setDayTasks] = useState<{ [key: number]: Array<string> }>(
-    {},
-  );
+  const [monthlyTasks, setMonthlyTasks] = useState<CalendersResponse[]>([]);
+  const [dailyTasks, setDailyTasks] = useState<CalendersResponse[]>([]);
 
   function onDayClick(day: number) {
     setSelectDay(day);
@@ -36,8 +55,7 @@ const CalendarScreen = () => {
       `${year}-${month < 10 ? '0' + month.toString() : month}`,
     );
     getCalendarResponse.then((res) => {
-      //TODO : 서버에서 받아온 데이터를 dayTasks에 저장
-      console.log(res);
+      setMonthlyTasks(res);
     });
   }
 
@@ -76,7 +94,7 @@ const CalendarScreen = () => {
           year={year}
           month={month}
           selectDay={selectDay}
-          dayTasks={dayTasks}
+          dayTasks={dailyTasks}
           onDayClick={onDayClick}
           onMonthChange={onMonthChange}
         />
@@ -95,9 +113,7 @@ const CalendarScreen = () => {
             <styles.TodayOrDateText style={{ padding: '0px 10px 0px 10px' }}>
               {' · '}
             </styles.TodayOrDateText>
-            <styles.countText>
-              {dayTasks[selectDay]?.length ?? 0}
-            </styles.countText>
+            <styles.countText>{dailyTasks?.length ?? 0}</styles.countText>
           </styles.row>
           <styles.row>
             <div

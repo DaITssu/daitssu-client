@@ -3,13 +3,13 @@ import DayBlock from '../DayBlock/DayBlock';
 import WeekBlock from './WeekBlock/WeekBlock';
 import MonthControlButton from '../MonthControlButton/MonthControlButton';
 import * as styles from './Calendar.styles';
+import { CalendersResponse } from '../CalendarScreen/CalendarScreen';
 
 interface CalendarProps {
   year: number;
   month: number;
   selectDay: number;
-
-  dayTasks: { [key: number]: Array<string> };
+  dayTasks: CalendersResponse[];
   onMonthChange: (year: number, month: number) => void;
   onDayClick: (day: number) => void;
 }
@@ -38,6 +38,20 @@ const Calendar = (props: CalendarProps) => {
     setSelectedDay(newSelectedDay);
     props.onDayClick(newSelectedDay);
   };
+
+  const colorList: string[] = [
+    '#FF7171',
+    '#FF9E68',
+    '#FFD057',
+    '#FF8DC4',
+    '#B7E532',
+    '#B69BE3',
+    '#A48172',
+    '#73E4DE',
+    '#6197FF',
+    '#35CC7B',
+    '#BDBDBD',
+  ];
 
   const changeMonth = (value: number) => {
     let newYear = year;
@@ -141,7 +155,14 @@ const Calendar = (props: CalendarProps) => {
               >
                 <DayBlock
                   day={day}
-                  taskColors={datTasks.hasOwnProperty(day) ? datTasks[day] : []}
+                  // colorList
+                  taskColors={
+                    datTasks.hasOwnProperty(day)
+                      ? props.dayTasks.map((e, index) => {
+                          return colorList[index];
+                        })
+                      : []
+                  }
                   selectedDay={day === selectedDay}
                   today={day == today}
                   specialDay={dayIndex != 0 && dayIndex != 6 ? -1 : dayIndex}
