@@ -28,10 +28,10 @@ const MyPageComponent = () => {
   }
 
   const [profileData, setProfile] = useState<profileInterface>({
-    studentId: '201911111',
-    name: '김민수',
-    nickname: '자이언트펭귄',
-    departmentName: '컴퓨터공학과',
+    studentId: '',
+    name: '',
+    nickname: '',
+    departmentName: '',
     term: 1,
     imageUrl: '',
   });
