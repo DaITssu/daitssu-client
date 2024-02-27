@@ -58,6 +58,9 @@ const MyPostsTab = () => {
                 originalCommentId={el.originalCommentId}
                 createdAt={el.createdAt}
                 updatedAt={el.updatedAt}
+                title={el.title}
+                topic={el.topic}
+                articleId={el.articleId}
               />
             );
           })}
