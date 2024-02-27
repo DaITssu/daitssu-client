@@ -7,16 +7,45 @@ import ProfileIcon from '@icons/icon/Icon24/profile.svg';
 import { useRouter } from 'next/router';
 import useModal from '@/components/common/Modal/useModal';
 import Modal from '@/components/common/Modal';
+import { getUserAPI } from '@/apis/userAPIS';
+
+interface profileInterface {
+  studentId: string;
+  name: string;
+  nickname: string;
+  departmentName: string;
+  term: number;
+  imageUrl: string;
+}
+// term은 1~8, 학년은 1~4
+const getTerm = (term: number): string => {
+  var text = '';
+  text += (term + 1) / 2 + '학년 ';
+  if (term % 2 === 1) text += '1학기';
+  else text += '2학기';
+  return text;
+};
 
 const EditProfile = () => {
   const router = useRouter();
   const { open, PopUp, close } = useModal();
 
   const [nickname, setNickname] = useState<string>('자이언트펭귄');
-  const [name, setName] = useState<string>('김민수');
-  const [studentId, setStudentId] = useState<string>('201911111');
-  const [semester, setSemester] = useState<string>('1학년 1학기');
-  const [department, setDepartment] = useState<string>('컴퓨터공학과');
+
+  const [profile, setProfile] = useState<profileInterface>({
+    studentId: '201911111',
+    name: '김민수',
+    nickname: '자이언트펭귄',
+    departmentName: '컴퓨터공학과',
+    term: 1,
+    imageUrl: '',
+  });
+
+  useEffect(() => {
+    getUserAPI().then((res) => {
+      setProfile(res);
+    });
+  }, []);
 
   return (
     <div>
@@ -53,21 +82,27 @@ const EditProfile = () => {
       <styles.BigTitle>학적정보</styles.BigTitle>
       <styles.InformationText>
         <styles.InformationTitle>이름</styles.InformationTitle>
-        <styles.InformationContent>{name}</styles.InformationContent>
+        <styles.InformationContent>{profile.name}</styles.InformationContent>
       </styles.InformationText>
       <styles.InformationText>
         <styles.InformationTitle>학번</styles.InformationTitle>
-        <styles.InformationContent>{studentId}</styles.InformationContent>
+        <styles.InformationContent>
+          {profile.studentId}
+        </styles.InformationContent>
       </styles.InformationText>
 
       <styles.InformationText>
         <styles.InformationTitle>학년/학기</styles.InformationTitle>
-        <styles.InformationContent>{semester}</styles.InformationContent>
+        <styles.InformationContent>
+          {getTerm(profile.term)}
+        </styles.InformationContent>
       </styles.InformationText>
 
       <styles.InformationText>
         <styles.InformationTitle>소속</styles.InformationTitle>
-        <styles.InformationContent>{department}</styles.InformationContent>
+        <styles.InformationContent>
+          {profile.departmentName}
+        </styles.InformationContent>
       </styles.InformationText>
     </div>
   );

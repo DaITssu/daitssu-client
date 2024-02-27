@@ -9,29 +9,57 @@ import SubscribeList from '@icons/icon/SubscribeList/SubscribeList.svg';
 import Link from 'next/link';
 import profile from '@icons/icon/profile.svg';
 import { useRouter } from 'next/router';
+import { getUserAPI } from '@/apis/userAPIS';
 
-interface EditProfileProps {
-  name: string;
+interface profileInterface {
   studentId: string;
-  department: string;
+  name: string;
+  nickname: string;
+  departmentName: string;
+  term: number;
+  imageUrl: string;
 }
 
-const MyPageComponent = (props: EditProfileProps) => {
+const MyPageComponent = () => {
   const router = useRouter();
 
   function editOnClick() {
     router.push('/my/edit');
   }
 
+  const [profileData, setProfile] = useState<profileInterface>({
+    studentId: '201911111',
+    name: '김민수',
+    nickname: '자이언트펭귄',
+    departmentName: '컴퓨터공학과',
+    term: 1,
+    imageUrl: '',
+  });
+
+  useEffect(() => {
+    getUserAPI().then((res) => {
+      setProfile(res);
+    });
+  }, []);
+
   return (
     <div>
       <styles.Content>
         <styles.ContentDetil>
-          <Image src={profile} width={100} height={100} alt="profile" />
+          <Image
+            src={profileData.imageUrl ?? profile}
+            width={100}
+            height={100}
+            alt="profile"
+          />
           <div>
-            <styles.ContentTitle>{props.name}</styles.ContentTitle>
-            <styles.ContentSubTitle>{props.studentId}</styles.ContentSubTitle>
-            <styles.ContentSubTitle>{props.department}</styles.ContentSubTitle>
+            <styles.ContentTitle>{profileData.name}</styles.ContentTitle>
+            <styles.ContentSubTitle>
+              {profileData.studentId}
+            </styles.ContentSubTitle>
+            <styles.ContentSubTitle>
+              {profileData.departmentName}
+            </styles.ContentSubTitle>
           </div>
         </styles.ContentDetil>
         <styles.EditButton onClick={editOnClick}>프로필 수정</styles.EditButton>
