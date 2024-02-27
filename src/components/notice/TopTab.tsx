@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import NoticeList from './NoticeList';
 import * as styles from './TopTab.styles';
 import SearchBar from './anouncement/SearchBar';
