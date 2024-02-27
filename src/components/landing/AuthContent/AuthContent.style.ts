@@ -21,7 +21,7 @@ export const LoginButton = styled(Button)`
 export const AuthCheckBtnContainer = styled.div`
   width: 180px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const AuthCheckBtn = styled.button`
