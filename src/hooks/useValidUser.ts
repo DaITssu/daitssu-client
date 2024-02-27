@@ -12,13 +12,14 @@ export const useValidUser = (
       const response = await getUserInfoAPI(String(studentId), password);
       if (response.code === 0) {
         setIsValid(true);
+        return true;
       } else {
         setIsValid(false);
+        return false;
       }
-      return;
     } catch (error) {
       setIsValid(false);
-      return;
+      return false;
     }
   };
 

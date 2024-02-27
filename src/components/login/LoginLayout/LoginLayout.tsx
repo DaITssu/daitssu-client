@@ -54,32 +54,34 @@ export default function LoginLayout() {
           setPassword('');
         } else if (res?.code === 1001) {
           //유저 없음
-          fetchUserInfo();
-          if (isValid) {
-            //회원가입
-            router.push(
-              {
-                pathname: '/register',
-                query: {
-                  studentId: ID,
-                  password,
+          return fetchUserInfo().then((userInfoRes) => {
+            if (userInfoRes) {
+              //회원가입
+              router.push(
+                {
+                  pathname: '/register',
+                  query: {
+                    studentId: ID,
+                    password,
+                  },
                 },
-              },
-              '/register', //마스킹해서 브라우저에 query 안보이게
-            );
-          } else {
-            setMessage('패스워드가 일치하지 않습니다.');
-            setPassword('');
-          }
-        } else {
-          //로그인 실패
-          setMessage('로그인에 실패했습니다.');
-          setPassword('');
+                '/register', //마스킹해서 브라우저에 query 안보이게
+              );
+            } else {
+              setMessage('패스워드가 일치하지 않습니다.');
+              setPassword('');
+            }
+            return res;
+          });
         }
-        return res;
       })
       .then((res) => {
         if (res?.code !== 0 && !isValid) open(); //에러 메시지 모달 open
+      })
+      .catch(() => {
+        //로그인 실패
+        setMessage('로그인에 실패했습니다.');
+        setPassword('');
       });
   };
 
