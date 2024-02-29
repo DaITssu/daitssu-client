@@ -74,7 +74,7 @@ export const signInAPI = async (
 export const signUpAPI = async (
   nickname: string,
   name: string,
-  departmentId: number,
+  departmentName: string,
   studentId: string,
   term: number,
 ) => {
@@ -82,7 +82,7 @@ export const signUpAPI = async (
     const response = await axiosInstance.post('/auth/sign-up', {
       nickname,
       name,
-      departmentId,
+      departmentName,
       studentId,
       term,
     });
