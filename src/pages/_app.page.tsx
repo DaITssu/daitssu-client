@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
               name="viewport"
               content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"
             />
+            <title>다잇슈 - 숭실대학교 학생을 위한 모든 것</title>
           </Head>
           <Header />
           <Component {...pageProps} />
