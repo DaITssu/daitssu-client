@@ -9,10 +9,11 @@ import Image from 'next/image';
 import TosItem from './TosItems/TosItem';
 import TOS from './TOS/TOS';
 import { UserInfoResponse } from '@/types/Auth';
-import { getUserInfoAPI, checkUserNickname } from '@/apis/authAPIS';
+import { getUserInfoAPI, checkUserNickname, signUpAPI } from '@/apis/authAPIS';
 
 const Register = () => {
   const { query } = useRouter();
+  const router = useRouter();
   const [userInfo, setUserInfo] = useState<UserInfoResponse>();
   const [showModal, setShowModal] = useState(false);
 
@@ -50,6 +51,43 @@ const Register = () => {
         setIsDuplicatedNickname(true);
       }
     });
+  };
+
+  const handleClickConfirmButton = () => {
+    const response = signUpAPI(
+      nickname,
+      userInfo?.data?.name || '',
+      userInfo?.data?.department || '',
+      userInfo?.data?.studentId || '',
+      Number(userInfo?.data?.term[4]),
+    );
+    response
+      .then((res) => {
+        if (res?.code === 0) {
+          router.push(
+            {
+              pathname: '/login',
+              query: {
+                message: '회원가입에 성공했습니다.',
+              },
+            },
+            '/login',
+          );
+        } else {
+          throw new Error();
+        }
+      })
+      .catch(() => {
+        router.push(
+          {
+            pathname: '/login',
+            query: {
+              message: '회원가입에 실패했습니다.',
+            },
+          },
+          '/login',
+        );
+      });
   };
 
   useEffect(() => {
@@ -105,19 +143,21 @@ const Register = () => {
         <styles.Box>
           <styles.BoxHeaderText>회원 정보를 확인해주세요</styles.BoxHeaderText>
           <styles.BoxInnerText>이름</styles.BoxInnerText>
-          <styles.RegisterTextArea
-            readOnly
-            value={userInfo?.data?.name || ''}
-          />
+          <styles.RegisterTextArea>
+            {userInfo?.data?.name}
+          </styles.RegisterTextArea>
           <styles.BoxInnerText>학부</styles.BoxInnerText>
-          <styles.RegisterTextArea readOnly value="글로벌미디어학부" />
+          <styles.RegisterTextArea>
+            {userInfo?.data?.department}
+          </styles.RegisterTextArea>
           <styles.BoxInnerText>학번</styles.BoxInnerText>
-          <styles.RegisterTextArea readOnly value={query?.studentId || ''} />
+          <styles.RegisterTextArea>
+            {userInfo?.data?.studentId}
+          </styles.RegisterTextArea>
           <styles.BoxInnerText>학년/학기</styles.BoxInnerText>
-          <styles.RegisterTextArea
-            readOnly
-            value={userInfo?.data?.term || ''}
-          />
+          <styles.RegisterTextArea>
+            {userInfo?.data?.term}
+          </styles.RegisterTextArea>
         </styles.Box>
         <div style={{ height: '16px' }}></div>
         <styles.Box>
@@ -194,6 +234,10 @@ const Register = () => {
           <styles.ConfirmButton
             isCheck={
               checkPrivacy && checkNickname && checkTermsOfUse ? true : false
+            }
+            onClick={handleClickConfirmButton}
+            disabled={
+              checkPrivacy && checkNickname && checkTermsOfUse ? false : true
             }
           >
             완료
