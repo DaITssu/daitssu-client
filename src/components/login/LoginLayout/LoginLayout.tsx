@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as styles from './LoginLayout.styles';
 
@@ -17,6 +17,7 @@ import { signInAPI } from '@/apis/authAPIS';
 
 import LocalStorage from '@/utils/localStorage';
 import { useValidUser } from '@/hooks/useValidUser';
+import { ParsedUrlQuery } from 'querystring';
 
 export default function LoginLayout() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -28,7 +29,7 @@ export default function LoginLayout() {
 
   //모달
   const { open, PopUp, close } = useModal();
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState<string>('');
 
   const router = useRouter();
 
@@ -36,14 +37,14 @@ export default function LoginLayout() {
     setIsSelectedAutoLogon(!isSelectedAutoLogon);
   };
 
-  const { isValid, fetchUserInfo } = useValidUser(ID, password);
+  const { fetchUserInfo } = useValidUser(ID, password);
+  let valid = false;
 
   const handleClickLoginBtn = () => {
     setIsLoading(true);
     const signInResponse = signInAPI(String(ID), password);
     signInResponse
       .then((res) => {
-        setIsLoading(false);
         if (res?.code === 0) {
           //로그인 성공
           LocalStorage.setItem('isLogin', 'true');
@@ -56,6 +57,7 @@ export default function LoginLayout() {
           //유저 없음
           return fetchUserInfo().then((userInfoRes) => {
             if (userInfoRes) {
+              valid = true;
               //회원가입
               router.push(
                 {
@@ -67,23 +69,42 @@ export default function LoginLayout() {
                 },
                 '/register', //마스킹해서 브라우저에 query 안보이게
               );
+              return Promise.resolve(res);
             } else {
+              valid = false;
               setMessage('패스워드가 일치하지 않습니다.');
               setPassword('');
+              return res;
             }
-            return res;
           });
         }
       })
       .then((res) => {
-        if (res?.code !== 0 && !isValid) open(); //에러 메시지 모달 open
+        setIsLoading(false);
+        if (res?.code !== 0 && !valid) open(); //에러 메시지 모달 open
       })
       .catch(() => {
+        setIsLoading(false);
         //로그인 실패
         setMessage('로그인에 실패했습니다.');
         setPassword('');
+        open();
       });
   };
+
+  //모달 메시지 확인
+  interface LoginPageQuery extends ParsedUrlQuery {
+    message?: string;
+  }
+
+  useEffect(() => {
+    const query = router.query as LoginPageQuery;
+    if (query.message) {
+      setMessage(query.message);
+      open();
+      router.replace('/login');
+    }
+  }, []);
 
   return (
     <>
