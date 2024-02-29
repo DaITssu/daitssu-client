@@ -40,4 +40,8 @@ export const Input = styled.input<{ width?: string; height?: string }>`
     -webkit-appearance: none;
     margin: 0;
   }
+
+  &:focus {
+    border: 1px solid ${COLORS.SSU.primary};
+  }
 `;
