@@ -7,6 +7,7 @@ export const TosItemStyle = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  position: relative;
 `;
 
 export const TosItemImageDiv = styled.div`
