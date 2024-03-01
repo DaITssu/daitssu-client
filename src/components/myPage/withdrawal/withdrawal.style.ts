@@ -56,6 +56,10 @@ export const WithdrawalInput = styled.input`
     line-height: 150%; /* 21px */
     letter-spacing: -0.154px;
   }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const WithdrawalButton = styled.button<{ active: boolean }>`

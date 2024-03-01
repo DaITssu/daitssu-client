@@ -13,6 +13,9 @@ import LocalStorage from '@/utils/localStorage';
 
 const Withdrawal = () => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+  const [writeInput, setWriteInput] = useState<string>('');
+  const [isWrited, setIsWrited] = useState<boolean>(false);
+
   const handleIconToggle = (icon: string) => {
     setSelectedIcon(icon);
   };
@@ -50,6 +53,16 @@ const Withdrawal = () => {
       });
   };
 
+  const handleChangeWriteInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setWriteInput(e.currentTarget.value);
+    const pattern = /해당\s*내용을\s*확인하고\s*탈퇴하겠습니다/;
+    if (pattern.test(e.currentTarget.value)) {
+      setIsWrited(true);
+    } else {
+      setIsWrited(false);
+    }
+  };
+
   return (
     <styles.withdrawalStyle>
       <styles.withdrawalHeader style={TEXT_STYLES.HeadSM20}>
@@ -62,7 +75,7 @@ const Withdrawal = () => {
       </styles.withdrawalHeaderText>
       <div style={{ height: '20px' }}></div>
       <div>
-        {ReportText.map((res, index) => (
+        {ReportText.map((res) => (
           <WithdrawalItem
             text={res}
             isSelected={selectedIcon === res}
@@ -80,13 +93,17 @@ const Withdrawal = () => {
       <div style={{ height: '20px' }}></div>
       <div style={TEXT_STYLES.CapM14}>탈퇴 확인 입력</div>
       <div style={{ height: '20px' }}></div>
-      <styles.WithdrawalInput placeholder="해당 내용을 확인하고 탈퇴하겠습니다." />
+      <styles.WithdrawalInput
+        value={writeInput}
+        onChange={handleChangeWriteInput}
+        placeholder="해당 내용을 확인하고 탈퇴하겠습니다."
+      />
       <div style={{ height: '20px' }}></div>
       <styles.WithdrawalButton
-        disabled={selectedIcon ? false : true}
+        disabled={selectedIcon && isWrited ? false : true}
         onClick={handleClickWithdrawlBtn}
         style={TEXT_STYLES.HeadM18}
-        active={selectedIcon ? true : false}
+        active={selectedIcon && isWrited ? true : false}
       >
         탈퇴하기
       </styles.WithdrawalButton>
