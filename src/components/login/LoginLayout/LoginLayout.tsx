@@ -49,10 +49,12 @@ export default function LoginLayout() {
           //로그인 성공
           LocalStorage.setItem('isLogin', 'true');
           router.push('/');
+          return res;
         } else if (res?.code === 1011) {
           //비밀번호 틀림
           setMessage('패스워드가 일치하지 않습니다.');
           setPassword('');
+          return res;
         } else if (res?.code === 1001) {
           //유저 없음
           return fetchUserInfo().then((userInfoRes) => {
@@ -69,13 +71,12 @@ export default function LoginLayout() {
                 },
                 '/register', //마스킹해서 브라우저에 query 안보이게
               );
-              return Promise.resolve(res);
             } else {
               valid = false;
               setMessage('패스워드가 일치하지 않습니다.');
               setPassword('');
-              return res;
             }
+            return res;
           });
         }
       })
