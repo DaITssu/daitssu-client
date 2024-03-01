@@ -119,8 +119,12 @@ const Register = () => {
           <div style={{ position: 'relative', marginBottom: '5px' }}>
             <styles.RegisterNickNameInput
               isDuplicated={isDuplicatedNickname}
+              checkNickname={checkNickname}
               value={nickname}
-              onChange={(e) => setNickname(e.target.value)}
+              onChange={(e) => {
+                setNickname(e.target.value);
+                setCheckNickName(false);
+              }}
             />
             <styles.RegisterNickNameInputButton
               onClick={handleClickNicknameBtn}

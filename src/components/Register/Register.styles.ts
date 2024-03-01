@@ -24,7 +24,10 @@ export const BoxInnerText = styled.div`
   color: ${COLORS.grayscale.Gray1};
 `;
 
-export const RegisterNickNameInput = styled.input<{ isDuplicated: boolean }>`
+export const RegisterNickNameInput = styled.input<{
+  isDuplicated: boolean;
+  checkNickname: boolean;
+}>`
   border-radius: 6px;
   background-color: white;
   border: 1px solid
@@ -34,8 +37,10 @@ export const RegisterNickNameInput = styled.input<{ isDuplicated: boolean }>`
   height: 48px;
   padding: 12px 60px 12px 8px;
   &:focus {
-    outline: 2px solid ${COLORS.SSU.primary};
+    border: 1px solid ${COLORS.SSU.primary};
   }
+  outline: ${(prop) =>
+    prop.checkNickname ? `1px solid ${COLORS.SSU.primary}` : 'none'};
 `;
 
 export const TosItemStyle = styled.div`
