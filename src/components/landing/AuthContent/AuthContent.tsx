@@ -15,8 +15,13 @@ const AuthContent = () => {
         로그인
       </styles.LoginButton>
       <styles.AuthCheckBtnContainer>
-        <styles.AuthCheckBtn>아이디/비밀번호 찾기</styles.AuthCheckBtn>
-        <styles.AuthCheckBtn>회원가입</styles.AuthCheckBtn>
+        <styles.AuthCheckBtn
+          onClick={() => {
+            window.open('https://lms.ssu.ac.kr/login');
+          }}
+        >
+          아이디/비밀번호 찾기
+        </styles.AuthCheckBtn>
       </styles.AuthCheckBtnContainer>
     </styles.AuthContentContainer>
   );

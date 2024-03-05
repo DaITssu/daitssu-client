@@ -24,7 +24,10 @@ export const BoxInnerText = styled.div`
   color: ${COLORS.grayscale.Gray1};
 `;
 
-export const RegisterNickNameInput = styled.input<{ isDuplicated: boolean }>`
+export const RegisterNickNameInput = styled.input<{
+  isDuplicated: boolean;
+  checkNickname: boolean;
+}>`
   border-radius: 6px;
   background-color: white;
   border: 1px solid
@@ -33,6 +36,11 @@ export const RegisterNickNameInput = styled.input<{ isDuplicated: boolean }>`
   width: 100%;
   height: 48px;
   padding: 12px 60px 12px 8px;
+  &:focus {
+    border: 1px solid ${COLORS.SSU.primary};
+  }
+  outline: ${(prop) =>
+    prop.checkNickname ? `1px solid ${COLORS.SSU.primary}` : 'none'};
 `;
 
 export const TosItemStyle = styled.div`
@@ -60,19 +68,20 @@ export const RegisterNickNameInputButton = styled.button`
   cursor: pointer;
 `;
 
-export const RegisterTextArea = styled.input`
+export const RegisterTextArea = styled.div`
   ${TEXT_STYLES.BodyR16};
   color: ${COLORS.grayscale.Gray1};
   background-color: ${COLORS.grayscale.Gray5};
   border: 1px solid ${COLORS.grayscale.Gray4};
   width: 100%;
+  height: 45px;
   padding: 12px 8px 12px 8px;
   border-radius: 6px;
   margin-bottom: 12px;
   outline: none;
 `;
 
-export const ConfirmButton = styled.div<{ isCheck: boolean }>`
+export const ConfirmButton = styled.button<{ isCheck: boolean }>`
   ${TEXT_STYLES.HeadM18}
   height: 50px;
   color: white;
@@ -82,6 +91,7 @@ export const ConfirmButton = styled.div<{ isCheck: boolean }>`
   width: 100%;
   background-color: ${(props) =>
     props.isCheck ? COLORS.SSU.primary : COLORS.grayscale.Gray3};
+  border: none;
   border-radius: 12px;
 `;
 

@@ -20,5 +20,6 @@ export interface UserInfoResponse {
     name: string;
     studentId: string;
     term: string;
+    department: string;
   };
 }

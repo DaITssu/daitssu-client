@@ -9,9 +9,11 @@ import {
 import { useState } from 'react';
 import { RecoilRoot } from 'recoil';
 import Header from '@/components/common/Header/Header';
+import useCheckLogin from '@/hooks/useCheckLogin';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
+  useCheckLogin();
 
   return (
     <QueryClientProvider client={queryClient}>

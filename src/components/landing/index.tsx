@@ -15,6 +15,7 @@ const Landing = () => {
         alt="배경 이미지"
         fill
         style={{ objectFit: 'cover' }}
+        priority
       />
       <LandingLogo />
       <AuthContent />

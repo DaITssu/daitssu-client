@@ -6,9 +6,9 @@ export default function FindAccountLayout() {
 
   const handleClickFindButton = (type: 'ID' | 'Password') => {
     if (type === 'ID')
-      router.push('https://smartid.ssu.ac.kr/Symtra_Sso/smln_IDFind.asp');
+      window.open('https://smartid.ssu.ac.kr/Symtra_Sso/smln_IDFind.asp');
     if (type === 'Password')
-      router.push('https://smartid.ssu.ac.kr/Symtra_Sso/smln_pwd.asp');
+      window.open('https://smartid.ssu.ac.kr/Symtra_Sso/smln_pwd.asp');
   };
 
   return (
