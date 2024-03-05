@@ -24,7 +24,7 @@ export const ButtonGroupStyles = styled.div<{ expand: boolean }>`
 
 export const GrayBackgroundStyles = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100% - 300px);
   position: absolute;
   background-color: black;
   opacity: 0.2;
