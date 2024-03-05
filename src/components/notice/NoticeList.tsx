@@ -12,6 +12,7 @@ const NoticeList: FC<{ category: string; search: string }> = ({
   const [fetching, setFetching] = useState(false);
 
   const fetchNoticeData = async () => {
+    console.log(page);
     try {
       setFetching(true);
       const noticeData = await getNoticeAPIwithCategory(search, category, page);
@@ -37,9 +38,8 @@ const NoticeList: FC<{ category: string; search: string }> = ({
     const scrollHeight = document.documentElement.scrollHeight;
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
-
-    if (scrollTop + clientHeight >= scrollHeight && !fetching) {
-      fetchNoticeData();
+    if (scrollTop + clientHeight >= scrollHeight - 100 && !fetching) {
+      setPage(page + 1);
     }
   };
   useEffect(() => {
@@ -49,6 +49,9 @@ const NoticeList: FC<{ category: string; search: string }> = ({
 
   useEffect(() => {
     fetchNoticeData();
+  }, [page]);
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);

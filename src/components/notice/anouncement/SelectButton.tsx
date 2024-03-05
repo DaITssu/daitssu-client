@@ -9,14 +9,13 @@ interface ButtonGroupProps {
   index: number; // index prop 추가
   category: (selectedButton: string) => void;
 }
-const ButtonGroup: React.FC<ButtonGroupProps> = ({ index, category }) =>{
-
-  const [selectedButton, setSelectedButton] = useState<string>("ALL");
+const ButtonGroup: React.FC<ButtonGroupProps> = ({ index, category }) => {
+  const [selectedButton, setSelectedButton] = useState<string>('ALL');
   const [expand, setExpand] = useState<boolean>(false);
 
   useEffect(() => {
     setSelectedButton('ALL');
-  }, [index])
+  }, [index]);
 
   const handleButtonClick = (buttonText: string) => {
     category(buttonText);
@@ -26,18 +25,20 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ index, category }) =>{
   const handleExpandClick = () => {
     setExpand(!expand);
   };
-  const categories = index ? Object.keys(FunSystemCategory) : Object.keys(NoticeCategory);
+  const categories = index
+    ? Object.keys(FunSystemCategory)
+    : Object.keys(NoticeCategory);
 
   return (
     <styles.Background>
       <styles.ButtonGroupContainer expand={expand}>
         <styles.ButtonGroupStyles expand={expand}>
           <styles.Padding>
-            {categories.map((category)=>(
+            {categories.map((category) => (
               <styles.Button
                 key={category}
-                selected = {selectedButton === category}
-                onClick={()=>handleButtonClick(category)}
+                selected={selectedButton === category}
+                onClick={() => handleButtonClick(category)}
               >
                 {getKor(category)}
               </styles.Button>
@@ -54,9 +55,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ index, category }) =>{
           </styles.ExpandButton>
         )}
       </styles.ButtonGroupContainer>
-      {expand ? (
-        <styles.GrayBackgroundStyles/>
-      ) : null}
+      {expand ? <styles.GrayBackgroundStyles /> : null}
     </styles.Background>
   );
 };
