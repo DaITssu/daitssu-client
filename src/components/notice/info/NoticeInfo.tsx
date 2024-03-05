@@ -88,7 +88,7 @@ const NoticeInfo = () => {
         setComments(res.data);
       });
     }
-  }, []);
+  }, [pathId]);
 
   // 클립보드에 링크 복사
   const handleCopyClipBoard = async () => {
