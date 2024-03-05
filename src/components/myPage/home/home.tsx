@@ -83,7 +83,7 @@ const MyPageComponent = () => {
             <Image src={rightArrow} width={20} height={20} alt="go" />
           </styles.Content>
         </Link>
-        <Link href="/my/contents" style={{ textDecoration: 'none' }}>
+        <Link href="/my/post" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
               <Image
