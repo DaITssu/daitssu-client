@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { getCommunityItemAPI } from '@/apis/communityAPIS';
 import { COLORS } from '@/styles/constants/colors';
 import plus_img from '@icons/icon/Button/plus_button.svg';
+import { tag } from '@/utils/EngToKor';
 
 const CommunityList: FC<{ isButtonVisible: boolean; search: string }> = ({
   isButtonVisible,
@@ -70,14 +71,6 @@ const CommunityList: FC<{ isButtonVisible: boolean; search: string }> = ({
   const plus_button_onClick = () => {
     // 커뮤니티 게시글 추가 컴포넌트 연결
   };
-
-  const tag = [
-    { kor: '전체', eng: 'ALL' },
-    { kor: '인기글', eng: 'POPULAR' },
-    { kor: '잡담', eng: 'CHAT' },
-    { kor: '질문', eng: 'QUESTION' },
-    { kor: '정보', eng: 'INFORMATION' },
-  ];
 
   return (
     <>

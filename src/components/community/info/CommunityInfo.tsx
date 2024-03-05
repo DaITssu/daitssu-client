@@ -13,6 +13,7 @@ import DefaultScrap from '@icons/icon/Scrap/DefaultScrap.svg';
 import {
   getCommunityInfoAPI,
   getCommunityInfoCommentAPI,
+  postCommunityCommentAPI,
   postCommunityDislikeAPI,
   postCommunityLikeAPI,
   postCommunityScrapAPI,
@@ -27,13 +28,14 @@ const CommunityInfo = () => {
   const [isLike, setIsLike] = useState<boolean>(false);
   const [isScrap, setIsScrap] = useState<boolean>(false);
   const [menu, setMenu] = useState<boolean>(false);
+  const [input, setInput] = useState<string>('');
+
   const handleMenuClick = () => {
     setMenu(!menu);
   };
 
   // 현재 주소 값
   const router = useRouter();
-  const path = router.asPath;
   const pathId = router.query.id;
 
   const handleLikeClick = () => {
@@ -63,6 +65,16 @@ const CommunityInfo = () => {
       setComments(res?.data);
     });
   }, []);
+
+  const handleOnClickEnrollComment = async () => {
+    try {
+      await postCommunityCommentAPI(Number(pathId), input);
+      const getcomments = getCommunityInfoCommentAPI(Number(pathId));
+      getcomments.then((res) => {
+        setComments(res?.data);
+      });
+    } catch (e) {}
+  };
 
   return (
     <styles.Container>
@@ -184,8 +196,13 @@ const CommunityInfo = () => {
           />
         );
       })}
-
-      <CommentInput />
+      <CommentInput
+        input={input}
+        setInput={setInput}
+        EnrollFunc={() => {
+          handleOnClickEnrollComment();
+        }}
+      />
     </styles.Container>
   );
 };

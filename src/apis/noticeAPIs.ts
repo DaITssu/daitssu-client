@@ -103,3 +103,17 @@ export const getNoticeInfoCommentAPI = async (noticeId: number) => {
     return null;
   }
 };
+
+export const postNoticeCommentAPI = async (noticeId: number, input: string) => {
+  try {
+    const response = await axiosInstance.post(`/notice/${noticeId}/comments`, {
+      content: input,
+    });
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data);
+    }
+    return null;
+  }
+};

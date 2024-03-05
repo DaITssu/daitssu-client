@@ -15,6 +15,9 @@ export interface MPCommentsProps {
   createdAt: string;
   updatedAt: string;
   content: string;
+  title: string;
+  topic: string;
+  articleId: number;
 }
 
 const MyComment = () => {
@@ -40,6 +43,10 @@ const MyComment = () => {
   const hanldeOnClickDeleteComment = () => {
     const deleteResponse = deleteMyPageComments(checks);
     setChecks([]);
+    const myPageCommentResponse = getMyPageComments();
+    myPageCommentResponse.then((res) => {
+      setComments(res?.data);
+    });
   };
   return (
     <styles.Container>
@@ -67,8 +74,12 @@ const MyComment = () => {
               </styles.TabFontBox>
             ))}
           </styles.TabBox>
-          <styles.TabContents>
-            <styles.PostContianer>
+          <styles.TabContents
+            style={{ height: '70%', backgroundColor: 'white' }}
+          >
+            <styles.PostContianer
+              style={{ height: '100%', backgroundColor: 'white' }}
+            >
               {comments?.map((el) => {
                 return (
                   <CommentList
@@ -79,6 +90,9 @@ const MyComment = () => {
                     originalCommentId={el.originalCommentId}
                     createdAt={el.createdAt}
                     updatedAt={el.updatedAt}
+                    title={el.title}
+                    topic={el.topic}
+                    articleId={el.articleId}
                   />
                 );
               })}

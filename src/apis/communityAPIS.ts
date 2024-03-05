@@ -86,3 +86,20 @@ export const postCommunityDislikeAPI = async (articleID: number) => {
     return null;
   }
 };
+
+export const postCommunityCommentAPI = async (
+  articleID: number,
+  input: string,
+) => {
+  try {
+    const response = await axiosInstance.post(
+      `/community/article/${articleID}/comments`,
+      {
+        content: input,
+      },
+    );
+    return response.data;
+  } catch (error) {
+    return null;
+  }
+};

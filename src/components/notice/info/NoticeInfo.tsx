@@ -1,5 +1,5 @@
 import * as styles from './NoticeInfo.style';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
@@ -21,13 +21,20 @@ import { getKor } from '../CategoryMapping';
 import {
   getFunsystemInfoAPI,
   getFunsystemInfoCommentAPI,
+  postFunsystemCommentAPI,
 } from '@/apis/funsystemAPIs';
-import { getNoticeInfoAPI, getNoticeInfoCommentAPI } from '@/apis/noticeAPIs';
+import {
+  getNoticeInfoAPI,
+  getNoticeInfoCommentAPI,
+  postNoticeCommentAPI,
+} from '@/apis/noticeAPIs';
 
 const NoticeInfo = () => {
   const [data, setData] = useState<NoticeInfoProps>();
   const [comments, setComments] = useState<Comments[]>();
   const [share, setShare] = useState<boolean>(false);
+  const [input, setInput] = useState<string>('');
+
   const handleShareClick = () => {
     setShare(!share);
   };
@@ -84,6 +91,72 @@ const NoticeInfo = () => {
       );
     } catch (e) {}
   };
+
+  // 댓글 작성 API
+  const handleOnClickEnrollComment = async () => {
+    try {
+      // 공지사항 API 연결
+      if (extractCategoryFromUrl(path) === 'notice') {
+        await postNoticeCommentAPI(Number(pathId), input);
+
+        const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
+        getNoticeInfo.then((res) => {
+          setData(res.data);
+        });
+
+        const getcomments = getNoticeInfoCommentAPI(Number(pathId));
+        getcomments.then((res) => {
+          setComments(res.data);
+        });
+      }
+
+      // 펀시스템 API 연결
+      if (extractCategoryFromUrl(path) === 'funsystem') {
+        await postFunsystemCommentAPI(Number(pathId), input);
+
+        const getFunsystemInfo = getFunsystemInfoAPI(Number(pathId));
+        getFunsystemInfo.then((res) => {
+          setData(res.data);
+        });
+
+        const getFunsystemComments = getFunsystemInfoCommentAPI(Number(pathId));
+        getFunsystemComments.then((res) => {
+          setComments(res.data);
+        });
+      }
+      await postNoticeCommentAPI(Number(pathId), input);
+      // 공지사항 API 연결
+      if (extractCategoryFromUrl(path) === 'notice') {
+        await postNoticeCommentAPI(Number(pathId), input);
+
+        const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
+        getNoticeInfo.then((res) => {
+          setData(res.data);
+        });
+
+        const getcomments = getNoticeInfoCommentAPI(Number(pathId));
+        getcomments.then((res) => {
+          setComments(res.data);
+        });
+      }
+
+      // 펀시스템 API 연결
+      if (extractCategoryFromUrl(path) === 'funsystem') {
+        await postFunsystemCommentAPI(Number(pathId), input);
+
+        const getFunsystemInfo = getFunsystemInfoAPI(Number(pathId));
+        getFunsystemInfo.then((res) => {
+          setData(res.data);
+        });
+
+        const getFunsystemComments = getFunsystemInfoCommentAPI(Number(pathId));
+        getFunsystemComments.then((res) => {
+          setComments(res.data);
+        });
+      }
+    } catch (e) {}
+  };
+
   return (
     <styles.Container>
       <UtilityHeader child="공지사항" />
@@ -211,7 +284,7 @@ const NoticeInfo = () => {
         return (
           <Comment
             key={comment.commentId}
-            nickname={''}
+            nickname={comment.nickname}
             createdAt={comment.createdAt}
             updatedAt={comment.updatedAt}
             content={comment.content}
@@ -221,7 +294,13 @@ const NoticeInfo = () => {
           />
         );
       })}
-      <CommentInput />
+      <CommentInput
+        input={input}
+        setInput={setInput}
+        EnrollFunc={() => {
+          handleOnClickEnrollComment();
+        }}
+      />
     </styles.Container>
   );
 };
