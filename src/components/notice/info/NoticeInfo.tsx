@@ -55,6 +55,13 @@ const NoticeInfo = () => {
     }
   }
 
+  const HeaderName = (path: string) => {
+    if (extractCategoryFromUrl(path) === 'notice') return '공지사항';
+    else if (extractCategoryFromUrl(path) === 'funsystem') return '펀시스템';
+    else if (extractCategoryFromUrl(path) === 'community') return '커뮤니티';
+    else return '';
+  };
+
   useEffect(() => {
     // 공지사항 API 연결
     if (extractCategoryFromUrl(path) === 'notice') {
@@ -159,7 +166,7 @@ const NoticeInfo = () => {
 
   return (
     <styles.Container>
-      <UtilityHeader child="공지사항" />
+      <UtilityHeader child={HeaderName(path)} />
       <styles.InfoBox>
         <styles.TypeBox>
           {data !== undefined && getKor(data?.category)}
