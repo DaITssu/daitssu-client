@@ -1,5 +1,5 @@
 import * as styles from './NoticeInfo.style';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
@@ -10,10 +10,6 @@ import Download from '@icons/icon/Icon24/Download.svg';
 import Calendar from '@icons/icon/Nav/calendar_off.svg';
 import Url from '@icons/icon/Icon18/Url.svg';
 import Kakao from '@icons/icon/Icon18/Kakao.svg';
-import {
-  getCommunityInfoAPI,
-  getCommunityInfoCommentAPI,
-} from '@/apis/communityAPIS';
 import { Comments, NoticeInfoProps } from '@/types/NoticeFunsystem';
 import UtilityHeader from '@/components/common/Header/UtilityHeader';
 import { useRouter } from 'next/router';
