@@ -17,6 +17,7 @@ export interface UtilityHeaderProps {
   onClickDeleteBtn?: Function; // "삭제" 버튼 클릭 시 동작
   isConfirmBtn?: boolean; //"확인"버튼 존재여부
   onClickConfrimBtn?: Function; // "확인 버튼 클릭 시 동작
+  mainClickBack?: Function; // 상세정보에서 back하면 해당 라우터로 변경하도록 (main)
 }
 
 const UtilityHeader = ({
@@ -29,6 +30,7 @@ const UtilityHeader = ({
   isPossibleDelete = false,
   isConfirmBtn = false,
   onClickConfrimBtn = () => {},
+  mainClickBack,
 }: UtilityHeaderProps) => {
   const router = useRouter();
 
@@ -39,7 +41,11 @@ const UtilityHeader = ({
       <styles.Conatiner>
         <styles.LogoLeftImg
           onClick={() => {
-            router.back();
+            if (mainClickBack) {
+              mainClickBack();
+            } else {
+              router.back();
+            }
           }}
         >
           <Image src={LeftArrow} width={25} height={25} alt="headerLeftArrow" />

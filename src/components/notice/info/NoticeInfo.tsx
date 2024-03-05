@@ -162,7 +162,12 @@ const NoticeInfo = () => {
 
   return (
     <styles.Container>
-      <UtilityHeader child={HeaderName(path)} />
+      <UtilityHeader
+        child={HeaderName(path)}
+        mainClickBack={() => {
+          router.push(`/${extractCategoryFromUrl(path)}`);
+        }}
+      />
       <styles.InfoBox>
         <styles.TypeBox>
           {data !== undefined && getKor(data?.category)}
