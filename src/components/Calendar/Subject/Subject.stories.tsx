@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Subject from './Subject';
+import { CalendarType } from '../CalendarScreen/CalendarScreen';
 
 const meta: Meta<typeof Subject> = {
   title: 'Calendar/Subject',
@@ -13,23 +14,21 @@ type Story = StoryObj<typeof Subject>;
 export const SubjectExample: Story = {
   args: {
     subject: {
-      id: 1,
-      title: '웹프로그래밍',
-      color: '#FF7171',
-      tasks: [
+      course: '웹프로그래밍',
+      calendarResponses: [
         {
           id: 1,
-          title: 'test',
-          dueDate: '2022-10-10T09:00:00.000Z',
-          isFinished: false,
-          type: 'test',
+          name: 'test',
+          dueAt: '2022-10-10T09:00:00.000Z',
+          isCompleted: false,
+          type: CalendarType.QUIZ,
         },
         {
           id: 1,
-          title: 'test',
-          dueDate: '2022-10-10T09:00:00.000Z',
-          isFinished: false,
-          type: 'test',
+          name: 'test',
+          dueAt: '2022-10-10T09:00:00.000Z',
+          isCompleted: false,
+          type: CalendarType.QUIZ,
         },
       ],
     },
