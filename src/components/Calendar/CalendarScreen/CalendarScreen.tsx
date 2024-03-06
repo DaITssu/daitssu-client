@@ -11,16 +11,18 @@ import CalendarIcon from '@icons/icon/Icon24/CalenderUpdate.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { getCalendarAPI } from '@/apis/courseAPIS';
+import { isSameDate } from '@/utils/time';
 
 export interface CalendersResponse {
   course: string;
   calendarResponses: CalendarResponse[];
 }
 
-interface CalendarResponse {
+export interface CalendarResponse {
   id: number;
   type: CalendarType;
-  dueAt: string; /// DateTime
+  /// DateTime
+  dueAt: string;
   name: string;
   isCompleted: boolean;
 }
@@ -45,6 +47,21 @@ const CalendarScreen = () => {
 
   function onDayClick(day: number) {
     setSelectDay(day);
+    var dailyTaskList: CalendersResponse[] = [];
+    for (let i = 0; i < monthlyTasks.length; i++) {
+      const filteredResponses = monthlyTasks[i].calendarResponses.filter(
+        (response) => {
+          return isSameDate(
+            new Date(response.dueAt),
+            new Date(year, month - 1, day),
+          );
+        },
+      );
+      if (filteredResponses.length > 0) {
+        dailyTaskList.push(monthlyTasks[i]);
+      }
+    }
+    setDailyTasks(dailyTaskList);
   }
 
   function onMonthChange(year: number, month: number) {
@@ -55,7 +72,9 @@ const CalendarScreen = () => {
       `${year}-${month < 10 ? '0' + month.toString() : month}`,
     );
     getCalendarResponse.then((res) => {
-      setMonthlyTasks(res);
+      setMonthlyTasks(res.data);
+      onDayClick(selectDay);
+      console.log(res.data);
     });
   }
 
@@ -78,7 +97,8 @@ const CalendarScreen = () => {
       `${year}-${month < 10 ? '0' + month.toString() : month}`,
     );
     getCalendarResponse.then((res) => {
-      console.log(res);
+      setMonthlyTasks(res.data);
+      console.log(res.data);
     });
   }, []);
 
@@ -132,7 +152,7 @@ const CalendarScreen = () => {
           </styles.row>
         </styles.rowSpaceBetween>
         <SubjectList
-          subjectList={[SubjectDTOExample, SubjectDTOExample]}
+          subjectList={dailyTasks}
           key={String(month) + String(selectDay)}
         />
       </styles.SubjectListContainer>
