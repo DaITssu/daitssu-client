@@ -25,7 +25,7 @@ const Calendar = (props: CalendarProps) => {
   const lastDayOfMonth = new Date(lastDayOfMonth1.getTime() - 1);
   const [lastDN, setLastDN] = useState<number>(lastDayOfMonth.getDate());
 
-  const datTasks = props.dayTasks;
+  const dayTasks = props.dayTasks;
   const [selectedDay, setSelectedDay] = useState(props.selectDay);
 
   useEffect(() => {
@@ -155,9 +155,8 @@ const Calendar = (props: CalendarProps) => {
               >
                 <DayBlock
                   day={day}
-                  // colorList
                   taskColors={
-                    datTasks.hasOwnProperty(day)
+                    dayTasks.hasOwnProperty(day)
                       ? props.dayTasks.map((e, index) => {
                           return colorList[index];
                         })
