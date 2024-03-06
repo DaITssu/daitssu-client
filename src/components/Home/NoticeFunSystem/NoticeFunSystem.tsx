@@ -28,6 +28,14 @@ const NoticeFunSystem = (props: NoticeFunSystemProps) => {
     }
   }
 
+  function handleClick(isNotice: boolean, id: number) {
+    if (isNotice) {
+      router.push(`/notice/${id}`);
+    } else {
+      router.push(`/funsystem/${id}`);
+    }
+  }
+
   return (
     <styles.SummaryBox>
       <styles.TopBox>
@@ -42,7 +50,10 @@ const NoticeFunSystem = (props: NoticeFunSystemProps) => {
         <styles.Line top="55px" />
         <styles.Line top="112px" />
         {props.summaries?.map((summary, index) => (
-          <div key={index}>
+          <div
+            key={index}
+            onClick={() => handleClick(props.title === '공지사항', summary.id)}
+          >
             <styles.TextLine top={`${16 + index * 57}px`}>
               <styles.TextSummary>{summary.title}</styles.TextSummary>
               <styles.Date>{calculateDate(summary.createdAt)}</styles.Date>
