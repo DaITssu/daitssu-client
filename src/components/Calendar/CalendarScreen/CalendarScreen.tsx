@@ -74,7 +74,6 @@ const CalendarScreen = () => {
     getCalendarResponse.then((res) => {
       setMonthlyTasks(res.data);
       onDayClick(selectDay);
-      console.log(res.data);
     });
   }
 
@@ -98,7 +97,6 @@ const CalendarScreen = () => {
     );
     getCalendarResponse.then((res) => {
       setMonthlyTasks(res.data);
-      console.log(res.data);
     });
   }, []);
 
