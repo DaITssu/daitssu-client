@@ -24,9 +24,9 @@ const CommunityList: FC<{ isButtonVisible: boolean; search: string }> = ({
       const data = await getCommunityItemAPI(search, category, page);
       if (data) {
         if (page === 0) {
-          setItems(data.data.articles);
+          setItems(data);
         } else {
-          setItems((prev) => [...prev, ...data.data.articles]);
+          setItems((prev) => [...prev, ...data]);
         }
         setPage(page + 1);
       } else {
@@ -99,7 +99,7 @@ const CommunityList: FC<{ isButtonVisible: boolean; search: string }> = ({
       )}
 
       <styles.CommunityListBox>
-        {items.map((item: CommunityItemProps, key: number) => {
+        {items?.map((item: CommunityItemProps, key: number) => {
           return <CommunityItem key={key} item={item} />;
         })}
       </styles.CommunityListBox>
