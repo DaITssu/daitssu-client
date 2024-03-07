@@ -1,5 +1,5 @@
 import * as styles from './NoticeInfo.style';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Comment from '@/components/common/Comment';
 import CommentInput from '@/components/common/Comment/CommentInput';
@@ -10,10 +10,6 @@ import Download from '@icons/icon/Icon24/Download.svg';
 import Calendar from '@icons/icon/Nav/calendar_off.svg';
 import Url from '@icons/icon/Icon18/Url.svg';
 import Kakao from '@icons/icon/Icon18/Kakao.svg';
-import {
-  getCommunityInfoAPI,
-  getCommunityInfoCommentAPI,
-} from '@/apis/communityAPIS';
 import { Comments, NoticeInfoProps } from '@/types/NoticeFunsystem';
 import UtilityHeader from '@/components/common/Header/UtilityHeader';
 import { useRouter } from 'next/router';
@@ -55,6 +51,13 @@ const NoticeInfo = () => {
     }
   }
 
+  const HeaderName = (path: string) => {
+    if (extractCategoryFromUrl(path) === 'notice') return '공지사항';
+    else if (extractCategoryFromUrl(path) === 'funsystem') return '펀시스템';
+    else if (extractCategoryFromUrl(path) === 'community') return '커뮤니티';
+    else return '';
+  };
+
   useEffect(() => {
     // 공지사항 API 연결
     if (extractCategoryFromUrl(path) === 'notice') {
@@ -81,7 +84,7 @@ const NoticeInfo = () => {
         setComments(res.data);
       });
     }
-  }, []);
+  }, [pathId]);
 
   // 클립보드에 링크 복사
   const handleCopyClipBoard = async () => {
@@ -159,7 +162,12 @@ const NoticeInfo = () => {
 
   return (
     <styles.Container>
-      <UtilityHeader child="공지사항" />
+      <UtilityHeader
+        child={HeaderName(path)}
+        mainClickBack={() => {
+          router.push(`/${extractCategoryFromUrl(path)}`);
+        }}
+      />
       <styles.InfoBox>
         <styles.TypeBox>
           {data !== undefined && getKor(data?.category)}
