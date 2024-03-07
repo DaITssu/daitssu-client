@@ -108,7 +108,7 @@ export const getCourseAPI = async () => {
 
 export const getCalendarAPI = async (date: string) => {
   try {
-    const response = await axiosInstance.get(`/course/calendar/${date}`);
+    const response = await axiosInstance.get(`/course/calendar?date=${date}`);
     return response.data;
   } catch (error) {
     //에러 출력 - 미사용시 주석처리

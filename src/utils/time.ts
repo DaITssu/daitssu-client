@@ -18,3 +18,16 @@ export function beforeTime(date: string) {
   }
   return `${diffDay}일 전`;
 }
+/**
+ * 두 날짜가 같은 날인지 확인하는 함수
+ * @param date1
+ * @param date2
+ * @returns boolean 변수
+ */
+export const isSameDate = (date1: Date, date2: Date) => {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+};

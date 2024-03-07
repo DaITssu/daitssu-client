@@ -46,12 +46,7 @@ const MyPageComponent = () => {
     <div>
       <styles.Content>
         <styles.ContentDetil>
-          <Image
-            src={profileData.imageUrl ?? profile}
-            width={100}
-            height={100}
-            alt="profile"
-          />
+          <Image src={profile} width={100} height={100} alt="profile" />
           <div>
             <styles.ContentTitle>{profileData.name}</styles.ContentTitle>
             <styles.ContentSubTitle>

@@ -18,7 +18,7 @@ const AlarmSetting = (props: AlarmProps) => {
     <>
       {props.subjects.map((subject, index) => (
         <div key={index}>
-          <SubjectTitle subject={subject} />
+          <SubjectTitle title={subject.title} />
           {subject.tasks.map((task, index) => (
             <SubjectTaskDetail task={task} key={index} />
           ))}

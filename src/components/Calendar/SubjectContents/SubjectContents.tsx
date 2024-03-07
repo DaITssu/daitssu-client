@@ -3,13 +3,13 @@ import * as styles from './SubjectContents.style';
 import video from '@icons/icon/LectureAssignment/Video.svg';
 import comment from '@icons/icon/LectureAssignment/Comment.svg';
 import assignment from '@icons/icon/LectureAssignment/Assignment.svg';
-import { TaskProps } from '@/types/Task';
 import Status from '../../common/Status/index';
 import { COLORS } from '@/styles/constants/colors';
 import { TEXT_STYLES } from '@/styles/constants/textStyles';
+import { CalendarResponse } from '../CalendarScreen/CalendarScreen';
 
-const SubjectContents = ({ task }: TaskProps) => {
-  const date = new Date(task.dueDate);
+const SubjectContents = ({ task }: { task: CalendarResponse }) => {
+  const date = new Date(task.dueAt);
 
   const time = date.toLocaleTimeString('en-US', {
     hour: '2-digit',
@@ -23,7 +23,7 @@ const SubjectContents = ({ task }: TaskProps) => {
     OVERDUE = 2,
     UNFINISHED = 0,
   }
-  const statusNumber = task.isFinished
+  const statusNumber = task.isCompleted
     ? StatusNumber.FINISHED
     : Date.now() > date.getTime()
     ? StatusNumber.OVERDUE
@@ -52,7 +52,7 @@ const SubjectContents = ({ task }: TaskProps) => {
             style={TEXT_STYLES.BodyR16}
             color={COLORS.grayscale.Gray1}
           >
-            {task.title}
+            {task.name}
           </styles.Label>
           <styles.Label style={TEXT_STYLES.CapR14}>
             {time + '까지'}

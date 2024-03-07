@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Calendar from './Calendar';
+import { CalendarType } from '../CalendarScreen/CalendarScreen';
 
 const meta: Meta<typeof Calendar> = {
   title: 'Calendar/Calendar',
@@ -15,10 +16,19 @@ export const CalendarExample: Story = {
     year: 2023,
     month: 8,
     selectDay: 23,
-    dayTasks: {
-      3: ['#ffaa00', '#ff0000', '#ffaa00', '#ffaa00'],
-      5: ['#ffaa00', '#ff0000'],
-      14: ['#ffaa00', '#ff0000'],
-    },
+    dayTasks: [
+      {
+        course: 'course',
+        calendarResponses: [
+          {
+            id: 1,
+            type: CalendarType.ASSIGNMENT,
+            name: 'title',
+            dueAt: '2023-08-23',
+            isCompleted: false,
+          },
+        ],
+      },
+    ],
   },
 };
