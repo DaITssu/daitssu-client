@@ -115,5 +115,4 @@ const CommunityList: FC<{ isButtonVisible: boolean; search: string }> = ({
     </>
   );
 };
-
 export default CommunityList;
