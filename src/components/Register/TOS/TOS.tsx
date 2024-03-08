@@ -250,7 +250,7 @@ const TOS = ({ onAgree, closeModal, title }: TOSProps) => {
           <b>제18조 (회원의 고충처리 및 분쟁해결)</b> <br />
           다잇슈는 회원의 편의를 고려하여 회원의 의견이나 불만을 제시하는 방법을
           서비스 내 또는 그 연결화면에 안내합니다. <br /> <br />
-          <b>본 약관은 2024년 1월 18부터 시행됩니다.</b> <br />
+          <b>본 약관은 2024년 3월 10부터 시행됩니다.</b> <br />
           서비스와 약관에 관한 문의사항은 cs.daitssu@gmail.com으로 보내주시기를
           바랍니다.
         </styles.LineHeightBox>
