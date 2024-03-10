@@ -3,35 +3,33 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-export const CommunityListBox = styled.div
-`
-position : relative;
-width: 100%;
-height:100vh;
-overflow : auto;
-left:0px;
--ms-overflow-style: none;
-scrollbar-width: none;
-::-webkit-scrollbar {
-  display: none;
-}
-background: ${COLORS.grayscale.white};
+export const CommunityListBox = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  left: 0px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  background: ${COLORS.grayscale.white};
 `;
 
 export const PlusButton = styled(Image)`
-  position: fixed; 
+  position: fixed;
   width: 80px;
   height: 80px;
-  bottom: 20px; 
-  right: 20px; 
+  bottom: 100px;
+  right: 20px;
 `;
 
-export const TagList = styled.div
-`
+export const TagList = styled.div`
   box-sizing: border-box;
-  display : flex;
-  align-items : center;
-  gap :12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding-left: 16px;
   position: relative;
   width: 100%;
@@ -40,15 +38,14 @@ export const TagList = styled.div
 
   background: ${COLORS.grayscale.white};
   border-bottom: 1px solid ${COLORS.grayscale.Gray3};
-  margin : 0 auto;
+  margin: 0 auto;
   justify-content: center;
 `;
 
-export const TagButton = styled.button
-`
+export const TagButton = styled.button`
   flex: none;
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
   box-sizing: border-box;
   white-space: nowrap;
   text-align: left;
@@ -61,6 +58,4 @@ export const TagButton = styled.button
 
   color: ${COLORS.SSU.primary};
   ${TEXT_STYLES.CapM14};
-
-
 `;

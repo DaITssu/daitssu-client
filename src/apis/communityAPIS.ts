@@ -3,29 +3,31 @@ import axios from 'axios';
 
 export const getCommunityItemAPI = async (
   inquiry: String = '',
-  category: String,
+  topic: String,
   page: number = 0,
 ) => {
   try {
-    if (category === 'ALL') {
+    if (topic === 'ALL') {
       const response = await axiosInstance.get(`/community/article`, {
         params: {
           inquiry: String(inquiry),
           page: page,
         },
       });
-      return response.data;
+      return response.data.data.articles;
+    } else if (topic == 'POPULAR') {
+      const response = await axiosInstance.get(`/community/article/popular`);
+      console.log(response.data);
+      return response.data.data;
     } else {
-      const response = await axiosInstance.get(
-        `/community/article/topic/${category}`,
-        {
-          params: {
-            inquiry: String(inquiry),
-            page: page,
-          },
+      const response = await axiosInstance.get(`/community/article/topic`, {
+        params: {
+          inquiry: String(inquiry),
+          topic: topic,
+          page: page,
         },
-      );
-      return response.data;
+      });
+      return response.data.data.articles;
     }
   } catch (error) {
     return null;
