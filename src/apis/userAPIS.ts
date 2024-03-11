@@ -25,3 +25,25 @@ export const withdrawlAPI = async () => {
     return 500;
   }
 };
+
+export const checkNicknameAPI = async (nickname: string) => {
+  try {
+    const response = await axiosInstance.get(
+      `/user/nickname?nickname=${nickname}`,
+    );
+    return response.status;
+  } catch (error) {
+    return 500;
+  }
+};
+
+export const editNicknameAPI = async (nickname: string) => {
+  try {
+    const response = await axiosInstance.patch('/user/nickname', {
+      nickname,
+    });
+    return response.status;
+  } catch (error) {
+    return 500;
+  }
+};
