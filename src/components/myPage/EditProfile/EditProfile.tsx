@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import * as styles from './EditProfile.styles';
 import Image from 'next/image';
-import goingBackIcon from '@icons/icon/Arrow/LeftBigArrow.svg';
 import EditIcon from '@icons/icon/Icon24/Correction.svg';
 import ProfileIcon from '@icons/icon/Icon24/profile.svg';
 import { useRouter } from 'next/router';
 import useModal from '@/components/common/Modal/useModal';
 import Modal from '@/components/common/Modal';
 import { checkNicknameAPI, editNicknameAPI, getUserAPI } from '@/apis/userAPIS';
+import UtilityHeader from '@/components/common/Header/UtilityHeader';
 
 interface profileInterface {
   studentId: string;
@@ -50,17 +50,7 @@ const EditProfile = () => {
 
   return (
     <div>
-      <styles.EditProfileAppbar>
-        <Image
-          src={goingBackIcon}
-          width={20}
-          height={20}
-          alt="back"
-          onClick={() => router.back()}
-        />
-        <p>프로필 수정</p>
-        <div></div>
-      </styles.EditProfileAppbar>
+      <UtilityHeader child="프로필 수정" />
       <styles.EditProfileContainer>
         <styles.ProfileImageContainer>
           <Image src={ProfileIcon} width={100} height={100} alt="profile" />
