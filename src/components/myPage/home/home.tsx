@@ -10,6 +10,7 @@ import Link from 'next/link';
 import profile from '@icons/icon/profile.svg';
 import { useRouter } from 'next/router';
 import { getUserAPI } from '@/apis/userAPIS';
+import { COLORS } from '@/styles/constants/colors';
 
 interface profileInterface {
   studentId: string;
@@ -38,16 +39,17 @@ const MyPageComponent = () => {
 
   useEffect(() => {
     getUserAPI().then((res) => {
-      setProfile(res);
+      console.log(res);
+      setProfile(res.data);
     });
   }, []);
 
   return (
-    <div>
-      <styles.Content>
+    <div style={{ backgroundColor: COLORS.grayscale.white }}>
+      <styles.Content style={{ paddingRight: 20 }}>
         <styles.ContentDetil>
-          <Image src={profile} width={100} height={100} alt="profile" />
-          <div>
+          <Image src={profile} width={80} height={80} alt="profile" />
+          <div style={{ paddingLeft: 20 }}>
             <styles.ContentTitle>{profileData.name}</styles.ContentTitle>
             <styles.ContentSubTitle>
               {profileData.studentId}
