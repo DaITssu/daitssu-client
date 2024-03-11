@@ -89,12 +89,7 @@ body {
   height: 100vh;
   padding-bottom: 100px;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(255, 255, 255);
 }
 
 a {
