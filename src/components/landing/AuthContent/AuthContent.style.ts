@@ -5,7 +5,7 @@ import { TEXT_STYLES } from '@/styles/constants/textStyles';
 
 export const AuthContentContainer = styled.div`
   position: absolute;
-  bottom: 100px;
+  bottom: 150px;
   left: 50%;
   transform: translate(-50%, 0%);
 
