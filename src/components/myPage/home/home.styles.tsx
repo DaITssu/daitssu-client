@@ -14,6 +14,7 @@ export const Content = styled.div`
   margin-bottom: 20px;
   align-items: center;
   justify-content: space-between;
+  background-color: ${COLORS.grayscale.white};
 `;
 
 export const ContentDetil = styled.div`

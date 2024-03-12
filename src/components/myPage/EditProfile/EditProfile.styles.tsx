@@ -21,6 +21,7 @@ export const EditProfileContainer = styled.div`
 export const BigTitle = styled.p`
   ${TEXT_STYLES.HeadM20};
   color: ${COLORS.grayscale.Black};
+  margin-bottom: 20px;
 `;
 
 export const InformationTitle = styled.div`
