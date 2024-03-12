@@ -107,6 +107,7 @@ interface EditProfileModalProps {
 }
 const EditProfileModal = (props: EditProfileModalProps) => {
   function onSubmit() {
+    if (inputValue === '') return;
     try {
       checkNicknameAPI(inputValue).then((res) => {
         editNicknameAPI(inputValue).then((res) => {
@@ -116,6 +117,7 @@ const EditProfileModal = (props: EditProfileModalProps) => {
         });
       });
     } catch (e) {
+      setInputValue(props.nickname);
       setIsFailed(true);
       return;
     }
