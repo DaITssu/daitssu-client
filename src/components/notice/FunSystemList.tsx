@@ -1,6 +1,6 @@
 import * as styles from './NoticeList.styles';
 import NoticeItem, { NoticeItemProps } from './NoticeItem';
-import React, { FC, ChangeEvent, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { getFunSystemAPIwithCategory } from '@/apis/noticeAPIs';
 
 const NoticeList: FC<{ category: string; search: string }> = ({
@@ -10,64 +10,72 @@ const NoticeList: FC<{ category: string; search: string }> = ({
   const [funSystemData, setFunSystemData] = useState<NoticeItemProps[]>([]);
   const [page, setPage] = useState(0);
   const [fetching, setFetching] = useState(false);
+  const lastItemRef = useRef<HTMLDivElement>(null);
 
-  const fetchFunSystemData = async () => {
-    try {
-      setFetching(true);
-      const funSystemData = await getFunSystemAPIwithCategory(
-        search,
-        category,
-        page,
-      );
-
-      if (funSystemData) {
-        if (page === 0) {
-          setFunSystemData(funSystemData.data.funSystems);
-        } else {
-          setFunSystemData((prev) => [
-            ...prev,
-            ...funSystemData.data.funSystems,
-          ]);
-        }
-      } else {
-        console.error(
-          '펀시스템 데이터를 불러오는 중 오류 발생:',
-          funSystemData.message,
+  useEffect(() => {
+    const fetchFunSystemData = async () => {
+      try {
+        setFetching(true);
+        const response = await getFunSystemAPIwithCategory(
+          search,
+          category,
+          page,
         );
+
+        if (response) {
+          const newFunSystemData = response.data.funSystems;
+          if (page === 0) {
+            setFunSystemData(newFunSystemData);
+          } else {
+            setFunSystemData((prevData) => [...prevData, ...newFunSystemData]);
+          }
+          if (newFunSystemData.length == 10) {
+            setFetching(false);
+          }
+        } else {
+          console.error('Failed to fetch fun system data');
+          setFetching(false);
+        }
+      } catch (error) {
+        console.error('Error fetching fun system data:', error);
       }
-      setFetching(false);
-    } catch (error) {
-      console.error('펀시스템 데이터를 불러오는 중 오류 발생:', error);
-    }
-  };
-  const handleScroll = () => {
-    const scrollHeight = document.documentElement.scrollHeight;
-    const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
-
-    if (scrollTop + clientHeight >= scrollHeight && !fetching) {
-      fetchFunSystemData();
-    }
-  };
-
-  useEffect(() => {
-    setPage(0);
-    fetchFunSystemData();
-  }, [search, category]);
-
-  useEffect(() => {
-    fetchFunSystemData();
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+
+    fetchFunSystemData();
+  }, [search, category, page]);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !fetching) {
+        setPage((prevPage) => prevPage + 1);
+      }
+    }, options);
+
+    if (lastItemRef.current) {
+      observer.observe(lastItemRef.current);
+    }
+
+    return () => {
+      if (lastItemRef.current) {
+        observer.unobserve(lastItemRef.current);
+      }
+    };
+  }, [fetching]);
 
   return (
     <styles.NoticeListBoxShort>
-      {funSystemData?.map((item: NoticeItemProps) => {
-        return <NoticeItem key={item.id} item={item} type="funsystem" />;
-      })}
+      {funSystemData.map((item: NoticeItemProps, index: number) => (
+        <div key={`${item.id}-${index}`}>
+          <NoticeItem item={item} type="funsystem" />
+        </div>
+      ))}
+      <div ref={lastItemRef}></div>
     </styles.NoticeListBoxShort>
   );
 };

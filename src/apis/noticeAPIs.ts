@@ -33,8 +33,9 @@ export const getNoticeAPIwithCategory = async (
       });
       return response.data;
     } else {
-      const response = await axiosInstance.get(`/notice/${category}`, {
+      const response = await axiosInstance.get(`/notice/category`, {
         params: {
+          category: String(category),
           searchKeyword: String(searchKeyword),
           page: page,
         },
@@ -64,8 +65,9 @@ export const getFunSystemAPIwithCategory = async (
       });
       return response.data;
     } else {
-      const response = await axiosInstance.get(`/funsystem/${category}`, {
+      const response = await axiosInstance.get(`/funsystem/category`, {
         params: {
+          category: String(category),
           searchKeyword: String(searchKeyword),
           page: page,
         },

@@ -8,8 +8,22 @@ interface TabFontBoxProps {
 
 export const TabContentBox = styled.div`
   background: ${COLORS.grayscale.white};
+  height: 100%;
+  overflow: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
+export const ScrollRemoved = styled.div`
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
 export const TabFontBox = styled.div<TabFontBoxProps>`
   ${TEXT_STYLES.BodyM16};
   text-align: center;
