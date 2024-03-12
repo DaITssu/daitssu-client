@@ -29,7 +29,7 @@ export const withdrawlAPI = async () => {
 export const checkNicknameAPI = async (nickname: string) => {
   try {
     const response = await axiosInstance.get(
-      `/user/nickname?nickname=${nickname}`,
+      `/auth/check-nickname?nickname=${nickname}`,
     );
     return response.status;
   } catch (error) {
@@ -39,9 +39,9 @@ export const checkNicknameAPI = async (nickname: string) => {
 
 export const editNicknameAPI = async (nickname: string) => {
   try {
-    const response = await axiosInstance.patch('/user/nickname', {
-      nickname,
-    });
+    const response = await axiosInstance.patch(
+      `/user/nickname?nickname=${nickname}`,
+    );
     return response.status;
   } catch (error) {
     return 500;
