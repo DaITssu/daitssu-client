@@ -1,45 +1,23 @@
 import React from 'react';
 import { COLORS } from '@/styles/constants/colors';
-import * as styles from '@/components/community/community_writing/ImageInputBox/IconBox/IconBox.styles';
-import Image from 'next/image';
+import * as styles from "@/components/community/community_writing/ImageInputBox/IconBox/IconBox.styles"
 interface FormData {
-  iconSize?: number;
-  width?: number;
-  height?: number;
-  backgroundColor?: string;
-  margin?: number;
-  IconColor?: string;
+  iconSize?:number;
+  width?:number;
+  height?:number;
+  backCol?:string;
+  margin?:number;
+  IconCol?:string;
 }
 
-const IconBox = ({
-  iconSize,
-  width,
-  height,
-  backgroundColor,
-  margin,
-  IconColor,
-}: FormData) => {
+const IconBox = ({iconSize,width,height,backCol,margin,IconCol }:FormData) => {
   return (
     <>
       <label htmlFor="imageInput">
-        <styles.IconBox
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          width={width}
-          height={height}
-          backgroundColor={backgroundColor}
-          margin={margin}
-        >
-          <Image
-            src="/camera.svg"
-            width={iconSize ? iconSize : 40}
-            height={iconSize ? iconSize : 40}
-            color={IconColor ? IconColor : COLORS.grayscale.Black}
-            alt="camera"
-          />
+        <styles.IconBox  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        width={width} height={height} backgroundColor={backCol} margin={margin}>
+          <img src="/camera.svg" style={{color:`${IconCol?IconCol: COLORS.grayscale.Black}`,
+          width:`${iconSize? `${iconSize}px`: "40px"}`}}/>
         </styles.IconBox>
       </label>
     </>
