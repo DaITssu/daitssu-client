@@ -12,8 +12,8 @@ const NavigationBar = ({ focusType, render = true }: NavigationBarProps) => {
     <>
       <styles.Navigaton render={render}>
         <NavItem
-          type={NAV_LIST.ANNOUNCEMENT}
-          isFocused={focusType === NAV_LIST.ANNOUNCEMENT}
+          type={NAV_LIST.NOTICE}
+          isFocused={focusType === NAV_LIST.NOTICE}
         />
         <NavItem
           type={NAV_LIST.COMMUNITY}

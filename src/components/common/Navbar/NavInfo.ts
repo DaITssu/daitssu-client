@@ -28,9 +28,9 @@ export const NAV_INFO = {
       default: Home_Off,
     },
   },
-  [NAV_LIST.ANNOUNCEMENT]: {
+  [NAV_LIST.NOTICE]: {
     label: '공지사항',
-    url: NAV_URL_LIST.ANNOUNCEMENT,
+    url: NAV_URL_LIST.NOTICE,
     icon: {
       active: Anouncement_On,
       default: Anouncement_Off,

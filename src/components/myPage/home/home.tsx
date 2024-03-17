@@ -65,7 +65,7 @@ const MyPageComponent = () => {
       //TODO : 나의 과목 부분 6-2 부분 지정되고 추가 예정
        */}
       <styles.ContentList style={{ textDecoration: 'none' }}>
-        <Link href="/my/subscribe" style={{ textDecoration: 'none' }}>
+        {/* <Link href="/my/subscribe" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>
               <Image
@@ -79,7 +79,7 @@ const MyPageComponent = () => {
             </styles.ContentDetil>
             <Image src={rightArrow} width={20} height={20} alt="go" />
           </styles.Content>
-        </Link>
+        </Link> */}
         <Link href="/my/post" style={{ textDecoration: 'none' }}>
           <styles.Content>
             <styles.ContentDetil>

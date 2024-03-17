@@ -46,6 +46,9 @@ const CalendarScreen = () => {
   const [dailyTasks, setDailyTasks] = useState<CalendersResponse[]>([]);
 
   function onDayClick(day: number) {
+    if (day === -1) {
+      return;
+    }
     setSelectDay(day);
     var dailyTaskList: CalendersResponse[] = [];
     for (let i = 0; i < monthlyTasks.length; i++) {

@@ -6,6 +6,7 @@ export const ContentList = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  padding-right: 20px;
 `;
 
 export const Content = styled.div`

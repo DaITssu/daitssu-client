@@ -10,7 +10,7 @@ export const Navigaton = styled.div<{ render: boolean }>`
   background-color: ${COLORS.grayscale.white};
   display: ${(props) => (props.render ? 'flex' : 'none')};
 
-  @keyframes fadeInUp {
+  /* @keyframes fadeInUp {
     0% {
       opacity: 0;
       transform: translate3d(0, 100%, 0);
@@ -19,8 +19,8 @@ export const Navigaton = styled.div<{ render: boolean }>`
       opacity: 1;
       transform: translateZ(0);
     }
-  }
-  animation: fadeInUp 0.5s;
+  } 
+  animation: fadeInUp 0.5s; */
 `;
 
 export const IconContainer = styled.div``;

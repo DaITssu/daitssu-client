@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
  */
 const useNavbar = () => {
   const [isLogin, setIsLogin] = useState(true); //TODO: 추후 전역 상태에서 가져옴
-  const [renderNavbar, setRenderNavbar] = useState(false);
+  const [renderNavbar, setRenderNavbar] = useState(true);
 
   function onScroll() {
     if (screen.height * 0.8 < window.scrollY) {

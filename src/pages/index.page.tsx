@@ -2,7 +2,6 @@ import MainLayout from './layout';
 import { useEffect } from 'react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { userNavAtom, IUserNavAtom } from '@/states/userNavAtom';
-import { NAV_LIST } from '@/components/common/Navbar/Navigation';
 import '../styles/Home.module.css';
 import Main from '@/components/main';
 import LocalStorage from '@/utils/localStorage';
@@ -10,9 +9,7 @@ import { useRouter } from 'next/router';
 
 const MainPage = () => {
   const setNavAtom = useSetRecoilState(userNavAtom);
-  const navState: IUserNavAtom = {
-    activeNavType: NAV_LIST.HOME,
-  };
+  const getNavData = useRecoilValue(userNavAtom);
 
   const router = useRouter();
 
@@ -21,6 +18,10 @@ const MainPage = () => {
 
   //mobile height size 설정
   useEffect(() => {
+    setNavAtom({
+      ...getNavData,
+      activeNavType: 'HOME',
+    });
     // 미로그인 상태면 랜딩 페이지로 이동
     if (!isLogin) {
       router.push('/landing');

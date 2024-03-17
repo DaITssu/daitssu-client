@@ -23,7 +23,7 @@ export const Community: Story = {
 };
 export const Announcement: Story = {
   args: {
-    focusType: 'ANNOUNCEMENT',
+    focusType: 'NOTICE',
   },
 };
 export const Calendar: Story = {
