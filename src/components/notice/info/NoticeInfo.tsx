@@ -24,12 +24,14 @@ import {
   getNoticeInfoCommentAPI,
   postNoticeCommentAPI,
 } from '@/apis/noticeAPIs';
+import axios from 'axios';
 
 const NoticeInfo = () => {
   const [data, setData] = useState<NoticeInfoProps>();
   const [comments, setComments] = useState<Comments[]>();
   const [share, setShare] = useState<boolean>(false);
   const [input, setInput] = useState<string>('');
+  const [content, setContent] = useState<string>('');
 
   const handleShareClick = () => {
     setShare(!share);
@@ -64,6 +66,9 @@ const NoticeInfo = () => {
       const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
       getNoticeInfo.then((res) => {
         setData(res.data);
+        axios.get(res.data?.content).then((res) => {
+          setContent(res.data);
+        });
       });
 
       const getcomments = getNoticeInfoCommentAPI(Number(pathId));
@@ -250,7 +255,7 @@ const NoticeInfo = () => {
           </styles.ShareBox>
         </styles.MiddleBox>
         <hr />
-        <styles.ContentBox>{data?.content}</styles.ContentBox>
+        <styles.ContentBox>{content}</styles.ContentBox>
         {data?.fileUrl !== undefined && data?.fileUrl.length !== 0 && (
           <>
             <hr />

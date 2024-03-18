@@ -114,6 +114,7 @@ export const ContentBox = styled.div`
   margin-bottom: 40px;
   ${TEXT_STYLES.BodyR16};
   word-break: break-all;
+  white-space: pre-wrap;
 `;
 
 export const FileBox = styled.div`
