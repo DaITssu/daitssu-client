@@ -274,7 +274,7 @@ const NoticeInfo = () => {
               </styles.FileTopBox>
               <styles.FileAttachBox>
                 <styles.FileNameBox>
-                  2023-1학기-전공별-다전공-선발-방법.xlsx
+                  <a href={data?.fileUrl}>첨부파일 다운로드 링크</a>
                 </styles.FileNameBox>
                 <styles.FileDownBox>
                   <Image

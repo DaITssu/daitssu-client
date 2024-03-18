@@ -145,12 +145,14 @@ export const FileAttachBox = styled.div`
   border-radius: 10px;
   margin-bottom: 15px;
   height: 45px;
+  margin-top: 0.5rem;
 `;
 
 export const FileNameBox = styled.div`
   ${TEXT_STYLES.CapR14};
   display: flex;
   align-items: center;
+  text-decoration: underline;
 `;
 
 export const FileDownBox = styled.div`
