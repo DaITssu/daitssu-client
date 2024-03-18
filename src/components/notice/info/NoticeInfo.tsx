@@ -197,7 +197,7 @@ const NoticeInfo = () => {
               height={18}
               priority
             />
-            <span>{data?.views}</span>
+            <span>{data?.views.toLocaleString('ko-KR')} 회</span>
           </styles.WatchBox>
           <styles.ShareBox onClick={handleShareClick}>
             <styles.ShareIconBox>
