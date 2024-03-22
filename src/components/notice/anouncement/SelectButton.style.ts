@@ -42,7 +42,7 @@ export const Background = styled.div`
 export const Button = styled.button<ButtonProps>`
   padding: 10px 20px;
   margin-right: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   border: 2px solid ${COLORS.SSU.primary};
   color: ${COLORS.SSU.primary};
   background-color: ${COLORS.grayscale.white};
