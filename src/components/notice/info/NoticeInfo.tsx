@@ -82,6 +82,9 @@ const NoticeInfo = () => {
       const getFunsystemInfo = getFunsystemInfoAPI(Number(pathId));
       getFunsystemInfo.then((res) => {
         setData(res.data);
+        axios.get(res.data?.content).then((res) => {
+          setContent(res.data);
+        });
       });
 
       const getFunsystemComments = getFunsystemInfoCommentAPI(Number(pathId));
