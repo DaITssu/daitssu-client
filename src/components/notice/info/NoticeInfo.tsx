@@ -24,12 +24,14 @@ import {
   getNoticeInfoCommentAPI,
   postNoticeCommentAPI,
 } from '@/apis/noticeAPIs';
+import axios from 'axios';
 
 const NoticeInfo = () => {
   const [data, setData] = useState<NoticeInfoProps>();
   const [comments, setComments] = useState<Comments[]>();
   const [share, setShare] = useState<boolean>(false);
   const [input, setInput] = useState<string>('');
+  const [content, setContent] = useState<string>('');
 
   const handleShareClick = () => {
     setShare(!share);
@@ -64,6 +66,9 @@ const NoticeInfo = () => {
       const getNoticeInfo = getNoticeInfoAPI(Number(pathId));
       getNoticeInfo.then((res) => {
         setData(res.data);
+        axios.get(res.data?.content).then((res) => {
+          setContent(res.data);
+        });
       });
 
       const getcomments = getNoticeInfoCommentAPI(Number(pathId));
@@ -77,6 +82,9 @@ const NoticeInfo = () => {
       const getFunsystemInfo = getFunsystemInfoAPI(Number(pathId));
       getFunsystemInfo.then((res) => {
         setData(res.data);
+        axios.get(res.data?.content).then((res) => {
+          setContent(res.data);
+        });
       });
 
       const getFunsystemComments = getFunsystemInfoCommentAPI(Number(pathId));
@@ -192,7 +200,7 @@ const NoticeInfo = () => {
               height={18}
               priority
             />
-            <span>{data?.views}</span>
+            <span>{data?.views.toLocaleString('ko-KR')} 회</span>
           </styles.WatchBox>
           <styles.ShareBox onClick={handleShareClick}>
             <styles.ShareIconBox>
@@ -250,7 +258,7 @@ const NoticeInfo = () => {
           </styles.ShareBox>
         </styles.MiddleBox>
         <hr />
-        <styles.ContentBox>{data?.content}</styles.ContentBox>
+        <styles.ContentBox>{content}</styles.ContentBox>
         {data?.fileUrl !== undefined && data?.fileUrl.length !== 0 && (
           <>
             <hr />
@@ -269,7 +277,7 @@ const NoticeInfo = () => {
               </styles.FileTopBox>
               <styles.FileAttachBox>
                 <styles.FileNameBox>
-                  2023-1학기-전공별-다전공-선발-방법.xlsx
+                  <a href={data?.fileUrl}>첨부파일 다운로드 링크</a>
                 </styles.FileNameBox>
                 <styles.FileDownBox>
                   <Image
