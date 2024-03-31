@@ -7,10 +7,10 @@ interface TitleFormnProps {
 
   hint:string;
   selectedValue?:string;
-  handleChange?:(event: React.ChangeEvent<HTMLInputElement>) => void; // onChange 타입 변경
+  handleChange?:(event: React.ChangeEvent<HTMLInputElement>) => void; 
 }
 
-const TitleForm = ({selectedValue,handleChange,hint}: TitleFormnProps) => (
+const TitleForm = ({selectedValue,handleChange,hint,height}: TitleFormnProps) => (
 
     <>
     <styles.TitleForm
@@ -20,6 +20,7 @@ const TitleForm = ({selectedValue,handleChange,hint}: TitleFormnProps) => (
       onChange={handleChange}
       placeholder={hint}
       autoComplete="off"
+      height={height}
     />
   </>
 );
